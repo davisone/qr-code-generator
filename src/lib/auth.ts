@@ -1,16 +1,7 @@
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-
-interface StoredUser {
-  id: string;
-  email: string;
-  name: string;
-  password: string;
-}
-
-// In-memory store for MVP (persists during server runtime)
-const users: StoredUser[] = [];
+import { prisma } from "./prisma";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -30,7 +21,7 @@ export const authOptions: NextAuthOptions = {
         const { email, password, name, action } = credentials;
 
         if (action === "register") {
-          const existingUser = users.find((u) => u.email === email);
+          const existingUser = await prisma.user.findUnique({ where: { email } });
           if (existingUser) {
             throw new Error("Cet email est déjà utilisé");
           }
@@ -38,18 +29,14 @@ export const authOptions: NextAuthOptions = {
             throw new Error("Le nom est requis");
           }
           const hashedPassword = await bcrypt.hash(password, 10);
-          const newUser: StoredUser = {
-            id: crypto.randomUUID(),
-            email,
-            name,
-            password: hashedPassword,
-          };
-          users.push(newUser);
+          const newUser = await prisma.user.create({
+            data: { email, name, password: hashedPassword },
+          });
           return { id: newUser.id, email: newUser.email, name: newUser.name };
         }
 
         // Login
-        const user = users.find((u) => u.email === email);
+        const user = await prisma.user.findUnique({ where: { email } });
         if (!user) {
           throw new Error("Email ou mot de passe incorrect");
         }

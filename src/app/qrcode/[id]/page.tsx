@@ -4,11 +4,10 @@ import { useSession } from "next-auth/react";
 import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState, useRef, useCallback } from "react";
 import Navbar from "@/components/Navbar";
-import { QRCodeData } from "@/lib/types";
-import { getQRCodeById, saveQRCode } from "@/lib/qr-storage";
 import QRCode from "qrcode";
 import { jsPDF } from "jspdf";
-import { v4 as uuidv4 } from "uuid";
+import { styleTemplates } from "@/lib/templates";
+import { generateQRCanvas } from "@/lib/qr-utils";
 
 const ERROR_LEVELS = [
   { value: "L", label: "L - Faible (7%)" },
@@ -24,6 +23,7 @@ export default function QRCodeEditorPage() {
   const router = useRouter();
   const params = useParams();
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const logoInputRef = useRef<HTMLInputElement>(null);
   const isNew = params.id === "new";
 
   const [name, setName] = useState("");
@@ -33,9 +33,14 @@ export default function QRCodeEditorPage() {
   const [backgroundColor, setBackgroundColor] = useState("#ffffff");
   const [size, setSize] = useState<256 | 512 | 1024>(512);
   const [errorCorrection, setErrorCorrection] = useState<"L" | "M" | "Q" | "H">("M");
+  const [logoDataUrl, setLogoDataUrl] = useState<string | null>(null);
+  const [isPublic, setIsPublic] = useState(false);
+  const [shareToken, setShareToken] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [loadingData, setLoadingData] = useState(!isNew);
+  const [copiedLink, setCopiedLink] = useState(false);
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -44,21 +49,30 @@ export default function QRCodeEditorPage() {
   }, [status, router]);
 
   useEffect(() => {
-    if (!isNew && session?.user?.email) {
-      const existing = getQRCodeById(session.user.email, params.id as string);
-      if (existing) {
-        setName(existing.name);
-        setType(existing.type);
-        setContent(existing.content);
-        setForegroundColor(existing.foregroundColor);
-        setBackgroundColor(existing.backgroundColor);
-        setSize(existing.size);
-        setErrorCorrection(existing.errorCorrection);
-      } else {
-        router.push("/dashboard");
-      }
+    if (!isNew && status === "authenticated") {
+      fetch(`/api/qrcodes/${params.id}`)
+        .then((res) => {
+          if (!res.ok) throw new Error();
+          return res.json();
+        })
+        .then((data) => {
+          setName(data.name);
+          setType(data.type);
+          setContent(data.content);
+          setForegroundColor(data.foregroundColor);
+          setBackgroundColor(data.backgroundColor);
+          setSize(data.size);
+          setErrorCorrection(data.errorCorrection);
+          setLogoDataUrl(data.logoDataUrl || null);
+          setIsPublic(data.isPublic || false);
+          setShareToken(data.shareToken || null);
+        })
+        .catch(() => {
+          router.push("/dashboard");
+        })
+        .finally(() => setLoadingData(false));
     }
-  }, [isNew, session?.user?.email, params.id, router]);
+  }, [isNew, status, params.id, router]);
 
   const generateQR = useCallback(async () => {
     const canvas = canvasRef.current;
@@ -74,6 +88,26 @@ export default function QRCodeEditorPage() {
         },
         errorCorrectionLevel: errorCorrection,
       });
+      // Overlay logo on preview
+      if (logoDataUrl) {
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          const img = new Image();
+          img.onload = () => {
+            const logoSize = Math.floor(canvas.width * 0.2);
+            const padding = Math.floor(logoSize * 0.1);
+            const totalSize = logoSize + padding * 2;
+            const x = (canvas.width - totalSize) / 2;
+            const y = (canvas.height - totalSize) / 2;
+            ctx.fillStyle = "#ffffff";
+            ctx.beginPath();
+            ctx.roundRect(x, y, totalSize, totalSize, 8);
+            ctx.fill();
+            ctx.drawImage(img, x + padding, y + padding, logoSize, logoSize);
+          };
+          img.src = logoDataUrl;
+        }
+      }
     } catch {
       const ctx = canvas.getContext("2d");
       if (ctx) {
@@ -86,7 +120,7 @@ export default function QRCodeEditorPage() {
         ctx.fillText("Contenu invalide", canvas.width / 2, canvas.height / 2);
       }
     }
-  }, [content, foregroundColor, backgroundColor, errorCorrection]);
+  }, [content, foregroundColor, backgroundColor, errorCorrection, logoDataUrl]);
 
   useEffect(() => {
     generateQR();
@@ -108,11 +142,10 @@ export default function QRCodeEditorPage() {
   }
 
   async function handleSave() {
-    if (!validate() || !session?.user?.email) return;
+    if (!validate()) return;
 
     setSaving(true);
-    const qrCode: QRCodeData = {
-      id: isNew ? uuidv4() : (params.id as string),
+    const body = {
       name: name.trim(),
       type,
       content: content.trim(),
@@ -120,31 +153,52 @@ export default function QRCodeEditorPage() {
       backgroundColor,
       size,
       errorCorrection,
-      createdAt: isNew ? new Date().toISOString() : (getQRCodeById(session.user.email, params.id as string)?.createdAt || new Date().toISOString()),
-      updatedAt: new Date().toISOString(),
+      logoDataUrl,
     };
 
-    saveQRCode(session.user.email, qrCode);
-    setSaving(false);
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
+    try {
+      let res: Response;
+      if (isNew) {
+        res = await fetch("/api/qrcodes", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+      } else {
+        res = await fetch(`/api/qrcodes/${params.id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+      }
 
-    if (isNew) {
-      router.replace(`/qrcode/${qrCode.id}`);
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Erreur serveur");
+      }
+
+      const data = await res.json();
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2000);
+
+      if (isNew) {
+        router.replace(`/qrcode/${data.id}`);
+      }
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Erreur lors de l'enregistrement");
+    } finally {
+      setSaving(false);
     }
   }
 
   async function getHighQualityDataURL(format: "png" | "jpeg"): Promise<string> {
-    const canvas = document.createElement("canvas");
-    const text = content.trim() || "https://example.com";
-    await QRCode.toCanvas(canvas, text, {
-      width: size,
-      margin: 2,
-      color: {
-        dark: foregroundColor,
-        light: backgroundColor,
-      },
-      errorCorrectionLevel: errorCorrection,
+    const canvas = await generateQRCanvas({
+      content: content.trim() || "https://example.com",
+      size,
+      foregroundColor,
+      backgroundColor,
+      errorCorrection,
+      logoDataUrl,
     });
     return canvas.toDataURL(format === "jpeg" ? "image/jpeg" : "image/png", 1.0);
   }
@@ -201,7 +255,42 @@ export default function QRCodeEditorPage() {
     link.click();
   }
 
-  if (status === "loading") {
+  function handleLogoUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 500 * 1024) {
+      alert("Le logo ne doit pas dépasser 500 Ko");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      setLogoDataUrl(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  async function handleToggleShare() {
+    if (isNew) return;
+    try {
+      const res = await fetch(`/api/qrcodes/${params.id}/share`, { method: "PATCH" });
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      setIsPublic(data.isPublic);
+      setShareToken(data.shareToken);
+    } catch {
+      alert("Erreur lors du changement de partage");
+    }
+  }
+
+  function handleCopyShareLink() {
+    if (!shareToken) return;
+    const url = `${window.location.origin}/share/${shareToken}`;
+    navigator.clipboard.writeText(url);
+    setCopiedLink(true);
+    setTimeout(() => setCopiedLink(false), 2000);
+  }
+
+  if (status === "loading" || loadingData) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
@@ -299,6 +388,34 @@ export default function QRCodeEditorPage() {
               </div>
             </div>
 
+            {/* Templates */}
+            <div className="bg-white rounded-xl border border-gray-200 p-6">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">Templates de style</h2>
+              <div className="grid grid-cols-4 gap-2">
+                {styleTemplates.map((t) => (
+                  <button
+                    key={t.id}
+                    type="button"
+                    onClick={() => {
+                      setForegroundColor(t.foregroundColor);
+                      setBackgroundColor(t.backgroundColor);
+                    }}
+                    className={`flex flex-col items-center gap-1.5 p-2 rounded-lg border transition hover:shadow-sm ${
+                      foregroundColor === t.foregroundColor && backgroundColor === t.backgroundColor
+                        ? "border-indigo-500 bg-indigo-50"
+                        : "border-gray-200 hover:border-gray-300"
+                    }`}
+                  >
+                    <div
+                      className="w-8 h-8 rounded-md border border-gray-200"
+                      style={{ background: `linear-gradient(135deg, ${t.foregroundColor} 50%, ${t.backgroundColor} 50%)` }}
+                    />
+                    <span className="text-xs text-gray-600 truncate w-full text-center">{t.name}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <div className="bg-white rounded-xl border border-gray-200 p-6">
               <h2 className="text-lg font-semibold text-gray-900 mb-4">Personnalisation</h2>
 
@@ -382,6 +499,42 @@ export default function QRCodeEditorPage() {
               </div>
             </div>
 
+            {/* Logo Upload */}
+            <div className="bg-white rounded-xl border border-gray-200 p-6">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">Logo au centre</h2>
+              <p className="text-sm text-gray-500 mb-3">
+                Ajoutez un logo au centre du QR code. Utilisez une correction d&apos;erreur H pour de meilleurs résultats.
+              </p>
+              <input
+                ref={logoInputRef}
+                type="file"
+                accept="image/png,image/jpeg,image/svg+xml"
+                onChange={handleLogoUpload}
+                className="hidden"
+              />
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => logoInputRef.current?.click()}
+                  className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded-lg transition"
+                >
+                  {logoDataUrl ? "Changer le logo" : "Ajouter un logo"}
+                </button>
+                {logoDataUrl && (
+                  <>
+                    <img src={logoDataUrl} alt="Logo" className="w-10 h-10 rounded border border-gray-200 object-contain" />
+                    <button
+                      type="button"
+                      onClick={() => setLogoDataUrl(null)}
+                      className="text-sm text-red-500 hover:text-red-600"
+                    >
+                      Supprimer
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
+
             <div className="flex gap-3">
               <button
                 onClick={handleSave}
@@ -443,6 +596,51 @@ export default function QRCodeEditorPage() {
                 </button>
               </div>
             </div>
+
+            {/* Share Section */}
+            {!isNew && (
+              <div className="bg-white rounded-xl border border-gray-200 p-6">
+                <h2 className="text-lg font-semibold text-gray-900 mb-4">Partage public</h2>
+                <p className="text-sm text-gray-500 mb-3">
+                  Activez le partage pour générer un lien public vers ce QR code.
+                </p>
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={handleToggleShare}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                      isPublic ? "bg-indigo-600" : "bg-gray-300"
+                    }`}
+                  >
+                    <span
+                      className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                        isPublic ? "translate-x-6" : "translate-x-1"
+                      }`}
+                    />
+                  </button>
+                  <span className="text-sm text-gray-700">
+                    {isPublic ? "Partagé publiquement" : "Non partagé"}
+                  </span>
+                </div>
+                {isPublic && shareToken && (
+                  <div className="mt-3 flex items-center gap-2">
+                    <input
+                      type="text"
+                      readOnly
+                      value={`${typeof window !== "undefined" ? window.location.origin : ""}/share/${shareToken}`}
+                      className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 bg-gray-50"
+                    />
+                    <button
+                      type="button"
+                      onClick={handleCopyShareLink}
+                      className="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition"
+                    >
+                      {copiedLink ? "Copié !" : "Copier"}
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </main>

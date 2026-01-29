@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String
+  createdAt DateTime @default(now())
+  qrCodes   QRCode[]
+}
+
+model QRCode {
+  id              String   @id @default(cuid())
+  name            String
+  type            String   // "url" or "text"
+  content         String
+  foregroundColor String   @default("#000000")
+  backgroundColor String   @default("#ffffff")
+  size            Int      @default(512)
+  errorCorrection String   @default("M")
+  logoDataUrl     String?
+  isFavorite      Boolean  @default(false)
+  isPublic        Boolean  @default(false)
+  shareToken      String?  @unique
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([shareToken])
+}
