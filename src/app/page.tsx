@@ -163,8 +163,11 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-gray-200 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm text-gray-500">
-          QR Generator &mdash; Générateur de QR codes personnalisés
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+          <span>&copy; {new Date().getFullYear()} DVS Web (Evan Davison). Tous droits réservés.</span>
+          <Link href="/mentions-legales" className="text-indigo-600 hover:text-indigo-700 font-medium">
+            Mentions légales
+          </Link>
         </div>
       </footer>
     </div>
