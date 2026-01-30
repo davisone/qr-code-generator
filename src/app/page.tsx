@@ -1,8 +1,36 @@
 import Link from "next/link";
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "QR Generator",
+  url: "https://qr-dvsweb.vercel.app",
+  description:
+    "Générez, personnalisez et partagez vos QR codes gratuitement. Couleurs, logo, export PNG/JPEG/PDF.",
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "All",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "EUR",
+  },
+  author: {
+    "@type": "Organization",
+    name: "DVS Web",
+    founder: {
+      "@type": "Person",
+      name: "Evan Davison",
+    },
+  },
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Navbar */}
       <nav className="bg-white border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
