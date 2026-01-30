@@ -1,4 +1,11 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Mentions légales",
+  description:
+    "Mentions légales du site QR Generator, édité par DVS Web (Evan Davison). Informations sur l'éditeur, la propriété intellectuelle et la protection des données.",
+};
 
 export default function MentionsLegales() {
   return (
