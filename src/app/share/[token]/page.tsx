@@ -116,45 +116,45 @@ export default function SharedQRCodePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
+      <div className="min-h-screen bg-[#fafafa] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0a0a0a]"></div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">QR Code introuvable</h1>
-          <p className="text-gray-500">{error}</p>
+      <div className="min-h-screen bg-[#fafafa] flex items-center justify-center">
+        <div className="bento-card p-8 text-center max-w-md">
+          <h1 className="text-2xl font-bold text-[#0a0a0a] mb-2">QR Code introuvable</h1>
+          <p className="text-[#525252]">{error}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl border border-gray-200 p-8 max-w-md w-full text-center">
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">{qrCode?.name}</h1>
-        <span className="inline-block mb-4 px-2 py-0.5 text-xs font-medium rounded-full bg-gray-100 text-gray-600 uppercase">
+    <div className="min-h-screen bg-[#fafafa] flex items-center justify-center p-4">
+      <div className="bento-card p-8 max-w-md w-full text-center">
+        <h1 className="text-2xl font-bold text-[#0a0a0a] mb-1">{qrCode?.name}</h1>
+        <span className="badge badge-secondary mb-4">
           {qrCode?.type}
         </span>
 
-        <div className="flex justify-center p-4 bg-gray-50 rounded-lg mb-4">
-          <canvas ref={canvasRef} className="rounded" />
+        <div className="flex justify-center p-4 bg-[#f5f5f5] rounded-xl mb-4">
+          <canvas ref={canvasRef} className="rounded-lg" />
         </div>
 
-        <p className="text-sm text-gray-400 mb-6 truncate">{qrCode?.content}</p>
+        <p className="text-sm text-[#525252] mb-6 truncate">{qrCode?.content}</p>
 
         <button
           onClick={handleDownload}
-          className="w-full py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition"
+          className="btn btn-primary w-full"
         >
           Télécharger le QR Code
         </button>
 
-        <p className="mt-4 text-xs text-gray-400">
+        <p className="mt-4 text-xs text-[#a3a3a3]">
           Généré avec QR Code Generator
         </p>
       </div>

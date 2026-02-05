@@ -293,7 +293,7 @@ export default function QRCodeEditorPage() {
   if (status === "loading" || loadingData) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600"></div>
       </div>
     );
   }
@@ -301,19 +301,19 @@ export default function QRCodeEditorPage() {
   if (!session) return null;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#fafafa]">
       <Navbar />
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex items-center gap-3 mb-8">
           <button
             onClick={() => router.push("/dashboard")}
-            className="p-2 hover:bg-gray-200 rounded-lg transition"
+            className="p-2 rounded-xl bg-[#f5f5f5] hover:bg-[#e5e5e5] transition"
           >
-            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-[#525252]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-2xl font-bold text-[#0a0a0a]">
             {isNew ? "Nouveau QR Code" : "Modifier le QR Code"}
           </h1>
         </div>
@@ -321,12 +321,12 @@ export default function QRCodeEditorPage() {
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Left: Form */}
           <div className="space-y-6">
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Informations</h2>
+            <div className="bento-card">
+              <h2 className="text-lg font-semibold text-[#0a0a0a] mb-4">Informations</h2>
 
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="name" className="block text-sm font-medium text-[#0a0a0a] mb-1.5">
                     Nom du QR Code
                   </label>
                   <input
@@ -334,26 +334,26 @@ export default function QRCodeEditorPage() {
                     type="text"
                     value={name}
                     onChange={(e) => { setName(e.target.value); setErrors((prev) => ({ ...prev, name: "" })); }}
-                    className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition text-gray-900 ${errors.name ? "border-red-300" : "border-gray-300"}`}
+                    className={`input w-full ${errors.name ? "!border-red-300" : ""}`}
                     placeholder="Mon QR Code"
                   />
                   {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Type de contenu</label>
+                  <label className="block text-sm font-medium text-[#0a0a0a] mb-1.5">Type de contenu</label>
                   <div className="flex gap-2">
                     <button
                       type="button"
                       onClick={() => setType("url")}
-                      className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition ${type === "url" ? "bg-indigo-600 text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
+                      className={`flex-1 py-2 px-4 text-sm font-medium rounded-lg border transition ${type === "url" ? "bg-[#0a0a0a] text-white border-[#0a0a0a]" : "bg-[#f5f5f5] text-[#525252] border-transparent hover:bg-[#e5e5e5]"}`}
                     >
                       URL
                     </button>
                     <button
                       type="button"
                       onClick={() => setType("text")}
-                      className={`flex-1 py-2 px-4 rounded-lg text-sm font-medium transition ${type === "text" ? "bg-indigo-600 text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
+                      className={`flex-1 py-2 px-4 text-sm font-medium rounded-lg border transition ${type === "text" ? "bg-[#0a0a0a] text-white border-[#0a0a0a]" : "bg-[#f5f5f5] text-[#525252] border-transparent hover:bg-[#e5e5e5]"}`}
                     >
                       Texte
                     </button>
@@ -361,7 +361,7 @@ export default function QRCodeEditorPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="content" className="block text-sm font-medium text-[#0a0a0a] mb-1.5">
                     {type === "url" ? "URL" : "Texte"}
                   </label>
                   {type === "url" ? (
@@ -370,7 +370,7 @@ export default function QRCodeEditorPage() {
                       type="url"
                       value={content}
                       onChange={(e) => { setContent(e.target.value); setErrors((prev) => ({ ...prev, content: "" })); }}
-                      className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition text-gray-900 ${errors.content ? "border-red-300" : "border-gray-300"}`}
+                      className={`input w-full ${errors.content ? "!border-red-300" : ""}`}
                       placeholder="https://exemple.com"
                     />
                   ) : (
@@ -379,7 +379,7 @@ export default function QRCodeEditorPage() {
                       value={content}
                       onChange={(e) => { setContent(e.target.value); setErrors((prev) => ({ ...prev, content: "" })); }}
                       rows={3}
-                      className={`w-full px-4 py-2.5 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition text-gray-900 resize-none ${errors.content ? "border-red-300" : "border-gray-300"}`}
+                      className={`input w-full resize-none ${errors.content ? "!border-red-300" : ""}`}
                       placeholder="Votre texte ici..."
                     />
                   )}
@@ -389,8 +389,8 @@ export default function QRCodeEditorPage() {
             </div>
 
             {/* Templates */}
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Templates de style</h2>
+            <div className="bento-card">
+              <h2 className="text-lg font-semibold text-[#0a0a0a] mb-4">Templates de style</h2>
               <div className="grid grid-cols-4 gap-2">
                 {styleTemplates.map((t) => (
                   <button
@@ -400,29 +400,29 @@ export default function QRCodeEditorPage() {
                       setForegroundColor(t.foregroundColor);
                       setBackgroundColor(t.backgroundColor);
                     }}
-                    className={`flex flex-col items-center gap-1.5 p-2 rounded-lg border transition hover:shadow-sm ${
+                    className={`flex flex-col items-center gap-1.5 p-2 rounded-xl border transition hover:shadow-sm ${
                       foregroundColor === t.foregroundColor && backgroundColor === t.backgroundColor
-                        ? "border-indigo-500 bg-indigo-50"
-                        : "border-gray-200 hover:border-gray-300"
+                        ? "border-[#0a0a0a] bg-[#f5f5f5]"
+                        : "border-transparent hover:border-gray-200 bg-[#f5f5f5]"
                     }`}
                   >
                     <div
-                      className="w-8 h-8 rounded-md border border-gray-200"
+                      className="w-8 h-8 rounded-lg border border-gray-200"
                       style={{ background: `linear-gradient(135deg, ${t.foregroundColor} 50%, ${t.backgroundColor} 50%)` }}
                     />
-                    <span className="text-xs text-gray-600 truncate w-full text-center">{t.name}</span>
+                    <span className="text-xs text-[#525252] truncate w-full text-center">{t.name}</span>
                   </button>
                 ))}
               </div>
             </div>
 
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Personnalisation</h2>
+            <div className="bento-card">
+              <h2 className="text-lg font-semibold text-[#0a0a0a] mb-4">Personnalisation</h2>
 
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="fgColor" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="fgColor" className="block text-sm font-medium text-[#0a0a0a] mb-1.5">
                       Couleur QR
                     </label>
                     <div className="flex items-center gap-2">
@@ -431,18 +431,18 @@ export default function QRCodeEditorPage() {
                         type="color"
                         value={foregroundColor}
                         onChange={(e) => setForegroundColor(e.target.value)}
-                        className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer p-0.5"
+                        className="w-10 h-10 rounded-lg border border-gray-200 cursor-pointer p-0.5 bg-white"
                       />
                       <input
                         type="text"
                         value={foregroundColor}
                         onChange={(e) => setForegroundColor(e.target.value)}
-                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                        className="input flex-1 text-sm"
                       />
                     </div>
                   </div>
                   <div>
-                    <label htmlFor="bgColor" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="bgColor" className="block text-sm font-medium text-[#0a0a0a] mb-1.5">
                       Couleur fond
                     </label>
                     <div className="flex items-center gap-2">
@@ -451,27 +451,27 @@ export default function QRCodeEditorPage() {
                         type="color"
                         value={backgroundColor}
                         onChange={(e) => setBackgroundColor(e.target.value)}
-                        className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer p-0.5"
+                        className="w-10 h-10 rounded-lg border border-gray-200 cursor-pointer p-0.5 bg-white"
                       />
                       <input
                         type="text"
                         value={backgroundColor}
                         onChange={(e) => setBackgroundColor(e.target.value)}
-                        className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none"
+                        className="input flex-1 text-sm"
                       />
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Taille (px)</label>
+                  <label className="block text-sm font-medium text-[#0a0a0a] mb-1.5">Taille (px)</label>
                   <div className="flex gap-2">
                     {SIZES.map((s) => (
                       <button
                         key={s}
                         type="button"
                         onClick={() => setSize(s)}
-                        className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition ${size === s ? "bg-indigo-600 text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
+                        className={`flex-1 py-2 px-3 text-sm font-medium rounded-lg border transition ${size === s ? "bg-[#0a0a0a] text-white border-[#0a0a0a]" : "bg-[#f5f5f5] text-[#525252] border-transparent hover:bg-[#e5e5e5]"}`}
                       >
                         {s}
                       </button>
@@ -480,14 +480,14 @@ export default function QRCodeEditorPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="errorCorrection" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="errorCorrection" className="block text-sm font-medium text-[#0a0a0a] mb-1.5">
                     Correction d&apos;erreur
                   </label>
                   <select
                     id="errorCorrection"
                     value={errorCorrection}
                     onChange={(e) => setErrorCorrection(e.target.value as "L" | "M" | "Q" | "H")}
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition text-gray-900 bg-white"
+                    className="input w-full"
                   >
                     {ERROR_LEVELS.map((level) => (
                       <option key={level.value} value={level.value}>
@@ -500,9 +500,9 @@ export default function QRCodeEditorPage() {
             </div>
 
             {/* Logo Upload */}
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Logo au centre</h2>
-              <p className="text-sm text-gray-500 mb-3">
+            <div className="bento-card">
+              <h2 className="text-lg font-semibold text-[#0a0a0a] mb-4">Logo au centre</h2>
+              <p className="text-sm text-[#525252] mb-3">
                 Ajoutez un logo au centre du QR code. Utilisez une correction d&apos;erreur H pour de meilleurs résultats.
               </p>
               <input
@@ -516,13 +516,13 @@ export default function QRCodeEditorPage() {
                 <button
                   type="button"
                   onClick={() => logoInputRef.current?.click()}
-                  className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded-lg transition"
+                  className="btn btn-secondary"
                 >
                   {logoDataUrl ? "Changer le logo" : "Ajouter un logo"}
                 </button>
                 {logoDataUrl && (
                   <>
-                    <img src={logoDataUrl} alt="Logo" className="w-10 h-10 rounded border border-gray-200 object-contain" />
+                    <img src={logoDataUrl} alt="Logo" className="w-10 h-10 rounded-lg border border-gray-200 object-contain" />
                     <button
                       type="button"
                       onClick={() => setLogoDataUrl(null)}
@@ -539,13 +539,13 @@ export default function QRCodeEditorPage() {
               <button
                 onClick={handleSave}
                 disabled={saving}
-                className="flex-1 py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition disabled:opacity-50"
+                className="btn btn-primary flex-1"
               >
                 {saving ? "Enregistrement..." : saved ? "Enregistré !" : "Enregistrer"}
               </button>
               <button
                 onClick={() => router.push("/dashboard")}
-                className="py-2.5 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-lg transition"
+                className="btn btn-secondary"
               >
                 Retour
               </button>
@@ -554,54 +554,54 @@ export default function QRCodeEditorPage() {
 
           {/* Right: Preview & Export */}
           <div className="space-y-6">
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Aperçu en temps réel</h2>
-              <div className="flex justify-center p-4 bg-gray-50 rounded-lg">
-                <canvas ref={canvasRef} className="rounded" />
+            <div className="bento-card">
+              <h2 className="text-lg font-semibold text-[#0a0a0a] mb-4">Aperçu en temps réel</h2>
+              <div className="flex justify-center p-4 bg-[#f5f5f5] rounded-xl">
+                <canvas ref={canvasRef} className="rounded-lg" />
               </div>
-              <p className="mt-3 text-sm text-gray-400 text-center">
+              <p className="mt-3 text-sm text-[#525252] text-center">
                 Taille d&apos;export : {size} x {size} px
               </p>
             </div>
 
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Exporter</h2>
+            <div className="bento-card">
+              <h2 className="text-lg font-semibold text-[#0a0a0a] mb-4">Exporter</h2>
               <div className="grid grid-cols-3 gap-3">
                 <button
                   onClick={handleExportPNG}
-                  className="flex flex-col items-center gap-2 py-4 px-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition border border-gray-200"
+                  className="flex flex-col items-center gap-2 py-4 px-3 bg-[#f5f5f5] hover:bg-[#e5e5e5] rounded-xl transition"
                 >
-                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
-                  <span className="text-sm font-medium text-gray-700">PNG</span>
+                  <span className="text-sm font-medium text-[#0a0a0a]">PNG</span>
                 </button>
                 <button
                   onClick={handleExportJPG}
-                  className="flex flex-col items-center gap-2 py-4 px-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition border border-gray-200"
+                  className="flex flex-col items-center gap-2 py-4 px-3 bg-[#f5f5f5] hover:bg-[#e5e5e5] rounded-xl transition"
                 >
                   <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
-                  <span className="text-sm font-medium text-gray-700">JPG</span>
+                  <span className="text-sm font-medium text-[#0a0a0a]">JPG</span>
                 </button>
                 <button
                   onClick={handleExportPDF}
-                  className="flex flex-col items-center gap-2 py-4 px-3 bg-gray-50 hover:bg-gray-100 rounded-lg transition border border-gray-200"
+                  className="flex flex-col items-center gap-2 py-4 px-3 bg-[#f5f5f5] hover:bg-[#e5e5e5] rounded-xl transition"
                 >
                   <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                   </svg>
-                  <span className="text-sm font-medium text-gray-700">PDF</span>
+                  <span className="text-sm font-medium text-[#0a0a0a]">PDF</span>
                 </button>
               </div>
             </div>
 
             {/* Share Section */}
             {!isNew && (
-              <div className="bg-white rounded-xl border border-gray-200 p-6">
-                <h2 className="text-lg font-semibold text-gray-900 mb-4">Partage public</h2>
-                <p className="text-sm text-gray-500 mb-3">
+              <div className="bento-card">
+                <h2 className="text-lg font-semibold text-[#0a0a0a] mb-4">Partage public</h2>
+                <p className="text-sm text-[#525252] mb-3">
                   Activez le partage pour générer un lien public vers ce QR code.
                 </p>
                 <div className="flex items-center gap-3">
@@ -609,7 +609,7 @@ export default function QRCodeEditorPage() {
                     type="button"
                     onClick={handleToggleShare}
                     className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                      isPublic ? "bg-indigo-600" : "bg-gray-300"
+                      isPublic ? "bg-[#0a0a0a]" : "bg-gray-300"
                     }`}
                   >
                     <span
@@ -618,7 +618,7 @@ export default function QRCodeEditorPage() {
                       }`}
                     />
                   </button>
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm text-[#525252]">
                     {isPublic ? "Partagé publiquement" : "Non partagé"}
                   </span>
                 </div>
@@ -628,12 +628,12 @@ export default function QRCodeEditorPage() {
                       type="text"
                       readOnly
                       value={`${typeof window !== "undefined" ? window.location.origin : ""}/share/${shareToken}`}
-                      className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 bg-gray-50"
+                      className="input flex-1 text-sm"
                     />
                     <button
                       type="button"
                       onClick={handleCopyShareLink}
-                      className="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition"
+                      className="btn btn-primary btn-sm"
                     >
                       {copiedLink ? "Copié !" : "Copier"}
                     </button>

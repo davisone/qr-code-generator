@@ -218,8 +218,8 @@ export default function DashboardPage() {
 
   if (status === "loading" || loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
+      <div className="min-h-screen bg-[#fafafa] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0a0a0a]"></div>
       </div>
     );
   }
@@ -227,22 +227,22 @@ export default function DashboardPage() {
   if (!session) return null;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#fafafa]">
       <Navbar />
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Mes QR Codes</h1>
-            <p className="text-gray-500 mt-1">{qrCodes.length} QR code{qrCodes.length !== 1 ? "s" : ""}</p>
+            <h1 className="text-2xl font-bold text-[#0a0a0a]">Mes QR Codes</h1>
+            <p className="text-[#525252] mt-1">{qrCodes.length} QR code{qrCodes.length !== 1 ? "s" : ""}</p>
           </div>
           <button
             onClick={() => router.push("/qrcode/new")}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition"
+            className="btn btn-primary"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
-            Nouveau QR Code
+            Nouveau
           </button>
         </div>
 
@@ -251,7 +251,7 @@ export default function DashboardPage() {
           <div className="mb-6 flex flex-col sm:flex-row gap-3">
             <div className="relative flex-1">
               <svg
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#a3a3a3]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -262,8 +262,8 @@ export default function DashboardPage() {
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Rechercher par nom ou contenu..."
-                className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition text-gray-900 bg-white"
+                placeholder="Rechercher..."
+                className="input pl-10"
               />
             </div>
             <div className="flex gap-2">
@@ -271,10 +271,8 @@ export default function DashboardPage() {
                 <button
                   key={f}
                   onClick={() => setFilterType(f)}
-                  className={`px-3 py-2 text-sm font-medium rounded-lg transition ${
-                    filterType === f
-                      ? "bg-indigo-600 text-white"
-                      : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
+                  className={`btn btn-sm ${
+                    filterType === f ? "btn-primary" : "btn-secondary"
                   }`}
                 >
                   {f === "all" ? "Tous" : f === "url" ? "URL" : f === "text" ? "Texte" : "Favoris"}
@@ -286,55 +284,53 @@ export default function DashboardPage() {
 
         {/* Batch actions */}
         {selected.size > 0 && (
-          <div className="mb-4 flex items-center gap-3 p-3 bg-indigo-50 border border-indigo-200 rounded-lg">
-            <span className="text-sm font-medium text-indigo-700">
+          <div className="mb-4 flex items-center gap-3 p-4 bento-card">
+            <span className="text-sm font-medium text-[#0a0a0a]">
               {selected.size} sélectionné{selected.size > 1 ? "s" : ""}
             </span>
             <button
               onClick={handleExportZip}
               disabled={exporting}
-              className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition disabled:opacity-50"
+              className="btn btn-primary btn-sm"
             >
-              {exporting ? "Export en cours..." : "Exporter en ZIP"}
+              {exporting ? "Export..." : "Exporter ZIP"}
             </button>
             <button
               onClick={() => setSelected(new Set())}
-              className="px-3 py-1.5 text-sm text-gray-600 hover:text-gray-800"
+              className="btn btn-ghost btn-sm"
             >
-              Désélectionner
+              Annuler
             </button>
           </div>
         )}
 
         {qrCodes.length === 0 ? (
-          <div className="text-center py-16 bg-white rounded-2xl border border-gray-200">
-            <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
-            </svg>
-            <h3 className="mt-4 text-lg font-medium text-gray-900">Aucun QR code</h3>
-            <p className="mt-1 text-gray-500">Créez votre premier QR code pour commencer.</p>
+          <div className="bento-card text-center py-16">
+            <div className="icon-box mx-auto mb-4">
+              <svg className="w-6 h-6 text-[#525252]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-semibold text-[#0a0a0a]">Aucun QR code</h3>
+            <p className="mt-1 text-[#525252]">Créez votre premier QR code pour commencer.</p>
             <button
               onClick={() => router.push("/qrcode/new")}
-              className="mt-6 inline-flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition"
+              className="btn btn-primary mt-6"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-              </svg>
               Créer un QR Code
             </button>
           </div>
         ) : filteredQRCodes.length === 0 ? (
-          <div className="text-center py-16 bg-white rounded-2xl border border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">Aucun résultat</h3>
-            <p className="mt-1 text-gray-500">Essayez de modifier votre recherche ou vos filtres.</p>
+          <div className="bento-card text-center py-16">
+            <h3 className="text-lg font-semibold text-[#0a0a0a]">Aucun résultat</h3>
+            <p className="mt-1 text-[#525252]">Essayez de modifier votre recherche.</p>
           </div>
         ) : (
           <>
-            {/* Select all toggle */}
             <div className="mb-3 flex items-center gap-2">
               <button
                 onClick={toggleSelectAll}
-                className="text-sm text-gray-500 hover:text-gray-700"
+                className="text-sm text-[#525252] hover:text-[#0a0a0a]"
               >
                 {selected.size === filteredQRCodes.length ? "Tout désélectionner" : "Tout sélectionner"}
               </button>
@@ -343,36 +339,33 @@ export default function DashboardPage() {
               {filteredQRCodes.map((qr) => (
                 <div
                   key={qr.id}
-                  className={`bg-white rounded-xl border p-5 hover:shadow-md transition-shadow ${
-                    selected.has(qr.id) ? "border-indigo-400 ring-2 ring-indigo-100" : "border-gray-200"
+                  className={`bento-card p-5 ${
+                    selected.has(qr.id) ? "ring-2 ring-[#0a0a0a]" : ""
                   }`}
                 >
                   <div className="flex items-start gap-4">
-                    {/* Checkbox */}
                     <input
                       type="checkbox"
                       checked={selected.has(qr.id)}
                       onChange={() => toggleSelect(qr.id)}
-                      className="mt-1 h-4 w-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500"
+                      className="mt-1 h-4 w-4 rounded border-[#d4d4d4] text-[#0a0a0a] focus:ring-[#0a0a0a]"
                     />
-                    <div className="shrink-0 rounded-lg overflow-hidden border border-gray-100">
+                    <div className="shrink-0 rounded-xl overflow-hidden border border-[#e5e5e5]">
                       {previews[qr.id] ? (
                         <img src={previews[qr.id]} alt={qr.name} width={64} height={64} />
                       ) : (
-                        <div className="w-16 h-16 bg-gray-100 animate-pulse" />
+                        <div className="w-16 h-16 bg-[#f5f5f5] animate-pulse" />
                       )}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-1">
-                        <h3 className="font-semibold text-gray-900 truncate">{qr.name}</h3>
-                        {/* Favorite star */}
+                      <div className="flex items-center gap-2">
+                        <h3 className="font-semibold text-[#0a0a0a] truncate">{qr.name}</h3>
                         <button
                           onClick={(e) => { e.stopPropagation(); handleToggleFavorite(qr.id); }}
-                          className="shrink-0 p-0.5"
-                          title={qr.isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
+                          className="shrink-0"
                         >
                           <svg
-                            className={`w-4 h-4 ${qr.isFavorite ? "text-yellow-400 fill-yellow-400" : "text-gray-300"}`}
+                            className={`w-4 h-4 ${qr.isFavorite ? "text-yellow-500 fill-yellow-500" : "text-[#d4d4d4]"}`}
                             fill={qr.isFavorite ? "currentColor" : "none"}
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -381,30 +374,24 @@ export default function DashboardPage() {
                           </svg>
                         </button>
                       </div>
-                      <div className="flex items-center gap-1.5 mt-1">
-                        <span className="inline-block px-2 py-0.5 text-xs font-medium rounded-full bg-gray-100 text-gray-600 uppercase">
-                          {qr.type}
-                        </span>
-                        {qr.isPublic && (
-                          <span className="inline-block px-2 py-0.5 text-xs font-medium rounded-full bg-green-100 text-green-700">
-                            Partagé
-                          </span>
-                        )}
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="badge badge-gray">{qr.type}</span>
+                        {qr.isPublic && <span className="badge badge-emerald">Public</span>}
                       </div>
-                      <p className="mt-1 text-sm text-gray-400 truncate">{qr.content}</p>
+                      <p className="mt-1 text-sm text-[#a3a3a3] truncate">{qr.content}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-1 mt-4 pt-4 border-t border-gray-100">
+                  <div className="flex items-center gap-1 mt-4 pt-4 border-t border-[#f5f5f5]">
                     <button
                       onClick={() => router.push(`/qrcode/${qr.id}`)}
-                      className="flex-1 text-sm font-medium text-indigo-600 hover:text-indigo-700 hover:bg-indigo-50 px-2 py-1.5 rounded-lg transition"
+                      className="btn btn-ghost btn-sm flex-1"
                     >
                       Modifier
                     </button>
                     <button
                       onClick={() => handleDownload(qr)}
-                      className="text-sm font-medium text-gray-600 hover:text-gray-700 hover:bg-gray-100 px-2 py-1.5 rounded-lg transition"
+                      className="btn btn-ghost btn-sm p-2"
                       title="Télécharger"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -413,7 +400,7 @@ export default function DashboardPage() {
                     </button>
                     <button
                       onClick={() => handleDuplicate(qr.id)}
-                      className="text-sm font-medium text-gray-600 hover:text-gray-700 hover:bg-gray-100 px-2 py-1.5 rounded-lg transition"
+                      className="btn btn-ghost btn-sm p-2"
                       title="Dupliquer"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -422,7 +409,7 @@ export default function DashboardPage() {
                     </button>
                     <button
                       onClick={() => handleDelete(qr.id)}
-                      className="text-sm font-medium text-red-500 hover:text-red-600 hover:bg-red-50 px-2 py-1.5 rounded-lg transition"
+                      className="btn btn-ghost btn-sm p-2 text-red-500 hover:text-red-600 hover:bg-red-50"
                       title="Supprimer"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
