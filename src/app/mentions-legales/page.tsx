@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Mentions légales",
   description:
-    "Mentions légales du site QR Generator, édité par DVS Web (Evan Davison). Informations sur l'éditeur, la propriété intellectuelle et la protection des données.",
+    "Mentions légales du site QRaft, édité par DVS Web (Evan Davison). Informations sur l'éditeur, la propriété intellectuelle et la protection des données.",
 };
 
 export default function MentionsLegales() {
@@ -19,7 +19,7 @@ export default function MentionsLegales() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
               </svg>
             </div>
-            QR Generator
+            QRaft
           </Link>
           <div className="flex items-center gap-3">
             <Link
@@ -47,7 +47,7 @@ export default function MentionsLegales() {
           <section>
             <h2 className="text-xl font-semibold text-[#0a0a0a] mb-3">Éditeur du site</h2>
             <p className="text-[#525252] leading-relaxed">
-              Le site <strong>QR Generator</strong> est édité par <strong>DVS Web</strong>, projet créé par <strong>Evan Davison</strong>.
+              Le site <strong>QRaft</strong> est édité par <strong>DVS Web</strong>, projet créé par <strong>Evan Davison</strong>.
             </p>
             <ul className="mt-3 text-[#525252] space-y-1">
               <li><strong>Raison sociale :</strong> DVS Web</li>

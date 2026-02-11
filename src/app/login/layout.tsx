@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Connexion",
   description:
-    "Connectez-vous à QR Generator pour créer, personnaliser et gérer vos QR codes.",
+    "Connectez-vous à QRaft pour créer, personnaliser et gérer vos QR codes.",
 };
 
 export default function LoginLayout({ children }: { children: React.ReactNode }) {

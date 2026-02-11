@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "QR Generator — Créez des QR codes personnalisés gratuitement",
-    template: "%s | QR Generator",
+    default: "QRaft — Créez des QR codes personnalisés gratuitement",
+    template: "%s | QRaft",
   },
   description:
     "Générez, personnalisez et partagez vos QR codes gratuitement. Couleurs, logo, export PNG/JPEG/PDF. Créé par DVS Web.",
@@ -29,6 +29,7 @@ export const metadata: Metadata = {
     "créer QR code",
     "QR code logo",
     "QR code couleur",
+    "QRaft",
     "DVS Web",
   ],
   authors: [{ name: "Evan Davison", url: "https://qr-dvsweb.vercel.app" }],
@@ -38,14 +39,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     url: "https://qr-dvsweb.vercel.app",
-    siteName: "QR Generator",
-    title: "QR Generator — Créez des QR codes personnalisés gratuitement",
+    siteName: "QRaft",
+    title: "QRaft — Créez des QR codes personnalisés gratuitement",
     description:
       "Générez, personnalisez et partagez vos QR codes gratuitement. Couleurs, logo, export PNG/JPEG/PDF.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "QR Generator — QR codes personnalisés gratuits",
+    title: "QRaft — QR codes personnalisés gratuits",
     description:
       "Générez, personnalisez et partagez vos QR codes gratuitement. Couleurs, logo, export PNG/JPEG/PDF.",
   },
