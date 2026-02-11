@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbc11b54-acde-466d-b154-7124bb59d4c4" name="Changes" comment="">
+    <list default="true" id="cbc11b54-acde-466d-b154-7124bb59d4c4" name="Changes" comment="amélioration du disign, glassmorphism">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/mentions-legales/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/mentions-legales/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/qrcode/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/qrcode/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/register/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/share/[token]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/share/[token]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/auth.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +117,9 @@
       <workItem from="1769960986638" duration="1368000" />
       <workItem from="1770120436768" duration="2580000" />
       <workItem from="1770142465877" duration="365000" />
-      <workItem from="1770324618127" duration="3674000" />
+      <workItem from="1770324618127" duration="3807000" />
+      <workItem from="1770365210398" duration="683000" />
+      <workItem from="1770814411408" duration="1258000" />
     </task>
     <task id="LOCAL-00001" summary="ajout de logoDataUrl, isFavorite, isPublic, shareToken">
       <option name="closed" value="true" />
@@ -195,7 +193,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769784237542</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="amélioration du disign, glassmorphism">
+      <option name="closed" value="true" />
+      <created>1770329390852</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1770329390852</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,7 +215,8 @@
     <MESSAGE value="ajout de la vérif d'id pour Google search console" />
     <MESSAGE value="ajout d'un système SEO" />
     <MESSAGE value="ajout de Google Analytics" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout de Google Analytics" />
+    <MESSAGE value="amélioration du disign, glassmorphism" />
+    <option name="LAST_COMMIT_MESSAGE" value="amélioration du disign, glassmorphism" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
