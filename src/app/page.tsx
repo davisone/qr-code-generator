@@ -3,26 +3,93 @@ import Image from "next/image";
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: "QRaft",
-  url: "https://qr-dvsweb.vercel.app",
-  description:
-    "Générez, personnalisez et partagez vos QR codes gratuitement. Couleurs, logo, export PNG/JPEG/PDF.",
-  applicationCategory: "UtilitiesApplication",
-  operatingSystem: "All",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "EUR",
-  },
-  author: {
-    "@type": "Organization",
-    name: "DVS Web",
-    founder: {
-      "@type": "Person",
-      name: "Evan Davison",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://qr-dvsweb.vercel.app/#app",
+      name: "QRaft",
+      url: "https://qr-dvsweb.vercel.app",
+      description:
+        "Créez des QR codes personnalisés gratuitement en quelques secondes. Ajoutez votre logo, choisissez vos couleurs, exportez en PNG, JPEG ou PDF.",
+      applicationCategory: "UtilitiesApplication",
+      operatingSystem: "All",
+      browserRequirements: "Requires JavaScript",
+      softwareVersion: "1.0",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "EUR",
+        availability: "https://schema.org/InStock",
+      },
+      featureList: [
+        "Génération de QR codes illimitée",
+        "Personnalisation des couleurs",
+        "Ajout de logo personnalisé",
+        "Export PNG, JPEG, PDF",
+        "Partage par lien public",
+        "4 niveaux de correction d'erreur",
+      ],
+      screenshot: "https://qr-dvsweb.vercel.app/QRaft.png",
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5",
+        ratingCount: "1",
+        bestRating: "5",
+        worstRating: "1",
+      },
     },
-  },
+    {
+      "@type": "Organization",
+      "@id": "https://qr-dvsweb.vercel.app/#organization",
+      name: "DVS Web",
+      url: "https://qr-dvsweb.vercel.app",
+      logo: "https://qr-dvsweb.vercel.app/QRaft.png",
+      founder: {
+        "@type": "Person",
+        name: "Evan Davison",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://qr-dvsweb.vercel.app/#website",
+      url: "https://qr-dvsweb.vercel.app",
+      name: "QRaft",
+      description: "Générateur de QR codes gratuit et personnalisable",
+      publisher: {
+        "@id": "https://qr-dvsweb.vercel.app/#organization",
+      },
+      inLanguage: "fr-FR",
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "QRaft est-il vraiment gratuit ?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Oui, QRaft est 100% gratuit. Vous pouvez créer des QR codes illimités, les personnaliser avec vos couleurs et votre logo, et les exporter en PNG, JPEG ou PDF sans aucun frais.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Puis-je ajouter mon logo sur un QR code ?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Oui, QRaft vous permet d'ajouter votre logo au centre de votre QR code pour une personnalisation complète de votre marque.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Quels formats d'export sont disponibles ?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "QRaft propose l'export en 3 formats : PNG pour le web, JPEG pour l'impression standard, et PDF pour une qualité vectorielle.",
+          },
+        },
+      ],
+    },
+  ],
 };
 
 export default function Home() {

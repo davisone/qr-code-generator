@@ -1,0 +1,29 @@
+{
+  "name": "QRaft - Générateur de QR codes",
+  "short_name": "QRaft",
+  "description": "Créez des QR codes personnalisés gratuitement. Ajoutez votre logo, choisissez vos couleurs, exportez en PNG, JPEG ou PDF.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fafafa",
+  "theme_color": "#10b981",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "fr",
+  "categories": ["utilities", "productivity"],
+  "icons": [
+    {
+      "src": "/QRaft.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/QRaft.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

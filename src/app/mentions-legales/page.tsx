@@ -6,6 +6,13 @@ export const metadata: Metadata = {
   title: "Mentions légales",
   description:
     "Mentions légales du site QRaft, édité par DVS Web (Evan Davison). Informations sur l'éditeur, la propriété intellectuelle et la protection des données.",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "https://qr-dvsweb.vercel.app/mentions-legales",
+  },
 };
 
 export default function MentionsLegales() {
