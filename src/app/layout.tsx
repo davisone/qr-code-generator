@@ -54,6 +54,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: "/QRaft.png",
+    apple: "/QRaft.png",
+  },
 };
 
 export default function RootLayout({

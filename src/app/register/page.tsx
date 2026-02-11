@@ -4,6 +4,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -71,11 +72,13 @@ export default function RegisterPage() {
 
         <div className="bento-card p-8">
           <div className="text-center mb-8">
-            <div className="logo-icon w-12 h-12 mx-auto mb-4">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-              </svg>
-            </div>
+            <Image
+              src="/QRaft.png"
+              alt="QRaft"
+              width={48}
+              height={48}
+              className="mx-auto mb-4 rounded-lg"
+            />
             <h1 className="text-2xl font-bold text-[#0a0a0a]">Créer un compte</h1>
             <p className="text-[#525252] mt-1">Commencez à générer vos QR codes</p>
           </div>
