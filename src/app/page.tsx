@@ -276,7 +276,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="footer">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-[#525252]">
-          <span>&copy; {new Date().getFullYear()} DVS Web (Evan Davison)</span>
+          <span>&copy; 2026 QRaft — Propulsé par <a href="https://dvs-web.fr" target="_blank" rel="noopener noreferrer" className="hover:text-[#0a0a0a] underline">DVS-Web</a>. Tous droits réservés.</span>
           <Link href="/mentions-legales" className="hover:text-[#0a0a0a] transition">
             Mentions légales
           </Link>

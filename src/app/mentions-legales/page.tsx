@@ -122,7 +122,7 @@ export default function MentionsLegales() {
       {/* Footer */}
       <footer className="border-t border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm text-[#a3a3a3]">
-          &copy; {new Date().getFullYear()} DVS Web (Evan Davison). Tous droits réservés.
+          &copy; 2026 QRaft — Propulsé par <a href="https://dvs-web.fr" target="_blank" rel="noopener noreferrer" className="hover:text-[#0a0a0a] underline">DVS-Web</a>. Tous droits réservés.
         </div>
       </footer>
     </div>
