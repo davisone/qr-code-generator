@@ -6,9 +6,9 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "WebApplication",
-      "@id": "https://qr-dvsweb.vercel.app/#app",
+      "@id": "https://qr-aft.vercel.app/#app",
       name: "QRaft",
-      url: "https://qr-dvsweb.vercel.app",
+      url: "https://qr-aft.vercel.app",
       description:
         "Créez des QR codes personnalisés gratuitement en quelques secondes. Ajoutez votre logo, choisissez vos couleurs, exportez en PNG, JPEG ou PDF.",
       applicationCategory: "UtilitiesApplication",
@@ -29,7 +29,7 @@ const jsonLd = {
         "Partage par lien public",
         "4 niveaux de correction d'erreur",
       ],
-      screenshot: "https://qr-dvsweb.vercel.app/QRaft.png",
+      screenshot: "https://qr-aft.vercel.app/QRaft.png",
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: "5",
@@ -40,10 +40,10 @@ const jsonLd = {
     },
     {
       "@type": "Organization",
-      "@id": "https://qr-dvsweb.vercel.app/#organization",
+      "@id": "https://qr-aft.vercel.app/#organization",
       name: "DVS Web",
-      url: "https://qr-dvsweb.vercel.app",
-      logo: "https://qr-dvsweb.vercel.app/QRaft.png",
+      url: "https://qr-aft.vercel.app",
+      logo: "https://qr-aft.vercel.app/QRaft.png",
       founder: {
         "@type": "Person",
         name: "Evan Davison",
@@ -51,12 +51,12 @@ const jsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://qr-dvsweb.vercel.app/#website",
-      url: "https://qr-dvsweb.vercel.app",
+      "@id": "https://qr-aft.vercel.app/#website",
+      url: "https://qr-aft.vercel.app",
       name: "QRaft",
       description: "Générateur de QR codes gratuit et personnalisable",
       publisher: {
-        "@id": "https://qr-dvsweb.vercel.app/#organization",
+        "@id": "https://qr-aft.vercel.app/#organization",
       },
       inLanguage: "fr-FR",
     },

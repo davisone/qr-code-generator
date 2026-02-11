@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/dashboard/", "/qrcode/"],
     },
-    sitemap: "https://qr-dvsweb.vercel.app/sitemap.xml",
+    sitemap: "https://qr-aft.vercel.app/sitemap.xml",
   };
 }

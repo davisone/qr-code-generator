@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://qr-dvsweb.vercel.app/mentions-legales",
+    canonical: "https://qr-aft.vercel.app/mentions-legales",
   },
 };
 

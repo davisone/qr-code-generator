@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://qr-dvsweb.vercel.app";
+  const baseUrl = "https://qr-aft.vercel.app";
   const currentDate = new Date().toISOString();
 
   return [

@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbc11b54-acde-466d-b154-7124bb59d4c4" name="Changes" comment="changment de nom de l'application">
-      <change afterPath="$PROJECT_DIR$/public/QRaft.png" afterDir="false" />
+    <list default="true" id="cbc11b54-acde-466d-b154-7124bb59d4c4" name="Changes" comment="Métadonnées globales, Manifest PWA, Sitemap amélioré, JSON-LD enrichi,">
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/mentions-legales/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/mentions-legales/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/register/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/register/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/register/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/robots.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/robots.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/sitemap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sitemap.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Providers.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +124,7 @@
       <workItem from="1770142465877" duration="365000" />
       <workItem from="1770324618127" duration="3807000" />
       <workItem from="1770365210398" duration="683000" />
-      <workItem from="1770814411408" duration="3954000" />
+      <workItem from="1770814411408" duration="5405000" />
     </task>
     <task id="LOCAL-00001" summary="ajout de logoDataUrl, isFavorite, isPublic, shareToken">
       <option name="closed" value="true" />
@@ -224,7 +222,23 @@
       <option name="project" value="LOCAL" />
       <updated>1770816872637</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="ajout du logo et des favicon">
+      <option name="closed" value="true" />
+      <created>1770818392351</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1770818392351</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Métadonnées globales, Manifest PWA, Sitemap amélioré, JSON-LD enrichi,">
+      <option name="closed" value="true" />
+      <created>1770820517236</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1770820517236</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +255,9 @@
     <MESSAGE value="amélioration du disign, glassmorphism" />
     <MESSAGE value="configuration de connexion google et gituhb" />
     <MESSAGE value="changment de nom de l'application" />
-    <option name="LAST_COMMIT_MESSAGE" value="changment de nom de l'application" />
+    <MESSAGE value="ajout du logo et des favicon" />
+    <MESSAGE value="Métadonnées globales, Manifest PWA, Sitemap amélioré, JSON-LD enrichi," />
+    <option name="LAST_COMMIT_MESSAGE" value="Métadonnées globales, Manifest PWA, Sitemap amélioré, JSON-LD enrichi," />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

@@ -40,22 +40,22 @@ export const metadata: Metadata = {
     "QRaft",
     "DVS Web",
   ],
-  authors: [{ name: "Evan Davison", url: "https://qr-dvsweb.vercel.app" }],
+  authors: [{ name: "Evan Davison", url: "https://qr-aft.vercel.app" }],
   creator: "DVS Web",
   publisher: "DVS Web",
   applicationName: "QRaft",
   referrer: "origin-when-cross-origin",
-  metadataBase: new URL("https://qr-dvsweb.vercel.app"),
+  metadataBase: new URL("https://qr-aft.vercel.app"),
   alternates: {
-    canonical: "https://qr-dvsweb.vercel.app",
+    canonical: "https://qr-aft.vercel.app",
     languages: {
-      "fr-FR": "https://qr-dvsweb.vercel.app",
+      "fr-FR": "https://qr-aft.vercel.app",
     },
   },
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://qr-dvsweb.vercel.app",
+    url: "https://qr-aft.vercel.app",
     siteName: "QRaft",
     title: "QRaft — Générateur de QR codes gratuit et personnalisable",
     description:

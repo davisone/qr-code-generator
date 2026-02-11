@@ -14,10 +14,10 @@ export const metadata: Metadata = {
     title: "Créer un compte gratuit | QRaft",
     description:
       "Inscrivez-vous gratuitement pour créer des QR codes personnalisés illimités.",
-    url: "https://qr-dvsweb.vercel.app/register",
+    url: "https://qr-aft.vercel.app/register",
   },
   alternates: {
-    canonical: "https://qr-dvsweb.vercel.app/register",
+    canonical: "https://qr-aft.vercel.app/register",
   },
 };
 
