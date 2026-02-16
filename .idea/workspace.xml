@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbc11b54-acde-466d-b154-7124bb59d4c4" name="Changes" comment="rectification du footer">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/QRaft.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/apple-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/icon.png" beforeDir="false" />
-    </list>
+    <list default="true" id="cbc11b54-acde-466d-b154-7124bb59d4c4" name="Changes" comment="fix" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -123,7 +118,7 @@
       <workItem from="1770324618127" duration="3807000" />
       <workItem from="1770365210398" duration="683000" />
       <workItem from="1770814411408" duration="6895000" />
-      <workItem from="1770883824723" duration="307000" />
+      <workItem from="1770883824723" duration="386000" />
     </task>
     <task id="LOCAL-00001" summary="ajout de logoDataUrl, isFavorite, isPublic, shareToken">
       <option name="closed" value="true" />
@@ -253,7 +248,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770822559448</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fix">
+      <option name="closed" value="true" />
+      <created>1770884193887</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1770884193887</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,7 +277,8 @@
     <MESSAGE value="Métadonnées globales, Manifest PWA, Sitemap amélioré, JSON-LD enrichi," />
     <MESSAGE value="ajout de la bannière coockies" />
     <MESSAGE value="rectification du footer" />
-    <option name="LAST_COMMIT_MESSAGE" value="rectification du footer" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
