@@ -27,6 +27,7 @@ const jsonLd = {
         "Ajout de logo personnalisé",
         "Export PNG, JPEG, PDF",
         "Partage par lien public",
+        "Statistiques de scan en temps réel",
         "4 niveaux de correction d'erreur",
       ],
       screenshot: "https://qr-aft.vercel.app/QRaft.png",
@@ -85,6 +86,14 @@ const jsonLd = {
           acceptedAnswer: {
             "@type": "Answer",
             text: "QRaft propose l'export en 3 formats : PNG pour le web, JPEG pour l'impression standard, et PDF pour une qualité vectorielle.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Puis-je suivre les scans de mes QR codes ?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Oui, QRaft propose des statistiques de scan complètes. Vous pouvez voir le nombre total de scans, leur répartition par appareil, navigateur et système d'exploitation, ainsi que l'évolution dans le temps.",
           },
         },
       ],
@@ -236,6 +245,17 @@ export default function Home() {
             <p className="text-[#525252] text-sm mt-1">Lien public en un clic</p>
           </div>
 
+          {/* Feature: Analytics */}
+          <div className="bento-card gradient p-6">
+            <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-lg">Statistiques de scan</h3>
+            <p className="text-white/80 text-sm mt-1">Suivez qui scanne vos QR codes</p>
+          </div>
+
           {/* Feature: Batch Export */}
           <div className="bento-card span-2 p-6 flex items-center gap-6">
             <div className="icon-box dark shrink-0">
@@ -247,18 +267,6 @@ export default function Home() {
               <h3 className="font-bold text-lg text-[#0a0a0a]">Export en masse</h3>
               <p className="text-[#525252] text-sm mt-1">Téléchargez tous vos QR codes en une archive ZIP</p>
             </div>
-          </div>
-
-          {/* Feature: Error Correction */}
-          <div className="bento-card p-6">
-            <div className="flex gap-1 mb-4">
-              <span className="w-6 h-6 rounded bg-[#e5e5e5] text-xs flex items-center justify-center font-bold">L</span>
-              <span className="w-6 h-6 rounded bg-[#d4d4d4] text-xs flex items-center justify-center font-bold">M</span>
-              <span className="w-6 h-6 rounded bg-[#a3a3a3] text-white text-xs flex items-center justify-center font-bold">Q</span>
-              <span className="w-6 h-6 rounded bg-[#0a0a0a] text-white text-xs flex items-center justify-center font-bold">H</span>
-            </div>
-            <h3 className="font-bold text-lg text-[#0a0a0a]">Correction d'erreur</h3>
-            <p className="text-[#525252] text-sm mt-1">4 niveaux de redondance</p>
           </div>
 
           {/* CTA Card */}

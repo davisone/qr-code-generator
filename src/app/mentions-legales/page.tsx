@@ -92,6 +92,33 @@ export default function MentionsLegales() {
             </p>
           </section>
 
+          {/* Tracking des QR codes */}
+          <section>
+            <h2 className="text-xl font-semibold text-[#0a0a0a] mb-3">Statistiques de scan des QR codes</h2>
+            <p className="text-[#525252] leading-relaxed">
+              Lorsqu&apos;un QR code partagé publiquement est scanné, nous collectons des données anonymes à des fins statistiques pour permettre au créateur du QR code de suivre l&apos;utilisation de celui-ci.
+            </p>
+            <p className="text-[#525252] leading-relaxed mt-3">
+              <strong>Données collectées lors d&apos;un scan :</strong>
+            </p>
+            <ul className="mt-2 text-[#525252] space-y-1 list-disc list-inside">
+              <li>Date et heure du scan</li>
+              <li>Type d&apos;appareil (mobile, tablette, ordinateur)</li>
+              <li>Navigateur utilisé (Chrome, Safari, Firefox, etc.)</li>
+              <li>Système d&apos;exploitation (iOS, Android, Windows, macOS, etc.)</li>
+              <li>Adresse IP (utilisée uniquement pour les statistiques, non stockée de manière identifiable)</li>
+            </ul>
+            <p className="text-[#525252] leading-relaxed mt-3">
+              <strong>Finalité :</strong> Ces données sont utilisées exclusivement pour fournir des statistiques de scan aux créateurs de QR codes (nombre de scans, répartition par appareil, etc.).
+            </p>
+            <p className="text-[#525252] leading-relaxed mt-2">
+              <strong>Base légale :</strong> Intérêt légitime du créateur du QR code à connaître l&apos;utilisation de son contenu.
+            </p>
+            <p className="text-[#525252] leading-relaxed mt-2">
+              <strong>Durée de conservation :</strong> Les données de scan sont conservées tant que le QR code existe. Elles sont supprimées automatiquement lors de la suppression du QR code.
+            </p>
+          </section>
+
           {/* Responsabilité */}
           <section>
             <h2 className="text-xl font-semibold text-[#0a0a0a] mb-3">Limitation de responsabilité</h2>

@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbc11b54-acde-466d-b154-7124bb59d4c4" name="Changes" comment="fix" />
+    <list default="true" id="cbc11b54-acde-466d-b154-7124bb59d4c4" name="Changes" comment="configuration des images">
+      <change afterPath="$PROJECT_DIR$/public/QRaft.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/qrcode/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/qrcode/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/share/[token]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/share/[token]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,12 +35,12 @@
     &quot;assignee&quot;: &quot;davisone&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/davisone/qr-code-generator.git&quot;,
-    &quot;accountId&quot;: &quot;0cf1b3db-45ee-43af-bdbc-4c8ac70c1d76&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/davisone/qr-code-generator.git",
+    "accountId": "7b6d606e-a8e5-41ba-b8af-aa3c6df2bea7"
   }
-}</component>
+}]]></component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
@@ -119,6 +127,7 @@
       <workItem from="1770365210398" duration="683000" />
       <workItem from="1770814411408" duration="6895000" />
       <workItem from="1770883824723" duration="386000" />
+      <workItem from="1771236797085" duration="1208000" />
     </task>
     <task id="LOCAL-00001" summary="ajout de logoDataUrl, isFavorite, isPublic, shareToken">
       <option name="closed" value="true" />
@@ -256,7 +265,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770884193887</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="configuration des images">
+      <option name="closed" value="true" />
+      <created>1771236834631</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1771236834631</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,7 +295,8 @@
     <MESSAGE value="ajout de la bannière coockies" />
     <MESSAGE value="rectification du footer" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="configuration des images" />
+    <option name="LAST_COMMIT_MESSAGE" value="configuration des images" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

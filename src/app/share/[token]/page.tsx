@@ -19,6 +19,7 @@ interface SharedQRCode {
 export default function SharedQRCodePage() {
   const params = useParams();
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const hasTracked = useRef(false);
   const [qrCode, setQrCode] = useState<SharedQRCode | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -33,6 +34,20 @@ export default function SharedQRCodePage() {
       .catch(() => setError("Ce QR code n'existe pas ou n'est plus partagé."))
       .finally(() => setLoading(false));
   }, [params.token]);
+
+  // Track scan when QR code is loaded
+  useEffect(() => {
+    if (qrCode && !hasTracked.current) {
+      hasTracked.current = true;
+      fetch("/api/scan", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ qrCodeId: qrCode.id }),
+      }).catch(() => {
+        // Silently fail - tracking should not affect user experience
+      });
+    }
+  }, [qrCode]);
 
   const renderQR = useCallback(async () => {
     const canvas = canvasRef.current;

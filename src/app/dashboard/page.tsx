@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState, useCallback } from "react";
 import Navbar from "@/components/Navbar";
+import Analytics from "@/components/Analytics";
 import QRCode from "qrcode";
 import JSZip from "jszip";
 
@@ -21,9 +22,12 @@ interface QRCodeItem {
   logoDataUrl: string | null;
 }
 
+type Tab = "qrcodes" | "analytics";
+
 export default function DashboardPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const [activeTab, setActiveTab] = useState<Tab>("qrcodes");
   const [qrCodes, setQrCodes] = useState<QRCodeItem[]>([]);
   const [previews, setPreviews] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
@@ -31,6 +35,7 @@ export default function DashboardPage() {
   const [filterType, setFilterType] = useState<"all" | "url" | "text" | "favorites">("all");
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [exporting, setExporting] = useState(false);
+  const [selectedQRCodeForAnalytics, setSelectedQRCodeForAnalytics] = useState<string>("");
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -44,13 +49,16 @@ export default function DashboardPage() {
       if (res.ok) {
         const data = await res.json();
         setQrCodes(data);
+        if (data.length > 0 && !selectedQRCodeForAnalytics) {
+          setSelectedQRCodeForAnalytics(data[0].id);
+        }
       }
     } catch {
       // silently fail
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [selectedQRCodeForAnalytics]);
 
   useEffect(() => {
     if (status === "authenticated") {
@@ -226,25 +234,64 @@ export default function DashboardPage() {
 
   if (!session) return null;
 
+  const selectedQRForAnalytics = qrCodes.find((qr) => qr.id === selectedQRCodeForAnalytics);
+
   return (
     <div className="min-h-screen bg-[#fafafa]">
       <Navbar />
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-2xl font-bold text-[#0a0a0a]">Mes QR Codes</h1>
-            <p className="text-[#525252] mt-1">{qrCodes.length} QR code{qrCodes.length !== 1 ? "s" : ""}</p>
-          </div>
+        {/* Tabs */}
+        <div className="flex items-center gap-1 mb-8 border-b border-[#e5e5e5]">
           <button
-            onClick={() => router.push("/qrcode/new")}
-            className="btn btn-primary"
+            onClick={() => setActiveTab("qrcodes")}
+            className={`px-4 py-3 text-sm font-medium border-b-2 transition ${
+              activeTab === "qrcodes"
+                ? "border-[#0a0a0a] text-[#0a0a0a]"
+                : "border-transparent text-[#525252] hover:text-[#0a0a0a]"
+            }`}
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-            </svg>
-            Nouveau
+            <span className="flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+              </svg>
+              Mes QR Codes
+            </span>
+          </button>
+          <button
+            onClick={() => setActiveTab("analytics")}
+            className={`px-4 py-3 text-sm font-medium border-b-2 transition ${
+              activeTab === "analytics"
+                ? "border-[#0a0a0a] text-[#0a0a0a]"
+                : "border-transparent text-[#525252] hover:text-[#0a0a0a]"
+            }`}
+          >
+            <span className="flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+              Analytics
+            </span>
           </button>
         </div>
+
+        {/* QR Codes Tab */}
+        {activeTab === "qrcodes" && (
+          <>
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h1 className="text-2xl font-bold text-[#0a0a0a]">Mes QR Codes</h1>
+                <p className="text-[#525252] mt-1">{qrCodes.length} QR code{qrCodes.length !== 1 ? "s" : ""}</p>
+              </div>
+              <button
+                onClick={() => router.push("/qrcode/new")}
+                className="btn btn-primary"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+                Nouveau
+              </button>
+            </div>
 
         {/* Search & Filter Bar */}
         {qrCodes.length > 0 && (
@@ -420,6 +467,106 @@ export default function DashboardPage() {
                 </div>
               ))}
             </div>
+          </>
+        )}
+          </>
+        )}
+
+        {/* Analytics Tab */}
+        {activeTab === "analytics" && (
+          <>
+            <div className="mb-8">
+              <h1 className="text-2xl font-bold text-[#0a0a0a]">Analytics</h1>
+              <p className="text-[#525252] mt-1">Suivez les statistiques de vos QR codes</p>
+            </div>
+
+            {qrCodes.length === 0 ? (
+              <div className="bento-card p-12 text-center">
+                <svg
+                  className="w-16 h-16 mx-auto text-[#d4d4d4] mb-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                  />
+                </svg>
+                <h2 className="text-xl font-semibold text-[#0a0a0a] mb-2">
+                  Aucun QR code
+                </h2>
+                <p className="text-[#525252] mb-6">
+                  Créez votre premier QR code pour commencer à suivre les statistiques.
+                </p>
+                <button
+                  onClick={() => router.push("/qrcode/new")}
+                  className="btn btn-primary"
+                >
+                  Créer un QR code
+                </button>
+              </div>
+            ) : (
+              <>
+                {/* QR Code Selector */}
+                <div className="bento-card p-6 mb-6">
+                  <label
+                    htmlFor="qrcode-select"
+                    className="block text-sm font-medium text-[#0a0a0a] mb-2"
+                  >
+                    Sélectionner un QR code
+                  </label>
+                  <div className="flex items-center gap-4">
+                    <select
+                      id="qrcode-select"
+                      value={selectedQRCodeForAnalytics}
+                      onChange={(e) => setSelectedQRCodeForAnalytics(e.target.value)}
+                      className="input flex-1"
+                    >
+                      {qrCodes.map((qr) => (
+                        <option key={qr.id} value={qr.id}>
+                          {qr.name} ({qr.type === "url" ? "URL" : "Texte"})
+                          {qr.isPublic ? " - Public" : ""}
+                        </option>
+                      ))}
+                    </select>
+                    {selectedQRForAnalytics && (
+                      <button
+                        onClick={() => router.push(`/qrcode/${selectedQRForAnalytics.id}`)}
+                        className="btn btn-secondary"
+                      >
+                        Modifier
+                      </button>
+                    )}
+                  </div>
+                  {selectedQRForAnalytics && !selectedQRForAnalytics.isPublic && (
+                    <p className="mt-3 text-sm text-amber-600 flex items-center gap-2">
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                        />
+                      </svg>
+                      Ce QR code n&apos;est pas partagé publiquement. Activez le partage pour tracker les scans.
+                    </p>
+                  )}
+                </div>
+
+                {/* Analytics Component */}
+                {selectedQRCodeForAnalytics && (
+                  <Analytics qrCodeId={selectedQRCodeForAnalytics} />
+                )}
+              </>
+            )}
           </>
         )}
       </main>

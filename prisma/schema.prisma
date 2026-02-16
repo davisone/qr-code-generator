@@ -62,7 +62,26 @@ model QRCode {
   updatedAt       DateTime @updatedAt
   userId          String
   user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  scans           Scan[]
 
   @@index([userId])
   @@index([shareToken])
+}
+
+model Scan {
+  id        String   @id @default(cuid())
+  qrCodeId  String
+  qrCode    QRCode   @relation(fields: [qrCodeId], references: [id], onDelete: Cascade)
+  scannedAt DateTime @default(now())
+  ipAddress String?
+  userAgent String?
+  referer   String?
+  country   String?
+  city      String?
+  device    String?  // "mobile", "tablet", "desktop"
+  browser   String?
+  os        String?
+
+  @@index([qrCodeId])
+  @@index([scannedAt])
 }

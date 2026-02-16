@@ -43,11 +43,11 @@ export default function CookieBanner() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <div className="flex-1">
               <h3 className="font-semibold text-[#0a0a0a] mb-1">
-                Nous utilisons des cookies
+                Cookies et collecte de données
               </h3>
               <p className="text-sm text-[#525252]">
-                Ce site utilise des cookies pour améliorer votre expérience et analyser le trafic.
-                En continuant, vous acceptez notre utilisation des cookies.{" "}
+                Ce site utilise des cookies pour l&apos;authentification et l&apos;analyse du trafic.
+                Les QR codes partagés collectent des statistiques de scan anonymes (appareil, navigateur, date).{" "}
                 <a
                   href="/mentions-legales"
                   className="text-[#10b981] hover:underline"
