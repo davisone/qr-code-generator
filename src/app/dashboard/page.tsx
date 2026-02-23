@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Analytics from "@/components/Analytics";
 import QRCode from "qrcode";
 import JSZip from "jszip";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 
 const MapView = dynamic(() => import("@/components/MapView"), { ssr: false });
@@ -417,7 +418,7 @@ export default function DashboardPage() {
                     />
                     <div className="shrink-0 rounded-xl overflow-hidden border border-[#e5e5e5]">
                       {previews[qr.id] ? (
-                        <img src={previews[qr.id]} alt={qr.name} width={64} height={64} />
+                        <Image src={previews[qr.id]} alt={qr.name} width={64} height={64} unoptimized />
                       ) : (
                         <div className="w-16 h-16 bg-[#f5f5f5] animate-pulse" />
                       )}
@@ -458,8 +459,9 @@ export default function DashboardPage() {
                       onClick={() => handleDownload(qr)}
                       className="btn btn-ghost btn-sm p-2"
                       title="Télécharger"
+                      aria-label="Télécharger le QR code"
                     >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                       </svg>
                     </button>
@@ -467,8 +469,9 @@ export default function DashboardPage() {
                       onClick={() => handleDuplicate(qr.id)}
                       className="btn btn-ghost btn-sm p-2"
                       title="Dupliquer"
+                      aria-label="Dupliquer le QR code"
                     >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
                       </svg>
                     </button>
@@ -476,8 +479,9 @@ export default function DashboardPage() {
                       onClick={() => handleDelete(qr.id)}
                       className="btn btn-ghost btn-sm p-2 text-red-500 hover:text-red-600 hover:bg-red-50"
                       title="Supprimer"
+                      aria-label="Supprimer le QR code"
                     >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                       </svg>
                     </button>

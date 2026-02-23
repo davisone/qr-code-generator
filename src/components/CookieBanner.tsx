@@ -6,10 +6,16 @@ export default function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem("cookie-consent");
-    if (!consent) {
+    const consent = window.localStorage.getItem("cookie-consent");
+    if (consent) return;
+
+    const rafId = window.requestAnimationFrame(() => {
       setShowBanner(true);
-    }
+    });
+
+    return () => {
+      window.cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const acceptCookies = () => {

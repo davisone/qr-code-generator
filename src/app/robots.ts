@@ -4,7 +4,7 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: "/",
+      allow: ["/", "/share/"],
       disallow: ["/api/", "/dashboard/", "/qrcode/"],
     },
     sitemap: "https://qr-aft.vercel.app/sitemap.xml",

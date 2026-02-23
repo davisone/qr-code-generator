@@ -2,6 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useRouter, useParams } from "next/navigation";
+import Image from "next/image";
 import { useEffect, useState, useRef, useCallback } from "react";
 import Navbar from "@/components/Navbar";
 import QRCode from "qrcode";
@@ -522,7 +523,14 @@ export default function QRCodeEditorPage() {
                 </button>
                 {logoDataUrl && (
                   <>
-                    <img src={logoDataUrl} alt="Logo" className="w-10 h-10 rounded-lg border border-gray-200 object-contain" />
+                    <Image
+                      src={logoDataUrl}
+                      alt="Logo"
+                      width={40}
+                      height={40}
+                      unoptimized
+                      className="rounded-lg border border-gray-200 object-contain"
+                    />
                     <button
                       type="button"
                       onClick={() => setLogoDataUrl(null)}

@@ -4,6 +4,10 @@ export const metadata: Metadata = {
   title: "Créer un compte gratuit",
   description:
     "Inscrivez-vous gratuitement sur QRaft pour créer des QR codes personnalisés illimités. Ajoutez votre logo, choisissez vos couleurs, exportez en PNG, JPEG ou PDF.",
+  robots: {
+    index: false,
+    follow: false,
+  },
   keywords: [
     "inscription QRaft",
     "créer compte QR code",
@@ -15,6 +19,7 @@ export const metadata: Metadata = {
     description:
       "Inscrivez-vous gratuitement pour créer des QR codes personnalisés illimités.",
     url: "https://qr-aft.vercel.app/register",
+    type: "website",
   },
   alternates: {
     canonical: "https://qr-aft.vercel.app/register",
