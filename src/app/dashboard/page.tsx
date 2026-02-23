@@ -7,6 +7,9 @@ import Navbar from "@/components/Navbar";
 import Analytics from "@/components/Analytics";
 import QRCode from "qrcode";
 import JSZip from "jszip";
+import dynamic from "next/dynamic";
+
+const MapView = dynamic(() => import("@/components/MapView"), { ssr: false });
 
 interface QRCodeItem {
   id: string;
@@ -22,7 +25,7 @@ interface QRCodeItem {
   logoDataUrl: string | null;
 }
 
-type Tab = "qrcodes" | "analytics";
+type Tab = "qrcodes" | "analytics" | "map";
 
 export default function DashboardPage() {
   const { data: session, status } = useSession();
@@ -270,6 +273,21 @@ export default function DashboardPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
               Analytics
+            </span>
+          </button>
+          <button
+            onClick={() => setActiveTab("map")}
+            className={`px-4 py-3 text-sm font-medium border-b-2 transition ${
+              activeTab === "map"
+                ? "border-[#0a0a0a] text-[#0a0a0a]"
+                : "border-transparent text-[#525252] hover:text-[#0a0a0a]"
+            }`}
+          >
+            <span className="flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Carte
             </span>
           </button>
         </div>
@@ -568,6 +586,11 @@ export default function DashboardPage() {
               </>
             )}
           </>
+        )}
+
+        {/* Map Tab */}
+        {activeTab === "map" && (
+          <MapView qrCodes={qrCodes.map(qr => ({ id: qr.id, name: qr.name, type: qr.type, foregroundColor: qr.foregroundColor }))} />
         )}
       </main>
     </div>
