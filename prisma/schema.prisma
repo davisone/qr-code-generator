@@ -78,6 +78,8 @@ model Scan {
   referer   String?
   country   String?
   city      String?
+  latitude  Float?
+  longitude Float?
   device    String?  // "mobile", "tablet", "desktop"
   browser   String?
   os        String?
