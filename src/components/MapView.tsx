@@ -5,7 +5,7 @@ import { MapContainer, TileLayer, Marker, Tooltip, useMap } from "react-leaflet"
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-// Types pour les donnees de la carte
+// Types pour les données de la carte
 interface LocationData {
   lat: number;
   lng: number;
@@ -45,7 +45,7 @@ interface MapViewProps {
 
 type Period = 7 | 30 | 90 | 0;
 
-// Composant interne pour ajuster les limites de la carte selon les donnees
+// Composant interne pour ajuster les limites de la carte selon les données
 const FitBounds = ({ locations }: { locations: LocationData[] }) => {
   const map = useMap();
 
@@ -61,7 +61,7 @@ const FitBounds = ({ locations }: { locations: LocationData[] }) => {
   return null;
 };
 
-// Creation d'une icone personnalisee pour un marqueur
+// Création d'une icône personnalisée pour un marqueur
 const createMarkerIcon = (color: string, count: number, index: number): L.DivIcon => {
   if (count > 1) {
     // Marqueur cluster avec taille proportionnelle au nombre de scans
@@ -83,7 +83,7 @@ const createMarkerIcon = (color: string, count: number, index: number): L.DivIco
   });
 };
 
-// Formatage de la date en francais
+// Formatage de la date en français
 const formatDate = (dateString: string): string => {
   return new Date(dateString).toLocaleDateString("fr-FR", {
     day: "numeric",
@@ -100,7 +100,7 @@ const MapView = ({ qrCodes }: MapViewProps) => {
   const [data, setData] = useState<MapDataResponse | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Recuperation des donnees de la carte
+  // Récupération des données de la carte
   const fetchMapData = useCallback(async () => {
     setLoading(true);
     try {
@@ -111,7 +111,7 @@ const MapView = ({ qrCodes }: MapViewProps) => {
       if (period > 0) {
         params.set("period", period.toString());
       } else {
-        // "Tout" : on met une periode tres large
+        // "Tout" : on met une période très large
         params.set("period", "3650");
       }
 
@@ -131,13 +131,13 @@ const MapView = ({ qrCodes }: MapViewProps) => {
     fetchMapData();
   }, [fetchMapData]);
 
-  // Centre par defaut : France
+  // Centre par défaut : France
   const defaultCenter: L.LatLngTuple = [46.6, 2.2];
 
   const locations = data?.locations ?? [];
   const summary = data?.summary;
 
-  // Libelles des periodes
+  // Libellés des périodes
   const periodOptions: { label: string; value: Period }[] = [
     { label: "7j", value: 7 },
     { label: "30j", value: 30 },
@@ -147,11 +147,11 @@ const MapView = ({ qrCodes }: MapViewProps) => {
 
   return (
     <div className="flex flex-col lg:flex-row gap-0 relative" style={{ minHeight: "600px" }}>
-      {/* Panneau lateral */}
+      {/* Panneau latéral */}
       <div className="w-full lg:w-80 shrink-0 bg-white border-b lg:border-b-0 lg:border-r border-[#e5e5e5] p-5 overflow-y-auto rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none z-10">
         <h2 className="text-lg font-bold text-[#0a0a0a] mb-4">Carte des scans</h2>
 
-        {/* Selecteur de QR code */}
+        {/* Sélecteur de QR code */}
         <div className="mb-4">
           <label htmlFor="map-qr-select" className="block text-sm font-medium text-[#525252] mb-1.5">
             QR Code
@@ -171,10 +171,10 @@ const MapView = ({ qrCodes }: MapViewProps) => {
           </select>
         </div>
 
-        {/* Filtres de periode */}
+        {/* Filtres de période */}
         <div className="mb-5">
           <label className="block text-sm font-medium text-[#525252] mb-1.5">
-            Periode
+            Période
           </label>
           <div className="flex gap-2">
             {periodOptions.map((opt) => (
@@ -198,9 +198,9 @@ const MapView = ({ qrCodes }: MapViewProps) => {
           </div>
         ) : summary ? (
           <div className="space-y-4">
-            {/* Total des scans geolocalisees */}
+            {/* Total des scans géolocalisées */}
             <div className="bento-card p-4">
-              <p className="text-sm text-[#525252]">Scans geolocalisees</p>
+              <p className="text-sm text-[#525252]">Scans géolocalisés</p>
               <p className="text-2xl font-bold text-[#0a0a0a]">{summary.totalScans}</p>
               <p className="text-xs text-[#a3a3a3] mt-1">
                 {summary.totalLocations} emplacement{summary.totalLocations !== 1 ? "s" : ""}
@@ -243,7 +243,7 @@ const MapView = ({ qrCodes }: MapViewProps) => {
               </div>
             )}
 
-            {/* Etat vide */}
+            {/* État vide */}
             {summary.totalScans === 0 && (
               <div className="text-center py-6">
                 <svg
@@ -259,9 +259,9 @@ const MapView = ({ qrCodes }: MapViewProps) => {
                     d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <p className="text-sm text-[#525252]">Aucun scan geolocalisee</p>
+                <p className="text-sm text-[#525252]">Aucun scan géolocalisé</p>
                 <p className="text-xs text-[#a3a3a3] mt-1">
-                  Les scans apparaitront ici une fois detectees.
+                  Les scans apparaîtront ici une fois détectés.
                 </p>
               </div>
             )}
@@ -309,7 +309,7 @@ const MapView = ({ qrCodes }: MapViewProps) => {
           ))}
         </MapContainer>
 
-        {/* Indicateur de chargement superpose */}
+        {/* Indicateur de chargement superposé */}
         {loading && (
           <div className="absolute inset-0 bg-black/20 flex items-center justify-center z-[1000]">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>

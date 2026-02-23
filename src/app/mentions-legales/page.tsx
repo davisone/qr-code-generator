@@ -69,8 +69,21 @@ export default function MentionsLegales() {
           <section>
             <h2 className="text-xl font-semibold text-[#0a0a0a] mb-3">Hébergement</h2>
             <p className="text-[#525252] leading-relaxed">
-              Les informations relatives à l&apos;hébergeur seront ajoutées prochainement.
+              Le site est hébergé par <strong>Vercel Inc.</strong>
             </p>
+            <ul className="mt-3 text-[#525252] space-y-1">
+              <li><strong>Raison sociale :</strong> Vercel Inc.</li>
+              <li><strong>Adresse :</strong> 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis</li>
+              <li><strong>Site web :</strong> <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#0a0a0a]">vercel.com</a></li>
+            </ul>
+            <p className="text-[#525252] leading-relaxed mt-3">
+              La base de données est hébergée par <strong>Supabase Inc.</strong>
+            </p>
+            <ul className="mt-3 text-[#525252] space-y-1">
+              <li><strong>Raison sociale :</strong> Supabase Inc.</li>
+              <li><strong>Adresse :</strong> 970 Toa Payoh North #07-04, Singapore 318992</li>
+              <li><strong>Site web :</strong> <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#0a0a0a]">supabase.com</a></li>
+            </ul>
           </section>
 
           {/* Propriété intellectuelle */}
@@ -106,7 +119,8 @@ export default function MentionsLegales() {
               <li>Type d&apos;appareil (mobile, tablette, ordinateur)</li>
               <li>Navigateur utilisé (Chrome, Safari, Firefox, etc.)</li>
               <li>Système d&apos;exploitation (iOS, Android, Windows, macOS, etc.)</li>
-              <li>Adresse IP (utilisée uniquement pour les statistiques, non stockée de manière identifiable)</li>
+              <li>Adresse IP (utilisée pour la géolocalisation approximative, non stockée de manière identifiable)</li>
+              <li>Localisation approximative (pays, ville) déduite de l&apos;adresse IP</li>
             </ul>
             <p className="text-[#525252] leading-relaxed mt-3">
               <strong>Finalité :</strong> Ces données sont utilisées exclusivement pour fournir des statistiques de scan aux créateurs de QR codes (nombre de scans, répartition par appareil, etc.).
@@ -146,12 +160,6 @@ export default function MentionsLegales() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm text-[#a3a3a3]">
-          &copy; 2026 QRaft — Propulsé par <a href="https://dvs-web.fr" target="_blank" rel="noopener noreferrer" className="hover:text-[#0a0a0a] underline">DVS-Web</a>. Tous droits réservés.
-        </div>
-      </footer>
     </div>
   );
 }
