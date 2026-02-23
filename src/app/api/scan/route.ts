@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { geolocateIp } from "@/lib/geolocation";
 
 function parseUserAgent(ua: string | null): { device: string; browser: string; os: string } {
   if (!ua) return { device: "unknown", browser: "unknown", os: "unknown" };
@@ -66,6 +67,23 @@ export async function POST(req: NextRequest) {
         browser,
         os,
       },
+    });
+
+    // Géolocalisation non bloquante
+    geolocateIp(ipAddress).then(async (geo) => {
+      if (geo) {
+        await prisma.scan.update({
+          where: { id: scan.id },
+          data: {
+            latitude: geo.latitude,
+            longitude: geo.longitude,
+            country: geo.country,
+            city: geo.city,
+          },
+        });
+      }
+    }).catch(() => {
+      // Ignorer les erreurs de géolocalisation
     });
 
     return NextResponse.json({ success: true, scanId: scan.id }, { status: 201 });
