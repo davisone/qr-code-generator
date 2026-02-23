@@ -56,7 +56,10 @@ export async function POST(req: NextRequest) {
 
     const { device, browser, os } = parseUserAgent(userAgent);
 
-    // Create scan record
+    // Géolocalisation de l'IP (avant création pour inclure les données directement)
+    const geo = await geolocateIp(ipAddress);
+
+    // Création du scan avec les données de géolocalisation si disponibles
     const scan = await prisma.scan.create({
       data: {
         qrCodeId,
@@ -66,24 +69,13 @@ export async function POST(req: NextRequest) {
         device,
         browser,
         os,
+        ...(geo && {
+          latitude: geo.latitude,
+          longitude: geo.longitude,
+          country: geo.country,
+          city: geo.city,
+        }),
       },
-    });
-
-    // Géolocalisation non bloquante
-    geolocateIp(ipAddress).then(async (geo) => {
-      if (geo) {
-        await prisma.scan.update({
-          where: { id: scan.id },
-          data: {
-            latitude: geo.latitude,
-            longitude: geo.longitude,
-            country: geo.country,
-            city: geo.city,
-          },
-        });
-      }
-    }).catch(() => {
-      // Ignorer les erreurs de géolocalisation
     });
 
     return NextResponse.json({ success: true, scanId: scan.id }, { status: 201 });
