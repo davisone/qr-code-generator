@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
+import { BASE_URL } from "@/lib/config";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://qr-aft.vercel.app";
+  const baseUrl = BASE_URL;
   const currentDate = new Date().toISOString();
   const staticRoutes: MetadataRoute.Sitemap = [
     {

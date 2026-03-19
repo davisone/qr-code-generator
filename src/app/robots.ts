@@ -1,12 +1,13 @@
 import type { MetadataRoute } from "next";
+import { BASE_URL } from "@/lib/config";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
       allow: ["/", "/share/"],
-      disallow: ["/api/", "/dashboard/", "/qrcode/"],
+      disallow: ["/api/", "/dashboard/", "/qrcode/", "/login", "/register"],
     },
-    sitemap: "https://qr-aft.vercel.app/sitemap.xml",
+    sitemap: `${BASE_URL}/sitemap.xml`,
   };
 }
