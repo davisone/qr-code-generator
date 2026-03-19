@@ -5,6 +5,7 @@ import "./globals.css";
 import Providers from "@/components/Providers";
 import { ReviewBadge } from "@/components/ReviewBadge";
 import { Footer } from "@/components/Footer";
+import { BASE_URL } from "@/lib/config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,26 +48,26 @@ export const metadata: Metadata = {
   publisher: "DVS Web",
   applicationName: "QRaft",
   referrer: "origin-when-cross-origin",
-  metadataBase: new URL("https://qr-aft.vercel.app"),
+  metadataBase: new URL(BASE_URL),
   alternates: {
-    canonical: "https://qr-aft.vercel.app",
+    canonical: BASE_URL,
     languages: {
-      "fr-FR": "https://qr-aft.vercel.app",
+      "fr-FR": BASE_URL,
     },
   },
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://qr-aft.vercel.app",
+    url: BASE_URL,
     siteName: "QRaft",
     title: "QRaft — Générateur de QR codes gratuit et personnalisable",
     description:
       "Créez des QR codes personnalisés gratuitement. Logo, couleurs, export PNG/JPEG/PDF. Simple et rapide.",
     images: [
       {
-        url: "/QRaft.png",
-        width: 512,
-        height: 512,
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
         alt: "QRaft - Générateur de QR codes",
       },
     ],
@@ -76,7 +77,7 @@ export const metadata: Metadata = {
     title: "QRaft — Générateur de QR codes gratuit",
     description:
       "Créez des QR codes personnalisés gratuitement. Logo, couleurs, export PNG/JPEG/PDF.",
-    images: ["/QRaft.png"],
+    images: ["/opengraph-image"],
     creator: "@dvsweb",
   },
   robots: {

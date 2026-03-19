@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
+import { BASE_URL } from "@/lib/config";
 
-const BASE_URL = "https://qr-aft.vercel.app";
-const DEFAULT_OG_IMAGE = "/QRaft.png";
+const DEFAULT_OG_IMAGE = "/opengraph-image";
 
 function getShareDescription(type: string, content: string): string {
   if (type === "url") {

@@ -1,14 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
+import { BASE_URL } from "@/lib/config";
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebApplication",
-      "@id": "https://qr-aft.vercel.app/#app",
+      "@id": `${BASE_URL}/#app`,
       name: "QRaft",
-      url: "https://qr-aft.vercel.app",
+      url: BASE_URL,
       description:
         "Créez des QR codes personnalisés gratuitement en quelques secondes. Ajoutez votre logo, choisissez vos couleurs, exportez en PNG, JPEG ou PDF.",
       applicationCategory: "UtilitiesApplication",
@@ -30,21 +31,14 @@ const jsonLd = {
         "Statistiques de scan en temps réel",
         "4 niveaux de correction d'erreur",
       ],
-      screenshot: "https://qr-aft.vercel.app/QRaft.png",
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "5",
-        ratingCount: "1",
-        bestRating: "5",
-        worstRating: "1",
-      },
+      screenshot: `${BASE_URL}/QRaft.png`,
     },
     {
       "@type": "Organization",
-      "@id": "https://qr-aft.vercel.app/#organization",
+      "@id": `${BASE_URL}/#organization`,
       name: "DVS Web",
-      url: "https://qr-aft.vercel.app",
-      logo: "https://qr-aft.vercel.app/QRaft.png",
+      url: BASE_URL,
+      logo: `${BASE_URL}/QRaft.png`,
       founder: {
         "@type": "Person",
         name: "Evan Davison",
@@ -52,14 +46,49 @@ const jsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://qr-aft.vercel.app/#website",
-      url: "https://qr-aft.vercel.app",
+      "@id": `${BASE_URL}/#website`,
+      url: BASE_URL,
       name: "QRaft",
       description: "Générateur de QR codes gratuit et personnalisable",
       publisher: {
-        "@id": "https://qr-aft.vercel.app/#organization",
+        "@id": `${BASE_URL}/#organization`,
       },
       inLanguage: "fr-FR",
+    },
+    {
+      "@type": "HowTo",
+      "@id": `${BASE_URL}/#howto`,
+      name: "Comment créer un QR code avec QRaft",
+      description:
+        "Créez un QR code personnalisé en 3 étapes simples, gratuitement et sans logiciel.",
+      totalTime: "PT2M",
+      estimatedCost: {
+        "@type": "MonetaryAmount",
+        currency: "EUR",
+        value: "0",
+      },
+      step: [
+        {
+          "@type": "HowToStep",
+          position: 1,
+          name: "Créez votre compte gratuit",
+          text: "Inscrivez-vous sur QRaft en quelques secondes. Aucune carte bancaire requise, c'est 100% gratuit.",
+          url: `${BASE_URL}/register`,
+        },
+        {
+          "@type": "HowToStep",
+          position: 2,
+          name: "Personnalisez votre QR code",
+          text: "Entrez votre URL ou texte, choisissez vos couleurs, ajoutez votre logo et sélectionnez le niveau de correction d'erreur.",
+          url: `${BASE_URL}/qrcode/new`,
+        },
+        {
+          "@type": "HowToStep",
+          position: 3,
+          name: "Exportez et partagez",
+          text: "Téléchargez votre QR code en PNG, JPEG ou PDF haute qualité. Partagez-le via un lien public et suivez les scans en temps réel.",
+        },
+      ],
     },
     {
       "@type": "FAQPage",
@@ -279,6 +308,215 @@ export default function Home() {
             </Link>
           </div>
 
+        </div>
+      </section>
+
+      {/* Section Comment ça marche */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="text-center mb-12">
+          <span className="badge badge-emerald mb-4">Simple</span>
+          <h2 className="text-4xl font-bold tracking-tight text-[#0a0a0a]">
+            Comment créer un QR code ?
+          </h2>
+          <p className="mt-4 text-[#525252] max-w-xl mx-auto">
+            Trois étapes suffisent pour générer votre QR code personnalisé et commencer à suivre vos scans en temps réel.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+          {/* Ligne de connexion (desktop) */}
+          <div className="hidden md:block absolute top-10 left-[calc(33%-1px)] right-[calc(33%-1px)] h-px border-t-2 border-dashed border-[#e5e5e5]" />
+
+          {/* Étape 1 */}
+          <div className="flex flex-col items-center text-center px-4">
+            <div className="relative w-20 h-20 rounded-2xl bg-[#0a0a0a] flex items-center justify-center mb-6 z-10">
+              <span className="text-3xl font-bold text-[#10b981]">01</span>
+            </div>
+            <h3 className="text-xl font-bold text-[#0a0a0a] mb-3">Créez votre compte</h3>
+            <p className="text-[#525252] text-sm leading-relaxed">
+              Inscription gratuite en quelques secondes. Aucune carte bancaire requise, aucun engagement.
+            </p>
+          </div>
+
+          {/* Étape 2 */}
+          <div className="flex flex-col items-center text-center px-4">
+            <div className="relative w-20 h-20 rounded-2xl bg-[#10b981] flex items-center justify-center mb-6 z-10">
+              <span className="text-3xl font-bold text-white">02</span>
+            </div>
+            <h3 className="text-xl font-bold text-[#0a0a0a] mb-3">Personnalisez votre QR</h3>
+            <p className="text-[#525252] text-sm leading-relaxed">
+              Choisissez vos couleurs, ajoutez votre logo et configurez votre QR code. L&apos;aperçu se met à jour en temps réel.
+            </p>
+          </div>
+
+          {/* Étape 3 */}
+          <div className="flex flex-col items-center text-center px-4">
+            <div className="relative w-20 h-20 rounded-2xl bg-[#f97316] flex items-center justify-center mb-6 z-10">
+              <span className="text-3xl font-bold text-white">03</span>
+            </div>
+            <h3 className="text-xl font-bold text-[#0a0a0a] mb-3">Exportez et suivez</h3>
+            <p className="text-[#525252] text-sm leading-relaxed">
+              Téléchargez en PNG, JPEG ou PDF haute qualité. Partagez par lien public et analysez chaque scan en temps réel.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Cas d'utilisation */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="text-center mb-12">
+          <span className="badge badge-emerald mb-4">Polyvalent</span>
+          <h2 className="text-4xl font-bold tracking-tight text-[#0a0a0a]">
+            À qui s&apos;adresse QRaft ?
+          </h2>
+          <p className="mt-4 text-[#525252] max-w-xl mx-auto">
+            Des QR codes personnalisés pour tous vos besoins professionnels et créatifs.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Restaurants */}
+          <div className="bento-card p-6">
+            <div className="icon-box emerald mb-4">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-lg text-[#0a0a0a] mb-2">Restaurants &amp; Cafés</h3>
+            <p className="text-[#525252] text-sm leading-relaxed">
+              Affichez votre menu numérique sur les tables. Mettez-le à jour à tout moment sans rien réimprimer.
+            </p>
+          </div>
+
+          {/* Carte de visite */}
+          <div className="bento-card p-6">
+            <div className="icon-box emerald mb-4">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-lg text-[#0a0a0a] mb-2">Cartes de visite</h3>
+            <p className="text-[#525252] text-sm leading-relaxed">
+              Ajoutez un QR code sur votre carte de visite pour diriger vers votre LinkedIn, portfolio ou site web.
+            </p>
+          </div>
+
+          {/* Événement */}
+          <div className="bento-card p-6">
+            <div className="icon-box emerald mb-4">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-lg text-[#0a0a0a] mb-2">Événements</h3>
+            <p className="text-[#525252] text-sm leading-relaxed">
+              Partagez le programme, les billets ou les formulaires d&apos;inscription en un simple scan.
+            </p>
+          </div>
+
+          {/* E-commerce */}
+          <div className="bento-card p-6">
+            <div className="icon-box emerald mb-4">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-lg text-[#0a0a0a] mb-2">E-commerce</h3>
+            <p className="text-[#525252] text-sm leading-relaxed">
+              Liez vos emballages à vos fiches produit, tutoriels vidéo ou promotions en ligne.
+            </p>
+          </div>
+
+          {/* Marketing */}
+          <div className="bento-card p-6">
+            <div className="icon-box emerald mb-4">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-lg text-[#0a0a0a] mb-2">Flyers &amp; Publicité</h3>
+            <p className="text-[#525252] text-sm leading-relaxed">
+              Redirigez vos supports papier vers vos pages web, offres spéciales ou landing pages.
+            </p>
+          </div>
+
+          {/* PME */}
+          <div className="bento-card p-6">
+            <div className="icon-box emerald mb-4">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-lg text-[#0a0a0a] mb-2">TPE &amp; PME</h3>
+            <p className="text-[#525252] text-sm leading-relaxed">
+              Modernisez votre communication en reliant vos supports physiques à votre présence digitale.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section FAQ */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pb-24">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-4">
+          <div>
+            <span className="badge badge-emerald mb-4">FAQ</span>
+            <h2 className="text-4xl font-bold tracking-tight text-[#0a0a0a]">
+              Questions fréquentes
+            </h2>
+          </div>
+          <p className="text-[#525252] text-sm max-w-xs md:text-right leading-relaxed">
+            Tout ce que vous devez savoir avant de commencer.
+          </p>
+        </div>
+
+        <div className="divide-y divide-[#f0f0f0]">
+          <div className="py-8 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-16 -mx-4 px-4 rounded-2xl hover:bg-white transition-colors duration-200">
+            <div className="flex gap-4 items-start">
+              <span className="font-mono text-xs font-bold text-[#10b981] mt-1.5 shrink-0 tracking-widest">01</span>
+              <h3 className="font-bold text-lg text-[#0a0a0a] leading-snug">
+                QRaft est-il vraiment gratuit ?
+              </h3>
+            </div>
+            <p className="text-[#525252] text-sm leading-relaxed md:pt-1 pl-8 md:pl-0">
+              Oui, QRaft est 100% gratuit. Vous pouvez créer des QR codes illimités, les personnaliser avec vos couleurs et votre logo, et les exporter en PNG, JPEG ou PDF — sans aucun frais ni carte bancaire.
+            </p>
+          </div>
+
+          <div className="py-8 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-16 -mx-4 px-4 rounded-2xl hover:bg-white transition-colors duration-200">
+            <div className="flex gap-4 items-start">
+              <span className="font-mono text-xs font-bold text-[#10b981] mt-1.5 shrink-0 tracking-widest">02</span>
+              <h3 className="font-bold text-lg text-[#0a0a0a] leading-snug">
+                Puis-je ajouter mon logo sur un QR code ?
+              </h3>
+            </div>
+            <p className="text-[#525252] text-sm leading-relaxed md:pt-1 pl-8 md:pl-0">
+              Oui. QRaft vous permet d&apos;intégrer votre logo au centre de votre QR code pour une personnalisation complète de votre identité visuelle. Le QR reste lisible grâce au niveau de correction d&apos;erreur élevé.
+            </p>
+          </div>
+
+          <div className="py-8 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-16 -mx-4 px-4 rounded-2xl hover:bg-white transition-colors duration-200">
+            <div className="flex gap-4 items-start">
+              <span className="font-mono text-xs font-bold text-[#10b981] mt-1.5 shrink-0 tracking-widest">03</span>
+              <h3 className="font-bold text-lg text-[#0a0a0a] leading-snug">
+                Quels formats d&apos;export sont disponibles ?
+              </h3>
+            </div>
+            <p className="text-[#525252] text-sm leading-relaxed md:pt-1 pl-8 md:pl-0">
+              QRaft propose trois formats : <strong className="text-[#0a0a0a] font-semibold">PNG</strong> pour le web et les réseaux sociaux, <strong className="text-[#0a0a0a] font-semibold">JPEG</strong> pour l&apos;impression standard, et <strong className="text-[#0a0a0a] font-semibold">PDF</strong> vectoriel pour une qualité parfaite quelle que soit la taille.
+            </p>
+          </div>
+
+          <div className="py-8 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-16 -mx-4 px-4 rounded-2xl hover:bg-white transition-colors duration-200">
+            <div className="flex gap-4 items-start">
+              <span className="font-mono text-xs font-bold text-[#10b981] mt-1.5 shrink-0 tracking-widest">04</span>
+              <h3 className="font-bold text-lg text-[#0a0a0a] leading-snug">
+                Puis-je suivre les scans de mes QR codes ?
+              </h3>
+            </div>
+            <p className="text-[#525252] text-sm leading-relaxed md:pt-1 pl-8 md:pl-0">
+              Oui. Chaque QR code dispose de statistiques complètes : nombre total de scans, évolution dans le temps, répartition par appareil (mobile/desktop), navigateur et système d&apos;exploitation, ainsi qu&apos;une carte géographique des scans.
+            </p>
+          </div>
         </div>
       </section>
 

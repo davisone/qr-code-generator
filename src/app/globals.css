@@ -353,6 +353,12 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-float {
+    animation: none;
+  }
+}
+
 /* ===== SCROLLBAR ===== */
 
 ::-webkit-scrollbar {
