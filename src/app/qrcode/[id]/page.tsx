@@ -11,10 +11,10 @@ import { styleTemplates } from "@/lib/templates";
 import { generateQRCanvas } from "@/lib/qr-utils";
 
 const ERROR_LEVELS = [
-  { value: "L", label: "L - Faible (7%)" },
-  { value: "M", label: "M - Moyen (15%)" },
-  { value: "Q", label: "Q - Quartile (25%)" },
-  { value: "H", label: "H - Haut (30%)" },
+  { value: "L", label: "L — Faible (7%)" },
+  { value: "M", label: "M — Moyen (15%)" },
+  { value: "Q", label: "Q — Quartile (25%)" },
+  { value: "H", label: "H — Haut (30%)" },
 ] as const;
 
 const SIZES = [256, 512, 1024] as const;
@@ -44,18 +44,13 @@ export default function QRCodeEditorPage() {
   const [copiedLink, setCopiedLink] = useState(false);
 
   useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/login");
-    }
+    if (status === "unauthenticated") router.push("/login");
   }, [status, router]);
 
   useEffect(() => {
     if (!isNew && status === "authenticated") {
       fetch(`/api/qrcodes/${params.id}`)
-        .then((res) => {
-          if (!res.ok) throw new Error();
-          return res.json();
-        })
+        .then((res) => { if (!res.ok) throw new Error(); return res.json(); })
         .then((data) => {
           setName(data.name);
           setType(data.type);
@@ -68,9 +63,7 @@ export default function QRCodeEditorPage() {
           setIsPublic(data.isPublic || false);
           setShareToken(data.shareToken || null);
         })
-        .catch(() => {
-          router.push("/dashboard");
-        })
+        .catch(() => router.push("/dashboard"))
         .finally(() => setLoadingData(false));
     }
   }, [isNew, status, params.id, router]);
@@ -83,13 +76,9 @@ export default function QRCodeEditorPage() {
       await QRCode.toCanvas(canvas, text, {
         width: 280,
         margin: 2,
-        color: {
-          dark: foregroundColor,
-          light: backgroundColor,
-        },
+        color: { dark: foregroundColor, light: backgroundColor },
         errorCorrectionLevel: errorCorrection,
       });
-      // Overlay logo on preview
       if (logoDataUrl) {
         const ctx = canvas.getContext("2d");
         if (ctx) {
@@ -113,9 +102,9 @@ export default function QRCodeEditorPage() {
       const ctx = canvas.getContext("2d");
       if (ctx) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "#f3f4f6";
+        ctx.fillStyle = "#e8e2d6";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "#9ca3af";
+        ctx.fillStyle = "#6b5f52";
         ctx.font = "14px sans-serif";
         ctx.textAlign = "center";
         ctx.fillText("Contenu invalide", canvas.width / 2, canvas.height / 2);
@@ -123,20 +112,15 @@ export default function QRCodeEditorPage() {
     }
   }, [content, foregroundColor, backgroundColor, errorCorrection, logoDataUrl]);
 
-  useEffect(() => {
-    generateQR();
-  }, [generateQR]);
+  useEffect(() => { generateQR(); }, [generateQR]);
 
   function validate(): boolean {
     const newErrors: Record<string, string> = {};
     if (!name.trim()) newErrors.name = "Le nom est requis";
     if (!content.trim()) newErrors.content = "Le contenu est requis";
     if (type === "url" && content.trim()) {
-      try {
-        new URL(content.trim());
-      } catch {
-        newErrors.content = "URL invalide (ex: https://exemple.com)";
-      }
+      try { new URL(content.trim()); }
+      catch { newErrors.content = "URL invalide (ex: https://exemple.com)"; }
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -144,47 +128,20 @@ export default function QRCodeEditorPage() {
 
   async function handleSave() {
     if (!validate()) return;
-
     setSaving(true);
-    const body = {
-      name: name.trim(),
-      type,
-      content: content.trim(),
-      foregroundColor,
-      backgroundColor,
-      size,
-      errorCorrection,
-      logoDataUrl,
-    };
-
+    const body = { name: name.trim(), type, content: content.trim(), foregroundColor, backgroundColor, size, errorCorrection, logoDataUrl };
     try {
       let res: Response;
       if (isNew) {
-        res = await fetch("/api/qrcodes", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        });
+        res = await fetch("/api/qrcodes", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
       } else {
-        res = await fetch(`/api/qrcodes/${params.id}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        });
+        res = await fetch(`/api/qrcodes/${params.id}`, { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
       }
-
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Erreur serveur");
-      }
-
+      if (!res.ok) { const data = await res.json(); throw new Error(data.error || "Erreur serveur"); }
       const data = await res.json();
       setSaved(true);
       setTimeout(() => setSaved(false), 2000);
-
-      if (isNew) {
-        router.replace(`/qrcode/${data.id}`);
-      }
+      if (isNew) router.replace(`/qrcode/${data.id}`);
     } catch (err) {
       alert(err instanceof Error ? err.message : "Erreur lors de l'enregistrement");
     } finally {
@@ -193,60 +150,36 @@ export default function QRCodeEditorPage() {
   }
 
   async function getHighQualityDataURL(format: "png" | "jpeg"): Promise<string> {
-    const canvas = await generateQRCanvas({
-      content: content.trim() || "https://example.com",
-      size,
-      foregroundColor,
-      backgroundColor,
-      errorCorrection,
-      logoDataUrl,
-    });
+    const canvas = await generateQRCanvas({ content: content.trim() || "https://example.com", size, foregroundColor, backgroundColor, errorCorrection, logoDataUrl });
     return canvas.toDataURL(format === "jpeg" ? "image/jpeg" : "image/png", 1.0);
   }
 
   async function handleExportPNG() {
-    try {
-      const dataUrl = await getHighQualityDataURL("png");
-      downloadFile(dataUrl, `${name || "qrcode"}.png`);
-    } catch {
-      alert("Erreur lors de l'export PNG");
-    }
+    try { const d = await getHighQualityDataURL("png"); downloadFile(d, `${name || "qrcode"}.png`); }
+    catch { alert("Erreur lors de l'export PNG"); }
   }
 
   async function handleExportJPG() {
-    try {
-      const dataUrl = await getHighQualityDataURL("jpeg");
-      downloadFile(dataUrl, `${name || "qrcode"}.jpg`);
-    } catch {
-      alert("Erreur lors de l'export JPG");
-    }
+    try { const d = await getHighQualityDataURL("jpeg"); downloadFile(d, `${name || "qrcode"}.jpg`); }
+    catch { alert("Erreur lors de l'export JPG"); }
   }
 
   async function handleExportPDF() {
     try {
       const dataUrl = await getHighQualityDataURL("png");
-      const pdf = new jsPDF({
-        orientation: "portrait",
-        unit: "mm",
-        format: "a4",
-      });
+      const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const imgSizeMm = Math.min(pdfWidth - 40, 120);
       const x = (pdfWidth - imgSizeMm) / 2;
       const y = 30;
-
       pdf.setFontSize(18);
       pdf.text(name || "QR Code", pdfWidth / 2, 20, { align: "center" });
       pdf.addImage(dataUrl, "PNG", x, y, imgSizeMm, imgSizeMm);
-
       pdf.setFontSize(10);
       pdf.setTextColor(128);
       pdf.text(content.trim(), pdfWidth / 2, y + imgSizeMm + 10, { align: "center" });
-
       pdf.save(`${name || "qrcode"}.pdf`);
-    } catch {
-      alert("Erreur lors de l'export PDF");
-    }
+    } catch { alert("Erreur lors de l'export PDF"); }
   }
 
   function downloadFile(dataUrl: string, filename: string) {
@@ -259,14 +192,9 @@ export default function QRCodeEditorPage() {
   function handleLogoUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
-    if (file.size > 500 * 1024) {
-      alert("Le logo ne doit pas dépasser 500 Ko");
-      return;
-    }
+    if (file.size > 500 * 1024) { alert("Le logo ne doit pas dépasser 500 Ko"); return; }
     const reader = new FileReader();
-    reader.onload = () => {
-      setLogoDataUrl(reader.result as string);
-    };
+    reader.onload = () => setLogoDataUrl(reader.result as string);
     reader.readAsDataURL(file);
   }
 
@@ -278,201 +206,225 @@ export default function QRCodeEditorPage() {
       const data = await res.json();
       setIsPublic(data.isPublic);
       setShareToken(data.shareToken);
-    } catch {
-      alert("Erreur lors du changement de partage");
-    }
+    } catch { alert("Erreur lors du changement de partage"); }
   }
 
   function handleCopyShareLink() {
     if (!shareToken) return;
-    const url = `${window.location.origin}/share/${shareToken}`;
-    navigator.clipboard.writeText(url);
+    navigator.clipboard.writeText(`${window.location.origin}/share/${shareToken}`);
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2000);
   }
 
   if (status === "loading" || loadingData) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600"></div>
+      <div className="min-h-screen flex items-center justify-center" style={{ background: "var(--bg)" }}>
+        <div style={{ fontFamily: "var(--font-display, cursive)", fontSize: "2rem", color: "var(--mid)", letterSpacing: "0.06em" }}>
+          Chargement...
+        </div>
       </div>
     );
   }
 
   if (!session) return null;
 
+  const sectionStyle = { borderBottom: "var(--rule)" };
+  const sectionPad = { padding: "1.25rem 1.5rem" };
+  const labelStyle = { fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.1em", color: "var(--mid)", display: "block", marginBottom: "0.5rem" };
+  const headingStyle = { fontFamily: "var(--font-display, cursive)", fontSize: "1.1rem", letterSpacing: "0.06em", borderBottom: "var(--rule-thin)", paddingBottom: "0.5rem", marginBottom: "1rem" };
+
   return (
-    <div className="min-h-screen bg-[#fafafa]">
+    <div className="min-h-screen" style={{ background: "var(--bg)" }}>
       <Navbar />
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex items-center gap-3 mb-8">
-          <button
-            onClick={() => router.push("/dashboard")}
-            className="p-2 rounded-xl bg-[#f5f5f5] hover:bg-[#e5e5e5] transition"
-          >
-            <svg className="w-5 h-5 text-[#525252]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <h1 className="text-2xl font-bold text-[#0a0a0a]">
-            {isNew ? "Nouveau QR Code" : "Modifier le QR Code"}
-          </h1>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header band */}
+        <div className="-mx-4 sm:-mx-6 lg:-mx-8" style={{ background: "var(--red)" }}>
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-4 py-3">
+            <button
+              onClick={() => router.push("/dashboard")}
+              style={{ background: "rgba(255,255,255,0.15)", border: "none", color: "white", padding: "0.3rem 0.7rem", cursor: "pointer", fontSize: "1rem" }}
+            >
+              ←
+            </button>
+            <h1 style={{ fontFamily: "var(--font-display, cursive)", fontSize: "clamp(1.8rem, 4vw, 3rem)", color: "white", letterSpacing: "0.04em", lineHeight: 1 }}>
+              {isNew ? "Nouveau QR Code" : "Modifier le QR Code"}
+            </h1>
+            <div className="ml-auto flex gap-2">
+              <button onClick={handleSave} disabled={saving} className="btn" style={{ background: "var(--ink)", color: "var(--bg)" }}>
+                {saving ? "Enregistrement..." : saved ? "✓ Enregistré" : "Enregistrer"}
+              </button>
+              <button onClick={() => router.push("/dashboard")} style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.3)", color: "white", padding: "0.5rem 1rem", cursor: "pointer", fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>
+                Retour
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Left: Form */}
-          <div className="space-y-6">
-            <div className="bento-card">
-              <h2 className="text-lg font-semibold text-[#0a0a0a] mb-4">Informations</h2>
+        {/* Main grid */}
+        <div className="grid lg:grid-cols-2" style={{ border: "var(--rule)", borderTop: "none" }}>
 
+          {/* LEFT */}
+          <div style={{ borderRight: "2px solid #1a1410" }}>
+            {/* Informations */}
+            <div style={{ ...sectionStyle, ...sectionPad }}>
+              <h2 style={headingStyle}>Informations</h2>
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-[#0a0a0a] mb-1.5">
-                    Nom du QR Code
-                  </label>
+                  <label style={labelStyle}>Nom du QR Code</label>
                   <input
-                    id="name"
                     type="text"
                     value={name}
-                    onChange={(e) => { setName(e.target.value); setErrors((prev) => ({ ...prev, name: "" })); }}
-                    className={`input w-full ${errors.name ? "!border-red-300" : ""}`}
+                    onChange={(e) => { setName(e.target.value); setErrors((p) => ({ ...p, name: "" })); }}
+                    className="input w-full"
                     placeholder="Mon QR Code"
+                    style={errors.name ? { borderColor: "var(--red)" } : {}}
                   />
-                  {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
+                  {errors.name && <p style={{ color: "var(--red)", fontSize: "0.72rem", marginTop: "0.25rem" }}>{errors.name}</p>}
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[#0a0a0a] mb-1.5">Type de contenu</label>
-                  <div className="flex gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setType("url")}
-                      className={`flex-1 py-2 px-4 text-sm font-medium rounded-lg border transition ${type === "url" ? "bg-[#0a0a0a] text-white border-[#0a0a0a]" : "bg-[#f5f5f5] text-[#525252] border-transparent hover:bg-[#e5e5e5]"}`}
-                    >
-                      URL
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setType("text")}
-                      className={`flex-1 py-2 px-4 text-sm font-medium rounded-lg border transition ${type === "text" ? "bg-[#0a0a0a] text-white border-[#0a0a0a]" : "bg-[#f5f5f5] text-[#525252] border-transparent hover:bg-[#e5e5e5]"}`}
-                    >
-                      Texte
-                    </button>
+                  <label style={labelStyle}>Type de contenu</label>
+                  <div className="flex">
+                    {(["url", "text"] as const).map((t, idx) => (
+                      <button
+                        key={t}
+                        type="button"
+                        onClick={() => setType(t)}
+                        style={{
+                          flex: 1,
+                          padding: "0.6rem",
+                          fontSize: "0.72rem",
+                          fontWeight: 700,
+                          textTransform: "uppercase",
+                          letterSpacing: "0.08em",
+                          background: type === t ? "var(--ink)" : "var(--card)",
+                          color: type === t ? "var(--bg)" : "var(--mid)",
+                          border: "var(--rule-thin)",
+                          marginRight: idx === 0 ? "-1px" : 0,
+                          cursor: "pointer",
+                          fontFamily: "var(--font-sans)",
+                          position: "relative",
+                          zIndex: type === t ? 1 : 0,
+                        }}
+                      >
+                        {t === "url" ? "URL" : "Texte"}
+                      </button>
+                    ))}
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="content" className="block text-sm font-medium text-[#0a0a0a] mb-1.5">
-                    {type === "url" ? "URL" : "Texte"}
-                  </label>
+                  <label style={labelStyle}>{type === "url" ? "URL" : "Texte"}</label>
                   {type === "url" ? (
                     <input
-                      id="content"
                       type="url"
                       value={content}
-                      onChange={(e) => { setContent(e.target.value); setErrors((prev) => ({ ...prev, content: "" })); }}
-                      className={`input w-full ${errors.content ? "!border-red-300" : ""}`}
+                      onChange={(e) => { setContent(e.target.value); setErrors((p) => ({ ...p, content: "" })); }}
+                      className="input w-full"
                       placeholder="https://exemple.com"
+                      style={errors.content ? { borderColor: "var(--red)" } : {}}
                     />
                   ) : (
                     <textarea
-                      id="content"
                       value={content}
-                      onChange={(e) => { setContent(e.target.value); setErrors((prev) => ({ ...prev, content: "" })); }}
+                      onChange={(e) => { setContent(e.target.value); setErrors((p) => ({ ...p, content: "" })); }}
                       rows={3}
-                      className={`input w-full resize-none ${errors.content ? "!border-red-300" : ""}`}
-                      placeholder="Votre texte ici..."
+                      className="input w-full resize-none"
+                      placeholder="Votre texte..."
+                      style={errors.content ? { borderColor: "var(--red)" } : {}}
                     />
                   )}
-                  {errors.content && <p className="mt-1 text-sm text-red-500">{errors.content}</p>}
+                  {errors.content && <p style={{ color: "var(--red)", fontSize: "0.72rem", marginTop: "0.25rem" }}>{errors.content}</p>}
                 </div>
               </div>
             </div>
 
             {/* Templates */}
-            <div className="bento-card">
-              <h2 className="text-lg font-semibold text-[#0a0a0a] mb-4">Templates de style</h2>
+            <div style={{ ...sectionStyle, ...sectionPad }}>
+              <h2 style={headingStyle}>Templates de style</h2>
               <div className="grid grid-cols-4 gap-2">
-                {styleTemplates.map((t) => (
-                  <button
-                    key={t.id}
-                    type="button"
-                    onClick={() => {
-                      setForegroundColor(t.foregroundColor);
-                      setBackgroundColor(t.backgroundColor);
-                    }}
-                    className={`flex flex-col items-center gap-1.5 p-2 rounded-xl border transition hover:shadow-sm ${
-                      foregroundColor === t.foregroundColor && backgroundColor === t.backgroundColor
-                        ? "border-[#0a0a0a] bg-[#f5f5f5]"
-                        : "border-transparent hover:border-gray-200 bg-[#f5f5f5]"
-                    }`}
-                  >
-                    <div
-                      className="w-8 h-8 rounded-lg border border-gray-200"
-                      style={{ background: `linear-gradient(135deg, ${t.foregroundColor} 50%, ${t.backgroundColor} 50%)` }}
-                    />
-                    <span className="text-xs text-[#525252] truncate w-full text-center">{t.name}</span>
-                  </button>
-                ))}
+                {styleTemplates.map((t) => {
+                  const isActive = foregroundColor === t.foregroundColor && backgroundColor === t.backgroundColor;
+                  return (
+                    <button
+                      key={t.id}
+                      type="button"
+                      onClick={() => { setForegroundColor(t.foregroundColor); setBackgroundColor(t.backgroundColor); }}
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        gap: "0.4rem",
+                        padding: "0.5rem",
+                        border: isActive ? "var(--rule)" : "1px solid rgba(0,0,0,0.1)",
+                        background: isActive ? "var(--card)" : "transparent",
+                        cursor: "pointer",
+                        transition: "all 0.15s",
+                      }}
+                    >
+                      <div style={{ width: 32, height: 32, background: `linear-gradient(135deg, ${t.foregroundColor} 50%, ${t.backgroundColor} 50%)`, border: "1px solid rgba(0,0,0,0.1)" }} />
+                      <span style={{ fontSize: "0.58rem", color: "var(--mid)", fontFamily: "var(--font-mono)", textAlign: "center", width: "100%", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{t.name}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
-            <div className="bento-card">
-              <h2 className="text-lg font-semibold text-[#0a0a0a] mb-4">Personnalisation</h2>
-
+            {/* Personnalisation */}
+            <div style={{ ...sectionStyle, ...sectionPad }}>
+              <h2 style={headingStyle}>Personnalisation</h2>
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="fgColor" className="block text-sm font-medium text-[#0a0a0a] mb-1.5">
-                      Couleur QR
-                    </label>
-                    <div className="flex items-center gap-2">
-                      <input
-                        id="fgColor"
-                        type="color"
-                        value={foregroundColor}
-                        onChange={(e) => setForegroundColor(e.target.value)}
-                        className="w-10 h-10 rounded-lg border border-gray-200 cursor-pointer p-0.5 bg-white"
-                      />
-                      <input
-                        type="text"
-                        value={foregroundColor}
-                        onChange={(e) => setForegroundColor(e.target.value)}
-                        className="input flex-1 text-sm"
-                      />
+                  {([
+                    ["Couleur QR", foregroundColor, setForegroundColor],
+                    ["Couleur fond", backgroundColor, setBackgroundColor],
+                  ] as [string, string, (v: string) => void][]).map(([lbl, val, setter]) => (
+                    <div key={lbl}>
+                      <label style={labelStyle}>{lbl}</label>
+                      <div className="flex items-center gap-2">
+                        <input
+                          type="color"
+                          value={val}
+                          onChange={(e) => setter(e.target.value)}
+                          style={{ width: 40, height: 40, cursor: "pointer", padding: "0.15rem", background: "white", border: "var(--rule-thin)" }}
+                        />
+                        <input
+                          type="text"
+                          value={val}
+                          onChange={(e) => setter(e.target.value)}
+                          className="input flex-1 text-sm"
+                          style={{ fontFamily: "var(--font-mono)" }}
+                        />
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <label htmlFor="bgColor" className="block text-sm font-medium text-[#0a0a0a] mb-1.5">
-                      Couleur fond
-                    </label>
-                    <div className="flex items-center gap-2">
-                      <input
-                        id="bgColor"
-                        type="color"
-                        value={backgroundColor}
-                        onChange={(e) => setBackgroundColor(e.target.value)}
-                        className="w-10 h-10 rounded-lg border border-gray-200 cursor-pointer p-0.5 bg-white"
-                      />
-                      <input
-                        type="text"
-                        value={backgroundColor}
-                        onChange={(e) => setBackgroundColor(e.target.value)}
-                        className="input flex-1 text-sm"
-                      />
-                    </div>
-                  </div>
+                  ))}
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[#0a0a0a] mb-1.5">Taille (px)</label>
-                  <div className="flex gap-2">
-                    {SIZES.map((s) => (
+                  <label style={labelStyle}>Taille (px)</label>
+                  <div className="flex">
+                    {SIZES.map((s, idx) => (
                       <button
                         key={s}
                         type="button"
                         onClick={() => setSize(s)}
-                        className={`flex-1 py-2 px-3 text-sm font-medium rounded-lg border transition ${size === s ? "bg-[#0a0a0a] text-white border-[#0a0a0a]" : "bg-[#f5f5f5] text-[#525252] border-transparent hover:bg-[#e5e5e5]"}`}
+                        style={{
+                          flex: 1,
+                          padding: "0.6rem",
+                          fontSize: "0.72rem",
+                          fontWeight: 700,
+                          textTransform: "uppercase",
+                          letterSpacing: "0.06em",
+                          background: size === s ? "var(--ink)" : "var(--card)",
+                          color: size === s ? "var(--bg)" : "var(--mid)",
+                          border: "var(--rule-thin)",
+                          marginRight: idx < SIZES.length - 1 ? "-1px" : 0,
+                          cursor: "pointer",
+                          fontFamily: "var(--font-sans)",
+                          position: "relative",
+                          zIndex: size === s ? 1 : 0,
+                        }}
                       >
                         {s}
                       </button>
@@ -481,168 +433,139 @@ export default function QRCodeEditorPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="errorCorrection" className="block text-sm font-medium text-[#0a0a0a] mb-1.5">
-                    Correction d&apos;erreur
-                  </label>
+                  <label style={labelStyle}>Correction d&apos;erreur</label>
                   <select
-                    id="errorCorrection"
                     value={errorCorrection}
                     onChange={(e) => setErrorCorrection(e.target.value as "L" | "M" | "Q" | "H")}
                     className="input w-full"
                   >
-                    {ERROR_LEVELS.map((level) => (
-                      <option key={level.value} value={level.value}>
-                        {level.label}
-                      </option>
-                    ))}
+                    {ERROR_LEVELS.map((l) => <option key={l.value} value={l.value}>{l.label}</option>)}
                   </select>
                 </div>
               </div>
             </div>
 
-            {/* Logo Upload */}
-            <div className="bento-card">
-              <h2 className="text-lg font-semibold text-[#0a0a0a] mb-4">Logo au centre</h2>
-              <p className="text-sm text-[#525252] mb-3">
-                Ajoutez un logo au centre du QR code. Utilisez une correction d&apos;erreur H pour de meilleurs résultats.
+            {/* Logo */}
+            <div style={sectionPad}>
+              <h2 style={headingStyle}>Logo au centre</h2>
+              <p style={{ fontSize: "0.72rem", color: "var(--mid)", marginBottom: "0.75rem" }}>
+                Utilisez la correction H pour de meilleurs résultats. Max 500 Ko.
               </p>
-              <input
-                ref={logoInputRef}
-                type="file"
-                accept="image/png,image/jpeg,image/svg+xml"
-                onChange={handleLogoUpload}
-                className="hidden"
-              />
+              <input ref={logoInputRef} type="file" accept="image/png,image/jpeg,image/svg+xml" onChange={handleLogoUpload} className="hidden" />
               <div className="flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => logoInputRef.current?.click()}
-                  className="btn btn-secondary"
-                >
-                  {logoDataUrl ? "Changer le logo" : "Ajouter un logo"}
+                <button type="button" onClick={() => logoInputRef.current?.click()} className="btn btn-secondary">
+                  {logoDataUrl ? "Changer" : "Ajouter un logo"}
                 </button>
                 {logoDataUrl && (
                   <>
-                    <NextImage
-                      src={logoDataUrl}
-                      alt="Aperçu du logo"
-                      width={40}
-                      height={40}
-                      unoptimized
-                      className="rounded-lg border border-gray-200 object-contain"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setLogoDataUrl(null)}
-                      className="text-sm text-red-500 hover:text-red-600"
-                    >
+                    <NextImage src={logoDataUrl} alt="Logo" width={40} height={40} unoptimized className="object-contain" style={{ border: "var(--rule-thin)" }} />
+                    <button type="button" onClick={() => setLogoDataUrl(null)} style={{ color: "var(--red)", background: "none", border: "none", cursor: "pointer", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>
                       Supprimer
                     </button>
                   </>
                 )}
               </div>
             </div>
-
-            <div className="flex gap-3">
-              <button
-                onClick={handleSave}
-                disabled={saving}
-                className="btn btn-primary flex-1"
-              >
-                {saving ? "Enregistrement..." : saved ? "Enregistré !" : "Enregistrer"}
-              </button>
-              <button
-                onClick={() => router.push("/dashboard")}
-                className="btn btn-secondary"
-              >
-                Retour
-              </button>
-            </div>
           </div>
 
-          {/* Right: Preview & Export */}
-          <div className="space-y-6">
-            <div className="bento-card">
-              <h2 className="text-lg font-semibold text-[#0a0a0a] mb-4">Aperçu en temps réel</h2>
-              <div className="flex justify-center p-4 bg-[#f5f5f5] rounded-xl">
-                <canvas ref={canvasRef} className="rounded-lg" />
+          {/* RIGHT */}
+          <div>
+            {/* Aperçu */}
+            <div style={{ ...sectionStyle, ...sectionPad }}>
+              <h2 style={headingStyle}>Aperçu en temps réel</h2>
+              <div className="flex justify-center p-6" style={{ background: "var(--card)" }}>
+                <canvas ref={canvasRef} className="max-w-full" />
               </div>
-              <p className="mt-3 text-sm text-[#525252] text-center">
-                Taille d&apos;export : {size} x {size} px
+              <p className="mt-2 text-center" style={{ fontFamily: "var(--font-mono)", fontSize: "0.65rem", color: "var(--mid)" }}>
+                Export : {size} × {size} px
               </p>
             </div>
 
-            <div className="bento-card">
-              <h2 className="text-lg font-semibold text-[#0a0a0a] mb-4">Exporter</h2>
-              <div className="grid grid-cols-3 gap-3">
-                <button
-                  onClick={handleExportPNG}
-                  className="flex flex-col items-center gap-2 py-4 px-3 bg-[#f5f5f5] hover:bg-[#e5e5e5] rounded-xl transition"
-                >
-                  <svg className="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <span className="text-sm font-medium text-[#0a0a0a]">PNG</span>
-                </button>
-                <button
-                  onClick={handleExportJPG}
-                  className="flex flex-col items-center gap-2 py-4 px-3 bg-[#f5f5f5] hover:bg-[#e5e5e5] rounded-xl transition"
-                >
-                  <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <span className="text-sm font-medium text-[#0a0a0a]">JPG</span>
-                </button>
-                <button
-                  onClick={handleExportPDF}
-                  className="flex flex-col items-center gap-2 py-4 px-3 bg-[#f5f5f5] hover:bg-[#e5e5e5] rounded-xl transition"
-                >
-                  <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
-                  <span className="text-sm font-medium text-[#0a0a0a]">PDF</span>
-                </button>
+            {/* Export */}
+            <div style={{ ...sectionStyle, ...sectionPad }}>
+              <h2 style={headingStyle}>Exporter</h2>
+              <div className="flex">
+                {([
+                  ["PNG", handleExportPNG, "var(--red)"],
+                  ["JPG", handleExportJPG, "var(--ink)"],
+                  ["PDF", handleExportPDF, "var(--mid)"],
+                ] as [string, () => void, string][]).map(([fmt, fn, color], idx) => (
+                  <button
+                    key={fmt}
+                    onClick={fn}
+                    style={{
+                      flex: 1,
+                      padding: "1.5rem 0.5rem",
+                      background: "var(--card)",
+                      border: "var(--rule-thin)",
+                      marginRight: idx < 2 ? "-1px" : 0,
+                      cursor: "pointer",
+                      fontFamily: "var(--font-display, cursive)",
+                      fontSize: "2rem",
+                      letterSpacing: "0.04em",
+                      color,
+                      transition: "background 0.15s, color 0.15s",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.background = "var(--ink)"; e.currentTarget.style.color = "var(--bg)"; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = "var(--card)"; e.currentTarget.style.color = color; }}
+                  >
+                    {fmt}
+                  </button>
+                ))}
               </div>
             </div>
 
-            {/* Share Section */}
+            {/* Partage */}
             {!isNew && (
-              <div className="bento-card">
-                <h2 className="text-lg font-semibold text-[#0a0a0a] mb-4">Partage public</h2>
-                <p className="text-sm text-[#525252] mb-3">
-                  Activez le partage pour générer un lien public vers ce QR code.
+              <div style={sectionPad}>
+                <h2 style={headingStyle}>Partage public</h2>
+                <p style={{ fontSize: "0.72rem", color: "var(--mid)", marginBottom: "0.75rem" }}>
+                  Activez le partage pour générer un lien public et tracker les scans.
                 </p>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 mb-3">
                   <button
                     type="button"
                     onClick={handleToggleShare}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                      isPublic ? "bg-[#0a0a0a]" : "bg-gray-300"
-                    }`}
+                    style={{
+                      position: "relative",
+                      display: "inline-flex",
+                      height: 24,
+                      width: 44,
+                      alignItems: "center",
+                      background: isPublic ? "var(--ink)" : "#ccc4bb",
+                      borderRadius: 999,
+                      border: "none",
+                      cursor: "pointer",
+                      flexShrink: 0,
+                    }}
                   >
-                    <span
-                      className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                        isPublic ? "translate-x-6" : "translate-x-1"
-                      }`}
-                    />
+                    <span style={{
+                      display: "inline-block",
+                      width: 16,
+                      height: 16,
+                      background: "white",
+                      borderRadius: 999,
+                      transform: isPublic ? "translateX(1.5rem)" : "translateX(0.25rem)",
+                      transition: "transform 0.2s",
+                    }} />
                   </button>
-                  <span className="text-sm text-[#525252]">
+                  <span style={{ fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--mid)" }}>
                     {isPublic ? "Partagé publiquement" : "Non partagé"}
                   </span>
                 </div>
                 {isPublic && shareToken && (
-                  <div className="mt-3 flex items-center gap-2">
+                  <div className="flex items-center gap-2">
                     <input
                       type="text"
                       readOnly
                       value={`${typeof window !== "undefined" ? window.location.origin : ""}/share/${shareToken}`}
-                      className="input flex-1 text-sm"
+                      className="input flex-1 text-xs"
+                      style={{ fontFamily: "var(--font-mono)" }}
                     />
-                    <button
-                      type="button"
-                      onClick={handleCopyShareLink}
-                      className="btn btn-primary btn-sm"
-                    >
+                    <button onClick={handleCopyShareLink} className="btn btn-primary btn-sm">
                       {copiedLink ? "Copié !" : "Copier"}
                     </button>
                   </div>
@@ -651,7 +574,7 @@ export default function QRCodeEditorPage() {
             )}
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

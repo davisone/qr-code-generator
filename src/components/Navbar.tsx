@@ -2,7 +2,6 @@
 
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Navbar() {
   const { data: session } = useSession();
@@ -10,25 +9,48 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          <Link href="/dashboard" className="logo">
-            <Image
-              src="/QRaft.png"
-              alt="QRaft"
-              width={32}
-              height={32}
-              className="rounded-lg"
-            />
+        <div className="flex justify-between items-stretch h-14">
+          <Link
+            href="/dashboard"
+            className="flex items-center px-2 transition-colors"
+            style={{
+              fontFamily: "var(--font-display, 'Bebas Neue'), cursive",
+              fontSize: "1.8rem",
+              letterSpacing: "0.06em",
+              color: "#f0ebe1",
+              textDecoration: "none",
+            }}
+            onMouseEnter={e => (e.currentTarget.style.color = "var(--yellow)")}
+            onMouseLeave={e => (e.currentTarget.style.color = "#f0ebe1")}
+          >
             QRaft
           </Link>
 
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-[#525252] hidden sm:block">
+          <div className="flex items-stretch">
+            <span
+              className="hidden sm:flex items-center px-4 text-xs uppercase tracking-widest font-bold border-l"
+              style={{
+                color: "rgba(240,235,225,0.45)",
+                borderColor: "rgba(255,255,255,0.08)",
+                fontFamily: "var(--font-sans, sans-serif)",
+              }}
+            >
               {session?.user?.name || session?.user?.email}
             </span>
             <button
               onClick={() => signOut({ callbackUrl: "/login" })}
-              className="btn btn-secondary btn-sm"
+              className="flex items-center px-5 text-xs font-bold uppercase tracking-widest border-l transition-colors"
+              style={{
+                color: "rgba(240,235,225,0.45)",
+                borderColor: "rgba(255,255,255,0.08)",
+                fontFamily: "var(--font-sans, sans-serif)",
+                background: "none",
+                border: "none",
+                borderLeft: "1px solid rgba(255,255,255,0.08)",
+                cursor: "pointer",
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = "#f0ebe1")}
+              onMouseLeave={e => (e.currentTarget.style.color = "rgba(240,235,225,0.45)")}
             >
               Déconnexion
             </button>

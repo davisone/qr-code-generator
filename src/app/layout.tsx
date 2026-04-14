@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bebas_Neue, Barlow, Courier_Prime } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Providers from "@/components/Providers";
@@ -7,13 +7,22 @@ import { ReviewBadge } from "@/components/ReviewBadge";
 import { Footer } from "@/components/Footer";
 import { BASE_URL } from "@/lib/config";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bebasNeue = Bebas_Neue({
+  variable: "--font-display",
+  weight: "400",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const barlow = Barlow({
+  variable: "--font-sans",
+  weight: ["400", "600", "700", "900"],
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+});
+
+const courierPrime = Courier_Prime({
+  variable: "--font-mono",
+  weight: ["400", "700"],
   subsets: ["latin"],
 });
 
@@ -124,7 +133,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${bebasNeue.variable} ${barlow.variable} ${courierPrime.variable} antialiased`}
       >
         <Providers>{children}</Providers>
         <Footer />

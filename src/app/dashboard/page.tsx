@@ -78,10 +78,7 @@ export default function DashboardPage() {
           newPreviews[qr.id] = await QRCode.toDataURL(qr.content || "placeholder", {
             width: 80,
             margin: 1,
-            color: {
-              dark: qr.foregroundColor,
-              light: qr.backgroundColor,
-            },
+            color: { dark: qr.foregroundColor, light: qr.backgroundColor },
             errorCorrectionLevel: qr.errorCorrection as "L" | "M" | "Q" | "H",
           });
         } catch {
@@ -90,9 +87,7 @@ export default function DashboardPage() {
       }
       setPreviews(newPreviews);
     }
-    if (qrCodes.length > 0) {
-      generatePreviews();
-    }
+    if (qrCodes.length > 0) generatePreviews();
   }, [qrCodes]);
 
   const filteredQRCodes = qrCodes.filter((qr) => {
@@ -129,10 +124,7 @@ export default function DashboardPage() {
       const dataUrl = await QRCode.toDataURL(qr.content, {
         width: qr.size,
         margin: 2,
-        color: {
-          dark: qr.foregroundColor,
-          light: qr.backgroundColor,
-        },
+        color: { dark: qr.foregroundColor, light: qr.backgroundColor },
         errorCorrectionLevel: qr.errorCorrection as "L" | "M" | "Q" | "H",
       });
       const link = document.createElement("a");
@@ -177,11 +169,8 @@ export default function DashboardPage() {
   function toggleSelect(id: string) {
     setSelected((prev) => {
       const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
       return next;
     });
   }
@@ -200,21 +189,16 @@ export default function DashboardPage() {
     try {
       const zip = new JSZip();
       const selectedQRs = qrCodes.filter((qr) => selected.has(qr.id));
-
       for (const qr of selectedQRs) {
         const dataUrl = await QRCode.toDataURL(qr.content, {
           width: qr.size,
           margin: 2,
-          color: {
-            dark: qr.foregroundColor,
-            light: qr.backgroundColor,
-          },
+          color: { dark: qr.foregroundColor, light: qr.backgroundColor },
           errorCorrectionLevel: qr.errorCorrection as "L" | "M" | "Q" | "H",
         });
         const base64 = dataUrl.split(",")[1];
         zip.file(`${qr.name}.png`, base64, { base64: true });
       }
-
       const blob = await zip.generateAsync({ type: "blob" });
       const link = document.createElement("a");
       link.download = "qrcodes.zip";
@@ -230,8 +214,13 @@ export default function DashboardPage() {
 
   if (status === "loading" || loading) {
     return (
-      <div className="min-h-screen bg-[#fafafa] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0a0a0a]"></div>
+      <div className="min-h-screen flex items-center justify-center" style={{ background: "var(--bg)" }}>
+        <div
+          className="text-4xl tracking-widest"
+          style={{ fontFamily: "var(--font-display, cursive)", color: "var(--mid)", animation: "fadeIn 0.6s ease infinite alternate" }}
+        >
+          Chargement...
+        </div>
       </div>
     );
   }
@@ -240,309 +229,397 @@ export default function DashboardPage() {
 
   const selectedQRForAnalytics = qrCodes.find((qr) => qr.id === selectedQRCodeForAnalytics);
 
-  return (
-    <div className="min-h-screen bg-[#fafafa]">
-      <Navbar />
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Tabs */}
-        <div className="flex items-center gap-1 mb-8 border-b border-[#e5e5e5]">
-          <button
-            onClick={() => setActiveTab("qrcodes")}
-            className={`px-4 py-3 text-sm font-medium border-b-2 transition ${
-              activeTab === "qrcodes"
-                ? "border-[#0a0a0a] text-[#0a0a0a]"
-                : "border-transparent text-[#525252] hover:text-[#0a0a0a]"
-            }`}
-          >
-            <span className="flex items-center gap-2">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
-              </svg>
-              Mes QR Codes
-            </span>
-          </button>
-          <button
-            onClick={() => setActiveTab("analytics")}
-            className={`px-4 py-3 text-sm font-medium border-b-2 transition ${
-              activeTab === "analytics"
-                ? "border-[#0a0a0a] text-[#0a0a0a]"
-                : "border-transparent text-[#525252] hover:text-[#0a0a0a]"
-            }`}
-          >
-            <span className="flex items-center gap-2">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-              Analytics
-            </span>
-          </button>
-          <button
-            onClick={() => setActiveTab("map")}
-            className={`px-4 py-3 text-sm font-medium border-b-2 transition ${
-              activeTab === "map"
-                ? "border-[#0a0a0a] text-[#0a0a0a]"
-                : "border-transparent text-[#525252] hover:text-[#0a0a0a]"
-            }`}
-          >
-            <span className="flex items-center gap-2">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              Carte
-            </span>
-          </button>
-        </div>
+  const tabTitle = activeTab === "qrcodes" ? "Mes QR Codes" : activeTab === "analytics" ? "Analytics" : "Carte";
 
-        {/* QR Codes Tab */}
-        {activeTab === "qrcodes" && (
-          <>
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <h1 className="text-2xl font-bold text-[#0a0a0a]">Mes QR Codes</h1>
-                <p className="text-[#525252] mt-1">{qrCodes.length} QR code{qrCodes.length !== 1 ? "s" : ""}</p>
-              </div>
+  return (
+    <div className="min-h-screen" style={{ background: "var(--bg)" }}>
+      <Navbar />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header band rouge */}
+        <div
+          className="-mx-4 sm:-mx-6 lg:-mx-8"
+          style={{ background: "var(--red)" }}
+        >
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-3">
+            <h1
+              style={{
+                fontFamily: "var(--font-display, 'Bebas Neue'), cursive",
+                fontSize: "clamp(2rem, 5vw, 3.2rem)",
+                color: "white",
+                letterSpacing: "0.04em",
+                lineHeight: 1,
+              }}
+            >
+              {tabTitle}
+            </h1>
+            {activeTab === "qrcodes" && (
               <button
                 onClick={() => router.push("/qrcode/new")}
-                className="btn btn-primary"
+                className="btn"
+                style={{ background: "var(--ink)", color: "var(--bg)", fontSize: "0.68rem" }}
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
-                Nouveau
+                + Nouveau
               </button>
-            </div>
-
-        {/* Search & Filter Bar */}
-        {qrCodes.length > 0 && (
-          <div className="mb-6 flex flex-col sm:flex-row gap-3">
-            <div className="relative flex-1">
-              <svg
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#a3a3a3]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Rechercher..."
-                className="input pl-10"
-              />
-            </div>
-            <div className="flex gap-2">
-              {(["all", "url", "text", "favorites"] as const).map((f) => (
-                <button
-                  key={f}
-                  onClick={() => setFilterType(f)}
-                  className={`btn btn-sm ${
-                    filterType === f ? "btn-primary" : "btn-secondary"
-                  }`}
-                >
-                  {f === "all" ? "Tous" : f === "url" ? "URL" : f === "text" ? "Texte" : "Favoris"}
-                </button>
-              ))}
-            </div>
+            )}
           </div>
-        )}
+        </div>
+
+        {/* Filter strip noire */}
+        <div className="-mx-4 sm:-mx-6 lg:-mx-8 mb-6" style={{ background: "var(--ink)" }}>
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center flex-wrap">
+            <button
+              onClick={() => setActiveTab("qrcodes")}
+              className={`filter-strip-btn ${activeTab === "qrcodes" ? "active" : ""}`}
+              style={{
+                background: "none",
+                border: "none",
+                color: activeTab === "qrcodes" ? "var(--yellow)" : "rgba(240,235,225,0.5)",
+                padding: "0.65rem 1.2rem",
+                fontFamily: "var(--font-sans, sans-serif)",
+                fontSize: "0.68rem",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                cursor: "pointer",
+                borderRight: "1px solid rgba(255,255,255,0.08)",
+              }}
+            >
+              QR Codes ({qrCodes.length})
+            </button>
+            <button
+              onClick={() => setActiveTab("analytics")}
+              style={{
+                background: "none",
+                border: "none",
+                color: activeTab === "analytics" ? "var(--yellow)" : "rgba(240,235,225,0.5)",
+                padding: "0.65rem 1.2rem",
+                fontFamily: "var(--font-sans, sans-serif)",
+                fontSize: "0.68rem",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                cursor: "pointer",
+                borderRight: "1px solid rgba(255,255,255,0.08)",
+              }}
+            >
+              Analytics
+            </button>
+            <button
+              onClick={() => setActiveTab("map")}
+              style={{
+                background: "none",
+                border: "none",
+                color: activeTab === "map" ? "var(--yellow)" : "rgba(240,235,225,0.5)",
+                padding: "0.65rem 1.2rem",
+                fontFamily: "var(--font-sans, sans-serif)",
+                fontSize: "0.68rem",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                cursor: "pointer",
+                borderRight: "1px solid rgba(255,255,255,0.08)",
+              }}
+            >
+              Carte
+            </button>
+
+            {activeTab === "qrcodes" && qrCodes.length > 0 && (
+              <>
+                <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.08)", margin: "0 0.25rem" }} />
+                {(["all", "url", "text", "favorites"] as const).map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => setFilterType(f)}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      color: filterType === f ? "var(--yellow)" : "rgba(240,235,225,0.5)",
+                      padding: "0.65rem 1rem",
+                      fontFamily: "var(--font-sans, sans-serif)",
+                      fontSize: "0.65rem",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.1em",
+                      cursor: "pointer",
+                      borderRight: "1px solid rgba(255,255,255,0.06)",
+                    }}
+                  >
+                    {f === "all" ? "Tous" : f === "url" ? "URL" : f === "text" ? "Texte" : "Favoris"}
+                  </button>
+                ))}
+                <input
+                  type="text"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Rechercher..."
+                  style={{
+                    marginLeft: "auto",
+                    marginRight: "0",
+                    padding: "0.4rem 0.8rem",
+                    fontSize: "0.72rem",
+                    background: "rgba(255,255,255,0.07)",
+                    border: "1px solid rgba(255,255,255,0.15)",
+                    color: "#f0ebe1",
+                    fontFamily: "var(--font-mono, monospace)",
+                    outline: "none",
+                    width: 180,
+                  }}
+                />
+              </>
+            )}
+          </div>
+        </div>
 
         {/* Batch actions */}
         {selected.size > 0 && (
-          <div className="mb-4 flex items-center gap-3 p-4 bento-card">
-            <span className="text-sm font-medium text-[#0a0a0a]">
+          <div className="flex items-center gap-3 p-3 mb-4" style={{ background: "var(--card)", border: "var(--rule)" }}>
+            <span className="text-xs font-bold uppercase tracking-widest" style={{ fontFamily: "var(--font-sans)" }}>
               {selected.size} sélectionné{selected.size > 1 ? "s" : ""}
             </span>
-            <button
-              onClick={handleExportZip}
-              disabled={exporting}
-              className="btn btn-primary btn-sm"
-            >
+            <button onClick={handleExportZip} disabled={exporting} className="btn btn-sm btn-primary">
               {exporting ? "Export..." : "Exporter ZIP"}
             </button>
-            <button
-              onClick={() => setSelected(new Set())}
-              className="btn btn-ghost btn-sm"
-            >
+            <button onClick={() => setSelected(new Set())} className="btn btn-sm btn-ghost">
               Annuler
             </button>
           </div>
         )}
 
-        {qrCodes.length === 0 ? (
-          <div className="bento-card text-center py-16">
-            <div className="icon-box mx-auto mb-4">
-              <svg className="w-6 h-6 text-[#525252]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-semibold text-[#0a0a0a]">Aucun QR code</h3>
-            <p className="mt-1 text-[#525252]">Créez votre premier QR code pour commencer.</p>
-            <button
-              onClick={() => router.push("/qrcode/new")}
-              className="btn btn-primary mt-6"
-            >
-              Créer un QR Code
-            </button>
-          </div>
-        ) : filteredQRCodes.length === 0 ? (
-          <div className="bento-card text-center py-16">
-            <h3 className="text-lg font-semibold text-[#0a0a0a]">Aucun résultat</h3>
-            <p className="mt-1 text-[#525252]">Essayez de modifier votre recherche.</p>
-          </div>
-        ) : (
+        {/* ── QR CODES TAB ── */}
+        {activeTab === "qrcodes" && (
           <>
-            <div className="mb-3 flex items-center gap-2">
-              <button
-                onClick={toggleSelectAll}
-                className="text-sm text-[#525252] hover:text-[#0a0a0a]"
-              >
-                {selected.size === filteredQRCodes.length ? "Tout désélectionner" : "Tout sélectionner"}
-              </button>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {filteredQRCodes.map((qr) => (
-                <div
-                  key={qr.id}
-                  className={`bento-card p-5 ${
-                    selected.has(qr.id) ? "ring-2 ring-[#0a0a0a]" : ""
-                  }`}
+            {qrCodes.length === 0 ? (
+              <div className="py-20 text-center" style={{ border: "var(--rule)", background: "var(--card)" }}>
+                <p
+                  className="text-6xl mb-4 tracking-wider"
+                  style={{ fontFamily: "var(--font-display, cursive)", color: "var(--light)" }}
                 >
-                  <div className="flex items-start gap-4">
-                    <input
-                      type="checkbox"
-                      checked={selected.has(qr.id)}
-                      onChange={() => toggleSelect(qr.id)}
-                      className="mt-1 h-4 w-4 rounded border-[#d4d4d4] text-[#0a0a0a] focus:ring-[#0a0a0a]"
-                    />
-                    <div className="shrink-0 rounded-xl overflow-hidden border border-[#e5e5e5]">
-                      {previews[qr.id] ? (
-                        <Image src={previews[qr.id]} alt={qr.name} width={64} height={64} unoptimized />
-                      ) : (
-                        <div className="w-16 h-16 bg-[#f5f5f5] animate-pulse" />
-                      )}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-semibold text-[#0a0a0a] truncate">{qr.name}</h3>
-                        <button
-                          onClick={(e) => { e.stopPropagation(); handleToggleFavorite(qr.id); }}
-                          className="shrink-0"
+                  VIDE
+                </p>
+                <p className="text-sm mb-6" style={{ color: "var(--mid)" }}>
+                  Aucun QR code pour l&apos;instant.
+                </p>
+                <button onClick={() => router.push("/qrcode/new")} className="btn btn-primary">
+                  Créer un QR Code
+                </button>
+              </div>
+            ) : filteredQRCodes.length === 0 ? (
+              <div className="py-16 text-center" style={{ border: "var(--rule)", background: "var(--card)" }}>
+                <p className="text-sm" style={{ color: "var(--mid)" }}>Aucun résultat.</p>
+              </div>
+            ) : (
+              <div className="grid gap-0 lg:grid-cols-[1fr_280px] items-start">
+                {/* Liste */}
+                <div>
+                  {/* Select all bar */}
+                  <div
+                    className="flex items-center px-3 py-1.5"
+                    style={{ background: "var(--ink)" }}
+                  >
+                    <button
+                      onClick={toggleSelectAll}
+                      style={{
+                        color: "rgba(240,235,225,0.5)",
+                        background: "none",
+                        border: "none",
+                        cursor: "pointer",
+                        fontFamily: "var(--font-sans)",
+                        fontSize: "0.65rem",
+                        fontWeight: 700,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.1em",
+                      }}
+                      onMouseEnter={e => (e.currentTarget.style.color = "#f0ebe1")}
+                      onMouseLeave={e => (e.currentTarget.style.color = "rgba(240,235,225,0.5)")}
+                    >
+                      {selected.size === filteredQRCodes.length ? "Tout désélectionner" : "Tout sélectionner"}
+                    </button>
+                    <span
+                      className="ml-auto text-xs"
+                      style={{ color: "rgba(240,235,225,0.3)", fontFamily: "var(--font-mono)" }}
+                    >
+                      {filteredQRCodes.length} résultat{filteredQRCodes.length > 1 ? "s" : ""}
+                    </span>
+                  </div>
+
+                  {filteredQRCodes.map((qr, i) => (
+                    <div
+                      key={qr.id}
+                      className="qr-row"
+                      style={{
+                        animationDelay: `${i * 0.04}s`,
+                        animation: "rowIn 0.35s ease both",
+                        borderLeft: selected.has(qr.id) ? "4px solid var(--red)" : undefined,
+                      }}
+                    >
+                      {/* Preview + checkbox */}
+                      <div className="flex flex-col items-center gap-1.5">
+                        <input
+                          type="checkbox"
+                          checked={selected.has(qr.id)}
+                          onChange={() => toggleSelect(qr.id)}
+                          onClick={(e) => e.stopPropagation()}
+                          style={{ accentColor: "var(--red)", width: 14, height: 14 }}
+                        />
+                        <div
+                          style={{
+                            width: 52,
+                            height: 52,
+                            border: "1px solid rgba(0,0,0,0.15)",
+                            background: "white",
+                            display: "grid",
+                            placeItems: "center",
+                            flexShrink: 0,
+                          }}
                         >
-                          <svg
-                            className={`w-4 h-4 ${qr.isFavorite ? "text-yellow-500 fill-yellow-500" : "text-[#d4d4d4]"}`}
-                            fill={qr.isFavorite ? "currentColor" : "none"}
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
+                          {previews[qr.id] ? (
+                            <Image src={previews[qr.id]} alt={qr.name} width={44} height={44} unoptimized />
+                          ) : (
+                            <div style={{ width: 44, height: 44, background: "var(--card)", animation: "fadeIn 0.6s ease infinite alternate" }} />
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Info */}
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2 mb-0.5">
+                          <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", color: "var(--light)" }}>
+                            {String(i + 1).padStart(3, "0")}
+                          </span>
+                          <button
+                            onClick={(e) => { e.stopPropagation(); handleToggleFavorite(qr.id); }}
+                            style={{
+                              background: "none",
+                              border: "none",
+                              cursor: "pointer",
+                              color: qr.isFavorite ? "var(--yellow)" : "var(--light)",
+                              fontSize: "0.85rem",
+                              lineHeight: 1,
+                              padding: 0,
+                            }}
                           >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                          </svg>
+                            {qr.isFavorite ? "★" : "☆"}
+                          </button>
+                        </div>
+                        <h3 className="font-bold truncate text-sm leading-tight mb-1" style={{ letterSpacing: "-0.01em" }}>
+                          {qr.name}
+                        </h3>
+                        <p className="truncate text-xs" style={{ fontFamily: "var(--font-mono)", color: "var(--mid)" }}>
+                          {qr.content}
+                        </p>
+                        <div className="flex gap-1.5 mt-1.5">
+                          <span className="badge badge-ink">{qr.type}</span>
+                          {qr.isPublic && <span className="badge badge-red">Public</span>}
+                        </div>
+                      </div>
+
+                      {/* Actions — visibles au hover via CSS qr-row:hover */}
+                      <div className="flex flex-col gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity qr-actions">
+                        <button onClick={() => router.push(`/qrcode/${qr.id}`)} className="btn btn-sm btn-primary">
+                          Modifier
+                        </button>
+                        <button onClick={() => handleDownload(qr)} className="btn btn-sm btn-ghost">
+                          Export
+                        </button>
+                        <button
+                          onClick={() => handleDuplicate(qr.id)}
+                          className="btn btn-sm btn-ghost"
+                        >
+                          Copier
+                        </button>
+                        <button
+                          onClick={() => handleDelete(qr.id)}
+                          className="btn btn-sm"
+                          style={{
+                            background: "none",
+                            border: "1px solid var(--red)",
+                            color: "var(--red)",
+                            fontFamily: "var(--font-sans)",
+                            fontWeight: 700,
+                            padding: "0.4rem 0.9rem",
+                            textTransform: "uppercase",
+                            letterSpacing: "0.08em",
+                            cursor: "pointer",
+                            fontSize: "0.65rem",
+                          }}
+                        >
+                          Suppr.
                         </button>
                       </div>
-                      <div className="flex items-center gap-2 mt-1">
-                        <span className="badge badge-gray">{qr.type}</span>
-                        {qr.isPublic && <span className="badge badge-emerald">Public</span>}
-                      </div>
-                      <p className="mt-1 text-sm text-[#a3a3a3] truncate">{qr.content}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Sidebar */}
+                <div className="lg:sticky lg:top-16">
+                  <div className="side-block">
+                    <div className="side-head"><span>Collection</span></div>
+                    <div className="side-body">
+                      <p style={{ fontFamily: "var(--font-display, cursive)", fontSize: "4rem", lineHeight: 1, letterSpacing: "0.02em" }}>
+                        {qrCodes.length}
+                      </p>
+                      <p className="text-xs uppercase tracking-widest mt-1" style={{ color: "var(--mid)" }}>
+                        QR codes créés
+                      </p>
                     </div>
                   </div>
-
-                  <div className="flex items-center gap-1 mt-4 pt-4 border-t border-[#f5f5f5]">
-                    <button
-                      onClick={() => router.push(`/qrcode/${qr.id}`)}
-                      className="btn btn-ghost btn-sm flex-1"
-                    >
-                      Modifier
-                    </button>
-                    <button
-                      onClick={() => handleDownload(qr)}
-                      className="btn btn-ghost btn-sm p-2"
-                      title="Télécharger"
-                      aria-label="Télécharger le QR code"
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={() => handleDuplicate(qr.id)}
-                      className="btn btn-ghost btn-sm p-2"
-                      title="Dupliquer"
-                      aria-label="Dupliquer le QR code"
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={() => handleDelete(qr.id)}
-                      className="btn btn-ghost btn-sm p-2 text-red-500 hover:text-red-600 hover:bg-red-50"
-                      title="Supprimer"
-                      aria-label="Supprimer le QR code"
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                      </svg>
-                    </button>
+                  <div className="side-block">
+                    <div className="side-head"><span>Actions</span></div>
+                    <div className="side-body flex flex-col gap-2">
+                      <button onClick={() => router.push("/qrcode/new")} className="btn btn-red w-full">
+                        + Nouveau QR Code
+                      </button>
+                      {selected.size > 0 && (
+                        <button onClick={handleExportZip} disabled={exporting} className="btn btn-primary w-full">
+                          {exporting ? "Export..." : `ZIP (${selected.size})`}
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                  <div className="side-block">
+                    <div className="side-head"><span>Répartition</span></div>
+                    <div className="side-body">
+                      {(["url", "text"] as const).map((t) => {
+                        const count = qrCodes.filter((qr) => qr.type === t).length;
+                        const pct = qrCodes.length > 0 ? Math.round((count / qrCodes.length) * 100) : 0;
+                        return (
+                          <div key={t} className="flex justify-between items-center py-2" style={{ borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
+                            <span className="text-xs font-bold uppercase tracking-wider">{t}</span>
+                            <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", color: "var(--mid)" }}>
+                              {count} — {pct}%
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </>
-        )}
+              </div>
+            )}
           </>
         )}
 
-        {/* Analytics Tab */}
+        {/* ── ANALYTICS TAB ── */}
         {activeTab === "analytics" && (
-          <>
-            <div className="mb-8">
-              <h1 className="text-2xl font-bold text-[#0a0a0a]">Analytics</h1>
-              <p className="text-[#525252] mt-1">Suivez les statistiques de vos QR codes</p>
-            </div>
-
+          <div className="py-4">
             {qrCodes.length === 0 ? (
-              <div className="bento-card p-12 text-center">
-                <svg
-                  className="w-16 h-16 mx-auto text-[#d4d4d4] mb-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                  />
-                </svg>
-                <h2 className="text-xl font-semibold text-[#0a0a0a] mb-2">
-                  Aucun QR code
-                </h2>
-                <p className="text-[#525252] mb-6">
-                  Créez votre premier QR code pour commencer à suivre les statistiques.
+              <div className="py-20 text-center" style={{ border: "var(--rule)", background: "var(--card)" }}>
+                <p className="text-sm mb-6" style={{ color: "var(--mid)" }}>
+                  Créez un QR code pour voir les analytics.
                 </p>
-                <button
-                  onClick={() => router.push("/qrcode/new")}
-                  className="btn btn-primary"
-                >
-                  Créer un QR code
+                <button onClick={() => router.push("/qrcode/new")} className="btn btn-primary">
+                  Créer un QR Code
                 </button>
               </div>
             ) : (
               <>
-                {/* QR Code Selector */}
-                <div className="bento-card p-6 mb-6">
-                  <label
-                    htmlFor="qrcode-select"
-                    className="block text-sm font-medium text-[#0a0a0a] mb-2"
-                  >
+                <div className="mb-4 p-4" style={{ border: "var(--rule)", background: "var(--card)" }}>
+                  <label className="block text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "var(--mid)" }}>
                     Sélectionner un QR code
                   </label>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-3">
                     <select
-                      id="qrcode-select"
                       value={selectedQRCodeForAnalytics}
                       onChange={(e) => setSelectedQRCodeForAnalytics(e.target.value)}
                       className="input flex-1"
@@ -550,53 +627,39 @@ export default function DashboardPage() {
                       {qrCodes.map((qr) => (
                         <option key={qr.id} value={qr.id}>
                           {qr.name} ({qr.type === "url" ? "URL" : "Texte"})
-                          {qr.isPublic ? " - Public" : ""}
+                          {qr.isPublic ? " — Public" : ""}
                         </option>
                       ))}
                     </select>
                     {selectedQRForAnalytics && (
-                      <button
-                        onClick={() => router.push(`/qrcode/${selectedQRForAnalytics.id}`)}
-                        className="btn btn-secondary"
-                      >
+                      <button onClick={() => router.push(`/qrcode/${selectedQRForAnalytics.id}`)} className="btn btn-secondary">
                         Modifier
                       </button>
                     )}
                   </div>
                   {selectedQRForAnalytics && !selectedQRForAnalytics.isPublic && (
-                    <p className="mt-3 text-sm text-amber-600 flex items-center gap-2">
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                        />
-                      </svg>
-                      Ce QR code n&apos;est pas partagé publiquement. Activez le partage pour tracker les scans.
+                    <p className="mt-2 text-xs font-bold" style={{ color: "var(--red)" }}>
+                      Ce QR code n&apos;est pas partagé — activez le partage pour tracker les scans.
                     </p>
                   )}
                 </div>
-
-                {/* Analytics Component */}
-                {selectedQRCodeForAnalytics && (
-                  <Analytics qrCodeId={selectedQRCodeForAnalytics} />
-                )}
+                {selectedQRCodeForAnalytics && <Analytics qrCodeId={selectedQRCodeForAnalytics} />}
               </>
             )}
-          </>
+          </div>
         )}
 
-        {/* Map Tab */}
+        {/* ── MAP TAB ── */}
         {activeTab === "map" && (
-          <MapView qrCodes={qrCodes.map(qr => ({ id: qr.id, name: qr.name, type: qr.type, foregroundColor: qr.foregroundColor }))} />
+          <div className="py-4">
+            <MapView qrCodes={qrCodes.map((qr) => ({ id: qr.id, name: qr.name, type: qr.type, foregroundColor: qr.foregroundColor }))} />
+          </div>
         )}
-      </main>
+      </div>
+
+      <style>{`
+        .qr-row:hover .qr-actions { opacity: 1 !important; }
+      `}</style>
     </div>
   );
 }
