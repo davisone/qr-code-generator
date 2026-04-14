@@ -88,3 +88,21 @@ model Scan {
   @@index([qrCodeId])
   @@index([scannedAt])
 }
+
+model VerificationToken {
+  id        String   @id @default(cuid())
+  email     String
+  token     String   @unique
+  expiresAt DateTime
+
+  @@index([email])
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  email     String
+  token     String   @unique
+  expiresAt DateTime
+
+  @@index([email])
+}
