@@ -8,7 +8,7 @@ const FROM = "QRaft <noreply@useqraft.com>";
 export async function sendVerificationEmail(email: string, token: string, locale: string = "fr") {
   const url = `${BASE_URL}/${locale}/verify-email?token=${token}`;
 
-  await resend.emails.send({
+  const { error } = await resend.emails.send({
     from: FROM,
     to: email,
     subject: "Vérifiez votre adresse email — QRaft",
@@ -26,12 +26,13 @@ export async function sendVerificationEmail(email: string, token: string, locale
       </div>
     `,
   });
+  if (error) throw new Error(`Resend sendVerificationEmail: ${error.message}`);
 }
 
 export async function sendPasswordResetEmail(email: string, token: string, locale: string = "fr") {
   const url = `${BASE_URL}/${locale}/reset-password?token=${token}`;
 
-  await resend.emails.send({
+  const { error } = await resend.emails.send({
     from: FROM,
     to: email,
     subject: "Réinitialisation de mot de passe — QRaft",
@@ -49,4 +50,5 @@ export async function sendPasswordResetEmail(email: string, token: string, local
       </div>
     `,
   });
+  if (error) throw new Error(`Resend sendPasswordResetEmail: ${error.message}`);
 }
