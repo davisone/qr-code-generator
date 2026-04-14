@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useState, Suspense } from "react";
 import { Link, useRouter as useIntlRouter } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 const labelStyle: React.CSSProperties = {
   display: "block",
@@ -25,8 +25,13 @@ function LoginForm() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [oauthLoading, setOauthLoading] = useState<string | null>(null);
+  const [resendLoading, setResendLoading] = useState(false);
+  const [resendSent, setResendSent] = useState(false);
+  const locale = useLocale();
 
   const registered = searchParams.get("registered");
+  const verifyPending = searchParams.get("verify") === "pending";
+  const pendingEmail = searchParams.get("email") ?? "";
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -38,12 +43,28 @@ function LoginForm() {
       return;
     }
     const result = await signIn("credentials", { email, password, action: "login", redirect: false });
+    if (result?.error === "email_not_verified") {
+      setError(t("email_not_verified_error"));
+      setLoading(false);
+      return;
+    }
     if (result?.error) {
       setError(result.error);
       setLoading(false);
     } else {
       router.push("/dashboard");
     }
+  }
+
+  async function handleResend() {
+    setResendLoading(true);
+    await fetch("/api/auth/resend-verification", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: pendingEmail, locale }),
+    });
+    setResendLoading(false);
+    setResendSent(true);
   }
 
   async function handleOAuthSignIn(provider: "google" | "github") {
@@ -98,6 +119,18 @@ function LoginForm() {
                 style={{ background: "rgba(212,41,15,0.06)", border: "1px solid var(--red)", color: "var(--red)" }}
               >
                 {t("account_created")}
+              </div>
+            )}
+
+            {verifyPending && (
+              <div className="mb-4 p-3 text-sm" style={{ background: "rgba(240,181,0,0.08)", border: "1px solid var(--yellow)", color: "var(--ink)" }}>
+                {t("verify_email_pending")}
+                {pendingEmail && !resendSent && (
+                  <button onClick={handleResend} disabled={resendLoading} style={{ display: "block", marginTop: "0.5rem", fontSize: "0.7rem", textDecoration: "underline", background: "none", border: "none", cursor: "pointer", color: "var(--ink)", padding: 0 }}>
+                    {resendLoading ? t("sending") : t("resend_verification")}
+                  </button>
+                )}
+                {resendSent && <span style={{ display: "block", marginTop: "0.5rem", color: "#10b981" }}>{t("verification_sent")}</span>}
               </div>
             )}
 
@@ -170,6 +203,11 @@ function LoginForm() {
               <div>
                 <label htmlFor="password" style={labelStyle}>{t("password")}</label>
                 <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input" placeholder={t("password_placeholder")} required />
+              </div>
+              <div style={{ textAlign: "right", marginTop: "-0.5rem" }}>
+                <Link href="/forgot-password" style={{ fontSize: "0.7rem", color: "var(--mid)", textDecoration: "underline" }}>
+                  {t("forgot_password")}
+                </Link>
               </div>
               <button type="submit" disabled={loading} className="btn btn-primary w-full" style={{ marginTop: "0.5rem" }}>
                 {loading ? t("login_loading") : t("login_button")}
