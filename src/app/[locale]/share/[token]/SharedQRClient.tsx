@@ -23,7 +23,6 @@ export function SharedQRClient({ qrCode }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const hasTracked = useRef(false);
 
-  // Suivi du scan au chargement
   useEffect(() => {
     if (!hasTracked.current) {
       hasTracked.current = true;
@@ -42,10 +41,7 @@ export function SharedQRClient({ qrCode }: Props) {
     await QRCode.toCanvas(canvas, qrCode.content || "https://example.com", {
       width: 320,
       margin: 2,
-      color: {
-        dark: qrCode.foregroundColor,
-        light: qrCode.backgroundColor,
-      },
+      color: { dark: qrCode.foregroundColor, light: qrCode.backgroundColor },
       errorCorrectionLevel: qrCode.errorCorrection as "L" | "M" | "Q" | "H",
     });
 
@@ -69,19 +65,14 @@ export function SharedQRClient({ qrCode }: Props) {
     }
   }, [qrCode]);
 
-  useEffect(() => {
-    renderQR();
-  }, [renderQR]);
+  useEffect(() => { renderQR(); }, [renderQR]);
 
   async function handleDownload() {
     const canvas = document.createElement("canvas");
     await QRCode.toCanvas(canvas, qrCode.content, {
       width: qrCode.size,
       margin: 2,
-      color: {
-        dark: qrCode.foregroundColor,
-        light: qrCode.backgroundColor,
-      },
+      color: { dark: qrCode.foregroundColor, light: qrCode.backgroundColor },
       errorCorrectionLevel: qrCode.errorCorrection as "L" | "M" | "Q" | "H",
     });
 
@@ -115,27 +106,45 @@ export function SharedQRClient({ qrCode }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-[#fafafa] flex items-center justify-center p-4">
-      <div className="bento-card p-8 max-w-md w-full text-center">
-        <h1 className="text-2xl font-bold text-[#0a0a0a] mb-1">{qrCode.name}</h1>
-        <span className="badge badge-secondary mb-4">{qrCode.type}</span>
-
-        <div className="flex justify-center p-4 bg-[#f5f5f5] rounded-xl mb-4">
-          <canvas ref={canvasRef} className="rounded-lg" />
+    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: "var(--bg)" }}>
+      <div style={{ border: "var(--rule)", background: "var(--card)", width: "100%", maxWidth: 420 }}>
+        {/* Header */}
+        <div style={{ background: "var(--ink)", padding: "1rem 1.5rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <span style={{ fontFamily: "var(--font-display, cursive)", fontSize: "1.6rem", color: "var(--bg)", letterSpacing: "0.06em" }}>
+            QRaft
+          </span>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", color: "rgba(240,235,225,0.4)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+            {qrCode.type}
+          </span>
         </div>
 
-        <p className="text-sm text-[#525252] mb-6 truncate">{qrCode.content}</p>
+        <div style={{ padding: "1.5rem", textAlign: "center" }}>
+          <h1 style={{ fontFamily: "var(--font-display, cursive)", fontSize: "2rem", letterSpacing: "0.04em", color: "var(--ink)", lineHeight: 1, marginBottom: "1.5rem" }}>
+            {qrCode.name}
+          </h1>
 
-        <button onClick={handleDownload} className="btn btn-primary w-full">
-          Télécharger le QR Code
-        </button>
+          <div style={{ background: "white", padding: "1.5rem", border: "var(--rule-thin)", display: "inline-block", marginBottom: "1rem" }}>
+            <canvas ref={canvasRef} />
+          </div>
 
-        <p className="mt-4 text-xs text-[#a3a3a3]">
-          Généré avec{" "}
-          <a href="https://qr-aft.vercel.app" className="underline">
-            QRaft
-          </a>
-        </p>
+          <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", color: "var(--mid)", marginBottom: "1.5rem", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            {qrCode.content}
+          </p>
+
+          <button
+            onClick={handleDownload}
+            className="btn btn-primary w-full"
+            style={{ marginBottom: "1rem" }}
+          >
+            ↓ PNG
+          </button>
+
+          <p style={{ fontSize: "0.65rem", color: "var(--light)", fontFamily: "var(--font-sans)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            <a href="https://www.useqraft.com" style={{ color: "inherit", textDecoration: "underline" }}>
+              useqraft.com
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );
