@@ -39,6 +39,20 @@ export default function Navbar() {
             >
               {session?.user?.name || session?.user?.email}
             </span>
+            <Link
+              href="/profile"
+              className="hidden sm:flex items-center px-4 text-xs uppercase tracking-widest font-bold border-l transition-colors"
+              style={{
+                color: "rgba(240,235,225,0.45)",
+                borderColor: "rgba(255,255,255,0.08)",
+                fontFamily: "var(--font-sans, sans-serif)",
+                textDecoration: "none",
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = "#f0ebe1")}
+              onMouseLeave={e => (e.currentTarget.style.color = "rgba(240,235,225,0.45)")}
+            >
+              {t("profile")}
+            </Link>
             <button
               onClick={() => signOut({ callbackUrl: "/login" })}
               className="flex items-center px-5 text-xs font-bold uppercase tracking-widest border-l transition-colors"
