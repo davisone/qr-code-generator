@@ -87,7 +87,9 @@ export function buildContent(type: QRType, fields: Record<string, string>): stri
     case "social":
       return fields.url || "";
 
-    default:
-      return "";
+    default: {
+      const _exhaustive: never = type;
+      return _exhaustive;
+    }
   }
 }
