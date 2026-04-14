@@ -65,7 +65,7 @@ export default function RegisterPage() {
       setError(result.error);
       setLoading(false);
     } else {
-      router.push("/login?registered=true");
+      router.push(`/login?verify=pending&email=${encodeURIComponent(email)}`);
     }
   }
 

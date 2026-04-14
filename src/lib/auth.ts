@@ -44,6 +44,15 @@ export const authOptions: NextAuthOptions = {
           const newUser = await prisma.user.create({
             data: { email, name, password: hashedPassword },
           });
+
+          // Envoyer email de vérification
+          const { randomUUID } = await import("crypto");
+          const { sendVerificationEmail } = await import("./email");
+          const verificationToken = randomUUID();
+          const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
+          await prisma.verificationToken.create({ data: { email, token: verificationToken, expiresAt } });
+          await sendVerificationEmail(email, verificationToken, "fr");
+
           return { id: newUser.id, email: newUser.email, name: newUser.name };
         }
 
@@ -56,6 +65,10 @@ export const authOptions: NextAuthOptions = {
         const isValid = await bcrypt.compare(password, user.password);
         if (!isValid) {
           throw new Error("Email ou mot de passe incorrect");
+        }
+
+        if (!user.emailVerified) {
+          throw new Error("email_not_verified");
         }
 
         return { id: user.id, email: user.email, name: user.name };
