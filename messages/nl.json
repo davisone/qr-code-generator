@@ -1,0 +1,58 @@
+{
+  "nav": { "login": "Inloggen", "start": "Beginnen", "logout": "Uitloggen" },
+  "home": {
+    "badge": "100% Gratis — Geen creditcard nodig",
+    "hero_title_1": "Maak", "hero_title_2": "QR-codes", "hero_title_3": "in enkele", "hero_title_4": "seconden",
+    "hero_desc": "Genereer, personaliseer en deel uw QR-codes. Eenvoudig, snel en volledig gratis.",
+    "cta_primary": "Mijn eerste QR maken →", "cta_login": "Inloggen", "preview_label": "Voorbeeld",
+    "stat_unlimited": "Onbeperkte QR-codes", "stat_formats": "Exportformaten", "stat_free": "Gratis",
+    "features_label": "Functies", "features_title": "Alles wat u nodig heeft",
+    "feature_colors_title": "Kleurpersonalisatie", "feature_colors_desc": "Kies de kleuren van de QR-code en achtergrond passend bij uw visuele identiteit.",
+    "feature_logo_title": "Logo toevoegen", "feature_logo_desc": "Integreer uw logo in het midden van de QR-code. Foutcorrectie garandeert leesbaarheid.",
+    "feature_export_title": "Exporteer PNG / JPG / PDF", "feature_export_desc": "Download in hoge kwaliteit in het juiste formaat: web, druk of vector.",
+    "feature_share_title": "Openbaar delen", "feature_share_desc": "Genereer een unieke deellink. Geen account vereist aan de lezerskant.",
+    "feature_stats_title": "Scanstatistieken", "feature_stats_desc": "Volg scans in realtime: apparaat, browser, OS en trends.",
+    "feature_zip_title": "Bulk ZIP-export", "feature_zip_desc": "Download alle geselecteerde QR-codes in één ZIP-archief.",
+    "how_label": "Eenvoudig", "how_title": "Hoe maak je een QR-code?",
+    "step1_num": "01", "step1_title": "Maak uw account", "step1_desc": "Gratis registratie in enkele seconden. Geen creditcard, geen verplichtingen.",
+    "step2_num": "02", "step2_title": "Personaliseer uw QR", "step2_desc": "Voer URL of tekst in, kies kleuren, voeg logo toe. Het voorbeeld wordt in realtime bijgewerkt.",
+    "step3_num": "03", "step3_title": "Exporteer en volg", "step3_desc": "Download als PNG, JPEG of PDF. Deel via publieke link en analyseer elke scan.",
+    "faq_label": "FAQ", "faq_title": "Veelgestelde vragen",
+    "faq_1_q": "Is QRaft echt gratis?", "faq_1_a": "Ja, QRaft is 100% gratis. U kunt onbeperkte QR-codes maken en exporteren als PNG, JPEG of PDF zonder kosten.",
+    "faq_2_q": "Kan ik mijn logo toevoegen?", "faq_2_a": "Ja. QRaft laat u uw logo integreren in het midden van de QR-code. Het blijft leesbaar dankzij hoge foutcorrectie.",
+    "faq_3_q": "Welke exportformaten zijn beschikbaar?", "faq_3_a": "QRaft biedt PNG voor web, JPEG voor standaarddruk en vector-PDF voor perfecte kwaliteit.",
+    "faq_4_q": "Kan ik scans volgen?", "faq_4_a": "Ja. Volledige statistieken: totaal scans, trends, apparaat, browser, OS en geografische kaart.",
+    "cta_title_1": "Klaar om uw", "cta_title_2": "eerste QR-code te maken?", "cta_button": "Mijn gratis account maken →"
+  },
+  "auth": {
+    "back": "← Terug", "login_subtitle": "Inloggen", "register_subtitle": "Account aanmaken",
+    "google": "Google", "github": "GitHub", "connecting": "Verbinden...", "registering": "Aanmaken...", "or": "of",
+    "email": "E-mail", "password": "Wachtwoord", "password_confirm": "Wachtwoord bevestigen",
+    "name": "Naam", "name_placeholder": "Uw naam", "email_placeholder": "u@voorbeeld.nl", "password_placeholder": "Min. 6 tekens",
+    "login_button": "Inloggen", "login_loading": "Inloggen...", "register_button": "Account aanmaken", "register_loading": "Aanmaken...",
+    "no_account": "Nog geen account?", "create_account": "Account aanmaken", "has_account": "Al een account?", "sign_in": "Inloggen",
+    "account_created": "Account aangemaakt. Log in.", "fill_fields": "Vul alle velden in",
+    "password_too_short": "Wachtwoord moet minimaal 6 tekens bevatten", "passwords_mismatch": "Wachtwoorden komen niet overeen"
+  },
+  "dashboard": {
+    "title": "Mijn QR-codes", "new_qr": "Nieuwe QR", "filter_all": "Alle", "filter_url": "URL", "filter_text": "Tekst", "filter_favorites": "Favorieten",
+    "search_placeholder": "Zoeken...", "tab_qrcodes": "QR-codes", "tab_analytics": "Analyse", "tab_map": "Kaart",
+    "empty_title": "Geen QR-codes", "empty_desc": "Maak uw eerste QR-code om te beginnen.", "empty_cta": "QR-code maken",
+    "edit": "Bewerken", "export": "Export", "copy": "Kopiëren", "delete": "Verwijderen", "copied": "Gekopieerd!", "scans": "scans",
+    "sidebar_count": "QR-codes", "sidebar_quick": "Snelle acties", "sidebar_url": "URL", "sidebar_text": "Tekst",
+    "delete_confirm": "Deze QR-code verwijderen?", "select_all": "Alles selecteren", "export_zip": "ZIP exporteren", "selected": "geselecteerd"
+  },
+  "qrcode": {
+    "back": "← Terug", "save": "Opslaan", "saving": "Opslaan...", "return_dashboard": "Terug naar dashboard",
+    "info_title": "Informatie", "name_label": "QR-code naam", "name_placeholder": "Bijv: Restaurantmenu",
+    "type_label": "Type", "type_url": "URL", "type_text": "Tekst", "content_label_url": "URL", "content_label_text": "Tekst",
+    "content_placeholder_url": "https://voorbeeld.nl", "content_placeholder_text": "Uw tekst...",
+    "templates_title": "Sjablonen", "custom_title": "Aanpassing", "fg_color": "Hoofdkleur", "bg_color": "Achtergrond",
+    "size_label": "Grootte", "correction_label": "Foutcorrectie", "logo_title": "Logo",
+    "logo_add": "Logo toevoegen", "logo_remove": "Verwijderen", "logo_hint": "PNG of SVG aanbevolen",
+    "preview_title": "Voorbeeld", "export_title": "Export", "share_title": "Delen",
+    "share_enable": "Openbaar delen inschakelen", "share_link": "Deellink", "share_copy": "Link kopiëren", "share_copied": "Link gekopieerd!",
+    "favorite_add": "Toevoegen aan favorieten", "favorite_remove": "Verwijderen uit favorieten"
+  },
+  "footer": { "rights": "Alle rechten voorbehouden.", "powered_by": "Aangedreven door", "google_review": "Google-recensie", "legal": "Juridische kennisgeving" }
+}

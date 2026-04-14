@@ -1,0 +1,58 @@
+{
+  "nav": { "login": "Iniciar sesión", "start": "Comenzar", "logout": "Cerrar sesión" },
+  "home": {
+    "badge": "100% Gratis — Sin tarjeta de crédito",
+    "hero_title_1": "Crea", "hero_title_2": "códigos QR", "hero_title_3": "en pocos", "hero_title_4": "segundos",
+    "hero_desc": "Genera, personaliza y comparte tus códigos QR. Sencillo, rápido y completamente gratis.",
+    "cta_primary": "Crear mi primer QR →", "cta_login": "Iniciar sesión", "preview_label": "Vista previa",
+    "stat_unlimited": "Códigos QR ilimitados", "stat_formats": "Formatos de exportación", "stat_free": "Gratis",
+    "features_label": "Funcionalidades", "features_title": "Todo lo que necesitas",
+    "feature_colors_title": "Personalización de colores", "feature_colors_desc": "Elige los colores del código QR y del fondo para que vayan con tu identidad visual.",
+    "feature_logo_title": "Agregar logotipo", "feature_logo_desc": "Integra tu logotipo al centro del código QR. La corrección de errores garantiza su lectura.",
+    "feature_export_title": "Exportar PNG / JPG / PDF", "feature_export_desc": "Descarga en alta calidad en el formato que necesites: web, impresión o vectorial.",
+    "feature_share_title": "Compartir públicamente", "feature_share_desc": "Genera un enlace único para compartir. Sin necesidad de cuenta del lado del lector.",
+    "feature_stats_title": "Estadísticas de escaneo", "feature_stats_desc": "Monitorea los escaneos en tiempo real: dispositivo, navegador, SO y tendencias.",
+    "feature_zip_title": "Exportación masiva ZIP", "feature_zip_desc": "Descarga todos los códigos QR seleccionados en un solo archivo ZIP.",
+    "how_label": "Sencillo", "how_title": "¿Cómo crear un código QR?",
+    "step1_num": "01", "step1_title": "Crea tu cuenta", "step1_desc": "Registro gratuito en segundos. Sin tarjeta de crédito, sin compromisos.",
+    "step2_num": "02", "step2_title": "Personaliza tu QR", "step2_desc": "Ingresa tu URL o texto, elige tus colores, agrega tu logo. La vista previa se actualiza al instante.",
+    "step3_num": "03", "step3_title": "Exporta y monitorea", "step3_desc": "Descarga en PNG, JPEG o PDF. Comparte por enlace público y analiza cada escaneo.",
+    "faq_label": "FAQ", "faq_title": "Preguntas frecuentes",
+    "faq_1_q": "¿QRaft es realmente gratis?", "faq_1_a": "Sí, QRaft es 100% gratis. Puedes crear códigos QR ilimitados y exportarlos en PNG, JPEG o PDF sin ningún costo.",
+    "faq_2_q": "¿Puedo agregar mi logo?", "faq_2_a": "Sí. QRaft te permite integrar tu logo al centro del código QR. Sigue siendo legible gracias al alto nivel de corrección de errores.",
+    "faq_3_q": "¿Qué formatos de exportación hay?", "faq_3_a": "QRaft ofrece PNG para la web, JPEG para impresión estándar y PDF vectorial para calidad perfecta.",
+    "faq_4_q": "¿Puedo monitorear los escaneos?", "faq_4_a": "Sí. Estadísticas completas: total de escaneos, tendencias, dispositivo, navegador, SO y mapa geográfico.",
+    "cta_title_1": "¿Listo para crear tu", "cta_title_2": "primer código QR?", "cta_button": "Crear mi cuenta gratis →"
+  },
+  "auth": {
+    "back": "← Regresar", "login_subtitle": "Iniciar sesión", "register_subtitle": "Crear una cuenta",
+    "google": "Google", "github": "GitHub", "connecting": "Conectando...", "registering": "Creando...", "or": "o",
+    "email": "Correo", "password": "Contraseña", "password_confirm": "Confirmar contraseña",
+    "name": "Nombre", "name_placeholder": "Tu nombre", "email_placeholder": "tu@ejemplo.com.mx", "password_placeholder": "Mín. 6 caracteres",
+    "login_button": "Iniciar sesión", "login_loading": "Iniciando...", "register_button": "Crear mi cuenta", "register_loading": "Creando...",
+    "no_account": "¿No tienes cuenta?", "create_account": "Crear una cuenta", "has_account": "¿Ya tienes cuenta?", "sign_in": "Iniciar sesión",
+    "account_created": "Cuenta creada. Por favor inicia sesión.", "fill_fields": "Por favor completa todos los campos",
+    "password_too_short": "La contraseña debe tener al menos 6 caracteres", "passwords_mismatch": "Las contraseñas no coinciden"
+  },
+  "dashboard": {
+    "title": "Mis códigos QR", "new_qr": "Nuevo QR", "filter_all": "Todos", "filter_url": "URL", "filter_text": "Texto", "filter_favorites": "Favoritos",
+    "search_placeholder": "Buscar...", "tab_qrcodes": "Códigos QR", "tab_analytics": "Analíticas", "tab_map": "Mapa",
+    "empty_title": "Sin códigos QR", "empty_desc": "Crea tu primer código QR para comenzar.", "empty_cta": "Crear un código QR",
+    "edit": "Editar", "export": "Exportar", "copy": "Copiar", "delete": "Borrar", "copied": "¡Copiado!", "scans": "escaneos",
+    "sidebar_count": "Códigos QR", "sidebar_quick": "Acciones rápidas", "sidebar_url": "URL", "sidebar_text": "Texto",
+    "delete_confirm": "¿Borrar este código QR?", "select_all": "Seleccionar todo", "export_zip": "Exportar ZIP", "selected": "seleccionado(s)"
+  },
+  "qrcode": {
+    "back": "← Regresar", "save": "Guardar", "saving": "Guardando...", "return_dashboard": "Regresar al panel",
+    "info_title": "Información", "name_label": "Nombre del código QR", "name_placeholder": "Ej: Menú del restaurante",
+    "type_label": "Tipo", "type_url": "URL", "type_text": "Texto", "content_label_url": "URL", "content_label_text": "Texto",
+    "content_placeholder_url": "https://ejemplo.com.mx", "content_placeholder_text": "Tu texto...",
+    "templates_title": "Plantillas", "custom_title": "Personalización", "fg_color": "Color principal", "bg_color": "Fondo",
+    "size_label": "Tamaño", "correction_label": "Corrección de errores", "logo_title": "Logotipo",
+    "logo_add": "Agregar logotipo", "logo_remove": "Eliminar", "logo_hint": "Se recomienda PNG o SVG",
+    "preview_title": "Vista previa", "export_title": "Exportar", "share_title": "Compartir",
+    "share_enable": "Activar compartir público", "share_link": "Enlace para compartir", "share_copy": "Copiar enlace", "share_copied": "¡Enlace copiado!",
+    "favorite_add": "Agregar a favoritos", "favorite_remove": "Quitar de favoritos"
+  },
+  "footer": { "rights": "Todos los derechos reservados.", "powered_by": "Desarrollado por", "google_review": "Reseña de Google", "legal": "Aviso legal" }
+}
