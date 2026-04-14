@@ -1,7 +1,6 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { useEffect, useState, useCallback } from "react";
 import Navbar from "@/components/Navbar";
 import Analytics from "@/components/Analytics";
@@ -9,6 +8,8 @@ import QRCode from "qrcode";
 import JSZip from "jszip";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { useRouter } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 const MapView = dynamic(() => import("@/components/MapView"), { ssr: false });
 
@@ -31,6 +32,7 @@ type Tab = "qrcodes" | "analytics" | "map";
 export default function DashboardPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const t = useTranslations("dashboard");
   const [activeTab, setActiveTab] = useState<Tab>("qrcodes");
   const [qrCodes, setQrCodes] = useState<QRCodeItem[]>([]);
   const [previews, setPreviews] = useState<Record<string, string>>({});
@@ -103,7 +105,7 @@ export default function DashboardPage() {
   });
 
   async function handleDelete(id: string) {
-    if (!confirm("Supprimer ce QR code ?")) return;
+    if (!confirm(t("delete_confirm"))) return;
     try {
       const res = await fetch(`/api/qrcodes/${id}`, { method: "DELETE" });
       if (res.ok) {
@@ -115,7 +117,7 @@ export default function DashboardPage() {
         });
       }
     } catch {
-      alert("Erreur lors de la suppression");
+      // silently fail
     }
   }
 
@@ -132,7 +134,7 @@ export default function DashboardPage() {
       link.href = dataUrl;
       link.click();
     } catch {
-      alert("Erreur lors du téléchargement");
+      // silently fail
     }
   }
 
@@ -146,7 +148,7 @@ export default function DashboardPage() {
         );
       }
     } catch {
-      alert("Erreur lors du changement de favori");
+      // silently fail
     }
   }
 
@@ -162,7 +164,7 @@ export default function DashboardPage() {
         setQrCodes((prev) => [newQR, ...prev]);
       }
     } catch {
-      alert("Erreur lors de la duplication");
+      // silently fail
     }
   }
 
@@ -206,7 +208,7 @@ export default function DashboardPage() {
       link.click();
       URL.revokeObjectURL(link.href);
     } catch {
-      alert("Erreur lors de l'export ZIP");
+      // silently fail
     } finally {
       setExporting(false);
     }
@@ -219,7 +221,7 @@ export default function DashboardPage() {
           className="text-4xl tracking-widest"
           style={{ fontFamily: "var(--font-display, cursive)", color: "var(--mid)", animation: "fadeIn 0.6s ease infinite alternate" }}
         >
-          Chargement...
+          ...
         </div>
       </div>
     );
@@ -229,7 +231,7 @@ export default function DashboardPage() {
 
   const selectedQRForAnalytics = qrCodes.find((qr) => qr.id === selectedQRCodeForAnalytics);
 
-  const tabTitle = activeTab === "qrcodes" ? "Mes QR Codes" : activeTab === "analytics" ? "Analytics" : "Carte";
+  const tabTitle = activeTab === "qrcodes" ? t("tab_qrcodes") : activeTab === "analytics" ? t("tab_analytics") : t("tab_map");
 
   return (
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
@@ -259,7 +261,7 @@ export default function DashboardPage() {
                 className="btn"
                 style={{ background: "var(--ink)", color: "var(--bg)", fontSize: "0.68rem" }}
               >
-                + Nouveau
+                + {t("new_qr")}
               </button>
             )}
           </div>
@@ -270,7 +272,6 @@ export default function DashboardPage() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center flex-wrap">
             <button
               onClick={() => setActiveTab("qrcodes")}
-              className={`filter-strip-btn ${activeTab === "qrcodes" ? "active" : ""}`}
               style={{
                 background: "none",
                 border: "none",
@@ -285,7 +286,7 @@ export default function DashboardPage() {
                 borderRight: "1px solid rgba(255,255,255,0.08)",
               }}
             >
-              QR Codes ({qrCodes.length})
+              {t("tab_qrcodes")} ({qrCodes.length})
             </button>
             <button
               onClick={() => setActiveTab("analytics")}
@@ -303,7 +304,7 @@ export default function DashboardPage() {
                 borderRight: "1px solid rgba(255,255,255,0.08)",
               }}
             >
-              Analytics
+              {t("tab_analytics")}
             </button>
             <button
               onClick={() => setActiveTab("map")}
@@ -321,7 +322,7 @@ export default function DashboardPage() {
                 borderRight: "1px solid rgba(255,255,255,0.08)",
               }}
             >
-              Carte
+              {t("tab_map")}
             </button>
 
             {activeTab === "qrcodes" && qrCodes.length > 0 && (
@@ -345,14 +346,14 @@ export default function DashboardPage() {
                       borderRight: "1px solid rgba(255,255,255,0.06)",
                     }}
                   >
-                    {f === "all" ? "Tous" : f === "url" ? "URL" : f === "text" ? "Texte" : "Favoris"}
+                    {f === "all" ? t("filter_all") : f === "url" ? t("filter_url") : f === "text" ? t("filter_text") : t("filter_favorites")}
                   </button>
                 ))}
                 <input
                   type="text"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Rechercher..."
+                  placeholder={t("search_placeholder")}
                   style={{
                     marginLeft: "auto",
                     marginRight: "0",
@@ -375,13 +376,13 @@ export default function DashboardPage() {
         {selected.size > 0 && (
           <div className="flex items-center gap-3 p-3 mb-4" style={{ background: "var(--card)", border: "var(--rule)" }}>
             <span className="text-xs font-bold uppercase tracking-widest" style={{ fontFamily: "var(--font-sans)" }}>
-              {selected.size} sélectionné{selected.size > 1 ? "s" : ""}
+              {selected.size} {t("selected")}
             </span>
             <button onClick={handleExportZip} disabled={exporting} className="btn btn-sm btn-primary">
-              {exporting ? "Export..." : "Exporter ZIP"}
+              {exporting ? "..." : t("export_zip")}
             </button>
             <button onClick={() => setSelected(new Set())} className="btn btn-sm btn-ghost">
-              Annuler
+              ✕
             </button>
           </div>
         )}
@@ -395,18 +396,18 @@ export default function DashboardPage() {
                   className="text-6xl mb-4 tracking-wider"
                   style={{ fontFamily: "var(--font-display, cursive)", color: "var(--light)" }}
                 >
-                  VIDE
+                  {t("empty_title")}
                 </p>
                 <p className="text-sm mb-6" style={{ color: "var(--mid)" }}>
-                  Aucun QR code pour l&apos;instant.
+                  {t("empty_desc")}
                 </p>
                 <button onClick={() => router.push("/qrcode/new")} className="btn btn-primary">
-                  Créer un QR Code
+                  {t("empty_cta")}
                 </button>
               </div>
             ) : filteredQRCodes.length === 0 ? (
               <div className="py-16 text-center" style={{ border: "var(--rule)", background: "var(--card)" }}>
-                <p className="text-sm" style={{ color: "var(--mid)" }}>Aucun résultat.</p>
+                <p className="text-sm" style={{ color: "var(--mid)" }}>—</p>
               </div>
             ) : (
               <div className="grid gap-0 lg:grid-cols-[1fr_280px] items-start">
@@ -433,13 +434,13 @@ export default function DashboardPage() {
                       onMouseEnter={e => (e.currentTarget.style.color = "#f0ebe1")}
                       onMouseLeave={e => (e.currentTarget.style.color = "rgba(240,235,225,0.5)")}
                     >
-                      {selected.size === filteredQRCodes.length ? "Tout désélectionner" : "Tout sélectionner"}
+                      {t("select_all")}
                     </button>
                     <span
                       className="ml-auto text-xs"
                       style={{ color: "rgba(240,235,225,0.3)", fontFamily: "var(--font-mono)" }}
                     >
-                      {filteredQRCodes.length} résultat{filteredQRCodes.length > 1 ? "s" : ""}
+                      {filteredQRCodes.length}
                     </span>
                   </div>
 
@@ -514,19 +515,19 @@ export default function DashboardPage() {
                         </div>
                       </div>
 
-                      {/* Actions — visibles au hover via CSS qr-row:hover */}
+                      {/* Actions */}
                       <div className="flex flex-col gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity qr-actions">
                         <button onClick={() => router.push(`/qrcode/${qr.id}`)} className="btn btn-sm btn-primary">
-                          Modifier
+                          {t("edit")}
                         </button>
                         <button onClick={() => handleDownload(qr)} className="btn btn-sm btn-ghost">
-                          Export
+                          {t("export")}
                         </button>
                         <button
                           onClick={() => handleDuplicate(qr.id)}
                           className="btn btn-sm btn-ghost"
                         >
-                          Copier
+                          {t("copy")}
                         </button>
                         <button
                           onClick={() => handleDelete(qr.id)}
@@ -544,7 +545,7 @@ export default function DashboardPage() {
                             fontSize: "0.65rem",
                           }}
                         >
-                          Suppr.
+                          {t("delete")}
                         </button>
                       </div>
                     </div>
@@ -554,38 +555,38 @@ export default function DashboardPage() {
                 {/* Sidebar */}
                 <div className="lg:sticky lg:top-16">
                   <div className="side-block">
-                    <div className="side-head"><span>Collection</span></div>
+                    <div className="side-head"><span>{t("sidebar_count")}</span></div>
                     <div className="side-body">
                       <p style={{ fontFamily: "var(--font-display, cursive)", fontSize: "4rem", lineHeight: 1, letterSpacing: "0.02em" }}>
                         {qrCodes.length}
                       </p>
                       <p className="text-xs uppercase tracking-widest mt-1" style={{ color: "var(--mid)" }}>
-                        QR codes créés
+                        {t("tab_qrcodes")}
                       </p>
                     </div>
                   </div>
                   <div className="side-block">
-                    <div className="side-head"><span>Actions</span></div>
+                    <div className="side-head"><span>{t("sidebar_quick")}</span></div>
                     <div className="side-body flex flex-col gap-2">
                       <button onClick={() => router.push("/qrcode/new")} className="btn btn-red w-full">
-                        + Nouveau QR Code
+                        + {t("new_qr")}
                       </button>
                       {selected.size > 0 && (
                         <button onClick={handleExportZip} disabled={exporting} className="btn btn-primary w-full">
-                          {exporting ? "Export..." : `ZIP (${selected.size})`}
+                          {exporting ? "..." : `${t("export_zip")} (${selected.size})`}
                         </button>
                       )}
                     </div>
                   </div>
                   <div className="side-block">
-                    <div className="side-head"><span>Répartition</span></div>
+                    <div className="side-head"><span>—</span></div>
                     <div className="side-body">
-                      {(["url", "text"] as const).map((t) => {
-                        const count = qrCodes.filter((qr) => qr.type === t).length;
+                      {(["url", "text"] as const).map((type) => {
+                        const count = qrCodes.filter((qr) => qr.type === type).length;
                         const pct = qrCodes.length > 0 ? Math.round((count / qrCodes.length) * 100) : 0;
                         return (
-                          <div key={t} className="flex justify-between items-center py-2" style={{ borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
-                            <span className="text-xs font-bold uppercase tracking-wider">{t}</span>
+                          <div key={type} className="flex justify-between items-center py-2" style={{ borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
+                            <span className="text-xs font-bold uppercase tracking-wider">{type === "url" ? t("sidebar_url") : t("sidebar_text")}</span>
                             <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", color: "var(--mid)" }}>
                               {count} — {pct}%
                             </span>
@@ -606,17 +607,17 @@ export default function DashboardPage() {
             {qrCodes.length === 0 ? (
               <div className="py-20 text-center" style={{ border: "var(--rule)", background: "var(--card)" }}>
                 <p className="text-sm mb-6" style={{ color: "var(--mid)" }}>
-                  Créez un QR code pour voir les analytics.
+                  {t("empty_desc")}
                 </p>
                 <button onClick={() => router.push("/qrcode/new")} className="btn btn-primary">
-                  Créer un QR Code
+                  {t("empty_cta")}
                 </button>
               </div>
             ) : (
               <>
                 <div className="mb-4 p-4" style={{ border: "var(--rule)", background: "var(--card)" }}>
                   <label className="block text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "var(--mid)" }}>
-                    Sélectionner un QR code
+                    {t("tab_qrcodes")}
                   </label>
                   <div className="flex items-center gap-3">
                     <select
@@ -626,22 +627,17 @@ export default function DashboardPage() {
                     >
                       {qrCodes.map((qr) => (
                         <option key={qr.id} value={qr.id}>
-                          {qr.name} ({qr.type === "url" ? "URL" : "Texte"})
+                          {qr.name} ({qr.type === "url" ? t("filter_url") : t("filter_text")})
                           {qr.isPublic ? " — Public" : ""}
                         </option>
                       ))}
                     </select>
                     {selectedQRForAnalytics && (
                       <button onClick={() => router.push(`/qrcode/${selectedQRForAnalytics.id}`)} className="btn btn-secondary">
-                        Modifier
+                        {t("edit")}
                       </button>
                     )}
                   </div>
-                  {selectedQRForAnalytics && !selectedQRForAnalytics.isPublic && (
-                    <p className="mt-2 text-xs font-bold" style={{ color: "var(--red)" }}>
-                      Ce QR code n&apos;est pas partagé — activez le partage pour tracker les scans.
-                    </p>
-                  )}
                 </div>
                 {selectedQRCodeForAnalytics && <Analytics qrCodeId={selectedQRCodeForAnalytics} />}
               </>

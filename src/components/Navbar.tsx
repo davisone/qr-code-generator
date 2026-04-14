@@ -1,10 +1,12 @@
 "use client";
 
 import { signOut, useSession } from "next-auth/react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 export default function Navbar() {
   const { data: session } = useSession();
+  const t = useTranslations("nav");
 
   return (
     <nav className="navbar">
@@ -52,7 +54,7 @@ export default function Navbar() {
               onMouseEnter={e => (e.currentTarget.style.color = "#f0ebe1")}
               onMouseLeave={e => (e.currentTarget.style.color = "rgba(240,235,225,0.45)")}
             >
-              Déconnexion
+              {t("logout")}
             </button>
           </div>
         </div>

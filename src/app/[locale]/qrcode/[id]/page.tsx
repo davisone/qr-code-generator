@@ -1,7 +1,7 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { useRouter, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import NextImage from "next/image";
 import { useEffect, useState, useRef, useCallback } from "react";
 import Navbar from "@/components/Navbar";
@@ -9,12 +9,14 @@ import QRCode from "qrcode";
 import { jsPDF } from "jspdf";
 import { styleTemplates } from "@/lib/templates";
 import { generateQRCanvas } from "@/lib/qr-utils";
+import { useRouter } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 const ERROR_LEVELS = [
-  { value: "L", label: "L — Faible (7%)" },
-  { value: "M", label: "M — Moyen (15%)" },
-  { value: "Q", label: "Q — Quartile (25%)" },
-  { value: "H", label: "H — Haut (30%)" },
+  { value: "L", label: "L — 7%" },
+  { value: "M", label: "M — 15%" },
+  { value: "Q", label: "Q — 25%" },
+  { value: "H", label: "H — 30%" },
 ] as const;
 
 const SIZES = [256, 512, 1024] as const;
@@ -23,6 +25,7 @@ export default function QRCodeEditorPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const params = useParams();
+  const t = useTranslations("qrcode");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const logoInputRef = useRef<HTMLInputElement>(null);
   const isNew = params.id === "new";
@@ -107,7 +110,7 @@ export default function QRCodeEditorPage() {
         ctx.fillStyle = "#6b5f52";
         ctx.font = "14px sans-serif";
         ctx.textAlign = "center";
-        ctx.fillText("Contenu invalide", canvas.width / 2, canvas.height / 2);
+        ctx.fillText("—", canvas.width / 2, canvas.height / 2);
       }
     }
   }, [content, foregroundColor, backgroundColor, errorCorrection, logoDataUrl]);
@@ -116,11 +119,11 @@ export default function QRCodeEditorPage() {
 
   function validate(): boolean {
     const newErrors: Record<string, string> = {};
-    if (!name.trim()) newErrors.name = "Le nom est requis";
-    if (!content.trim()) newErrors.content = "Le contenu est requis";
+    if (!name.trim()) newErrors.name = "!";
+    if (!content.trim()) newErrors.content = "!";
     if (type === "url" && content.trim()) {
       try { new URL(content.trim()); }
-      catch { newErrors.content = "URL invalide (ex: https://exemple.com)"; }
+      catch { newErrors.content = "URL"; }
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -137,13 +140,13 @@ export default function QRCodeEditorPage() {
       } else {
         res = await fetch(`/api/qrcodes/${params.id}`, { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
       }
-      if (!res.ok) { const data = await res.json(); throw new Error(data.error || "Erreur serveur"); }
+      if (!res.ok) { const data = await res.json(); throw new Error(data.error || "Error"); }
       const data = await res.json();
       setSaved(true);
       setTimeout(() => setSaved(false), 2000);
       if (isNew) router.replace(`/qrcode/${data.id}`);
-    } catch (err) {
-      alert(err instanceof Error ? err.message : "Erreur lors de l'enregistrement");
+    } catch {
+      // silently fail
     } finally {
       setSaving(false);
     }
@@ -156,12 +159,12 @@ export default function QRCodeEditorPage() {
 
   async function handleExportPNG() {
     try { const d = await getHighQualityDataURL("png"); downloadFile(d, `${name || "qrcode"}.png`); }
-    catch { alert("Erreur lors de l'export PNG"); }
+    catch { /* silently fail */ }
   }
 
   async function handleExportJPG() {
     try { const d = await getHighQualityDataURL("jpeg"); downloadFile(d, `${name || "qrcode"}.jpg`); }
-    catch { alert("Erreur lors de l'export JPG"); }
+    catch { /* silently fail */ }
   }
 
   async function handleExportPDF() {
@@ -179,7 +182,7 @@ export default function QRCodeEditorPage() {
       pdf.setTextColor(128);
       pdf.text(content.trim(), pdfWidth / 2, y + imgSizeMm + 10, { align: "center" });
       pdf.save(`${name || "qrcode"}.pdf`);
-    } catch { alert("Erreur lors de l'export PDF"); }
+    } catch { /* silently fail */ }
   }
 
   function downloadFile(dataUrl: string, filename: string) {
@@ -192,7 +195,7 @@ export default function QRCodeEditorPage() {
   function handleLogoUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
-    if (file.size > 500 * 1024) { alert("Le logo ne doit pas dépasser 500 Ko"); return; }
+    if (file.size > 500 * 1024) return;
     const reader = new FileReader();
     reader.onload = () => setLogoDataUrl(reader.result as string);
     reader.readAsDataURL(file);
@@ -206,7 +209,7 @@ export default function QRCodeEditorPage() {
       const data = await res.json();
       setIsPublic(data.isPublic);
       setShareToken(data.shareToken);
-    } catch { alert("Erreur lors du changement de partage"); }
+    } catch { /* silently fail */ }
   }
 
   function handleCopyShareLink() {
@@ -220,7 +223,7 @@ export default function QRCodeEditorPage() {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: "var(--bg)" }}>
         <div style={{ fontFamily: "var(--font-display, cursive)", fontSize: "2rem", color: "var(--mid)", letterSpacing: "0.06em" }}>
-          Chargement...
+          ...
         </div>
       </div>
     );
@@ -248,14 +251,14 @@ export default function QRCodeEditorPage() {
               ←
             </button>
             <h1 style={{ fontFamily: "var(--font-display, cursive)", fontSize: "clamp(1.8rem, 4vw, 3rem)", color: "white", letterSpacing: "0.04em", lineHeight: 1 }}>
-              {isNew ? "Nouveau QR Code" : "Modifier le QR Code"}
+              QRaft
             </h1>
             <div className="ml-auto flex gap-2">
               <button onClick={handleSave} disabled={saving} className="btn" style={{ background: "var(--ink)", color: "var(--bg)" }}>
-                {saving ? "Enregistrement..." : saved ? "✓ Enregistré" : "Enregistrer"}
+                {saving ? t("saving") : saved ? "✓" : t("save")}
               </button>
               <button onClick={() => router.push("/dashboard")} style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.3)", color: "white", padding: "0.5rem 1rem", cursor: "pointer", fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                Retour
+                {t("return_dashboard")}
               </button>
             </div>
           </div>
@@ -266,31 +269,30 @@ export default function QRCodeEditorPage() {
 
           {/* LEFT */}
           <div style={{ borderRight: "2px solid #1a1410" }}>
-            {/* Informations */}
+            {/* Info */}
             <div style={{ ...sectionStyle, ...sectionPad }}>
-              <h2 style={headingStyle}>Informations</h2>
+              <h2 style={headingStyle}>{t("info_title")}</h2>
               <div className="space-y-4">
                 <div>
-                  <label style={labelStyle}>Nom du QR Code</label>
+                  <label style={labelStyle}>{t("name_label")}</label>
                   <input
                     type="text"
                     value={name}
                     onChange={(e) => { setName(e.target.value); setErrors((p) => ({ ...p, name: "" })); }}
                     className="input w-full"
-                    placeholder="Mon QR Code"
+                    placeholder={t("name_placeholder")}
                     style={errors.name ? { borderColor: "var(--red)" } : {}}
                   />
-                  {errors.name && <p style={{ color: "var(--red)", fontSize: "0.72rem", marginTop: "0.25rem" }}>{errors.name}</p>}
                 </div>
 
                 <div>
-                  <label style={labelStyle}>Type de contenu</label>
+                  <label style={labelStyle}>{t("type_label")}</label>
                   <div className="flex">
-                    {(["url", "text"] as const).map((t, idx) => (
+                    {(["url", "text"] as const).map((tp, idx) => (
                       <button
-                        key={t}
+                        key={tp}
                         type="button"
-                        onClick={() => setType(t)}
+                        onClick={() => setType(tp)}
                         style={{
                           flex: 1,
                           padding: "0.6rem",
@@ -298,31 +300,31 @@ export default function QRCodeEditorPage() {
                           fontWeight: 700,
                           textTransform: "uppercase",
                           letterSpacing: "0.08em",
-                          background: type === t ? "var(--ink)" : "var(--card)",
-                          color: type === t ? "var(--bg)" : "var(--mid)",
+                          background: type === tp ? "var(--ink)" : "var(--card)",
+                          color: type === tp ? "var(--bg)" : "var(--mid)",
                           border: "var(--rule-thin)",
                           marginRight: idx === 0 ? "-1px" : 0,
                           cursor: "pointer",
                           fontFamily: "var(--font-sans)",
                           position: "relative",
-                          zIndex: type === t ? 1 : 0,
+                          zIndex: type === tp ? 1 : 0,
                         }}
                       >
-                        {t === "url" ? "URL" : "Texte"}
+                        {tp === "url" ? t("type_url") : t("type_text")}
                       </button>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <label style={labelStyle}>{type === "url" ? "URL" : "Texte"}</label>
+                  <label style={labelStyle}>{type === "url" ? t("content_label_url") : t("content_label_text")}</label>
                   {type === "url" ? (
                     <input
                       type="url"
                       value={content}
                       onChange={(e) => { setContent(e.target.value); setErrors((p) => ({ ...p, content: "" })); }}
                       className="input w-full"
-                      placeholder="https://exemple.com"
+                      placeholder={t("content_placeholder_url")}
                       style={errors.content ? { borderColor: "var(--red)" } : {}}
                     />
                   ) : (
@@ -331,26 +333,25 @@ export default function QRCodeEditorPage() {
                       onChange={(e) => { setContent(e.target.value); setErrors((p) => ({ ...p, content: "" })); }}
                       rows={3}
                       className="input w-full resize-none"
-                      placeholder="Votre texte..."
+                      placeholder={t("content_placeholder_text")}
                       style={errors.content ? { borderColor: "var(--red)" } : {}}
                     />
                   )}
-                  {errors.content && <p style={{ color: "var(--red)", fontSize: "0.72rem", marginTop: "0.25rem" }}>{errors.content}</p>}
                 </div>
               </div>
             </div>
 
             {/* Templates */}
             <div style={{ ...sectionStyle, ...sectionPad }}>
-              <h2 style={headingStyle}>Templates de style</h2>
+              <h2 style={headingStyle}>{t("templates_title")}</h2>
               <div className="grid grid-cols-4 gap-2">
-                {styleTemplates.map((t) => {
-                  const isActive = foregroundColor === t.foregroundColor && backgroundColor === t.backgroundColor;
+                {styleTemplates.map((tmpl) => {
+                  const isActive = foregroundColor === tmpl.foregroundColor && backgroundColor === tmpl.backgroundColor;
                   return (
                     <button
-                      key={t.id}
+                      key={tmpl.id}
                       type="button"
-                      onClick={() => { setForegroundColor(t.foregroundColor); setBackgroundColor(t.backgroundColor); }}
+                      onClick={() => { setForegroundColor(tmpl.foregroundColor); setBackgroundColor(tmpl.backgroundColor); }}
                       style={{
                         display: "flex",
                         flexDirection: "column",
@@ -363,22 +364,22 @@ export default function QRCodeEditorPage() {
                         transition: "all 0.15s",
                       }}
                     >
-                      <div style={{ width: 32, height: 32, background: `linear-gradient(135deg, ${t.foregroundColor} 50%, ${t.backgroundColor} 50%)`, border: "1px solid rgba(0,0,0,0.1)" }} />
-                      <span style={{ fontSize: "0.58rem", color: "var(--mid)", fontFamily: "var(--font-mono)", textAlign: "center", width: "100%", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{t.name}</span>
+                      <div style={{ width: 32, height: 32, background: `linear-gradient(135deg, ${tmpl.foregroundColor} 50%, ${tmpl.backgroundColor} 50%)`, border: "1px solid rgba(0,0,0,0.1)" }} />
+                      <span style={{ fontSize: "0.58rem", color: "var(--mid)", fontFamily: "var(--font-mono)", textAlign: "center", width: "100%", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{tmpl.name}</span>
                     </button>
                   );
                 })}
               </div>
             </div>
 
-            {/* Personnalisation */}
+            {/* Custom */}
             <div style={{ ...sectionStyle, ...sectionPad }}>
-              <h2 style={headingStyle}>Personnalisation</h2>
+              <h2 style={headingStyle}>{t("custom_title")}</h2>
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   {([
-                    ["Couleur QR", foregroundColor, setForegroundColor],
-                    ["Couleur fond", backgroundColor, setBackgroundColor],
+                    [t("fg_color"), foregroundColor, setForegroundColor],
+                    [t("bg_color"), backgroundColor, setBackgroundColor],
                   ] as [string, string, (v: string) => void][]).map(([lbl, val, setter]) => (
                     <div key={lbl}>
                       <label style={labelStyle}>{lbl}</label>
@@ -402,7 +403,7 @@ export default function QRCodeEditorPage() {
                 </div>
 
                 <div>
-                  <label style={labelStyle}>Taille (px)</label>
+                  <label style={labelStyle}>{t("size_label")} (px)</label>
                   <div className="flex">
                     {SIZES.map((s, idx) => (
                       <button
@@ -433,7 +434,7 @@ export default function QRCodeEditorPage() {
                 </div>
 
                 <div>
-                  <label style={labelStyle}>Correction d&apos;erreur</label>
+                  <label style={labelStyle}>{t("correction_label")}</label>
                   <select
                     value={errorCorrection}
                     onChange={(e) => setErrorCorrection(e.target.value as "L" | "M" | "Q" | "H")}
@@ -447,20 +448,20 @@ export default function QRCodeEditorPage() {
 
             {/* Logo */}
             <div style={sectionPad}>
-              <h2 style={headingStyle}>Logo au centre</h2>
+              <h2 style={headingStyle}>{t("logo_title")}</h2>
               <p style={{ fontSize: "0.72rem", color: "var(--mid)", marginBottom: "0.75rem" }}>
-                Utilisez la correction H pour de meilleurs résultats. Max 500 Ko.
+                {t("logo_hint")}
               </p>
               <input ref={logoInputRef} type="file" accept="image/png,image/jpeg,image/svg+xml" onChange={handleLogoUpload} className="hidden" />
               <div className="flex items-center gap-3">
                 <button type="button" onClick={() => logoInputRef.current?.click()} className="btn btn-secondary">
-                  {logoDataUrl ? "Changer" : "Ajouter un logo"}
+                  {logoDataUrl ? t("logo_add") : t("logo_add")}
                 </button>
                 {logoDataUrl && (
                   <>
                     <NextImage src={logoDataUrl} alt="Logo" width={40} height={40} unoptimized className="object-contain" style={{ border: "var(--rule-thin)" }} />
                     <button type="button" onClick={() => setLogoDataUrl(null)} style={{ color: "var(--red)", background: "none", border: "none", cursor: "pointer", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                      Supprimer
+                      {t("logo_remove")}
                     </button>
                   </>
                 )}
@@ -470,20 +471,20 @@ export default function QRCodeEditorPage() {
 
           {/* RIGHT */}
           <div>
-            {/* Aperçu */}
+            {/* Preview */}
             <div style={{ ...sectionStyle, ...sectionPad }}>
-              <h2 style={headingStyle}>Aperçu en temps réel</h2>
+              <h2 style={headingStyle}>{t("preview_title")}</h2>
               <div className="flex justify-center p-6" style={{ background: "var(--card)" }}>
                 <canvas ref={canvasRef} className="max-w-full" />
               </div>
               <p className="mt-2 text-center" style={{ fontFamily: "var(--font-mono)", fontSize: "0.65rem", color: "var(--mid)" }}>
-                Export : {size} × {size} px
+                {t("export_title")}: {size} × {size} px
               </p>
             </div>
 
             {/* Export */}
             <div style={{ ...sectionStyle, ...sectionPad }}>
-              <h2 style={headingStyle}>Exporter</h2>
+              <h2 style={headingStyle}>{t("export_title")}</h2>
               <div className="flex">
                 {([
                   ["PNG", handleExportPNG, "var(--red)"],
@@ -518,13 +519,10 @@ export default function QRCodeEditorPage() {
               </div>
             </div>
 
-            {/* Partage */}
+            {/* Share */}
             {!isNew && (
               <div style={sectionPad}>
-                <h2 style={headingStyle}>Partage public</h2>
-                <p style={{ fontSize: "0.72rem", color: "var(--mid)", marginBottom: "0.75rem" }}>
-                  Activez le partage pour générer un lien public et tracker les scans.
-                </p>
+                <h2 style={headingStyle}>{t("share_title")}</h2>
                 <div className="flex items-center gap-3 mb-3">
                   <button
                     type="button"
@@ -553,7 +551,7 @@ export default function QRCodeEditorPage() {
                     }} />
                   </button>
                   <span style={{ fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--mid)" }}>
-                    {isPublic ? "Partagé publiquement" : "Non partagé"}
+                    {t("share_enable")}
                   </span>
                 </div>
                 {isPublic && shareToken && (
@@ -566,7 +564,7 @@ export default function QRCodeEditorPage() {
                       style={{ fontFamily: "var(--font-mono)" }}
                     />
                     <button onClick={handleCopyShareLink} className="btn btn-primary btn-sm">
-                      {copiedLink ? "Copié !" : "Copier"}
+                      {copiedLink ? t("share_copied") : t("share_copy")}
                     </button>
                   </div>
                 )}

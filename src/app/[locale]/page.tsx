@@ -1,135 +1,103 @@
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { BASE_URL } from "@/lib/config";
+import { Link } from "@/i18n/navigation";
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebApplication",
-      "@id": `${BASE_URL}/#app`,
-      name: "QRaft",
-      url: BASE_URL,
-      description:
-        "Créez des QR codes personnalisés gratuitement en quelques secondes. Ajoutez votre logo, choisissez vos couleurs, exportez en PNG, JPEG ou PDF.",
-      applicationCategory: "UtilitiesApplication",
-      operatingSystem: "All",
-      browserRequirements: "Requires JavaScript",
-      softwareVersion: "1.0",
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "EUR",
-        availability: "https://schema.org/InStock",
-      },
-      featureList: [
-        "Génération de QR codes illimitée",
-        "Personnalisation des couleurs",
-        "Ajout de logo personnalisé",
-        "Export PNG, JPEG, PDF",
-        "Partage par lien public",
-        "Statistiques de scan en temps réel",
-        "4 niveaux de correction d'erreur",
-      ],
-      screenshot: `${BASE_URL}/QRaft.png`,
-    },
-    {
-      "@type": "Organization",
-      "@id": `${BASE_URL}/#organization`,
-      name: "DVS Web",
-      url: BASE_URL,
-      logo: `${BASE_URL}/QRaft.png`,
-      founder: {
-        "@type": "Person",
-        name: "Evan Davison",
-      },
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${BASE_URL}/#website`,
-      url: BASE_URL,
-      name: "QRaft",
-      description: "Générateur de QR codes gratuit et personnalisable",
-      publisher: {
-        "@id": `${BASE_URL}/#organization`,
-      },
-      inLanguage: "fr-FR",
-    },
-    {
-      "@type": "HowTo",
-      "@id": `${BASE_URL}/#howto`,
-      name: "Comment créer un QR code avec QRaft",
-      description:
-        "Créez un QR code personnalisé en 3 étapes simples, gratuitement et sans logiciel.",
-      totalTime: "PT2M",
-      estimatedCost: {
-        "@type": "MonetaryAmount",
-        currency: "EUR",
-        value: "0",
-      },
-      step: [
-        {
-          "@type": "HowToStep",
-          position: 1,
-          name: "Créez votre compte gratuit",
-          text: "Inscrivez-vous sur QRaft en quelques secondes. Aucune carte bancaire requise, c'est 100% gratuit.",
-          url: `${BASE_URL}/register`,
-        },
-        {
-          "@type": "HowToStep",
-          position: 2,
-          name: "Personnalisez votre QR code",
-          text: "Entrez votre URL ou texte, choisissez vos couleurs, ajoutez votre logo et sélectionnez le niveau de correction d'erreur.",
-          url: `${BASE_URL}/qrcode/new`,
-        },
-        {
-          "@type": "HowToStep",
-          position: 3,
-          name: "Exportez et partagez",
-          text: "Téléchargez votre QR code en PNG, JPEG ou PDF haute qualité. Partagez-le via un lien public et suivez les scans en temps réel.",
-        },
-      ],
-    },
-    {
-      "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: "QRaft est-il vraiment gratuit ?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Oui, QRaft est 100% gratuit. Vous pouvez créer des QR codes illimités, les personnaliser avec vos couleurs et votre logo, et les exporter en PNG, JPEG ou PDF sans aucun frais.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Puis-je ajouter mon logo sur un QR code ?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Oui, QRaft vous permet d'ajouter votre logo au centre de votre QR code pour une personnalisation complète de votre marque.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Quels formats d'export sont disponibles ?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "QRaft propose l'export en 3 formats : PNG pour le web, JPEG pour l'impression standard, et PDF pour une qualité vectorielle.",
-          },
-        },
-        {
-          "@type": "Question",
-          name: "Puis-je suivre les scans de mes QR codes ?",
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: "Oui, QRaft propose des statistiques de scan complètes. Vous pouvez voir le nombre total de scans, leur répartition par appareil, navigateur et système d'exploitation, ainsi que l'évolution dans le temps.",
-          },
-        },
-      ],
-    },
-  ],
+type Props = {
+  params: Promise<{ locale: string }>;
 };
 
-export default function Home() {
+export default async function Home({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "home" });
+  const nav = await getTranslations({ locale, namespace: "nav" });
+
+  // jsonLd is static structured data (not user-supplied) — safe for dangerouslySetInnerHTML
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": `${BASE_URL}/#app`,
+        name: "QRaft",
+        url: BASE_URL,
+        applicationCategory: "UtilitiesApplication",
+        operatingSystem: "All",
+        browserRequirements: "Requires JavaScript",
+        softwareVersion: "1.0",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "EUR",
+          availability: "https://schema.org/InStock",
+        },
+        screenshot: `${BASE_URL}/QRaft.png`,
+      },
+      {
+        "@type": "Organization",
+        "@id": `${BASE_URL}/#organization`,
+        name: "DVS Web",
+        url: BASE_URL,
+        logo: `${BASE_URL}/QRaft.png`,
+        founder: { "@type": "Person", name: "Evan Davison" },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${BASE_URL}/#website`,
+        url: BASE_URL,
+        name: "QRaft",
+        publisher: { "@id": `${BASE_URL}/#organization` },
+        inLanguage: locale,
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: t("faq_1_q"),
+            acceptedAnswer: { "@type": "Answer", text: t("faq_1_a") },
+          },
+          {
+            "@type": "Question",
+            name: t("faq_2_q"),
+            acceptedAnswer: { "@type": "Answer", text: t("faq_2_a") },
+          },
+          {
+            "@type": "Question",
+            name: t("faq_3_q"),
+            acceptedAnswer: { "@type": "Answer", text: t("faq_3_a") },
+          },
+          {
+            "@type": "Question",
+            name: t("faq_4_q"),
+            acceptedAnswer: { "@type": "Answer", text: t("faq_4_a") },
+          },
+        ],
+      },
+    ],
+  };
+
+  const features = [
+    { title: t("feature_colors_title"), desc: t("feature_colors_desc"), icon: "●" },
+    { title: t("feature_logo_title"), desc: t("feature_logo_desc"), icon: "◈" },
+    { title: t("feature_export_title"), desc: t("feature_export_desc"), icon: "↓" },
+    { title: t("feature_share_title"), desc: t("feature_share_desc"), icon: "↗" },
+    { title: t("feature_stats_title"), desc: t("feature_stats_desc"), icon: "◎" },
+    { title: t("feature_zip_title"), desc: t("feature_zip_desc"), icon: "⊞" },
+  ];
+
+  const steps = [
+    { num: t("step1_num"), title: t("step1_title"), desc: t("step1_desc") },
+    { num: t("step2_num"), title: t("step2_title"), desc: t("step2_desc") },
+    { num: t("step3_num"), title: t("step3_title"), desc: t("step3_desc") },
+  ];
+
+  const faqs = [
+    { q: t("faq_1_q"), a: t("faq_1_a") },
+    { q: t("faq_2_q"), a: t("faq_2_a") },
+    { q: t("faq_3_q"), a: t("faq_3_a") },
+    { q: t("faq_4_q"), a: t("faq_4_a") },
+  ];
+
   return (
     <div style={{ background: "var(--bg)", minHeight: "100vh" }}>
       <script
@@ -165,7 +133,7 @@ export default function Home() {
                   textDecoration: "none",
                 }}
               >
-                Connexion
+                {nav("login")}
               </Link>
               <Link
                 href="/register"
@@ -177,7 +145,7 @@ export default function Home() {
                   textDecoration: "none",
                 }}
               >
-                Commencer
+                {nav("start")}
               </Link>
             </div>
           </div>
@@ -196,7 +164,7 @@ export default function Home() {
               letterSpacing: "0.14em",
               color: "rgba(255,255,255,0.85)",
             }}>
-              100% Gratuit — Sans carte bancaire
+              {t("badge")}
             </span>
           </div>
         </div>
@@ -211,9 +179,9 @@ export default function Home() {
                 letterSpacing: "0.03em",
                 color: "var(--ink)",
               }}>
-                Créez des<br />
-                <span style={{ color: "var(--red)" }}>QR codes</span><br />
-                en quelques<br />secondes
+                {t("hero_title_1")}<br />
+                <span style={{ color: "var(--red)" }}>{t("hero_title_2")}</span><br />
+                {t("hero_title_3")}<br />{t("hero_title_4")}
               </h1>
               <p style={{
                 marginTop: "1.5rem",
@@ -223,14 +191,14 @@ export default function Home() {
                 maxWidth: "34ch",
                 lineHeight: 1.6,
               }}>
-                Générez, personnalisez et partagez vos QR codes. Simple, rapide, et totalement gratuit.
+                {t("hero_desc")}
               </p>
               <div className="flex items-center gap-3 mt-8 flex-wrap">
                 <Link href="/register" className="btn btn-primary btn-lg">
-                  Créer mon premier QR →
+                  {t("cta_primary")}
                 </Link>
                 <Link href="/login" className="btn btn-ghost btn-lg">
-                  Connexion
+                  {t("cta_login")}
                 </Link>
               </div>
             </div>
@@ -253,7 +221,7 @@ export default function Home() {
                   letterSpacing: "0.12em",
                   color: "var(--light)",
                 }}>
-                  Aperçu
+                  {t("preview_label")}
                 </div>
                 <div style={{ background: "white", padding: "1.5rem", border: "var(--rule-thin)", marginTop: "0.5rem" }}>
                   <svg viewBox="0 0 100 100" style={{ width: "140px", height: "140px", display: "block" }} aria-hidden="true">
@@ -298,11 +266,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-3">
             {[
-              { value: "∞", label: "QR codes illimités" },
-              { value: "3", label: "Formats d'export" },
-              { value: "100%", label: "Gratuit" },
+              { value: "∞", label: t("stat_unlimited") },
+              { value: "3", label: t("stat_formats") },
+              { value: "100%", label: t("stat_free") },
             ].map((stat, i) => (
-              <div key={stat.label} style={{
+              <div key={i} style={{
                 padding: "1.2rem 2rem",
                 textAlign: "center",
                 borderRight: i < 2 ? "1px solid rgba(255,255,255,0.08)" : "none",
@@ -344,26 +312,19 @@ export default function Home() {
             letterSpacing: "0.14em",
             color: "var(--red)",
             marginBottom: "0.5rem",
-          }}>Fonctionnalités</div>
+          }}>{t("features_label")}</div>
           <h2 style={{
             fontFamily: "var(--font-display, cursive)",
             fontSize: "clamp(2rem, 5vw, 3rem)",
             letterSpacing: "0.04em",
             color: "var(--ink)",
             lineHeight: 1,
-          }}>Tout ce dont vous avez besoin</h2>
+          }}>{t("features_title")}</h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style={{ border: "var(--rule)" }}>
-          {[
-            { title: "Personnalisation couleurs", desc: "Choisissez les couleurs du QR code et du fond pour correspondre à votre identité visuelle.", icon: "●" },
-            { title: "Ajout de logo", desc: "Intégrez votre logo au centre du QR code. La correction d'erreur garantit la lisibilité.", icon: "◈" },
-            { title: "Export PNG / JPG / PDF", desc: "Téléchargez en haute qualité dans le format adapté : web, impression ou vectoriel.", icon: "↓" },
-            { title: "Partage public", desc: "Générez un lien de partage unique. Partagez vos QR codes sans compte requis côté lecteur.", icon: "↗" },
-            { title: "Statistiques de scan", desc: "Suivez les scans en temps réel : appareil, navigateur, OS et évolution dans le temps.", icon: "◎" },
-            { title: "Export en masse ZIP", desc: "Téléchargez tous vos QR codes sélectionnés en une seule archive ZIP.", icon: "⊞" },
-          ].map((f, i) => (
-            <div key={f.title} style={{
+          {features.map((f, i) => (
+            <div key={i} style={{
               padding: "1.5rem",
               background: "var(--card)",
               borderRight: (i + 1) % 3 === 0 ? "none" : "var(--rule)",
@@ -377,21 +338,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Comment ça marche */}
+      {/* How it works */}
       <section style={{ borderTop: "var(--rule)", borderBottom: "var(--rule)", background: "var(--ink)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div style={{ marginBottom: "2.5rem" }}>
-            <div style={{ fontFamily: "var(--font-sans)", fontSize: "0.62rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "var(--yellow)", marginBottom: "0.5rem" }}>Simple</div>
-            <h2 style={{ fontFamily: "var(--font-display, cursive)", fontSize: "clamp(2rem, 5vw, 3rem)", letterSpacing: "0.04em", color: "#f0ebe1", lineHeight: 1 }}>Comment créer un QR code ?</h2>
+            <div style={{ fontFamily: "var(--font-sans)", fontSize: "0.62rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "var(--yellow)", marginBottom: "0.5rem" }}>{t("how_label")}</div>
+            <h2 style={{ fontFamily: "var(--font-display, cursive)", fontSize: "clamp(2rem, 5vw, 3rem)", letterSpacing: "0.04em", color: "#f0ebe1", lineHeight: 1 }}>{t("how_title")}</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
-            {[
-              { num: "01", title: "Créez votre compte", desc: "Inscription gratuite en quelques secondes. Aucune carte bancaire requise, aucun engagement." },
-              { num: "02", title: "Personnalisez votre QR", desc: "Entrez votre URL ou texte, choisissez vos couleurs, ajoutez votre logo. L'aperçu se met à jour en temps réel." },
-              { num: "03", title: "Exportez et suivez", desc: "Téléchargez en PNG, JPEG ou PDF. Partagez par lien public et analysez chaque scan." },
-            ].map((step, i) => (
-              <div key={step.num} style={{ padding: "2rem", borderRight: i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
+            {steps.map((step, i) => (
+              <div key={i} style={{ padding: "2rem", borderRight: i < 2 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
                 <div style={{ fontFamily: "var(--font-display, cursive)", fontSize: "3.5rem", color: "var(--red)", lineHeight: 1, marginBottom: "1rem" }}>{step.num}</div>
                 <h3 style={{ fontFamily: "var(--font-display, cursive)", fontSize: "1.3rem", letterSpacing: "0.04em", color: "#f0ebe1", marginBottom: "0.6rem" }}>{step.title}</h3>
                 <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.82rem", color: "rgba(240,235,225,0.55)", lineHeight: 1.6 }}>{step.desc}</p>
@@ -404,17 +361,12 @@ export default function Home() {
       {/* FAQ */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div style={{ marginBottom: "2rem" }}>
-          <div style={{ fontFamily: "var(--font-sans)", fontSize: "0.62rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "var(--red)", marginBottom: "0.5rem" }}>FAQ</div>
-          <h2 style={{ fontFamily: "var(--font-display, cursive)", fontSize: "clamp(2rem, 5vw, 3rem)", letterSpacing: "0.04em", color: "var(--ink)", lineHeight: 1 }}>Questions fréquentes</h2>
+          <div style={{ fontFamily: "var(--font-sans)", fontSize: "0.62rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "var(--red)", marginBottom: "0.5rem" }}>{t("faq_label")}</div>
+          <h2 style={{ fontFamily: "var(--font-display, cursive)", fontSize: "clamp(2rem, 5vw, 3rem)", letterSpacing: "0.04em", color: "var(--ink)", lineHeight: 1 }}>{t("faq_title")}</h2>
         </div>
 
         <div style={{ border: "var(--rule)" }}>
-          {[
-            { q: "QRaft est-il vraiment gratuit ?", a: "Oui, QRaft est 100% gratuit. Vous pouvez créer des QR codes illimités, les personnaliser avec vos couleurs et votre logo, et les exporter en PNG, JPEG ou PDF — sans aucun frais ni carte bancaire." },
-            { q: "Puis-je ajouter mon logo sur un QR code ?", a: "Oui. QRaft vous permet d'intégrer votre logo au centre de votre QR code pour une personnalisation complète. Le QR reste lisible grâce au niveau de correction d'erreur élevé." },
-            { q: "Quels formats d'export sont disponibles ?", a: "QRaft propose trois formats : PNG pour le web, JPEG pour l'impression standard, et PDF vectoriel pour une qualité parfaite quelle que soit la taille." },
-            { q: "Puis-je suivre les scans de mes QR codes ?", a: "Oui. Chaque QR code dispose de statistiques complètes : nombre total de scans, évolution dans le temps, répartition par appareil, navigateur et système d'exploitation, ainsi qu'une carte géographique." },
-          ].map((item, i) => (
+          {faqs.map((item, i) => (
             <div key={i} className="grid grid-cols-1 md:grid-cols-2" style={{ borderBottom: i < 3 ? "var(--rule)" : "none" }}>
               <div style={{ padding: "1.5rem", borderRight: "var(--rule)", display: "flex", gap: "1rem", alignItems: "flex-start" }}>
                 <span style={{ fontFamily: "var(--font-mono, monospace)", fontSize: "0.7rem", fontWeight: 700, color: "var(--red)", marginTop: "0.15rem", flexShrink: 0 }}>0{i + 1}</span>
@@ -439,7 +391,7 @@ export default function Home() {
             lineHeight: 1,
             marginBottom: "1.5rem",
           }}>
-            Prêt à créer votre<br />premier QR code ?
+            {t("cta_title_1")}<br />{t("cta_title_2")}
           </h2>
           <Link
             href="/register"
@@ -458,11 +410,10 @@ export default function Home() {
               textDecoration: "none",
             }}
           >
-            Créer mon compte gratuit →
+            {t("cta_button")}
           </Link>
         </div>
       </section>
-
     </div>
   );
 }
