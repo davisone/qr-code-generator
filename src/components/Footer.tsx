@@ -1,10 +1,25 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { Link, useRouter, usePathname } from "@/i18n/navigation";
+import { useTranslations, useLocale } from "next-intl";
+import { routing } from "@/i18n/routing";
+
+const LOCALE_LABELS: Record<string, string> = {
+  fr: "FR", en: "EN", es: "ES", de: "DE", it: "IT",
+  pt: "PT", nl: "NL", "pt-BR": "PT-BR", "es-MX": "ES-MX",
+  ja: "JA", zh: "ZH", ko: "KO",
+};
 
 const Footer = () => {
   const t = useTranslations("footer");
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  function handleLocaleChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    router.replace(pathname, { locale: e.target.value });
+  }
+
   return (
     <footer className="footer">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -20,6 +35,33 @@ const Footer = () => {
           </a>
         </span>
         <div className="flex items-center gap-5" style={{ fontSize: "0.68rem", fontFamily: "var(--font-sans)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+          {/* Sélecteur de langue */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+            <span style={{ color: "rgba(240,235,225,0.3)", fontSize: "0.6rem" }}>⊞</span>
+            <select
+              value={locale}
+              onChange={handleLocaleChange}
+              style={{
+                background: "none",
+                border: "1px solid rgba(255,255,255,0.12)",
+                color: "rgba(240,235,225,0.55)",
+                fontFamily: "var(--font-sans)",
+                fontSize: "0.65rem",
+                fontWeight: 700,
+                letterSpacing: "0.08em",
+                padding: "0.2rem 0.4rem",
+                cursor: "pointer",
+                outline: "none",
+              }}
+            >
+              {routing.locales.map((l) => (
+                <option key={l} value={l} style={{ background: "#1a1410", color: "#f0ebe1" }}>
+                  {LOCALE_LABELS[l]}
+                </option>
+              ))}
+            </select>
+          </div>
+
           <a
             href="https://g.page/r/CcSyetXUJJrpEAE/review"
             target="_blank"
