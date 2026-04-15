@@ -43,6 +43,7 @@ export default function DashboardPage() {
   const [filterType, setFilterType] = useState<"all" | QRType | "favorites">("all");
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [exporting, setExporting] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [selectedQRCodeForAnalytics, setSelectedQRCodeForAnalytics] = useState<string>("");
 
   useEffect(() => {
@@ -228,30 +229,35 @@ export default function DashboardPage() {
 
   async function handleDeleteSelected() {
     if (selected.size === 0) return;
+    setDeleting(true);
     const ids = Array.from(selected);
     let successCount = 0;
     let errorCount = 0;
 
-    for (const id of ids) {
-      try {
-        const res = await fetch(`/api/qrcodes/${id}`, { method: "DELETE" });
-        if (res.ok) {
-          setQrCodes((prev) => prev.filter((qr) => qr.id !== id));
-          successCount++;
-        } else {
+    try {
+      for (const id of ids) {
+        try {
+          const res = await fetch(`/api/qrcodes/${id}`, { method: "DELETE" });
+          if (res.ok) {
+            setQrCodes((prev) => prev.filter((qr) => qr.id !== id));
+            successCount++;
+          } else {
+            errorCount++;
+          }
+        } catch {
           errorCount++;
         }
-      } catch {
-        errorCount++;
       }
-    }
 
-    setSelected(new Set());
+      setSelected(new Set());
 
-    if (errorCount === 0) {
-      toast.success(t("toast_delete_selected", { count: successCount }));
-    } else {
-      toast.error(`${successCount} supprimé(s), ${errorCount} erreur(s)`);
+      if (errorCount === 0) {
+        toast.success(t("toast_delete_selected", { count: successCount }));
+      } else {
+        toast.error(t("toast_error"));
+      }
+    } finally {
+      setDeleting(false);
     }
   }
 
@@ -426,6 +432,7 @@ export default function DashboardPage() {
             </button>
             <button
               onClick={handleDeleteSelected}
+              disabled={deleting}
               className="btn btn-sm"
               style={{
                 background: "none",
