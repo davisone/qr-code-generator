@@ -34,7 +34,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
   if (!existing) return NextResponse.json({ error: "QR code introuvable" }, { status: 404 });
 
   const body = await req.json();
-  const { name, type, content, metadata, foregroundColor, backgroundColor, size, errorCorrection, logoDataUrl } = body;
+  const { name, type, content, metadata, category, foregroundColor, backgroundColor, size, errorCorrection, logoDataUrl } = body;
 
   if (!name?.trim() || !content?.trim()) {
     return NextResponse.json({ error: "Nom et contenu requis" }, { status: 400 });
@@ -47,6 +47,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
       type: type || "url",
       content: content.trim(),
       metadata: metadata !== undefined ? (metadata ?? null) : undefined,
+      category: category !== undefined ? (category?.trim() || null) : undefined,
       foregroundColor: foregroundColor || "#000000",
       backgroundColor: backgroundColor || "#ffffff",
       size: size || 512,

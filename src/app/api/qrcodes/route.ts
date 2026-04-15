@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json();
-  const { name, type, content, metadata, foregroundColor, backgroundColor, size, errorCorrection, logoDataUrl } = body;
+  const { name, type, content, metadata, category, foregroundColor, backgroundColor, size, errorCorrection, logoDataUrl } = body;
 
   if (!name?.trim() || !content?.trim()) {
     return NextResponse.json({ error: "Nom et contenu requis" }, { status: 400 });
@@ -46,6 +46,7 @@ export async function POST(req: NextRequest) {
       type: type || "url",
       content: content.trim(),
       metadata: metadata ?? null,
+      category: category?.trim() || null,
       foregroundColor: foregroundColor || "#000000",
       backgroundColor: backgroundColor || "#ffffff",
       size: size || 512,
