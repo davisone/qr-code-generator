@@ -11,6 +11,7 @@ import dynamic from "next/dynamic";
 import { useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
+import { useSearchParams } from "next/navigation";
 import type { QRType } from "@/lib/qr-formats";
 
 const MapView = dynamic(() => import("@/components/MapView"), { ssr: false });
@@ -29,6 +30,7 @@ interface QRCodeItem {
   shareToken: string | null;
   logoDataUrl: string | null;
   category: string | null;
+  expiresAt: string | null;
 }
 
 type Tab = "qrcodes" | "analytics" | "map";
@@ -37,7 +39,9 @@ export default function DashboardPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const t = useTranslations("dashboard");
+  const searchParams = useSearchParams();
   const [activeTab, setActiveTab] = useState<Tab>("qrcodes");
+  const [proStatus, setProStatus] = useState<{ isPro: boolean } | null>(null);
   const [qrCodes, setQrCodes] = useState<QRCodeItem[]>([]);
   const [previews, setPreviews] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
@@ -75,8 +79,19 @@ export default function DashboardPage() {
   useEffect(() => {
     if (status === "authenticated") {
       loadQRCodes();
+      fetch("/api/user/subscription")
+        .then((r) => r.json())
+        .then(setProStatus)
+        .catch(() => {});
     }
   }, [status, loadQRCodes]);
+
+  useEffect(() => {
+    if (searchParams?.get("upgrade") === "success") {
+      toast.success(t("toast_upgrade_success"));
+      fetch("/api/user/subscription").then((r) => r.json()).then(setProStatus).catch(() => {});
+    }
+  }, [searchParams, t]);
 
   useEffect(() => {
     async function generatePreviews() {
@@ -274,6 +289,17 @@ export default function DashboardPage() {
     } finally {
       setDeleting(false);
     }
+  }
+
+  function getDaysUntilExpiry(expiresAt: string | null): number | null {
+    if (!expiresAt) return null;
+    const diff = new Date(expiresAt).getTime() - Date.now();
+    return Math.ceil(diff / (1000 * 60 * 60 * 24));
+  }
+
+  function isExpired(expiresAt: string | null): boolean {
+    if (!expiresAt) return false;
+    return new Date(expiresAt) < new Date();
   }
 
   if (status === "loading" || loading) {
@@ -535,6 +561,7 @@ export default function DashboardPage() {
                         animationDelay: `${i * 0.04}s`,
                         animation: "rowIn 0.35s ease both",
                         borderLeft: selected.has(qr.id) ? "4px solid var(--red)" : undefined,
+                        opacity: isExpired(qr.expiresAt) ? 0.45 : 1,
                       }}
                     >
                       {/* Preview + checkbox */}
@@ -592,7 +619,7 @@ export default function DashboardPage() {
                         <p className="truncate text-xs" style={{ fontFamily: "var(--font-mono)", color: "var(--mid)" }}>
                           {qr.content}
                         </p>
-                        <div className="flex gap-1.5 mt-1.5">
+                        <div className="flex gap-1.5 mt-1.5 flex-wrap">
                           <span className="badge badge-ink">{qr.type}</span>
                           {qr.isPublic && <span className="badge badge-red">Public</span>}
                           {qr.category && (
@@ -604,6 +631,37 @@ export default function DashboardPage() {
                               {qr.category}
                             </span>
                           )}
+                          {isExpired(qr.expiresAt) ? (
+                            <span
+                              style={{
+                                background: "var(--mid)",
+                                color: "var(--bg)",
+                                fontSize: "0.58rem",
+                                textTransform: "uppercase",
+                                letterSpacing: "0.08em",
+                                padding: "0.15rem 0.4rem",
+                                fontFamily: "var(--font-sans)",
+                                fontWeight: 700,
+                              }}
+                            >
+                              {t("badge_expired")}
+                            </span>
+                          ) : getDaysUntilExpiry(qr.expiresAt) !== null && getDaysUntilExpiry(qr.expiresAt)! <= 7 ? (
+                            <span
+                              style={{
+                                background: "var(--red)",
+                                color: "white",
+                                fontSize: "0.58rem",
+                                textTransform: "uppercase",
+                                letterSpacing: "0.08em",
+                                padding: "0.15rem 0.4rem",
+                                fontFamily: "var(--font-sans)",
+                                fontWeight: 700,
+                              }}
+                            >
+                              {t("badge_expires_soon", { days: getDaysUntilExpiry(qr.expiresAt)! })}
+                            </span>
+                          ) : null}
                         </div>
                       </div>
 
@@ -776,7 +834,7 @@ export default function DashboardPage() {
                     )}
                   </div>
                 </div>
-                {selectedQRCodeForAnalytics && <Analytics qrCodeId={selectedQRCodeForAnalytics} />}
+                {selectedQRCodeForAnalytics && <Analytics qrCodeId={selectedQRCodeForAnalytics} isPro={proStatus?.isPro ?? false} />}
               </>
             )}
           </div>

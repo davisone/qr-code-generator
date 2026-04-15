@@ -189,7 +189,10 @@
     "toast_delete_selected": "{count} QR code(s) deleted",
     "delete_selected": "Delete {count}",
     "filter_category_label": "Categories",
-    "filter_category_all": "All"
+    "filter_category_all": "All",
+    "badge_expired": "Expired",
+    "badge_expires_soon": "Expires in {days}d",
+    "toast_upgrade_success": "Welcome to Pro!"
   },
   "qrcode": {
     "back": "← Back",
@@ -265,5 +268,36 @@
     "google_review": "Google Review",
     "legal": "Legal notice",
     "privacy": "Privacy"
+  },
+  "pricing": {
+    "label": "Pricing",
+    "title": "Simple, Transparent",
+    "subtitle": "A free plan to get started, a Pro plan to go further. No surprises.",
+    "free_label": "Free",
+    "free_hint": "Forever",
+    "pro_label": "Pro",
+    "annual_hint": "/ month — €99.99 / year",
+    "feature_create": "Unlimited QR code creation",
+    "feature_customize": "Color & logo customization",
+    "feature_export": "Export PNG, JPEG, PDF, ZIP",
+    "feature_share": "Public sharing with unique link",
+    "feature_expire": "QR codes without expiration",
+    "feature_no_expire": "QR codes without expiration",
+    "feature_analytics_limited": "Basic analytics (last 7 days)",
+    "feature_analytics_full": "Full analytics & geo map",
+    "cta_dashboard": "Go to dashboard →",
+    "cta_register": "Get started for free →",
+    "cta_upgrade": "Upgrade to Pro →",
+    "cta_portal": "Manage my subscription →",
+    "loading": "Loading...",
+    "faq_label": "FAQ",
+    "faq_1_q": "Can I cancel at any time?",
+    "faq_1_a": "Yes. You can cancel your Pro subscription at any time from the customer portal. Your Pro access will remain active until the end of the current period.",
+    "faq_2_q": "What happens when it expires?",
+    "faq_2_a": "Your QR codes are not deleted. They keep working but a 7-day expiration date is automatically applied if you do not renew.",
+    "faq_3_q": "Are payments secure?",
+    "faq_3_a": "All payments are processed by Stripe, the world leader in online payments. QRaft stores no banking data.",
+    "faq_4_q": "Is there a commitment?",
+    "faq_4_a": "No commitment. The subscription is monthly (or annual depending on the plan) and can be cancelled at any time at no charge."
   }
 }

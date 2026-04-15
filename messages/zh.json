@@ -189,7 +189,10 @@
     "toast_delete_selected": "已删除{count}个二维码",
     "delete_selected": "删除{count}个",
     "filter_category_label": "分类",
-    "filter_category_all": "全部"
+    "filter_category_all": "全部",
+    "badge_expired": "已过期",
+    "badge_expires_soon": "{days}天后过期",
+    "toast_upgrade_success": "欢迎加入Pro！"
   },
   "qrcode": {
     "back": "← 返回",
@@ -265,5 +268,36 @@
     "google_review": "Google评价",
     "legal": "法律声明",
     "privacy": "隐私政策"
+  },
+  "pricing": {
+    "label": "价格",
+    "title": "简单透明",
+    "subtitle": "免费计划起步，Pro 计划更进一步。无任何隐性收费。",
+    "free_label": "免费",
+    "free_hint": "永久免费",
+    "pro_label": "Pro",
+    "annual_hint": "/ 月 — 每年 €99.99",
+    "feature_create": "无限创建二维码",
+    "feature_customize": "颜色与 Logo 自定义",
+    "feature_export": "导出 PNG、JPEG、PDF、ZIP",
+    "feature_share": "唯一链接公开分享",
+    "feature_expire": "二维码无过期时间",
+    "feature_no_expire": "二维码无过期时间",
+    "feature_analytics_limited": "基础分析（最近 7 天）",
+    "feature_analytics_full": "完整分析与地理地图",
+    "cta_dashboard": "进入控制台 →",
+    "cta_register": "免费开始 →",
+    "cta_upgrade": "升级到 Pro →",
+    "cta_portal": "管理订阅 →",
+    "loading": "加载中...",
+    "faq_label": "常见问题",
+    "faq_1_q": "可以随时取消吗？",
+    "faq_1_a": "可以。您可以随时通过客户门户取消 Pro 订阅。Pro 访问权限将在当前计费周期结束前保持有效。",
+    "faq_2_q": "到期后会发生什么？",
+    "faq_2_a": "您的二维码不会被删除。它们继续正常工作，但如果不续订，系统会自动设置 7 天的有效期。",
+    "faq_3_q": "付款安全吗？",
+    "faq_3_a": "所有付款均通过全球领先的在线支付平台 Stripe 处理。QRaft 不存储任何银行信息。",
+    "faq_4_q": "有合同约束吗？",
+    "faq_4_a": "没有任何约束。订阅为月付（或按所选方案年付），可随时免费取消。"
   }
 }

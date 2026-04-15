@@ -189,7 +189,10 @@
     "toast_delete_selected": "{count} QR-code(s) verwijderd",
     "delete_selected": "{count} verwijderen",
     "filter_category_label": "Categorieën",
-    "filter_category_all": "Alle"
+    "filter_category_all": "Alle",
+    "badge_expired": "Verlopen",
+    "badge_expires_soon": "Verloopt over {days}d",
+    "toast_upgrade_success": "Welkom bij Pro!"
   },
   "qrcode": {
     "back": "← Terug",
@@ -265,5 +268,36 @@
     "google_review": "Google-recensie",
     "legal": "Juridische kennisgeving",
     "privacy": "Privacy"
+  },
+  "pricing": {
+    "label": "Prijzen",
+    "title": "Eenvoudig, Transparant",
+    "subtitle": "Een gratis plan om te starten, een Pro-plan voor meer. Geen verrassingen.",
+    "free_label": "Gratis",
+    "free_hint": "Voor altijd",
+    "pro_label": "Pro",
+    "annual_hint": "/ maand — € 99,99 / jaar",
+    "feature_create": "Onbeperkt QR-codes aanmaken",
+    "feature_customize": "Kleur- en logo-aanpassing",
+    "feature_export": "Exporteren PNG, JPEG, PDF, ZIP",
+    "feature_share": "Openbaar delen met unieke link",
+    "feature_expire": "QR-codes zonder vervaldatum",
+    "feature_no_expire": "QR-codes zonder vervaldatum",
+    "feature_analytics_limited": "Basisanalyse (afgelopen 7 dagen)",
+    "feature_analytics_full": "Volledige analyse & geografische kaart",
+    "cta_dashboard": "Naar dashboard →",
+    "cta_register": "Gratis beginnen →",
+    "cta_upgrade": "Upgraden naar Pro →",
+    "cta_portal": "Mijn abonnement beheren →",
+    "loading": "Laden...",
+    "faq_label": "FAQ",
+    "faq_1_q": "Kan ik op elk moment opzeggen?",
+    "faq_1_a": "Ja. U kunt uw Pro-abonnement op elk moment opzeggen via het klantenportaal. Uw Pro-toegang blijft actief tot het einde van de huidige periode.",
+    "faq_2_q": "Wat gebeurt er bij vervaldatum?",
+    "faq_2_a": "Uw QR-codes worden niet verwijderd. Ze blijven werken, maar er wordt automatisch een vervaldatum van 7 dagen toegepast als u niet verlengt.",
+    "faq_3_q": "Zijn betalingen veilig?",
+    "faq_3_a": "Alle betalingen worden verwerkt door Stripe, wereldleider in online betalingen. QRaft slaat geen bankgegevens op.",
+    "faq_4_q": "Is er een verplichting?",
+    "faq_4_a": "Geen verplichting. Het abonnement is maandelijks (of jaarlijks afhankelijk van het gekozen plan) en kan op elk moment kosteloos worden opgezegd."
   }
 }

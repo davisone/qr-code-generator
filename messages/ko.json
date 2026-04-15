@@ -189,7 +189,10 @@
     "toast_delete_selected": "QR 코드 {count}개가 삭제되었습니다",
     "delete_selected": "{count}개 삭제",
     "filter_category_label": "카테고리",
-    "filter_category_all": "전체"
+    "filter_category_all": "전체",
+    "badge_expired": "만료됨",
+    "badge_expires_soon": "{days}일 후 만료",
+    "toast_upgrade_success": "Pro에 오신 것을 환영합니다!"
   },
   "qrcode": {
     "back": "← 뒤로",
@@ -265,5 +268,36 @@
     "google_review": "Google 리뷰",
     "legal": "법적 고지",
     "privacy": "개인정보"
+  },
+  "pricing": {
+    "label": "요금제",
+    "title": "간단하고 투명하게",
+    "subtitle": "시작을 위한 무료 플랜, 더 나아가기 위한 Pro 플랜. 숨겨진 비용 없음.",
+    "free_label": "무료",
+    "free_hint": "영원히 무료",
+    "pro_label": "Pro",
+    "annual_hint": "/ 월 — 연간 €99.99",
+    "feature_create": "무제한 QR 코드 생성",
+    "feature_customize": "색상 및 로고 커스터마이즈",
+    "feature_export": "PNG, JPEG, PDF, ZIP 내보내기",
+    "feature_share": "고유 링크로 공개 공유",
+    "feature_expire": "만료 없는 QR 코드",
+    "feature_no_expire": "만료 없는 QR 코드",
+    "feature_analytics_limited": "기본 분석 (최근 7일)",
+    "feature_analytics_full": "완전한 분석 및 지리적 지도",
+    "cta_dashboard": "대시보드로 이동 →",
+    "cta_register": "무료로 시작하기 →",
+    "cta_upgrade": "Pro로 업그레이드 →",
+    "cta_portal": "구독 관리 →",
+    "loading": "로딩 중...",
+    "faq_label": "FAQ",
+    "faq_1_q": "언제든지 취소할 수 있나요?",
+    "faq_1_a": "네. 고객 포털에서 언제든지 Pro 구독을 취소할 수 있습니다. Pro 접근은 현재 기간이 끝날 때까지 유지됩니다.",
+    "faq_2_q": "만료되면 어떻게 되나요?",
+    "faq_2_a": "QR 코드는 삭제되지 않습니다. 계속 작동하지만 갱신하지 않으면 자동으로 7일 만료 기간이 설정됩니다.",
+    "faq_3_q": "결제는 안전한가요?",
+    "faq_3_a": "모든 결제는 온라인 결제의 세계적 리더인 Stripe가 처리합니다. QRaft는 어떠한 은행 정보도 저장하지 않습니다.",
+    "faq_4_q": "약정이 있나요?",
+    "faq_4_a": "약정 없음. 구독은 월 단위(또는 선택한 플랜에 따라 연 단위)이며 언제든지 무료로 취소할 수 있습니다."
   }
 }

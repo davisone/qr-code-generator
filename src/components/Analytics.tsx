@@ -52,7 +52,7 @@ function formatDateTime(dateStr: string): string {
   });
 }
 
-export default function Analytics({ qrCodeId }: { qrCodeId: string }) {
+export default function Analytics({ qrCodeId, isPro = false }: { qrCodeId: string; isPro?: boolean }) {
   const [data, setData] = useState<AnalyticsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");

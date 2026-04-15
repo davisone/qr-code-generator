@@ -189,7 +189,10 @@
     "toast_delete_selected": "{count} codice/i QR eliminato/i",
     "delete_selected": "Elimina {count}",
     "filter_category_label": "Categorie",
-    "filter_category_all": "Tutte"
+    "filter_category_all": "Tutte",
+    "badge_expired": "Scaduto",
+    "badge_expires_soon": "Scade tra {days}g",
+    "toast_upgrade_success": "Benvenuto in Pro!"
   },
   "qrcode": {
     "back": "← Indietro",
@@ -265,5 +268,36 @@
     "google_review": "Recensione Google",
     "legal": "Note legali",
     "privacy": "Privacy"
+  },
+  "pricing": {
+    "label": "Prezzi",
+    "title": "Semplice, Trasparente",
+    "subtitle": "Un piano gratuito per iniziare, un piano Pro per andare oltre. Nessuna sorpresa.",
+    "free_label": "Gratuito",
+    "free_hint": "Per sempre",
+    "pro_label": "Pro",
+    "annual_hint": "/ mese — 99,99 € / anno",
+    "feature_create": "Creazione illimitata di codici QR",
+    "feature_customize": "Personalizzazione colori e logo",
+    "feature_export": "Esporta PNG, JPEG, PDF, ZIP",
+    "feature_share": "Condivisione pubblica con link univoco",
+    "feature_expire": "Codici QR senza scadenza",
+    "feature_no_expire": "Codici QR senza scadenza",
+    "feature_analytics_limited": "Analisi di base (ultimi 7 giorni)",
+    "feature_analytics_full": "Analisi complete e mappa geografica",
+    "cta_dashboard": "Vai alla dashboard →",
+    "cta_register": "Inizia gratis →",
+    "cta_upgrade": "Passa a Pro →",
+    "cta_portal": "Gestisci il mio abbonamento →",
+    "loading": "Caricamento...",
+    "faq_label": "FAQ",
+    "faq_1_q": "Posso annullare in qualsiasi momento?",
+    "faq_1_a": "Sì. Puoi annullare il tuo abbonamento Pro in qualsiasi momento dal portale clienti. Il tuo accesso Pro rimarrà attivo fino alla fine del periodo corrente.",
+    "faq_2_q": "Cosa succede alla scadenza?",
+    "faq_2_a": "I tuoi codici QR non vengono eliminati. Continuano a funzionare, ma viene applicata automaticamente una data di scadenza di 7 giorni se non rinnovi.",
+    "faq_3_q": "I pagamenti sono sicuri?",
+    "faq_3_a": "Tutti i pagamenti sono elaborati da Stripe, leader mondiale nei pagamenti online. QRaft non conserva alcun dato bancario.",
+    "faq_4_q": "C'è un impegno?",
+    "faq_4_a": "Nessun impegno. L'abbonamento è mensile (o annuale a seconda del piano scelto) e può essere annullato in qualsiasi momento senza addebiti."
   }
 }

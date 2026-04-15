@@ -189,7 +189,10 @@
     "toast_delete_selected": "{count} QR-Code(s) gelöscht",
     "delete_selected": "{count} löschen",
     "filter_category_label": "Kategorien",
-    "filter_category_all": "Alle"
+    "filter_category_all": "Alle",
+    "badge_expired": "Abgelaufen",
+    "badge_expires_soon": "Läuft in {days}T ab",
+    "toast_upgrade_success": "Willkommen bei Pro!"
   },
   "qrcode": {
     "back": "← Zurück",
@@ -265,5 +268,36 @@
     "google_review": "Google-Bewertung",
     "legal": "Impressum",
     "privacy": "Datenschutz"
+  },
+  "pricing": {
+    "label": "Preise",
+    "title": "Einfach, Transparent",
+    "subtitle": "Ein kostenloser Plan zum Starten, ein Pro-Plan für mehr. Keine Überraschungen.",
+    "free_label": "Kostenlos",
+    "free_hint": "Für immer",
+    "pro_label": "Pro",
+    "annual_hint": "/ Monat — 99,99 € / Jahr",
+    "feature_create": "Unbegrenzte QR-Code-Erstellung",
+    "feature_customize": "Farb- & Logo-Anpassung",
+    "feature_export": "Export PNG, JPEG, PDF, ZIP",
+    "feature_share": "Öffentliches Teilen mit einzigartigem Link",
+    "feature_expire": "QR-Codes ohne Ablaufdatum",
+    "feature_no_expire": "QR-Codes ohne Ablaufdatum",
+    "feature_analytics_limited": "Basis-Analytik (letzte 7 Tage)",
+    "feature_analytics_full": "Vollständige Analytik & Geo-Karte",
+    "cta_dashboard": "Zum Dashboard →",
+    "cta_register": "Kostenlos starten →",
+    "cta_upgrade": "Auf Pro upgraden →",
+    "cta_portal": "Abonnement verwalten →",
+    "loading": "Laden...",
+    "faq_label": "FAQ",
+    "faq_1_q": "Kann ich jederzeit kündigen?",
+    "faq_1_a": "Ja. Sie können Ihr Pro-Abonnement jederzeit über das Kundenportal kündigen. Ihr Pro-Zugang bleibt bis zum Ende des aktuellen Zeitraums aktiv.",
+    "faq_2_q": "Was passiert bei Ablauf?",
+    "faq_2_a": "Ihre QR-Codes werden nicht gelöscht. Sie funktionieren weiterhin, aber es wird automatisch ein Ablaufdatum von 7 Tagen festgelegt, wenn Sie nicht verlängern.",
+    "faq_3_q": "Sind die Zahlungen sicher?",
+    "faq_3_a": "Alle Zahlungen werden von Stripe verarbeitet, dem weltweit führenden Online-Zahlungsanbieter. QRaft speichert keine Bankdaten.",
+    "faq_4_q": "Gibt es eine Bindung?",
+    "faq_4_a": "Keine Bindung. Das Abonnement ist monatlich (oder jährlich je nach gewähltem Plan) und kann jederzeit kostenlos gekündigt werden."
   }
 }

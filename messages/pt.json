@@ -189,7 +189,10 @@
     "toast_delete_selected": "{count} código(s) QR eliminado(s)",
     "delete_selected": "Eliminar {count}",
     "filter_category_label": "Categorias",
-    "filter_category_all": "Todas"
+    "filter_category_all": "Todas",
+    "badge_expired": "Expirado",
+    "badge_expires_soon": "Expira em {days}d",
+    "toast_upgrade_success": "Bem-vindo ao Pro!"
   },
   "qrcode": {
     "back": "← Voltar",
@@ -265,5 +268,36 @@
     "google_review": "Avaliação Google",
     "legal": "Avisos legais",
     "privacy": "Privacidade"
+  },
+  "pricing": {
+    "label": "Preços",
+    "title": "Simples, Transparente",
+    "subtitle": "Um plano gratuito para começar, um plano Pro para ir mais longe. Sem surpresas.",
+    "free_label": "Gratuito",
+    "free_hint": "Para sempre",
+    "pro_label": "Pro",
+    "annual_hint": "/ mês — 99,99 € / ano",
+    "feature_create": "Criação ilimitada de códigos QR",
+    "feature_customize": "Personalização de cores e logotipo",
+    "feature_export": "Exportar PNG, JPEG, PDF, ZIP",
+    "feature_share": "Partilha pública com link único",
+    "feature_expire": "Códigos QR sem expiração",
+    "feature_no_expire": "Códigos QR sem expiração",
+    "feature_analytics_limited": "Análise básica (últimos 7 dias)",
+    "feature_analytics_full": "Análise completa e mapa geográfico",
+    "cta_dashboard": "Ir para o painel →",
+    "cta_register": "Começar gratuitamente →",
+    "cta_upgrade": "Mudar para Pro →",
+    "cta_portal": "Gerir a minha subscrição →",
+    "loading": "A carregar...",
+    "faq_label": "FAQ",
+    "faq_1_q": "Posso cancelar a qualquer momento?",
+    "faq_1_a": "Sim. Pode cancelar a sua subscrição Pro a qualquer momento a partir do portal do cliente. O seu acesso Pro permanecerá ativo até ao final do período atual.",
+    "faq_2_q": "O que acontece quando expira?",
+    "faq_2_a": "Os seus códigos QR não são eliminados. Continuam a funcionar, mas é automaticamente aplicada uma data de expiração de 7 dias se não renovar.",
+    "faq_3_q": "Os pagamentos são seguros?",
+    "faq_3_a": "Todos os pagamentos são processados pelo Stripe, líder mundial em pagamentos online. O QRaft não armazena nenhum dado bancário.",
+    "faq_4_q": "Existe algum compromisso?",
+    "faq_4_a": "Nenhum compromisso. A subscrição é mensal (ou anual dependendo do plano escolhido) e pode ser cancelada a qualquer momento sem encargos."
   }
 }
