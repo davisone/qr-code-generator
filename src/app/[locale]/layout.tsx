@@ -9,6 +9,7 @@ import { BASE_URL } from "@/lib/config";
 import Providers from "@/components/Providers";
 import { Footer } from "@/components/Footer";
 import { ReviewBadge } from "@/components/ReviewBadge";
+import { Toaster } from "sonner";
 import "../globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -150,6 +151,19 @@ export default async function LocaleLayout({ children, params }: Props) {
         <NextIntlClientProvider messages={messages}>
           <Providers>
             {children}
+            <Toaster
+              position="bottom-right"
+              theme="dark"
+              toastOptions={{
+                style: {
+                  background: "var(--card)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  color: "#f0ebe1",
+                  fontFamily: "var(--font-sans, sans-serif)",
+                  fontSize: "0.8rem",
+                },
+              }}
+            />
           </Providers>
           <Footer />
           <ReviewBadge />
