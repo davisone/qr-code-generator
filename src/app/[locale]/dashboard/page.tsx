@@ -243,11 +243,12 @@ export default function DashboardPage() {
     let errorCount = 0;
 
     try {
+      const deletedIds: string[] = [];
       for (const id of ids) {
         try {
           const res = await fetch(`/api/qrcodes/${id}`, { method: "DELETE" });
           if (res.ok) {
-            setQrCodes((prev) => prev.filter((qr) => qr.id !== id));
+            deletedIds.push(id);
             successCount++;
           } else {
             errorCount++;
@@ -256,6 +257,7 @@ export default function DashboardPage() {
           errorCount++;
         }
       }
+      setQrCodes((prev) => prev.filter((qr) => !deletedIds.includes(qr.id)));
 
       setSelected(new Set());
 
@@ -682,7 +684,7 @@ export default function DashboardPage() {
                   </div>
                   {uniqueCategories.length > 0 && (
                     <div className="side-block">
-                      <div className="side-head"><span>{t("filter_category_label" as Parameters<typeof t>[0])}</span></div>
+                      <div className="side-head"><span>{t("filter_category_label")}</span></div>
                       <div className="side-body flex flex-col gap-1">
                         <button
                           onClick={() => setFilterCategory(null)}
@@ -700,7 +702,7 @@ export default function DashboardPage() {
                             padding: "0.3rem 0",
                           }}
                         >
-                          {t("filter_category_all" as Parameters<typeof t>[0])}
+                          {t("filter_category_all")}
                         </button>
                         {uniqueCategories.map((cat) => (
                           <button
