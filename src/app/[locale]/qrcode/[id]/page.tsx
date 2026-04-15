@@ -9,6 +9,7 @@ import QRCode from "qrcode";
 import { jsPDF } from "jspdf";
 import { styleTemplates } from "@/lib/templates";
 import { generateQRCanvas } from "@/lib/qr-utils";
+import { QRType, QR_TYPE_LIST, buildContent } from "@/lib/qr-formats";
 import { useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
@@ -21,6 +22,16 @@ const ERROR_LEVELS = [
 
 const SIZES = [256, 512, 1024] as const;
 
+const SOCIAL_PLATFORMS = [
+  { value: "instagram", label: "Instagram" },
+  { value: "x",         label: "X / Twitter" },
+  { value: "linkedin",  label: "LinkedIn" },
+  { value: "tiktok",    label: "TikTok" },
+  { value: "youtube",   label: "YouTube" },
+  { value: "facebook",  label: "Facebook" },
+  { value: "snapchat",  label: "Snapchat" },
+];
+
 export default function QRCodeEditorPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -31,8 +42,8 @@ export default function QRCodeEditorPage() {
   const isNew = params.id === "new";
 
   const [name, setName] = useState("");
-  const [type, setType] = useState<"url" | "text">("url");
-  const [content, setContent] = useState("");
+  const [type, setType] = useState<QRType>("url");
+  const [fields, setFields] = useState<Record<string, string>>({});
   const [foregroundColor, setForegroundColor] = useState("#000000");
   const [backgroundColor, setBackgroundColor] = useState("#ffffff");
   const [size, setSize] = useState<256 | 512 | 1024>(512);
@@ -46,6 +57,9 @@ export default function QRCodeEditorPage() {
   const [loadingData, setLoadingData] = useState(!isNew);
   const [copiedLink, setCopiedLink] = useState(false);
 
+  // Content is derived from fields — not state
+  const content = buildContent(type, fields);
+
   useEffect(() => {
     if (status === "unauthenticated") router.push("/login");
   }, [status, router]);
@@ -56,8 +70,14 @@ export default function QRCodeEditorPage() {
         .then((res) => { if (!res.ok) throw new Error(); return res.json(); })
         .then((data) => {
           setName(data.name);
-          setType(data.type);
-          setContent(data.content);
+          setType(data.type as QRType);
+          if (data.metadata && typeof data.metadata === "object") {
+            setFields(data.metadata as Record<string, string>);
+          } else if (data.type === "url") {
+            setFields({ url: data.content });
+          } else if (data.type === "text") {
+            setFields({ text: data.content });
+          }
           setForegroundColor(data.foregroundColor);
           setBackgroundColor(data.backgroundColor);
           setSize(data.size);
@@ -70,6 +90,17 @@ export default function QRCodeEditorPage() {
         .finally(() => setLoadingData(false));
     }
   }, [isNew, status, params.id, router]);
+
+  function updateField(key: string, value: string) {
+    setFields((prev) => ({ ...prev, [key]: value }));
+    setErrors((prev) => ({ ...prev, [key]: "" }));
+  }
+
+  function handleTypeChange(newType: QRType) {
+    setType(newType);
+    setFields({});
+    setErrors({});
+  }
 
   const generateQR = useCallback(async () => {
     const canvas = canvasRef.current;
@@ -120,11 +151,42 @@ export default function QRCodeEditorPage() {
   function validate(): boolean {
     const newErrors: Record<string, string> = {};
     if (!name.trim()) newErrors.name = "!";
-    if (!content.trim()) newErrors.content = "!";
-    if (type === "url" && content.trim()) {
-      try { new URL(content.trim()); }
-      catch { newErrors.content = "URL"; }
+
+    switch (type) {
+      case "url":
+        if (!fields.url?.trim()) { newErrors.url = "!"; break; }
+        try { new URL(fields.url.trim()); } catch { newErrors.url = "URL"; }
+        break;
+      case "text":
+        if (!fields.text?.trim()) newErrors.text = "!";
+        break;
+      case "wifi":
+        if (!fields.ssid?.trim()) newErrors.ssid = "!";
+        break;
+      case "vcard":
+        if (!fields.fullname?.trim()) newErrors.fullname = "!";
+        break;
+      case "email":
+        if (!fields.to?.trim()) newErrors.to = "!";
+        break;
+      case "phone":
+        if (!fields.phone?.trim()) newErrors.phone = "!";
+        break;
+      case "sms":
+        if (!fields.phone?.trim()) newErrors.phone = "!";
+        break;
+      case "whatsapp":
+        if (!fields.phone?.trim()) newErrors.phone = "!";
+        break;
+      case "geo":
+        if (!fields.lat?.trim()) newErrors.lat = "!";
+        if (!fields.lng?.trim()) newErrors.lng = "!";
+        break;
+      case "social":
+        if (!fields.url?.trim()) newErrors.url = "!";
+        break;
     }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   }
@@ -132,7 +194,17 @@ export default function QRCodeEditorPage() {
   async function handleSave() {
     if (!validate()) return;
     setSaving(true);
-    const body = { name: name.trim(), type, content: content.trim(), foregroundColor, backgroundColor, size, errorCorrection, logoDataUrl };
+    const body = {
+      name: name.trim(),
+      type,
+      content: content.trim(),
+      metadata: fields,
+      foregroundColor,
+      backgroundColor,
+      size,
+      errorCorrection,
+      logoDataUrl,
+    };
     try {
       let res: Response;
       if (isNew) {
@@ -235,6 +307,19 @@ export default function QRCodeEditorPage() {
   const sectionPad = { padding: "1.25rem 1.5rem" };
   const labelStyle = { fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.1em", color: "var(--mid)", display: "block", marginBottom: "0.5rem" };
   const headingStyle = { fontFamily: "var(--font-display, cursive)", fontSize: "1.1rem", letterSpacing: "0.06em", borderBottom: "var(--rule-thin)", paddingBottom: "0.5rem", marginBottom: "1rem" };
+  const inputError = (key: string) => errors[key] ? { borderColor: "var(--red)" } : {};
+
+  const inp = (key: string, placeholder: string, type_attr: string = "text", required = false) => (
+    <input
+      type={type_attr}
+      value={fields[key] || ""}
+      onChange={(e) => updateField(key, e.target.value)}
+      className="input w-full"
+      placeholder={placeholder}
+      style={inputError(key)}
+      required={required}
+    />
+  );
 
   return (
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
@@ -273,6 +358,7 @@ export default function QRCodeEditorPage() {
             <div style={{ ...sectionStyle, ...sectionPad }}>
               <h2 style={headingStyle}>{t("info_title")}</h2>
               <div className="space-y-4">
+                {/* Nom */}
                 <div>
                   <label style={labelStyle}>{t("name_label")}</label>
                   <input
@@ -285,57 +371,234 @@ export default function QRCodeEditorPage() {
                   />
                 </div>
 
+                {/* Type selector — grille 5×2 */}
                 <div>
                   <label style={labelStyle}>{t("type_label")}</label>
-                  <div className="flex">
-                    {(["url", "text"] as const).map((tp, idx) => (
+                  <div className="grid grid-cols-5 gap-1">
+                    {QR_TYPE_LIST.map((item) => (
                       <button
-                        key={tp}
+                        key={item.type}
                         type="button"
-                        onClick={() => setType(tp)}
+                        onClick={() => handleTypeChange(item.type)}
                         style={{
-                          flex: 1,
-                          padding: "0.6rem",
-                          fontSize: "0.72rem",
+                          padding: "0.5rem 0.25rem",
+                          fontSize: "0.6rem",
                           fontWeight: 700,
                           textTransform: "uppercase",
-                          letterSpacing: "0.08em",
-                          background: type === tp ? "var(--ink)" : "var(--card)",
-                          color: type === tp ? "var(--bg)" : "var(--mid)",
+                          letterSpacing: "0.06em",
+                          background: type === item.type ? "var(--ink)" : "var(--card)",
+                          color: type === item.type ? "var(--bg)" : "var(--mid)",
                           border: "var(--rule-thin)",
-                          marginRight: idx === 0 ? "-1px" : 0,
                           cursor: "pointer",
                           fontFamily: "var(--font-sans)",
-                          position: "relative",
-                          zIndex: type === tp ? 1 : 0,
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          gap: "0.2rem",
                         }}
                       >
-                        {tp === "url" ? t("type_url") : t("type_text")}
+                        <span style={{ fontSize: "1rem" }}>{item.icon}</span>
+                        <span>{t(item.labelKey as Parameters<typeof t>[0])}</span>
                       </button>
                     ))}
                   </div>
                 </div>
 
-                <div>
-                  <label style={labelStyle}>{type === "url" ? t("content_label_url") : t("content_label_text")}</label>
-                  {type === "url" ? (
-                    <input
-                      type="url"
-                      value={content}
-                      onChange={(e) => { setContent(e.target.value); setErrors((p) => ({ ...p, content: "" })); }}
-                      className="input w-full"
-                      placeholder={t("content_placeholder_url")}
-                      style={errors.content ? { borderColor: "var(--red)" } : {}}
-                    />
-                  ) : (
-                    <textarea
-                      value={content}
-                      onChange={(e) => { setContent(e.target.value); setErrors((p) => ({ ...p, content: "" })); }}
-                      rows={3}
-                      className="input w-full resize-none"
-                      placeholder={t("content_placeholder_text")}
-                      style={errors.content ? { borderColor: "var(--red)" } : {}}
-                    />
+                {/* Formulaires conditionnels par type */}
+                <div className="space-y-3">
+
+                  {/* URL */}
+                  {type === "url" && (
+                    <div>
+                      <label style={labelStyle}>{t("content_label_url")}</label>
+                      <input
+                        type="url"
+                        value={fields.url || ""}
+                        onChange={(e) => updateField("url", e.target.value)}
+                        className="input w-full"
+                        placeholder={t("content_placeholder_url")}
+                        style={inputError("url")}
+                      />
+                    </div>
+                  )}
+
+                  {/* Texte */}
+                  {type === "text" && (
+                    <div>
+                      <label style={labelStyle}>{t("content_label_text")}</label>
+                      <textarea
+                        value={fields.text || ""}
+                        onChange={(e) => updateField("text", e.target.value)}
+                        rows={3}
+                        className="input w-full resize-none"
+                        placeholder={t("content_placeholder_text")}
+                        style={inputError("text")}
+                      />
+                    </div>
+                  )}
+
+                  {/* WiFi */}
+                  {type === "wifi" && (
+                    <>
+                      <div>
+                        <label style={labelStyle}>{t("wifi_ssid")}</label>
+                        {inp("ssid", "MonReseau", "text", true)}
+                      </div>
+                      <div>
+                        <label style={labelStyle}>{t("wifi_security")}</label>
+                        <select value={fields.security || "WPA"} onChange={(e) => updateField("security", e.target.value)} className="input w-full">
+                          <option value="WPA">WPA/WPA2</option>
+                          <option value="WEP">WEP</option>
+                          <option value="nopass">{t("wifi_no_password")}</option>
+                        </select>
+                      </div>
+                      {fields.security !== "nopass" && (
+                        <div>
+                          <label style={labelStyle}>{t("wifi_password")}</label>
+                          {inp("password", "••••••••", "text")}
+                        </div>
+                      )}
+                    </>
+                  )}
+
+                  {/* vCard */}
+                  {type === "vcard" && (
+                    <>
+                      <div>
+                        <label style={labelStyle}>{t("vcard_fullname")} *</label>
+                        {inp("fullname", "Jean Dupont", "text", true)}
+                      </div>
+                      <div>
+                        <label style={labelStyle}>{t("vcard_phone")}</label>
+                        {inp("phone", "+33 6 12 34 56 78", "tel")}
+                      </div>
+                      <div>
+                        <label style={labelStyle}>{t("vcard_email")}</label>
+                        {inp("email", "jean@exemple.com", "email")}
+                      </div>
+                      <div>
+                        <label style={labelStyle}>{t("vcard_org")}</label>
+                        {inp("org", "Entreprise SA")}
+                      </div>
+                      <div>
+                        <label style={labelStyle}>{t("vcard_url")}</label>
+                        {inp("url", "https://exemple.com", "url")}
+                      </div>
+                      <div>
+                        <label style={labelStyle}>{t("vcard_note")}</label>
+                        {inp("note", "Note...")}
+                      </div>
+                    </>
+                  )}
+
+                  {/* Email */}
+                  {type === "email" && (
+                    <>
+                      <div>
+                        <label style={labelStyle}>{t("email_to")} *</label>
+                        {inp("to", "destinataire@exemple.com", "email", true)}
+                      </div>
+                      <div>
+                        <label style={labelStyle}>{t("email_subject")}</label>
+                        {inp("subject", t("email_subject"))}
+                      </div>
+                      <div>
+                        <label style={labelStyle}>{t("email_body")}</label>
+                        <textarea
+                          value={fields.body || ""}
+                          onChange={(e) => updateField("body", e.target.value)}
+                          rows={3}
+                          className="input w-full resize-none"
+                          placeholder={t("email_body")}
+                        />
+                      </div>
+                    </>
+                  )}
+
+                  {/* Téléphone */}
+                  {type === "phone" && (
+                    <div>
+                      <label style={labelStyle}>{t("phone_number")} *</label>
+                      {inp("phone", "+33 6 12 34 56 78", "tel", true)}
+                    </div>
+                  )}
+
+                  {/* SMS */}
+                  {type === "sms" && (
+                    <>
+                      <div>
+                        <label style={labelStyle}>{t("sms_phone")} *</label>
+                        {inp("phone", "+33 6 12 34 56 78", "tel", true)}
+                      </div>
+                      <div>
+                        <label style={labelStyle}>{t("sms_message")}</label>
+                        <textarea
+                          value={fields.message || ""}
+                          onChange={(e) => updateField("message", e.target.value)}
+                          rows={2}
+                          className="input w-full resize-none"
+                          placeholder={t("sms_message")}
+                        />
+                      </div>
+                    </>
+                  )}
+
+                  {/* WhatsApp */}
+                  {type === "whatsapp" && (
+                    <>
+                      <div>
+                        <label style={labelStyle}>{t("whatsapp_phone")} *</label>
+                        {inp("phone", "33612345678", "tel", true)}
+                      </div>
+                      <div>
+                        <label style={labelStyle}>{t("whatsapp_message")}</label>
+                        <textarea
+                          value={fields.message || ""}
+                          onChange={(e) => updateField("message", e.target.value)}
+                          rows={2}
+                          className="input w-full resize-none"
+                          placeholder={t("whatsapp_message")}
+                        />
+                      </div>
+                    </>
+                  )}
+
+                  {/* GPS */}
+                  {type === "geo" && (
+                    <>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <label style={labelStyle}>{t("geo_lat")} *</label>
+                          {inp("lat", "48.8566", "text", true)}
+                        </div>
+                        <div>
+                          <label style={labelStyle}>{t("geo_lng")} *</label>
+                          {inp("lng", "2.3522", "text", true)}
+                        </div>
+                      </div>
+                      <div>
+                        <label style={labelStyle}>{t("geo_label")}</label>
+                        {inp("label", "Tour Eiffel")}
+                      </div>
+                    </>
+                  )}
+
+                  {/* Réseaux sociaux */}
+                  {type === "social" && (
+                    <>
+                      <div>
+                        <label style={labelStyle}>{t("social_platform")}</label>
+                        <select value={fields.platform || "instagram"} onChange={(e) => updateField("platform", e.target.value)} className="input w-full">
+                          {SOCIAL_PLATFORMS.map((p) => (
+                            <option key={p.value} value={p.value}>{p.label}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div>
+                        <label style={labelStyle}>{t("social_url")} *</label>
+                        {inp("url", "https://instagram.com/moncompte", "url", true)}
+                      </div>
+                    </>
                   )}
                 </div>
               </div>
@@ -455,7 +718,7 @@ export default function QRCodeEditorPage() {
               <input ref={logoInputRef} type="file" accept="image/png,image/jpeg,image/svg+xml" onChange={handleLogoUpload} className="hidden" />
               <div className="flex items-center gap-3">
                 <button type="button" onClick={() => logoInputRef.current?.click()} className="btn btn-secondary">
-                  {logoDataUrl ? t("logo_add") : t("logo_add")}
+                  {t("logo_add")}
                 </button>
                 {logoDataUrl && (
                   <>
@@ -477,45 +740,15 @@ export default function QRCodeEditorPage() {
               <div className="flex justify-center p-6" style={{ background: "var(--card)" }}>
                 <canvas ref={canvasRef} className="max-w-full" />
               </div>
-              <p className="mt-2 text-center" style={{ fontFamily: "var(--font-mono)", fontSize: "0.65rem", color: "var(--mid)" }}>
-                {t("export_title")}: {size} × {size} px
-              </p>
             </div>
 
             {/* Export */}
             <div style={{ ...sectionStyle, ...sectionPad }}>
               <h2 style={headingStyle}>{t("export_title")}</h2>
-              <div className="flex">
-                {([
-                  ["PNG", handleExportPNG, "var(--red)"],
-                  ["JPG", handleExportJPG, "var(--ink)"],
-                  ["PDF", handleExportPDF, "var(--mid)"],
-                ] as [string, () => void, string][]).map(([fmt, fn, color], idx) => (
-                  <button
-                    key={fmt}
-                    onClick={fn}
-                    style={{
-                      flex: 1,
-                      padding: "1.5rem 0.5rem",
-                      background: "var(--card)",
-                      border: "var(--rule-thin)",
-                      marginRight: idx < 2 ? "-1px" : 0,
-                      cursor: "pointer",
-                      fontFamily: "var(--font-display, cursive)",
-                      fontSize: "2rem",
-                      letterSpacing: "0.04em",
-                      color,
-                      transition: "background 0.15s, color 0.15s",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                    onMouseEnter={e => { e.currentTarget.style.background = "var(--ink)"; e.currentTarget.style.color = "var(--bg)"; }}
-                    onMouseLeave={e => { e.currentTarget.style.background = "var(--card)"; e.currentTarget.style.color = color; }}
-                  >
-                    {fmt}
-                  </button>
-                ))}
+              <div className="flex flex-wrap gap-2">
+                <button onClick={handleExportPNG} className="btn btn-secondary">PNG</button>
+                <button onClick={handleExportJPG} className="btn btn-secondary">JPEG</button>
+                <button onClick={handleExportPDF} className="btn btn-secondary">PDF</button>
               </div>
             </div>
 
@@ -523,51 +756,54 @@ export default function QRCodeEditorPage() {
             {!isNew && (
               <div style={sectionPad}>
                 <h2 style={headingStyle}>{t("share_title")}</h2>
-                <div className="flex items-center gap-3 mb-3">
-                  <button
-                    type="button"
-                    onClick={handleToggleShare}
-                    style={{
-                      position: "relative",
-                      display: "inline-flex",
-                      height: 24,
-                      width: 44,
-                      alignItems: "center",
-                      background: isPublic ? "var(--ink)" : "#ccc4bb",
-                      borderRadius: 999,
-                      border: "none",
-                      cursor: "pointer",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <span style={{
-                      display: "inline-block",
-                      width: 16,
-                      height: 16,
-                      background: "white",
-                      borderRadius: 999,
-                      transform: isPublic ? "translateX(1.5rem)" : "translateX(0.25rem)",
-                      transition: "transform 0.2s",
-                    }} />
-                  </button>
-                  <span style={{ fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--mid)" }}>
-                    {t("share_enable")}
-                  </span>
-                </div>
-                {isPublic && shareToken && (
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="text"
-                      readOnly
-                      value={`${typeof window !== "undefined" ? window.location.origin : ""}/share/${shareToken}`}
-                      className="input flex-1 text-xs"
-                      style={{ fontFamily: "var(--font-mono)" }}
-                    />
-                    <button onClick={handleCopyShareLink} className="btn btn-primary btn-sm">
-                      {copiedLink ? t("share_copied") : t("share_copy")}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={handleToggleShare}
+                      style={{
+                        width: 40,
+                        height: 22,
+                        background: isPublic ? "var(--red)" : "var(--light)",
+                        border: "none",
+                        borderRadius: 11,
+                        cursor: "pointer",
+                        position: "relative",
+                        transition: "background 0.2s",
+                        flexShrink: 0,
+                      }}
+                    >
+                      <span style={{
+                        display: "block",
+                        width: 16,
+                        height: 16,
+                        background: "white",
+                        borderRadius: "50%",
+                        position: "absolute",
+                        top: 3,
+                        left: isPublic ? 21 : 3,
+                        transition: "left 0.2s",
+                      }} />
                     </button>
+                    <span style={{ fontSize: "0.75rem", color: "var(--mid)", fontFamily: "var(--font-sans)" }}>{t("share_enable")}</span>
                   </div>
-                )}
+                  {isPublic && shareToken && (
+                    <div>
+                      <label style={labelStyle}>{t("share_link")}</label>
+                      <div className="flex gap-2">
+                        <input
+                          readOnly
+                          value={`${typeof window !== "undefined" ? window.location.origin : ""}/share/${shareToken}`}
+                          className="input flex-1 text-xs"
+                          style={{ fontFamily: "var(--font-mono)", color: "var(--mid)" }}
+                        />
+                        <button onClick={handleCopyShareLink} className="btn btn-secondary" style={{ flexShrink: 0 }}>
+                          {copiedLink ? t("share_copied") : t("share_copy")}
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             )}
           </div>
