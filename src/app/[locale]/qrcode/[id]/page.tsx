@@ -53,6 +53,7 @@ export default function QRCodeEditorPage() {
   const [shareToken, setShareToken] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [category, setCategory] = useState<string>("");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loadingData, setLoadingData] = useState(!isNew);
   const [copiedLink, setCopiedLink] = useState(false);
@@ -85,6 +86,7 @@ export default function QRCodeEditorPage() {
           setLogoDataUrl(data.logoDataUrl || null);
           setIsPublic(data.isPublic || false);
           setShareToken(data.shareToken || null);
+          setCategory(data.category || "");
         })
         .catch(() => router.push("/dashboard"))
         .finally(() => setLoadingData(false));
@@ -202,6 +204,7 @@ export default function QRCodeEditorPage() {
       type,
       content: content.trim(),
       metadata: fields,
+      category: category.trim() || null,
       foregroundColor,
       backgroundColor,
       size,
@@ -371,6 +374,24 @@ export default function QRCodeEditorPage() {
                     className="input w-full"
                     placeholder={t("name_placeholder")}
                     style={errors.name ? { borderColor: "var(--red)" } : {}}
+                  />
+                </div>
+
+                {/* Catégorie */}
+                <div>
+                  <label
+                    className="block text-xs font-bold uppercase tracking-widest mb-1"
+                    style={{ color: "var(--mid)", fontFamily: "var(--font-sans)" }}
+                  >
+                    {t("category_label")}
+                  </label>
+                  <input
+                    type="text"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    placeholder={t("category_placeholder")}
+                    className="input w-full"
+                    maxLength={50}
                   />
                 </div>
 
