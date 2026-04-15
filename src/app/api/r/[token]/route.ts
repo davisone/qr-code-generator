@@ -36,11 +36,16 @@ export async function GET(
 
   const qrCode = await prisma.qRCode.findUnique({
     where: { shareToken: token, isPublic: true },
-    select: { id: true, content: true, type: true },
+    select: { id: true, content: true, type: true, expiresAt: true },
   });
 
   if (!qrCode || qrCode.type !== "url") {
     return NextResponse.redirect(new URL("/", req.url), { status: 302 });
+  }
+
+  // QR expiré → page d'expiration
+  if (qrCode.expiresAt && qrCode.expiresAt < new Date()) {
+    return NextResponse.redirect(new URL("/qrcode/expired", req.url), { status: 302 });
   }
 
   const userAgent = req.headers.get("user-agent");
