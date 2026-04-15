@@ -90,6 +90,9 @@ export default function DashboardPage() {
     if (searchParams?.get("upgrade") === "success") {
       toast.success(t("toast_upgrade_success"));
       fetch("/api/user/subscription").then((r) => r.json()).then(setProStatus).catch(() => {});
+      const url = new URL(window.location.href);
+      url.searchParams.delete("upgrade");
+      window.history.replaceState({}, "", url.toString());
     }
   }, [searchParams, t]);
 
@@ -631,37 +634,32 @@ export default function DashboardPage() {
                               {qr.category}
                             </span>
                           )}
-                          {isExpired(qr.expiresAt) ? (
-                            <span
-                              style={{
-                                background: "var(--mid)",
-                                color: "var(--bg)",
-                                fontSize: "0.58rem",
-                                textTransform: "uppercase",
-                                letterSpacing: "0.08em",
-                                padding: "0.15rem 0.4rem",
-                                fontFamily: "var(--font-sans)",
-                                fontWeight: 700,
-                              }}
-                            >
-                              {t("badge_expired")}
-                            </span>
-                          ) : getDaysUntilExpiry(qr.expiresAt) !== null && getDaysUntilExpiry(qr.expiresAt)! <= 7 ? (
-                            <span
-                              style={{
-                                background: "var(--red)",
-                                color: "white",
-                                fontSize: "0.58rem",
-                                textTransform: "uppercase",
-                                letterSpacing: "0.08em",
-                                padding: "0.15rem 0.4rem",
-                                fontFamily: "var(--font-sans)",
-                                fontWeight: 700,
-                              }}
-                            >
-                              {t("badge_expires_soon", { days: getDaysUntilExpiry(qr.expiresAt)! })}
-                            </span>
-                          ) : null}
+                          {(() => {
+                            if (isExpired(qr.expiresAt)) {
+                              return (
+                                <span style={{
+                                  fontSize: "0.58rem", fontWeight: 700, textTransform: "uppercase" as const,
+                                  letterSpacing: "0.08em", background: "var(--mid)", color: "var(--bg)",
+                                  padding: "0.15rem 0.4rem", fontFamily: "var(--font-sans)",
+                                }}>
+                                  {t("badge_expired")}
+                                </span>
+                              );
+                            }
+                            const days = getDaysUntilExpiry(qr.expiresAt);
+                            if (days !== null && days <= 7) {
+                              return (
+                                <span style={{
+                                  fontSize: "0.58rem", fontWeight: 700, textTransform: "uppercase" as const,
+                                  letterSpacing: "0.08em", background: "var(--red)", color: "white",
+                                  padding: "0.15rem 0.4rem", fontFamily: "var(--font-sans)",
+                                }}>
+                                  {t("badge_expires_soon", { days })}
+                                </span>
+                              );
+                            }
+                            return null;
+                          })()}
                         </div>
                       </div>
 
