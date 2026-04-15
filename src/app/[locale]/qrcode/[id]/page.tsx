@@ -167,7 +167,10 @@ export default function QRCodeEditorPage() {
         if (!fields.fullname?.trim()) newErrors.fullname = "!";
         break;
       case "email":
-        if (!fields.to?.trim()) newErrors.to = "!";
+        if (!fields.to?.trim()) { newErrors.to = "!"; break; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.to.trim())) {
+          newErrors.to = "Email";
+        }
         break;
       case "phone":
         if (!fields.phone?.trim()) newErrors.phone = "!";
