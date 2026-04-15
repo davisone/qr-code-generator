@@ -84,6 +84,22 @@ const Footer = () => {
           >
             {t("legal")}
           </Link>
+          <Link
+            href="/cgu"
+            style={{ color: "rgba(240,235,225,0.45)" }}
+            onMouseEnter={e => (e.currentTarget.style.color = "#f0ebe1")}
+            onMouseLeave={e => (e.currentTarget.style.color = "rgba(240,235,225,0.45)")}
+          >
+            CGU
+          </Link>
+          <Link
+            href="/politique-confidentialite"
+            style={{ color: "rgba(240,235,225,0.45)" }}
+            onMouseEnter={e => (e.currentTarget.style.color = "#f0ebe1")}
+            onMouseLeave={e => (e.currentTarget.style.color = "rgba(240,235,225,0.45)")}
+          >
+            {t("privacy")}
+          </Link>
         </div>
       </div>
     </footer>
