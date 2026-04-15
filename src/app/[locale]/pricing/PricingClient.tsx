@@ -31,13 +31,19 @@ const CROSS_FREE = (
 export const PricingClient = ({ isPro, hasStripeCustomer, isLoggedIn }: Props) => {
   const t = useTranslations("pricing");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleCheckout = async () => {
     setLoading(true);
+    setError(null);
     try {
       const res = await fetch("/api/stripe/checkout", { method: "POST" });
-      const data = await res.json() as { url?: string };
+      if (!res.ok) throw new Error("checkout_failed");
+      const data = (await res.json()) as { url?: string };
       if (data.url) window.location.href = data.url;
+      else throw new Error("no_url");
+    } catch {
+      setError(t("error_generic"));
     } finally {
       setLoading(false);
     }
@@ -45,10 +51,15 @@ export const PricingClient = ({ isPro, hasStripeCustomer, isLoggedIn }: Props) =
 
   const handlePortal = async () => {
     setLoading(true);
+    setError(null);
     try {
       const res = await fetch("/api/stripe/portal", { method: "POST" });
-      const data = await res.json() as { url?: string };
+      if (!res.ok) throw new Error("portal_failed");
+      const data = (await res.json()) as { url?: string };
       if (data.url) window.location.href = data.url;
+      else throw new Error("no_url");
+    } catch {
+      setError(t("error_generic"));
     } finally {
       setLoading(false);
     }
@@ -363,6 +374,18 @@ export const PricingClient = ({ isPro, hasStripeCustomer, isLoggedIn }: Props) =
           )}
         </div>
       </div>
+
+      {error && (
+        <p style={{
+          textAlign: "center",
+          fontFamily: "var(--font-mono)",
+          fontSize: "0.75rem",
+          color: "var(--red)",
+          marginTop: "1rem",
+        }}>
+          {error}
+        </p>
+      )}
 
       {/* FAQ */}
       <div>
