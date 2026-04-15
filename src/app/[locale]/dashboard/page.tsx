@@ -39,7 +39,7 @@ export default function DashboardPage() {
   const [previews, setPreviews] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [filterType, setFilterType] = useState<"all" | "url" | "text" | "wifi" | "vcard" | "email" | "phone" | "sms" | "whatsapp" | "geo" | "social" | "favorites">("all");
+  const [filterType, setFilterType] = useState<"all" | QRType | "favorites">("all");
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [exporting, setExporting] = useState(false);
   const [selectedQRCodeForAnalytics, setSelectedQRCodeForAnalytics] = useState<string>("");
