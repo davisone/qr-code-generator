@@ -106,7 +106,17 @@
     "sidebar_sms": "SMS",
     "sidebar_whatsapp": "WhatsApp",
     "sidebar_geo": "GPS",
-    "sidebar_social": "SNS"
+    "sidebar_social": "SNS",
+    "toast_deleted": "QRコードを削除しました",
+    "toast_error": "エラーが発生しました",
+    "toast_favorite_added": "お気に入りに追加しました",
+    "toast_favorite_removed": "お気に入りから削除しました",
+    "toast_duplicated": "QRコードを複製しました",
+    "toast_zip_exported": "ZIPをダウンロードしました",
+    "toast_delete_selected": "{count}件のQRコードを削除しました",
+    "delete_selected": "{count}件を削除",
+    "filter_category_label": "カテゴリ",
+    "filter_category_all": "すべて"
   },
   "qrcode": {
     "back": "← 戻る", "save": "保存", "saving": "保存中...", "return_dashboard": "ダッシュボードに戻る",
@@ -149,7 +159,9 @@
     "geo_lng": "経度",
     "geo_label": "場所名（任意）",
     "social_platform": "プラットフォーム",
-    "social_url": "プロフィールURL"
+    "social_url": "プロフィールURL",
+    "category_label": "カテゴリ",
+    "category_placeholder": "例: マーケティング、イベント..."
   },
   "footer": { "rights": "全著作権所有。", "powered_by": "Powered by", "google_review": "Googleレビュー", "legal": "法的告知" }
 }

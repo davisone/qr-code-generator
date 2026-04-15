@@ -106,7 +106,17 @@
     "sidebar_sms": "SMS",
     "sidebar_whatsapp": "WhatsApp",
     "sidebar_geo": "GPS",
-    "sidebar_social": "Sozial"
+    "sidebar_social": "Sozial",
+    "toast_deleted": "QR-Code gelöscht",
+    "toast_error": "Ein Fehler ist aufgetreten",
+    "toast_favorite_added": "Zu Favoriten hinzugefügt",
+    "toast_favorite_removed": "Aus Favoriten entfernt",
+    "toast_duplicated": "QR-Code dupliziert",
+    "toast_zip_exported": "ZIP heruntergeladen",
+    "toast_delete_selected": "{count} QR-Code(s) gelöscht",
+    "delete_selected": "{count} löschen",
+    "filter_category_label": "Kategorien",
+    "filter_category_all": "Alle"
   },
   "qrcode": {
     "back": "← Zurück", "save": "Speichern", "saving": "Speichern...", "return_dashboard": "Zurück zum Dashboard",
@@ -149,7 +159,9 @@
     "geo_lng": "Längengrad",
     "geo_label": "Ortsname (optional)",
     "social_platform": "Plattform",
-    "social_url": "Profil-URL"
+    "social_url": "Profil-URL",
+    "category_label": "Kategorie",
+    "category_placeholder": "z.B.: Marketing, Veranstaltung..."
   },
   "footer": { "rights": "Alle Rechte vorbehalten.", "powered_by": "Unterstützt von", "google_review": "Google-Bewertung", "legal": "Impressum" }
 }

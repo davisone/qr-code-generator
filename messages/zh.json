@@ -106,7 +106,17 @@
     "sidebar_sms": "短信",
     "sidebar_whatsapp": "WhatsApp",
     "sidebar_geo": "GPS",
-    "sidebar_social": "社交"
+    "sidebar_social": "社交",
+    "toast_deleted": "二维码已删除",
+    "toast_error": "发生了错误",
+    "toast_favorite_added": "已添加到收藏",
+    "toast_favorite_removed": "已从收藏中移除",
+    "toast_duplicated": "二维码已复制",
+    "toast_zip_exported": "ZIP已下载",
+    "toast_delete_selected": "已删除{count}个二维码",
+    "delete_selected": "删除{count}个",
+    "filter_category_label": "分类",
+    "filter_category_all": "全部"
   },
   "qrcode": {
     "back": "← 返回", "save": "保存", "saving": "保存中...", "return_dashboard": "返回控制台",
@@ -149,7 +159,9 @@
     "geo_lng": "经度",
     "geo_label": "地点名称（可选）",
     "social_platform": "平台",
-    "social_url": "主页链接"
+    "social_url": "主页链接",
+    "category_label": "分类",
+    "category_placeholder": "例如：营销、活动..."
   },
   "footer": { "rights": "版权所有。", "powered_by": "技术支持：", "google_review": "Google评价", "legal": "法律声明" }
 }

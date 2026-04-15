@@ -106,7 +106,17 @@
     "sidebar_sms": "SMS",
     "sidebar_whatsapp": "WhatsApp",
     "sidebar_geo": "GPS",
-    "sidebar_social": "Sociaal"
+    "sidebar_social": "Sociaal",
+    "toast_deleted": "QR-code verwijderd",
+    "toast_error": "Er is een fout opgetreden",
+    "toast_favorite_added": "Toegevoegd aan favorieten",
+    "toast_favorite_removed": "Verwijderd uit favorieten",
+    "toast_duplicated": "QR-code gedupliceerd",
+    "toast_zip_exported": "ZIP gedownload",
+    "toast_delete_selected": "{count} QR-code(s) verwijderd",
+    "delete_selected": "{count} verwijderen",
+    "filter_category_label": "Categorieën",
+    "filter_category_all": "Alle"
   },
   "qrcode": {
     "back": "← Terug", "save": "Opslaan", "saving": "Opslaan...", "return_dashboard": "Terug naar dashboard",
@@ -149,7 +159,9 @@
     "geo_lng": "Lengtegraad",
     "geo_label": "Plaatsnaam (optioneel)",
     "social_platform": "Platform",
-    "social_url": "Profiel-URL"
+    "social_url": "Profiel-URL",
+    "category_label": "Categorie",
+    "category_placeholder": "bijv: Marketing, Evenement..."
   },
   "footer": { "rights": "Alle rechten voorbehouden.", "powered_by": "Aangedreven door", "google_review": "Google-recensie", "legal": "Juridische kennisgeving" }
 }

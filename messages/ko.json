@@ -106,7 +106,17 @@
     "sidebar_sms": "SMS",
     "sidebar_whatsapp": "WhatsApp",
     "sidebar_geo": "GPS",
-    "sidebar_social": "소셜"
+    "sidebar_social": "소셜",
+    "toast_deleted": "QR 코드가 삭제되었습니다",
+    "toast_error": "오류가 발생했습니다",
+    "toast_favorite_added": "즐겨찾기에 추가되었습니다",
+    "toast_favorite_removed": "즐겨찾기에서 제거되었습니다",
+    "toast_duplicated": "QR 코드가 복제되었습니다",
+    "toast_zip_exported": "ZIP이 다운로드되었습니다",
+    "toast_delete_selected": "QR 코드 {count}개가 삭제되었습니다",
+    "delete_selected": "{count}개 삭제",
+    "filter_category_label": "카테고리",
+    "filter_category_all": "전체"
   },
   "qrcode": {
     "back": "← 뒤로", "save": "저장", "saving": "저장 중...", "return_dashboard": "대시보드로 돌아가기",
@@ -149,7 +159,9 @@
     "geo_lng": "경도",
     "geo_label": "장소명（선택）",
     "social_platform": "플랫폼",
-    "social_url": "프로필 URL"
+    "social_url": "프로필 URL",
+    "category_label": "카테고리",
+    "category_placeholder": "예: 마케팅, 이벤트..."
   },
   "footer": { "rights": "모든 권리 보유.", "powered_by": "제공:", "google_review": "Google 리뷰", "legal": "법적 고지" }
 }
