@@ -10,6 +10,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import { toast } from "sonner";
 import type { QRType } from "@/lib/qr-formats";
 
 const MapView = dynamic(() => import("@/components/MapView"), { ssr: false });
@@ -116,9 +117,12 @@ export default function DashboardPage() {
           next.delete(id);
           return next;
         });
+        toast.success(t("toast_deleted"));
+      } else {
+        toast.error(t("toast_error"));
       }
     } catch {
-      // silently fail
+      toast.error(t("toast_error"));
     }
   }
 
@@ -135,7 +139,7 @@ export default function DashboardPage() {
       link.href = dataUrl;
       link.click();
     } catch {
-      // silently fail
+      toast.error(t("toast_error"));
     }
   }
 
@@ -147,9 +151,12 @@ export default function DashboardPage() {
         setQrCodes((prev) =>
           prev.map((qr) => (qr.id === id ? { ...qr, isFavorite: updated.isFavorite } : qr))
         );
+        toast.success(updated.isFavorite ? t("toast_favorite_added") : t("toast_favorite_removed"));
+      } else {
+        toast.error(t("toast_error"));
       }
     } catch {
-      // silently fail
+      toast.error(t("toast_error"));
     }
   }
 
@@ -163,9 +170,12 @@ export default function DashboardPage() {
       if (res.ok) {
         const newQR = await res.json();
         setQrCodes((prev) => [newQR, ...prev]);
+        toast.success(t("toast_duplicated"));
+      } else {
+        toast.error(t("toast_error"));
       }
     } catch {
-      // silently fail
+      toast.error(t("toast_error"));
     }
   }
 
@@ -208,8 +218,9 @@ export default function DashboardPage() {
       link.href = URL.createObjectURL(blob);
       link.click();
       URL.revokeObjectURL(link.href);
+      toast.success(t("toast_zip_exported"));
     } catch {
-      // silently fail
+      toast.error(t("toast_error"));
     } finally {
       setExporting(false);
     }
