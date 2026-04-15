@@ -4,6 +4,7 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { checkQRCreateRateLimit } from "@/lib/rate-limit";
 import { v4 as uuidv4 } from "uuid";
+import { isPro } from "@/lib/stripe";
 
 export async function GET() {
   const session = await getServerSession(authOptions);
@@ -30,7 +31,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
 
-  const user = await prisma.user.findUnique({ where: { email: session.user.email } });
+  const user = await prisma.user.findUnique({
+    where: { email: session.user.email },
+    select: {
+      id: true,
+      stripeStatus: true,
+      stripeCurrentPeriodEnd: true,
+    },
+  });
   if (!user) {
     return NextResponse.json({ error: "Utilisateur introuvable" }, { status: 404 });
   }
@@ -75,6 +83,7 @@ export async function POST(req: NextRequest) {
       logoDataUrl: logoDataUrl || null,
       isPublic: makePublic,
       shareToken: makePublic ? uuidv4() : null,
+      expiresAt: isPro(user) ? null : new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
       userId: user.id,
     },
   });
