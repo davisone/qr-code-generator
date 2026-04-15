@@ -40,6 +40,18 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
     return NextResponse.json({ error: "Nom et contenu requis" }, { status: 400 });
   }
 
+  // Validation URL côté serveur
+  if (type === "url") {
+    try {
+      const parsed = new URL(content.trim());
+      if (!["http:", "https:"].includes(parsed.protocol)) {
+        return NextResponse.json({ error: "L'URL doit commencer par http:// ou https://" }, { status: 400 });
+      }
+    } catch {
+      return NextResponse.json({ error: "URL invalide" }, { status: 400 });
+    }
+  }
+
   const updated = await prisma.qRCode.update({
     where: { id },
     data: {

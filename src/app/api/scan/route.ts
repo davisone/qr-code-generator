@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { geolocateIp } from "@/lib/geolocation";
+import { checkScanRateLimit } from "@/lib/rate-limit";
 
 function parseUserAgent(ua: string | null): { device: string; browser: string; os: string } {
   if (!ua) return { device: "unknown", browser: "unknown", os: "unknown" };
@@ -55,6 +56,12 @@ export async function POST(req: NextRequest) {
     const ipAddress = forwarded?.split(",")[0]?.trim() || req.headers.get("x-real-ip") || "unknown";
 
     const { device, browser, os } = parseUserAgent(userAgent);
+
+    // Rate limiting : max 30 scans/min par IP
+    const allowed = await checkScanRateLimit(ipAddress);
+    if (!allowed) {
+      return NextResponse.json({ error: "Trop de requêtes" }, { status: 429 });
+    }
 
     // Géolocalisation de l'IP (avant création pour inclure les données directement)
     const geo = await geolocateIp(ipAddress);

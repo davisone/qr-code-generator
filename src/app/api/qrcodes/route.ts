@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { checkQRCreateRateLimit } from "@/lib/rate-limit";
 
 export async function GET() {
   const session = await getServerSession(authOptions);
@@ -33,11 +34,29 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Utilisateur introuvable" }, { status: 404 });
   }
 
+  // Rate limiting : max 30 créations/heure par utilisateur
+  const allowed = await checkQRCreateRateLimit(user.id);
+  if (!allowed) {
+    return NextResponse.json({ error: "Limite de création atteinte. Réessayez dans une heure." }, { status: 429 });
+  }
+
   const body = await req.json();
   const { name, type, content, metadata, category, foregroundColor, backgroundColor, size, errorCorrection, logoDataUrl } = body;
 
   if (!name?.trim() || !content?.trim()) {
     return NextResponse.json({ error: "Nom et contenu requis" }, { status: 400 });
+  }
+
+  // Validation URL côté serveur
+  if (type === "url") {
+    try {
+      const parsed = new URL(content.trim());
+      if (!["http:", "https:"].includes(parsed.protocol)) {
+        return NextResponse.json({ error: "L'URL doit commencer par http:// ou https://" }, { status: 400 });
+      }
+    } catch {
+      return NextResponse.json({ error: "URL invalide" }, { status: 400 });
+    }
   }
 
   const qrCode = await prisma.qRCode.create({
