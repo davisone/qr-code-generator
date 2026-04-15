@@ -14,6 +14,10 @@ model User {
   name          String?
   password      String?
   image         String?
+  stripeCustomerId       String?   @unique
+  stripePriceId          String?
+  stripeStatus           String?
+  stripeCurrentPeriodEnd DateTime?
   createdAt     DateTime  @default(now())
   qrCodes       QRCode[]
   accounts      Account[]
@@ -63,6 +67,7 @@ model QRCode {
   shareToken      String?  @unique
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+  expiresAt       DateTime?
   userId          String
   user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   scans           Scan[]
