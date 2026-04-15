@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { checkQRCreateRateLimit } from "@/lib/rate-limit";
+import { v4 as uuidv4 } from "uuid";
 
 export async function GET() {
   const session = await getServerSession(authOptions);
@@ -41,7 +42,7 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json();
-  const { name, type, content, metadata, category, foregroundColor, backgroundColor, size, errorCorrection, logoDataUrl } = body;
+  const { name, type, content, metadata, category, foregroundColor, backgroundColor, size, errorCorrection, logoDataUrl, isPublic } = body;
 
   if (!name?.trim() || !content?.trim()) {
     return NextResponse.json({ error: "Nom et contenu requis" }, { status: 400 });
@@ -59,6 +60,7 @@ export async function POST(req: NextRequest) {
     }
   }
 
+  const makePublic = isPublic === true;
   const qrCode = await prisma.qRCode.create({
     data: {
       name: name.trim(),
@@ -71,6 +73,8 @@ export async function POST(req: NextRequest) {
       size: size || 512,
       errorCorrection: errorCorrection || "M",
       logoDataUrl: logoDataUrl || null,
+      isPublic: makePublic,
+      shareToken: makePublic ? uuidv4() : null,
       userId: user.id,
     },
   });

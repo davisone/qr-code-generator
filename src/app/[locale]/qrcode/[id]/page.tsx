@@ -60,6 +60,11 @@ export default function QRCodeEditorPage() {
 
   // Content is derived from fields — not state
   const content = buildContent(type, fields);
+  // For URL QR codes with public sharing enabled, exports encode the redirect URL for analytics tracking
+  const exportContent =
+    isPublic && shareToken && type === "url" && content.trim()
+      ? `${typeof window !== "undefined" ? window.location.origin : ""}/r/${shareToken}`
+      : content.trim() || "https://example.com";
 
   useEffect(() => {
     if (status === "unauthenticated") router.push("/login");
@@ -107,7 +112,7 @@ export default function QRCodeEditorPage() {
   const generateQR = useCallback(async () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const text = content.trim() || "https://example.com";
+    const text = exportContent;
     try {
       await QRCode.toCanvas(canvas, text, {
         width: 280,
@@ -146,7 +151,7 @@ export default function QRCodeEditorPage() {
         ctx.fillText("—", canvas.width / 2, canvas.height / 2);
       }
     }
-  }, [content, foregroundColor, backgroundColor, errorCorrection, logoDataUrl]);
+  }, [exportContent, foregroundColor, backgroundColor, errorCorrection, logoDataUrl]);
 
   useEffect(() => { generateQR(); }, [generateQR]);
 
@@ -210,6 +215,7 @@ export default function QRCodeEditorPage() {
       size,
       errorCorrection,
       logoDataUrl,
+      isPublic,
     };
     try {
       let res: Response;
@@ -231,7 +237,7 @@ export default function QRCodeEditorPage() {
   }
 
   async function getHighQualityDataURL(format: "png" | "jpeg"): Promise<string> {
-    const canvas = await generateQRCanvas({ content: content.trim() || "https://example.com", size, foregroundColor, backgroundColor, errorCorrection, logoDataUrl });
+    const canvas = await generateQRCanvas({ content: exportContent, size, foregroundColor, backgroundColor, errorCorrection, logoDataUrl });
     return canvas.toDataURL(format === "jpeg" ? "image/jpeg" : "image/png", 1.0);
   }
 
@@ -280,7 +286,10 @@ export default function QRCodeEditorPage() {
   }
 
   async function handleToggleShare() {
-    if (isNew) return;
+    if (isNew) {
+      setIsPublic((prev) => !prev);
+      return;
+    }
     try {
       const res = await fetch(`/api/qrcodes/${params.id}/share`, { method: "PATCH" });
       if (!res.ok) throw new Error();
@@ -777,59 +786,57 @@ export default function QRCodeEditorPage() {
             </div>
 
             {/* Share */}
-            {!isNew && (
-              <div style={sectionPad}>
-                <h2 style={headingStyle}>{t("share_title")}</h2>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <button
-                      type="button"
-                      onClick={handleToggleShare}
-                      style={{
-                        width: 40,
-                        height: 22,
-                        background: isPublic ? "var(--red)" : "var(--light)",
-                        border: "none",
-                        borderRadius: 11,
-                        cursor: "pointer",
-                        position: "relative",
-                        transition: "background 0.2s",
-                        flexShrink: 0,
-                      }}
-                    >
-                      <span style={{
-                        display: "block",
-                        width: 16,
-                        height: 16,
-                        background: "white",
-                        borderRadius: "50%",
-                        position: "absolute",
-                        top: 3,
-                        left: isPublic ? 21 : 3,
-                        transition: "left 0.2s",
-                      }} />
-                    </button>
-                    <span style={{ fontSize: "0.75rem", color: "var(--mid)", fontFamily: "var(--font-sans)" }}>{t("share_enable")}</span>
-                  </div>
-                  {isPublic && shareToken && (
-                    <div>
-                      <label style={labelStyle}>{t("share_link")}</label>
-                      <div className="flex gap-2">
-                        <input
-                          readOnly
-                          value={`${typeof window !== "undefined" ? window.location.origin : ""}/share/${shareToken}`}
-                          className="input flex-1 text-xs"
-                          style={{ fontFamily: "var(--font-mono)", color: "var(--mid)" }}
-                        />
-                        <button onClick={handleCopyShareLink} className="btn btn-secondary" style={{ flexShrink: 0 }}>
-                          {copiedLink ? t("share_copied") : t("share_copy")}
-                        </button>
-                      </div>
-                    </div>
-                  )}
+            <div style={sectionPad}>
+              <h2 style={headingStyle}>{t("share_title")}</h2>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={handleToggleShare}
+                    style={{
+                      width: 40,
+                      height: 22,
+                      background: isPublic ? "var(--red)" : "var(--light)",
+                      border: "none",
+                      borderRadius: 11,
+                      cursor: "pointer",
+                      position: "relative",
+                      transition: "background 0.2s",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <span style={{
+                      display: "block",
+                      width: 16,
+                      height: 16,
+                      background: "white",
+                      borderRadius: "50%",
+                      position: "absolute",
+                      top: 3,
+                      left: isPublic ? 21 : 3,
+                      transition: "left 0.2s",
+                    }} />
+                  </button>
+                  <span style={{ fontSize: "0.75rem", color: "var(--mid)", fontFamily: "var(--font-sans)" }}>{t("share_enable")}</span>
                 </div>
+                {!isNew && isPublic && shareToken && (
+                  <div>
+                    <label style={labelStyle}>{t("share_link")}</label>
+                    <div className="flex gap-2">
+                      <input
+                        readOnly
+                        value={`${typeof window !== "undefined" ? window.location.origin : ""}/share/${shareToken}`}
+                        className="input flex-1 text-xs"
+                        style={{ fontFamily: "var(--font-mono)", color: "var(--mid)" }}
+                      />
+                      <button onClick={handleCopyShareLink} className="btn btn-secondary" style={{ flexShrink: 0 }}>
+                        {copiedLink ? t("share_copied") : t("share_copy")}
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>

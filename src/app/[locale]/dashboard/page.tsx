@@ -26,6 +26,7 @@ interface QRCodeItem {
   errorCorrection: string;
   isFavorite: boolean;
   isPublic: boolean;
+  shareToken: string | null;
   logoDataUrl: string | null;
   category: string | null;
 }
@@ -136,8 +137,12 @@ export default function DashboardPage() {
   }
 
   async function handleDownload(qr: QRCodeItem) {
+    const qrContent =
+      qr.isPublic && qr.shareToken && qr.type === "url"
+        ? `${window.location.origin}/r/${qr.shareToken}`
+        : qr.content;
     try {
-      const dataUrl = await QRCode.toDataURL(qr.content, {
+      const dataUrl = await QRCode.toDataURL(qrContent, {
         width: qr.size,
         margin: 2,
         color: { dark: qr.foregroundColor, light: qr.backgroundColor },
