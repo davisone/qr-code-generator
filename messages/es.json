@@ -144,7 +144,7 @@
     "sms_phone": "Número",
     "sms_message": "Mensaje",
     "whatsapp_phone": "Número (ej: 34612345678)",
-    "whatsapp_message": "Mensaje rellenado",
+    "whatsapp_message": "Mensaje predefinido",
     "geo_lat": "Latitud",
     "geo_lng": "Longitud",
     "geo_label": "Nombre del lugar (opcional)",
