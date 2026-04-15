@@ -57,6 +57,7 @@ model QRCode {
   errorCorrection String   @default("M")
   logoDataUrl     String?
   metadata        Json?
+  category        String?
   isFavorite      Boolean  @default(false)
   isPublic        Boolean  @default(false)
   shareToken      String?  @unique
