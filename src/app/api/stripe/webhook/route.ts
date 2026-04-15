@@ -16,10 +16,14 @@ export async function POST(req: NextRequest) {
 
   if (!sig) return NextResponse.json({ error: "No signature" }, { status: 400 });
 
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+  if (!webhookSecret) return NextResponse.json({ error: "Webhook secret manquant" }, { status: 500 });
+
   let event: Stripe.Event;
   try {
-    event = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WEBHOOK_SECRET!);
-  } catch {
+    event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
+  } catch (err) {
+    console.error("Stripe webhook signature error:", err);
     return NextResponse.json({ error: "Webhook signature invalid" }, { status: 400 });
   }
 
@@ -52,8 +56,12 @@ export async function POST(req: NextRequest) {
       case "customer.subscription.updated": {
         const subscription = event.data.object as Stripe.Subscription;
 
+        const customerId = typeof subscription.customer === "string"
+          ? subscription.customer
+          : (subscription.customer as { id: string }).id;
+
         const user = await prisma.user.findFirst({
-          where: { stripeCustomerId: subscription.customer as string },
+          where: { stripeCustomerId: customerId },
           select: { id: true },
         });
         if (!user) break;
@@ -80,8 +88,12 @@ export async function POST(req: NextRequest) {
       case "customer.subscription.deleted": {
         const subscription = event.data.object as Stripe.Subscription;
 
+        const customerId = typeof subscription.customer === "string"
+          ? subscription.customer
+          : (subscription.customer as { id: string }).id;
+
         const user = await prisma.user.findFirst({
-          where: { stripeCustomerId: subscription.customer as string },
+          where: { stripeCustomerId: customerId },
           select: { id: true },
         });
         if (!user) break;
