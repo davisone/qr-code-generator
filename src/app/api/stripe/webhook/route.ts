@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
         });
         if (!user) break;
 
-        const wasActive = (event.data.previous_attributes as Record<string, unknown>)?.status === "active";
+        const wasPastDue = (event.data.previous_attributes as Record<string, unknown>)?.status === "past_due";
         const isNowActive = subscription.status === "active";
         const periodEnd = getPeriodEnd(subscription);
 
@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
           },
         });
 
-        if (!wasActive && isNowActive) {
+        if (wasPastDue && isNowActive) {
           await reactivateUserQRCodes(user.id);
         }
         break;
