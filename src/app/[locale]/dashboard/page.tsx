@@ -10,6 +10,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import type { QRType } from "@/lib/qr-formats";
 
 const MapView = dynamic(() => import("@/components/MapView"), { ssr: false });
 
@@ -38,7 +39,7 @@ export default function DashboardPage() {
   const [previews, setPreviews] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [filterType, setFilterType] = useState<"all" | "url" | "text" | "favorites">("all");
+  const [filterType, setFilterType] = useState<"all" | "url" | "text" | "wifi" | "vcard" | "email" | "phone" | "sms" | "whatsapp" | "geo" | "social" | "favorites">("all");
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [exporting, setExporting] = useState(false);
   const [selectedQRCodeForAnalytics, setSelectedQRCodeForAnalytics] = useState<string>("");
@@ -328,7 +329,7 @@ export default function DashboardPage() {
             {activeTab === "qrcodes" && qrCodes.length > 0 && (
               <>
                 <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.08)", margin: "0 0.25rem" }} />
-                {(["all", "url", "text", "favorites"] as const).map((f) => (
+                {(["all", "url", "text", "wifi", "vcard", "email", "phone", "sms", "whatsapp", "geo", "social", "favorites"] as const).map((f) => (
                   <button
                     key={f}
                     onClick={() => setFilterType(f)}
@@ -346,7 +347,9 @@ export default function DashboardPage() {
                       borderRight: "1px solid rgba(255,255,255,0.06)",
                     }}
                   >
-                    {f === "all" ? t("filter_all") : f === "url" ? t("filter_url") : f === "text" ? t("filter_text") : t("filter_favorites")}
+                    {f === "all" ? t("filter_all") :
+                     f === "favorites" ? t("filter_favorites") :
+                     t(`filter_${f}` as Parameters<typeof t>[0])}
                   </button>
                 ))}
                 <input
@@ -581,12 +584,12 @@ export default function DashboardPage() {
                   <div className="side-block">
                     <div className="side-head"><span>—</span></div>
                     <div className="side-body">
-                      {(["url", "text"] as const).map((type) => {
+                      {(["url", "text", "wifi", "vcard", "email", "phone", "sms", "whatsapp", "geo", "social"] as const).map((type) => {
                         const count = qrCodes.filter((qr) => qr.type === type).length;
                         const pct = qrCodes.length > 0 ? Math.round((count / qrCodes.length) * 100) : 0;
                         return (
                           <div key={type} className="flex justify-between items-center py-2" style={{ borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
-                            <span className="text-xs font-bold uppercase tracking-wider">{type === "url" ? t("sidebar_url") : t("sidebar_text")}</span>
+                            <span className="text-xs font-bold uppercase tracking-wider">{t(`sidebar_${type}` as Parameters<typeof t>[0])}</span>
                             <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", color: "var(--mid)" }}>
                               {count} — {pct}%
                             </span>
