@@ -226,6 +226,35 @@ export default function DashboardPage() {
     }
   }
 
+  async function handleDeleteSelected() {
+    if (selected.size === 0) return;
+    const ids = Array.from(selected);
+    let successCount = 0;
+    let errorCount = 0;
+
+    for (const id of ids) {
+      try {
+        const res = await fetch(`/api/qrcodes/${id}`, { method: "DELETE" });
+        if (res.ok) {
+          setQrCodes((prev) => prev.filter((qr) => qr.id !== id));
+          successCount++;
+        } else {
+          errorCount++;
+        }
+      } catch {
+        errorCount++;
+      }
+    }
+
+    setSelected(new Set());
+
+    if (errorCount === 0) {
+      toast.success(t("toast_delete_selected", { count: successCount }));
+    } else {
+      toast.error(`${successCount} supprimé(s), ${errorCount} erreur(s)`);
+    }
+  }
+
   if (status === "loading" || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: "var(--bg)" }}>
@@ -394,6 +423,24 @@ export default function DashboardPage() {
             </span>
             <button onClick={handleExportZip} disabled={exporting} className="btn btn-sm btn-primary">
               {exporting ? "..." : t("export_zip")}
+            </button>
+            <button
+              onClick={handleDeleteSelected}
+              className="btn btn-sm"
+              style={{
+                background: "none",
+                border: "1px solid var(--red)",
+                color: "var(--red)",
+                fontFamily: "var(--font-sans)",
+                fontWeight: 700,
+                padding: "0.4rem 0.9rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                cursor: "pointer",
+                fontSize: "0.65rem",
+              }}
+            >
+              {t("delete_selected", { count: selected.size })}
             </button>
             <button onClick={() => setSelected(new Set())} className="btn btn-sm btn-ghost">
               ✕
