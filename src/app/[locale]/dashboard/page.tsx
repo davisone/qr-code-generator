@@ -27,6 +27,7 @@ interface QRCodeItem {
   isFavorite: boolean;
   isPublic: boolean;
   logoDataUrl: string | null;
+  category: string | null;
 }
 
 type Tab = "qrcodes" | "analytics" | "map";
@@ -41,6 +42,7 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [filterType, setFilterType] = useState<"all" | QRType | "favorites">("all");
+  const [filterCategory, setFilterCategory] = useState<string | null>(null);
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [exporting, setExporting] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -104,8 +106,14 @@ export default function DashboardPage() {
       filterType === "all" ||
       (filterType === "favorites" && qr.isFavorite) ||
       (filterType !== "favorites" && qr.type === filterType);
-    return matchesSearch && matchesFilter;
+    const matchesCategory =
+      filterCategory === null || qr.category === filterCategory;
+    return matchesSearch && matchesFilter && matchesCategory;
   });
+
+  const uniqueCategories = Array.from(
+    new Set(qrCodes.map((qr) => qr.category).filter((c): c is string => c !== null && c.trim() !== ""))
+  ).sort();
 
   async function handleDelete(id: string) {
     if (!confirm(t("delete_confirm"))) return;
@@ -580,6 +588,15 @@ export default function DashboardPage() {
                         <div className="flex gap-1.5 mt-1.5">
                           <span className="badge badge-ink">{qr.type}</span>
                           {qr.isPublic && <span className="badge badge-red">Public</span>}
+                          {qr.category && (
+                            <span
+                              className="badge"
+                              style={{ background: "rgba(16,185,129,0.15)", color: "#10b981", border: "1px solid rgba(16,185,129,0.3)", cursor: "pointer" }}
+                              onClick={(e) => { e.stopPropagation(); setFilterCategory(qr.category!); }}
+                            >
+                              {qr.category}
+                            </span>
+                          )}
                         </div>
                       </div>
 
@@ -663,6 +680,51 @@ export default function DashboardPage() {
                       })}
                     </div>
                   </div>
+                  {uniqueCategories.length > 0 && (
+                    <div className="side-block">
+                      <div className="side-head"><span>{t("filter_category_label" as Parameters<typeof t>[0])}</span></div>
+                      <div className="side-body flex flex-col gap-1">
+                        <button
+                          onClick={() => setFilterCategory(null)}
+                          style={{
+                            background: "none",
+                            border: "none",
+                            color: filterCategory === null ? "var(--ink)" : "var(--mid)",
+                            fontFamily: "var(--font-sans)",
+                            fontSize: "0.7rem",
+                            fontWeight: 700,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.08em",
+                            cursor: "pointer",
+                            textAlign: "left",
+                            padding: "0.3rem 0",
+                          }}
+                        >
+                          {t("filter_category_all" as Parameters<typeof t>[0])}
+                        </button>
+                        {uniqueCategories.map((cat) => (
+                          <button
+                            key={cat}
+                            onClick={() => setFilterCategory(cat === filterCategory ? null : cat)}
+                            style={{
+                              background: "none",
+                              border: "none",
+                              color: filterCategory === cat ? "#10b981" : "var(--mid)",
+                              fontFamily: "var(--font-sans)",
+                              fontSize: "0.7rem",
+                              fontWeight: filterCategory === cat ? 700 : 400,
+                              cursor: "pointer",
+                              textAlign: "left",
+                              padding: "0.3rem 0",
+                              borderBottom: "1px solid rgba(0,0,0,0.06)",
+                            }}
+                          >
+                            {cat}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
