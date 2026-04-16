@@ -57,6 +57,38 @@ export default function Analytics({ qrCodeId, isPro = false }: { qrCodeId: strin
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const ProGate = ({ children }: { children: React.ReactNode }) => {
+    if (isPro) return <>{children}</>;
+    return (
+      <div style={{ position: "relative" }}>
+        <div style={{ filter: "blur(6px)", pointerEvents: "none", userSelect: "none" }}>
+          {children}
+        </div>
+        <div style={{
+          position: "absolute", inset: 0, display: "flex", flexDirection: "column",
+          alignItems: "center", justifyContent: "center", gap: "0.75rem",
+          background: "rgba(26, 20, 16, 0.55)",
+        }}>
+          <span style={{ fontSize: "1.5rem" }}>🔒</span>
+          <p style={{
+            fontFamily: "var(--font-sans)", fontSize: "0.8rem", fontWeight: 700,
+            textTransform: "uppercase", letterSpacing: "0.08em", color: "#f0ebe1",
+          }}>
+            Fonctionnalité Pro
+          </p>
+          <a href="/pricing" style={{
+            fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700,
+            textTransform: "uppercase", letterSpacing: "0.08em",
+            background: "var(--red)", color: "white", padding: "0.5rem 1.25rem",
+            textDecoration: "none",
+          }}>
+            Passer Pro →
+          </a>
+        </div>
+      </div>
+    );
+  };
+
   useEffect(() => {
     fetch(`/api/qrcodes/${qrCodeId}/analytics`)
       .then((res) => {
@@ -109,201 +141,211 @@ export default function Analytics({ qrCodeId, isPro = false }: { qrCodeId: strin
       </div>
 
       {/* Daily Chart */}
-      <div className="bento-card p-6">
-        <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">
-          Scans des 30 derniers jours
-        </h3>
-        {data.dailyData.some((d) => d.scans > 0) ? (
-          <ResponsiveContainer width="100%" height={250}>
-            <AreaChart data={data.dailyData}>
-              <defs>
-                <linearGradient id="colorScans" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#10b981" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
-                </linearGradient>
-              </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e5e5" />
-              <XAxis
-                dataKey="date"
-                tickFormatter={formatDate}
-                tick={{ fontSize: 12, fill: "#525252" }}
-                tickLine={false}
-                axisLine={false}
-              />
-              <YAxis
-                tick={{ fontSize: 12, fill: "#525252" }}
-                tickLine={false}
-                axisLine={false}
-                allowDecimals={false}
-              />
-              <Tooltip
-                labelFormatter={(label) => formatDate(label as string)}
-                formatter={(value) => [value, "Scans"]}
-                contentStyle={{
-                  backgroundColor: "#fff",
-                  border: "1px solid #e5e5e5",
-                  borderRadius: "8px",
-                }}
-              />
-              <Area
-                type="monotone"
-                dataKey="scans"
-                stroke="#10b981"
-                strokeWidth={2}
-                fillOpacity={1}
-                fill="url(#colorScans)"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
-        ) : (
-          <div className="flex items-center justify-center h-[250px] text-[#a3a3a3]">
-            Aucun scan enregistré pour cette période
-          </div>
-        )}
-      </div>
+      <ProGate>
+        <div className="bento-card p-6">
+          <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">
+            Scans des 30 derniers jours
+          </h3>
+          {data.dailyData.some((d) => d.scans > 0) ? (
+            <ResponsiveContainer width="100%" height={250}>
+              <AreaChart data={data.dailyData}>
+                <defs>
+                  <linearGradient id="colorScans" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.3} />
+                    <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e5e5" />
+                <XAxis
+                  dataKey="date"
+                  tickFormatter={formatDate}
+                  tick={{ fontSize: 12, fill: "#525252" }}
+                  tickLine={false}
+                  axisLine={false}
+                />
+                <YAxis
+                  tick={{ fontSize: 12, fill: "#525252" }}
+                  tickLine={false}
+                  axisLine={false}
+                  allowDecimals={false}
+                />
+                <Tooltip
+                  labelFormatter={(label) => formatDate(label as string)}
+                  formatter={(value) => [value, "Scans"]}
+                  contentStyle={{
+                    backgroundColor: "#fff",
+                    border: "1px solid #e5e5e5",
+                    borderRadius: "8px",
+                  }}
+                />
+                <Area
+                  type="monotone"
+                  dataKey="scans"
+                  stroke="#10b981"
+                  strokeWidth={2}
+                  fillOpacity={1}
+                  fill="url(#colorScans)"
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          ) : (
+            <div className="flex items-center justify-center h-[250px] text-[#a3a3a3]">
+              Aucun scan enregistré pour cette période
+            </div>
+          )}
+        </div>
+      </ProGate>
 
       {/* Distribution Charts */}
       {data.totalScans > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Device Stats */}
-          <div className="bento-card p-6">
-            <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">Appareils</h3>
-            {data.deviceStats.length > 0 ? (
-              <ResponsiveContainer width="100%" height={200}>
-                <PieChart>
-                  <Pie
-                    data={data.deviceStats}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={40}
-                    outerRadius={70}
-                    paddingAngle={2}
-                    dataKey="value"
-                  >
-                    {data.deviceStats.map((_, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={COLORS[index % COLORS.length]}
-                      />
-                    ))}
-                  </Pie>
-                  <Legend
-                    formatter={(value) =>
-                      value.charAt(0).toUpperCase() + value.slice(1)
-                    }
-                  />
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-            ) : (
-              <p className="text-[#a3a3a3] text-center">Aucune donnée</p>
-            )}
-          </div>
+          <ProGate>
+            <div className="bento-card p-6">
+              <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">Appareils</h3>
+              {data.deviceStats.length > 0 ? (
+                <ResponsiveContainer width="100%" height={200}>
+                  <PieChart>
+                    <Pie
+                      data={data.deviceStats}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={40}
+                      outerRadius={70}
+                      paddingAngle={2}
+                      dataKey="value"
+                    >
+                      {data.deviceStats.map((_, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
+                      ))}
+                    </Pie>
+                    <Legend
+                      formatter={(value) =>
+                        value.charAt(0).toUpperCase() + value.slice(1)
+                      }
+                    />
+                    <Tooltip />
+                  </PieChart>
+                </ResponsiveContainer>
+              ) : (
+                <p className="text-[#a3a3a3] text-center">Aucune donnée</p>
+              )}
+            </div>
+          </ProGate>
 
           {/* Browser Stats */}
-          <div className="bento-card p-6">
-            <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">Navigateurs</h3>
-            {data.browserStats.length > 0 ? (
-              <ResponsiveContainer width="100%" height={200}>
-                <PieChart>
-                  <Pie
-                    data={data.browserStats}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={40}
-                    outerRadius={70}
-                    paddingAngle={2}
-                    dataKey="value"
-                  >
-                    {data.browserStats.map((_, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={COLORS[index % COLORS.length]}
-                      />
-                    ))}
-                  </Pie>
-                  <Legend />
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-            ) : (
-              <p className="text-[#a3a3a3] text-center">Aucune donnée</p>
-            )}
-          </div>
+          <ProGate>
+            <div className="bento-card p-6">
+              <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">Navigateurs</h3>
+              {data.browserStats.length > 0 ? (
+                <ResponsiveContainer width="100%" height={200}>
+                  <PieChart>
+                    <Pie
+                      data={data.browserStats}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={40}
+                      outerRadius={70}
+                      paddingAngle={2}
+                      dataKey="value"
+                    >
+                      {data.browserStats.map((_, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
+                      ))}
+                    </Pie>
+                    <Legend />
+                    <Tooltip />
+                  </PieChart>
+                </ResponsiveContainer>
+              ) : (
+                <p className="text-[#a3a3a3] text-center">Aucune donnée</p>
+              )}
+            </div>
+          </ProGate>
 
           {/* OS Stats */}
-          <div className="bento-card p-6">
-            <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">
-              Systèmes d&apos;exploitation
-            </h3>
-            {data.osStats.length > 0 ? (
-              <ResponsiveContainer width="100%" height={200}>
-                <PieChart>
-                  <Pie
-                    data={data.osStats}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={40}
-                    outerRadius={70}
-                    paddingAngle={2}
-                    dataKey="value"
-                  >
-                    {data.osStats.map((_, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={COLORS[index % COLORS.length]}
-                      />
-                    ))}
-                  </Pie>
-                  <Legend />
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-            ) : (
-              <p className="text-[#a3a3a3] text-center">Aucune donnée</p>
-            )}
-          </div>
+          <ProGate>
+            <div className="bento-card p-6">
+              <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">
+                Systèmes d&apos;exploitation
+              </h3>
+              {data.osStats.length > 0 ? (
+                <ResponsiveContainer width="100%" height={200}>
+                  <PieChart>
+                    <Pie
+                      data={data.osStats}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={40}
+                      outerRadius={70}
+                      paddingAngle={2}
+                      dataKey="value"
+                    >
+                      {data.osStats.map((_, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
+                      ))}
+                    </Pie>
+                    <Legend />
+                    <Tooltip />
+                  </PieChart>
+                </ResponsiveContainer>
+              ) : (
+                <p className="text-[#a3a3a3] text-center">Aucune donnée</p>
+              )}
+            </div>
+          </ProGate>
         </div>
       )}
 
       {/* Recent Scans */}
       {data.recentScans.length > 0 && (
-        <div className="bento-card p-6">
-          <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">
-            Derniers scans
-          </h3>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="text-left text-[#525252] border-b border-[#e5e5e5]">
-                  <th className="pb-3 font-medium">Date</th>
-                  <th className="pb-3 font-medium">Appareil</th>
-                  <th className="pb-3 font-medium">Navigateur</th>
-                  <th className="pb-3 font-medium">OS</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.recentScans.map((scan) => (
-                  <tr
-                    key={scan.id}
-                    className="border-b border-[#f5f5f5] last:border-0"
-                  >
-                    <td className="py-3 text-[#0a0a0a]">
-                      {formatDateTime(scan.scannedAt)}
-                    </td>
-                    <td className="py-3">
-                      <span className="badge badge-gray">
-                        {scan.device || "—"}
-                      </span>
-                    </td>
-                    <td className="py-3 text-[#525252]">{scan.browser || "—"}</td>
-                    <td className="py-3 text-[#525252]">{scan.os || "—"}</td>
+        <ProGate>
+          <div className="bento-card p-6">
+            <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">
+              Derniers scans
+            </h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="text-left text-[#525252] border-b border-[#e5e5e5]">
+                    <th className="pb-3 font-medium">Date</th>
+                    <th className="pb-3 font-medium">Appareil</th>
+                    <th className="pb-3 font-medium">Navigateur</th>
+                    <th className="pb-3 font-medium">OS</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {data.recentScans.map((scan) => (
+                    <tr
+                      key={scan.id}
+                      className="border-b border-[#f5f5f5] last:border-0"
+                    >
+                      <td className="py-3 text-[#0a0a0a]">
+                        {formatDateTime(scan.scannedAt)}
+                      </td>
+                      <td className="py-3">
+                        <span className="badge badge-gray">
+                          {scan.device || "—"}
+                        </span>
+                      </td>
+                      <td className="py-3 text-[#525252]">{scan.browser || "—"}</td>
+                      <td className="py-3 text-[#525252]">{scan.os || "—"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
+        </ProGate>
       )}
     </div>
   );
