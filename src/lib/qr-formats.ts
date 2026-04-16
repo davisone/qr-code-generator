@@ -10,17 +10,17 @@ export type QRType =
   | "geo"
   | "social";
 
-export const QR_TYPE_LIST: { type: QRType; icon: string; labelKey: string }[] = [
-  { type: "url",       icon: "🔗", labelKey: "type_url" },
-  { type: "text",      icon: "📝", labelKey: "type_text" },
-  { type: "wifi",      icon: "📶", labelKey: "type_wifi" },
-  { type: "vcard",     icon: "👤", labelKey: "type_vcard" },
-  { type: "email",     icon: "✉️", labelKey: "type_email" },
-  { type: "phone",     icon: "📞", labelKey: "type_phone" },
-  { type: "sms",       icon: "💬", labelKey: "type_sms" },
-  { type: "whatsapp",  icon: "📱", labelKey: "type_whatsapp" },
-  { type: "geo",       icon: "📍", labelKey: "type_geo" },
-  { type: "social",    icon: "🌐", labelKey: "type_social" },
+export const QR_TYPE_LIST: { type: QRType; labelKey: string }[] = [
+  { type: "url",       labelKey: "type_url" },
+  { type: "text",      labelKey: "type_text" },
+  { type: "wifi",      labelKey: "type_wifi" },
+  { type: "vcard",     labelKey: "type_vcard" },
+  { type: "email",     labelKey: "type_email" },
+  { type: "phone",     labelKey: "type_phone" },
+  { type: "sms",       labelKey: "type_sms" },
+  { type: "whatsapp",  labelKey: "type_whatsapp" },
+  { type: "geo",       labelKey: "type_geo" },
+  { type: "social",    labelKey: "type_social" },
 ];
 
 export function buildContent(type: QRType, fields: Record<string, string>): string {

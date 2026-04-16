@@ -10,6 +10,7 @@ import { jsPDF } from "jspdf";
 import { styleTemplates } from "@/lib/templates";
 import { generateQRCanvas } from "@/lib/qr-utils";
 import { QRType, QR_TYPE_LIST, buildContent } from "@/lib/qr-formats";
+import { QRTypeIcon } from "@/components/ui/QRTypeIcon";
 import { useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
@@ -57,6 +58,8 @@ export default function QRCodeEditorPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loadingData, setLoadingData] = useState(!isNew);
   const [copiedLink, setCopiedLink] = useState(false);
+  const [qrCode, setQrCode] = useState<{ expiresAt: string | null } | null>(null);
+  const [isPro, setIsPro] = useState<boolean | null>(null);
 
   // Content is derived from fields — not state
   const content = buildContent(type, fields);
@@ -92,11 +95,21 @@ export default function QRCodeEditorPage() {
           setIsPublic(data.isPublic || false);
           setShareToken(data.shareToken || null);
           setCategory(data.category || "");
+          setQrCode({ expiresAt: data.expiresAt || null });
         })
         .catch(() => router.push("/dashboard"))
         .finally(() => setLoadingData(false));
     }
   }, [isNew, status, params.id, router]);
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      fetch("/api/user/subscription")
+        .then((r) => r.json())
+        .then((d: { isPro?: boolean }) => setIsPro(d.isPro ?? false))
+        .catch(() => setIsPro(false));
+    }
+  }, [status]);
 
   function updateField(key: string, value: string) {
     setFields((prev) => ({ ...prev, [key]: value }));
@@ -341,6 +354,42 @@ export default function QRCodeEditorPage() {
       <Navbar />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Bandeau expiration plan gratuit */}
+        {isPro === false && qrCode?.expiresAt && (
+          <div style={{
+            background: "rgba(239, 68, 68, 0.08)",
+            border: "1px solid rgba(239, 68, 68, 0.3)",
+            padding: "0.75rem 1.25rem",
+            marginBottom: "1.5rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "1rem",
+            flexWrap: "wrap",
+          }}>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.8rem", color: "var(--red)", margin: 0 }}>
+              {t("expiry_warning", { date: new Date(qrCode.expiresAt).toLocaleDateString("fr-FR", { day: "2-digit", month: "long", year: "numeric" }) })}
+            </p>
+            <a
+              href="/pricing"
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: "0.72rem",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                background: "var(--red)",
+                color: "white",
+                padding: "0.4rem 1rem",
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {t("expiry_cta")}
+            </a>
+          </div>
+        )}
+
         {/* Header band */}
         <div className="-mx-4 sm:-mx-6 lg:-mx-8" style={{ background: "var(--red)" }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-4 py-3">
@@ -355,7 +404,7 @@ export default function QRCodeEditorPage() {
             </h1>
             <div className="ml-auto flex gap-2">
               <button onClick={handleSave} disabled={saving} className="btn" style={{ background: "var(--ink)", color: "var(--bg)" }}>
-                {saving ? t("saving") : saved ? "✓" : t("save")}
+                {saving ? t("saving") : saved ? <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> : t("save")}
               </button>
               <button onClick={() => router.push("/dashboard")} style={{ background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.3)", color: "white", padding: "0.5rem 1rem", cursor: "pointer", fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>
                 {t("return_dashboard")}
@@ -430,7 +479,7 @@ export default function QRCodeEditorPage() {
                           gap: "0.2rem",
                         }}
                       >
-                        <span style={{ fontSize: "1rem" }}>{item.icon}</span>
+                        <QRTypeIcon type={item.type} size={16} />
                         <span>{t(item.labelKey as Parameters<typeof t>[0])}</span>
                       </button>
                     ))}
