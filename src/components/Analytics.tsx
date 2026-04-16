@@ -197,8 +197,7 @@ export default function Analytics({ qrCodeId, isPro = false }: { qrCodeId: strin
       </ProGate>
 
       {/* Distribution Charts */}
-      {data.totalScans > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Device Stats */}
           <ProGate isPro={isPro}>
             <div className="bento-card p-6">
@@ -303,16 +302,15 @@ export default function Analytics({ qrCodeId, isPro = false }: { qrCodeId: strin
               )}
             </div>
           </ProGate>
-        </div>
-      )}
+      </div>
 
       {/* Recent Scans */}
-      {data.recentScans.length > 0 && (
-        <ProGate isPro={isPro}>
-          <div className="bento-card p-6">
-            <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">
-              Derniers scans
-            </h3>
+      <ProGate isPro={isPro}>
+        <div className="bento-card p-6">
+          <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">
+            Derniers scans
+          </h3>
+          {data.recentScans.length > 0 ? (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
@@ -344,9 +342,11 @@ export default function Analytics({ qrCodeId, isPro = false }: { qrCodeId: strin
                 </tbody>
               </table>
             </div>
-          </div>
-        </ProGate>
-      )}
+          ) : (
+            <p className="text-[#a3a3a3] text-center py-8">Aucun scan enregistré</p>
+          )}
+        </div>
+      </ProGate>
     </div>
   );
 }
