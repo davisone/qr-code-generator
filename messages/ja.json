@@ -56,7 +56,11 @@
     "faq_4_a": "はい。完全な統計：スキャン総数、トレンド、デバイス、ブラウザ、OSの内訳、地理的マップ。",
     "cta_title_1": "最初のQRコードを",
     "cta_title_2": "作成しませんか？",
-    "cta_button": "無料アカウントを作成 →"
+    "cta_button": "無料アカウントを作成 →",
+    "pro_label": "次のレベルへ",
+    "pro_title": "QRaft Pro",
+    "pro_subtitle": "永続的なQRコード、完全な分析、制限なし。",
+    "pro_cta": "料金を見る →"
   },
   "auth": {
     "back": "← 戻る",

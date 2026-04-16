@@ -56,7 +56,11 @@
     "faq_4_a": "Yes. Each QR code has complete statistics: total scan count, trends over time, breakdown by device, browser and OS, plus a geographic scan map.",
     "cta_title_1": "Ready to create your",
     "cta_title_2": "first QR code?",
-    "cta_button": "Create my free account →"
+    "cta_button": "Create my free account →",
+    "pro_label": "Take it to the next level",
+    "pro_title": "QRaft Pro",
+    "pro_subtitle": "Permanent QR codes, full analytics, no limitations.",
+    "pro_cta": "See pricing →"
   },
   "auth": {
     "back": "← Back",

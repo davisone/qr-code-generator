@@ -56,7 +56,11 @@
     "faq_4_a": "可以。完整统计：总扫描次数、趋势、设备、浏览器、操作系统和地理地图。",
     "cta_title_1": "准备好创建您的",
     "cta_title_2": "第一个二维码了吗？",
-    "cta_button": "创建免费账户 →"
+    "cta_button": "创建免费账户 →",
+    "pro_label": "迈向更高层次",
+    "pro_title": "QRaft Pro",
+    "pro_subtitle": "永久二维码，完整分析，无任何限制。",
+    "pro_cta": "查看定价 →"
   },
   "auth": {
     "back": "← 返回",

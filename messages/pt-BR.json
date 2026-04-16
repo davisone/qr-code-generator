@@ -56,7 +56,11 @@
     "faq_4_a": "Sim. Estatísticas completas: total de escaneamentos, tendências, dispositivo, navegador, SO e mapa geográfico.",
     "cta_title_1": "Pronto para criar seu",
     "cta_title_2": "primeiro QR code?",
-    "cta_button": "Criar minha conta gratuita →"
+    "cta_button": "Criar minha conta gratuita →",
+    "pro_label": "Suba ao próximo nível",
+    "pro_title": "QRaft Pro",
+    "pro_subtitle": "QR codes permanentes, analytics completas, sem limitações.",
+    "pro_cta": "Ver preços →"
   },
   "auth": {
     "back": "← Voltar",

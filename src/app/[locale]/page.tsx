@@ -380,6 +380,22 @@ export default async function Home({ params }: Props) {
         </div>
       </section>
 
+      {/* Pro CTA */}
+      <section style={{ borderTop: "var(--rule)", padding: "4rem 0", textAlign: "center" }}>
+        <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--mid)", marginBottom: "0.75rem" }}>
+          {t("pro_label")}
+        </p>
+        <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem, 6vw, 5rem)", letterSpacing: "0.04em", color: "var(--ink)", lineHeight: 1, marginBottom: "1rem" }}>
+          {t("pro_title")}
+        </h2>
+        <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.9rem", color: "var(--mid)", maxWidth: "40ch", margin: "0 auto 2rem" }}>
+          {t("pro_subtitle")}
+        </p>
+        <Link href="/pricing" style={{ display: "inline-block", background: "var(--red)", color: "white", fontFamily: "var(--font-sans)", fontWeight: 700, fontSize: "0.8rem", textTransform: "uppercase", letterSpacing: "0.1em", padding: "0.9rem 2.5rem", textDecoration: "none" }}>
+          {t("pro_cta")}
+        </Link>
+      </section>
+
       {/* CTA final */}
       <section style={{ background: "var(--red)", borderTop: "var(--rule)" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">

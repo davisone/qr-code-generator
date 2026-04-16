@@ -56,7 +56,11 @@
     "faq_4_a": "Ja. Vollständige Statistiken: Scans gesamt, Trends, Gerät, Browser, OS und geografische Karte.",
     "cta_title_1": "Bereit, Ihren",
     "cta_title_2": "ersten QR-Code zu erstellen?",
-    "cta_button": "Kostenloses Konto erstellen →"
+    "cta_button": "Kostenloses Konto erstellen →",
+    "pro_label": "Auf das nächste Level",
+    "pro_title": "QRaft Pro",
+    "pro_subtitle": "Permanente QR-Codes, vollständige Analysen, keine Einschränkungen.",
+    "pro_cta": "Preise ansehen →"
   },
   "auth": {
     "back": "← Zurück",

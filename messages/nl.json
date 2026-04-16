@@ -56,7 +56,11 @@
     "faq_4_a": "Ja. Volledige statistieken: totaal scans, trends, apparaat, browser, OS en geografische kaart.",
     "cta_title_1": "Klaar om uw",
     "cta_title_2": "eerste QR-code te maken?",
-    "cta_button": "Mijn gratis account maken →"
+    "cta_button": "Mijn gratis account maken →",
+    "pro_label": "Ga naar het volgende niveau",
+    "pro_title": "QRaft Pro",
+    "pro_subtitle": "Permanente QR-codes, volledige analyses, geen beperkingen.",
+    "pro_cta": "Prijzen bekijken →"
   },
   "auth": {
     "back": "← Terug",

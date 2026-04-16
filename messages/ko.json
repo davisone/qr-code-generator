@@ -56,7 +56,11 @@
     "faq_4_a": "네. 완전한 통계: 총 스캔 수, 트렌드, 기기·브라우저·OS별 분석, 지리적 지도.",
     "cta_title_1": "첫 번째 QR 코드를",
     "cta_title_2": "만들 준비가 되셨나요?",
-    "cta_button": "무료 계정 만들기 →"
+    "cta_button": "무료 계정 만들기 →",
+    "pro_label": "다음 단계로 나아가세요",
+    "pro_title": "QRaft Pro",
+    "pro_subtitle": "영구 QR 코드, 완전한 분석, 제한 없음.",
+    "pro_cta": "요금제 보기 →"
   },
   "auth": {
     "back": "← 뒤로",
