@@ -12,12 +12,20 @@ export default function Navbar() {
   const [isPro, setIsPro] = useState(false);
 
   useEffect(() => {
-    if (session) {
-      fetch("/api/user/subscription")
-        .then((r) => r.json())
-        .then((d: { isPro?: boolean }) => setIsPro(d.isPro ?? false))
-        .catch(() => {});
+    if (!session) {
+      setIsPro(false);
+      return;
     }
+    const controller = new AbortController();
+    fetch("/api/user/subscription", { signal: controller.signal })
+      .then((r) => r.json())
+      .then((d: { isPro?: boolean }) => setIsPro(d.isPro ?? false))
+      .catch((e: unknown) => {
+        if (e instanceof Error && e.name !== "AbortError") {
+          // ignore
+        }
+      });
+    return () => controller.abort();
   }, [session]);
 
   return (
