@@ -261,7 +261,9 @@
     "social_platform": "Platform",
     "social_url": "Profile URL",
     "category_label": "Category",
-    "category_placeholder": "e.g.: Marketing, Event..."
+    "category_placeholder": "e.g.: Marketing, Event...",
+    "expiry_warning": "This QR code expires on {date}. Go Pro to make it permanent.",
+    "expiry_cta": "Go Pro"
   },
   "footer": {
     "rights": "All rights reserved.",

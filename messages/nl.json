@@ -261,7 +261,9 @@
     "social_platform": "Platform",
     "social_url": "Profiel-URL",
     "category_label": "Categorie",
-    "category_placeholder": "bijv: Marketing, Evenement..."
+    "category_placeholder": "bijv: Marketing, Evenement...",
+    "expiry_warning": "Deze QR-code verloopt op {date}. Ga over op Pro om hem permanent te maken.",
+    "expiry_cta": "Naar Pro"
   },
   "footer": {
     "rights": "Alle rechten voorbehouden.",

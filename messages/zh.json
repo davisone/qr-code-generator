@@ -261,7 +261,9 @@
     "social_platform": "平台",
     "social_url": "主页链接",
     "category_label": "分类",
-    "category_placeholder": "例如：营销、活动..."
+    "category_placeholder": "例如：营销、活动...",
+    "expiry_warning": "此 QR 码将于 {date} 到期。升级 Pro 使其永久有效。",
+    "expiry_cta": "升级 Pro"
   },
   "footer": {
     "rights": "版权所有。",

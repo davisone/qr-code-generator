@@ -261,7 +261,9 @@
     "social_platform": "プラットフォーム",
     "social_url": "プロフィールURL",
     "category_label": "カテゴリ",
-    "category_placeholder": "例: マーケティング、イベント..."
+    "category_placeholder": "例: マーケティング、イベント...",
+    "expiry_warning": "このQRコードは {date} に期限切れになります。Proにアップグレードして永続化しましょう。",
+    "expiry_cta": "Proにアップグレード"
   },
   "footer": {
     "rights": "全著作権所有。",

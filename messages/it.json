@@ -261,7 +261,9 @@
     "social_platform": "Piattaforma",
     "social_url": "URL profilo",
     "category_label": "Categoria",
-    "category_placeholder": "es: Marketing, Evento..."
+    "category_placeholder": "es: Marketing, Evento...",
+    "expiry_warning": "Questo QR code scade il {date}. Passa a Pro per renderlo permanente.",
+    "expiry_cta": "Passa a Pro"
   },
   "footer": {
     "rights": "Tutti i diritti riservati.",

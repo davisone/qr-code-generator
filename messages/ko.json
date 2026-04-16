@@ -261,7 +261,9 @@
     "social_platform": "플랫폼",
     "social_url": "프로필 URL",
     "category_label": "카테고리",
-    "category_placeholder": "예: 마케팅, 이벤트..."
+    "category_placeholder": "예: 마케팅, 이벤트...",
+    "expiry_warning": "이 QR 코드는 {date}에 만료됩니다. Pro로 업그레이드하여 영구적으로 사용하세요.",
+    "expiry_cta": "Pro로 업그레이드"
   },
   "footer": {
     "rights": "모든 권리 보유.",
