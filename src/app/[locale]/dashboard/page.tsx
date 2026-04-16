@@ -419,29 +419,51 @@ export default function DashboardPage() {
             {activeTab === "qrcodes" && qrCodes.length > 0 && (
               <>
                 <div style={{ width: 1, height: 20, background: "rgba(255,255,255,0.08)", margin: "0 0.25rem" }} />
-                {(["all", "url", "text", "wifi", "vcard", "email", "phone", "sms", "whatsapp", "geo", "social", "favorites"] as const).map((f) => (
-                  <button
-                    key={f}
-                    onClick={() => setFilterType(f)}
-                    style={{
-                      background: "none",
-                      border: "none",
-                      color: filterType === f ? "var(--yellow)" : "rgba(240,235,225,0.5)",
-                      padding: "0.65rem 1rem",
-                      fontFamily: "var(--font-sans, sans-serif)",
-                      fontSize: "0.65rem",
-                      fontWeight: 700,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.1em",
-                      cursor: "pointer",
-                      borderRight: "1px solid rgba(255,255,255,0.06)",
-                    }}
-                  >
-                    {f === "all" ? t("filter_all") :
-                     f === "favorites" ? t("filter_favorites") :
-                     t(`filter_${f}` as Parameters<typeof t>[0])}
-                  </button>
-                ))}
+                <select
+                  value={filterType === "favorites" ? "all" : filterType}
+                  onChange={(e) => setFilterType(e.target.value as "all" | QRType)}
+                  style={{
+                    background: "rgba(255,255,255,0.07)",
+                    border: "none",
+                    borderRight: "1px solid rgba(255,255,255,0.06)",
+                    color: filterType !== "favorites" && filterType !== "all" ? "var(--yellow)" : "rgba(240,235,225,0.7)",
+                    padding: "0 1rem",
+                    height: "100%",
+                    fontFamily: "var(--font-sans, sans-serif)",
+                    fontSize: "0.65rem",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    cursor: "pointer",
+                    outline: "none",
+                    appearance: "none",
+                    minWidth: 110,
+                  }}
+                >
+                  {(["all", "url", "text", "wifi", "vcard", "email", "phone", "sms", "whatsapp", "geo", "social"] as const).map((f) => (
+                    <option key={f} value={f} style={{ background: "#1a1410", textTransform: "uppercase" }}>
+                      {f === "all" ? t("filter_all") : t(`filter_${f}` as Parameters<typeof t>[0])}
+                    </option>
+                  ))}
+                </select>
+                <button
+                  onClick={() => setFilterType(filterType === "favorites" ? "all" : "favorites")}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    color: filterType === "favorites" ? "var(--yellow)" : "rgba(240,235,225,0.5)",
+                    padding: "0.65rem 1rem",
+                    fontFamily: "var(--font-sans, sans-serif)",
+                    fontSize: "0.65rem",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    cursor: "pointer",
+                    borderRight: "1px solid rgba(255,255,255,0.06)",
+                  }}
+                >
+                  {t("filter_favorites")}
+                </button>
                 <input
                   type="text"
                   value={search}
