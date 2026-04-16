@@ -37,6 +37,38 @@ interface AnalyticsData {
 
 const COLORS = ["#10b981", "#3b82f6", "#f59e0b", "#ef4444", "#8b5cf6", "#ec4899"];
 
+const ProGate = ({ isPro, children }: { isPro: boolean; children: React.ReactNode }) => {
+  if (isPro) return <>{children}</>;
+  return (
+    <div style={{ position: "relative" }}>
+      <div style={{ filter: "blur(6px)", pointerEvents: "none", userSelect: "none" }}>
+        {children}
+      </div>
+      <div style={{
+        position: "absolute", inset: 0, display: "flex", flexDirection: "column",
+        alignItems: "center", justifyContent: "center", gap: "0.75rem",
+        background: "rgba(26, 20, 16, 0.55)",
+      }}>
+        <span style={{ fontSize: "1.5rem" }}>🔒</span>
+        <p style={{
+          fontFamily: "var(--font-sans)", fontSize: "0.8rem", fontWeight: 700,
+          textTransform: "uppercase", letterSpacing: "0.08em", color: "#f0ebe1",
+        }}>
+          Fonctionnalité Pro
+        </p>
+        <a href="/pricing" style={{
+          fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700,
+          textTransform: "uppercase", letterSpacing: "0.08em",
+          background: "var(--red)", color: "white", padding: "0.5rem 1.25rem",
+          textDecoration: "none",
+        }}>
+          Passer Pro →
+        </a>
+      </div>
+    </div>
+  );
+};
+
 function formatDate(dateStr: string): string {
   const date = new Date(dateStr);
   return date.toLocaleDateString("fr-FR", { day: "2-digit", month: "short" });
@@ -56,38 +88,6 @@ export default function Analytics({ qrCodeId, isPro = false }: { qrCodeId: strin
   const [data, setData] = useState<AnalyticsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
-  const ProGate = ({ children }: { children: React.ReactNode }) => {
-    if (isPro) return <>{children}</>;
-    return (
-      <div style={{ position: "relative" }}>
-        <div style={{ filter: "blur(6px)", pointerEvents: "none", userSelect: "none" }}>
-          {children}
-        </div>
-        <div style={{
-          position: "absolute", inset: 0, display: "flex", flexDirection: "column",
-          alignItems: "center", justifyContent: "center", gap: "0.75rem",
-          background: "rgba(26, 20, 16, 0.55)",
-        }}>
-          <span style={{ fontSize: "1.5rem" }}>🔒</span>
-          <p style={{
-            fontFamily: "var(--font-sans)", fontSize: "0.8rem", fontWeight: 700,
-            textTransform: "uppercase", letterSpacing: "0.08em", color: "#f0ebe1",
-          }}>
-            Fonctionnalité Pro
-          </p>
-          <a href="/pricing" style={{
-            fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700,
-            textTransform: "uppercase", letterSpacing: "0.08em",
-            background: "var(--red)", color: "white", padding: "0.5rem 1.25rem",
-            textDecoration: "none",
-          }}>
-            Passer Pro →
-          </a>
-        </div>
-      </div>
-    );
-  };
 
   useEffect(() => {
     fetch(`/api/qrcodes/${qrCodeId}/analytics`)
@@ -141,7 +141,7 @@ export default function Analytics({ qrCodeId, isPro = false }: { qrCodeId: strin
       </div>
 
       {/* Daily Chart */}
-      <ProGate>
+      <ProGate isPro={isPro}>
         <div className="bento-card p-6">
           <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">
             Scans des 30 derniers jours
@@ -200,7 +200,7 @@ export default function Analytics({ qrCodeId, isPro = false }: { qrCodeId: strin
       {data.totalScans > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Device Stats */}
-          <ProGate>
+          <ProGate isPro={isPro}>
             <div className="bento-card p-6">
               <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">Appareils</h3>
               {data.deviceStats.length > 0 ? (
@@ -237,7 +237,7 @@ export default function Analytics({ qrCodeId, isPro = false }: { qrCodeId: strin
           </ProGate>
 
           {/* Browser Stats */}
-          <ProGate>
+          <ProGate isPro={isPro}>
             <div className="bento-card p-6">
               <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">Navigateurs</h3>
               {data.browserStats.length > 0 ? (
@@ -270,7 +270,7 @@ export default function Analytics({ qrCodeId, isPro = false }: { qrCodeId: strin
           </ProGate>
 
           {/* OS Stats */}
-          <ProGate>
+          <ProGate isPro={isPro}>
             <div className="bento-card p-6">
               <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">
                 Systèmes d&apos;exploitation
@@ -308,7 +308,7 @@ export default function Analytics({ qrCodeId, isPro = false }: { qrCodeId: strin
 
       {/* Recent Scans */}
       {data.recentScans.length > 0 && (
-        <ProGate>
+        <ProGate isPro={isPro}>
           <div className="bento-card p-6">
             <h3 className="text-lg font-semibold text-[#0a0a0a] mb-4">
               Derniers scans
