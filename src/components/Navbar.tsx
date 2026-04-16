@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
@@ -7,6 +8,17 @@ import { useTranslations } from "next-intl";
 export default function Navbar() {
   const { data: session } = useSession();
   const t = useTranslations("nav");
+
+  const [isPro, setIsPro] = useState(false);
+
+  useEffect(() => {
+    if (session) {
+      fetch("/api/user/subscription")
+        .then((r) => r.json())
+        .then((d: { isPro?: boolean }) => setIsPro(d.isPro ?? false))
+        .catch(() => {});
+    }
+  }, [session]);
 
   return (
     <nav className="navbar">
@@ -29,6 +41,20 @@ export default function Navbar() {
           </Link>
 
           <div className="flex items-stretch">
+            <Link
+              href="/pricing"
+              className="flex items-center px-4 text-xs uppercase tracking-widest font-bold border-l transition-colors"
+              style={{
+                color: "rgba(240,235,225,0.45)",
+                borderColor: "rgba(255,255,255,0.08)",
+                fontFamily: "var(--font-sans)",
+                textDecoration: "none",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#f0ebe1")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,235,225,0.45)")}
+            >
+              {t("pricing")}
+            </Link>
             <span
               className="hidden sm:flex items-center px-4 text-xs uppercase tracking-widest font-bold border-l"
               style={{
@@ -39,6 +65,19 @@ export default function Navbar() {
             >
               {session?.user?.name || session?.user?.email}
             </span>
+            {isPro && (
+              <span
+                className="hidden sm:flex items-center px-3 text-xs font-bold uppercase tracking-widest border-l"
+                style={{
+                  color: "var(--red)",
+                  borderColor: "rgba(255,255,255,0.08)",
+                  fontFamily: "var(--font-sans)",
+                  letterSpacing: "0.12em",
+                }}
+              >
+                PRO
+              </span>
+            )}
             <Link
               href="/profile"
               className="hidden sm:flex items-center px-4 text-xs uppercase tracking-widest font-bold border-l transition-colors"
