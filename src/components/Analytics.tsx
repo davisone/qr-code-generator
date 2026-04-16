@@ -49,7 +49,10 @@ const ProGate = ({ isPro, children }: { isPro: boolean; children: React.ReactNod
         alignItems: "center", justifyContent: "center", gap: "0.75rem",
         background: "rgba(26, 20, 16, 0.55)",
       }}>
-        <span style={{ fontSize: "1.5rem" }}>🔒</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f0ebe1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
         <p style={{
           fontFamily: "var(--font-sans)", fontSize: "0.8rem", fontWeight: 700,
           textTransform: "uppercase", letterSpacing: "0.08em", color: "#f0ebe1",
@@ -319,6 +322,8 @@ export default function Analytics({ qrCodeId, isPro = false }: { qrCodeId: strin
                     <th className="pb-3 font-medium">Appareil</th>
                     <th className="pb-3 font-medium">Navigateur</th>
                     <th className="pb-3 font-medium">OS</th>
+                    <th className="pb-3 font-medium">Pays</th>
+                    <th className="pb-3 font-medium">Ville</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -337,6 +342,8 @@ export default function Analytics({ qrCodeId, isPro = false }: { qrCodeId: strin
                       </td>
                       <td className="py-3 text-[#525252]">{scan.browser || "—"}</td>
                       <td className="py-3 text-[#525252]">{scan.os || "—"}</td>
+                      <td className="py-3 text-[#525252]">{scan.country || "—"}</td>
+                      <td className="py-3 text-[#525252]">{scan.city || "—"}</td>
                     </tr>
                   ))}
                 </tbody>
