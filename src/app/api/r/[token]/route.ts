@@ -36,11 +36,17 @@ export async function GET(
 
   const qrCode = await prisma.qRCode.findUnique({
     where: { shareToken: token, isPublic: true },
-    select: { id: true, content: true, type: true, expiresAt: true },
+    select: { id: true, content: true, type: true, expiresAt: true, shareToken: true },
   });
 
-  if (!qrCode || qrCode.type !== "url") {
+  if (!qrCode) {
     return NextResponse.redirect(new URL("/", req.url), { status: 302 });
+  }
+
+  // Types avec contenu URL : rediriger directement
+  const isRedirectableContent = qrCode.content.startsWith("http://") || qrCode.content.startsWith("https://");
+  if (qrCode.type !== "url" && !isRedirectableContent) {
+    return NextResponse.redirect(new URL(`/qrcode/display/${qrCode.shareToken}`, req.url), { status: 302 });
   }
 
   // QR expiré → page d'expiration
