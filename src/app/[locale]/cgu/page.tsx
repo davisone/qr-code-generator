@@ -84,14 +84,31 @@ export default function CGU() {
           </section>
 
           <section style={sectionStyle}>
-            <h2 style={h2Style}>3. Accès au service</h2>
+            <h2 style={h2Style}>3. Abonnement et paiement</h2>
+            <p style={pStyle}>
+              QRaft propose deux formules d&apos;abonnement :
+            </p>
+            <ul style={{ ...pStyle, paddingLeft: "1.25rem", marginTop: "0.5rem", marginBottom: "0.75rem" }}>
+              <li><strong>Plan Gratuit</strong> : QR codes actifs pendant 30 jours, analytics de base (nombre de scans).</li>
+              <li><strong>Plan Pro — 9,99&nbsp;€/mois</strong> : QR codes permanents sans expiration, analytics complètes (géolocalisation, appareil, navigateur, OS, timeline).</li>
+            </ul>
+            <p style={pStyle}>
+              Les paiements sont traités exclusivement par <strong>Stripe</strong>, prestataire certifié PCI DSS. DVS Web ne stocke aucune donnée bancaire. L&apos;abonnement Pro est sans engagement : vous pouvez l&apos;annuler à tout moment depuis le portail de facturation Stripe accessible via votre compte QRaft.
+            </p>
+            <p style={{ ...pStyle, marginTop: "0.5rem" }}>
+              En cas d&apos;annulation, votre abonnement reste actif jusqu&apos;à la fin de la période facturée en cours. Passé ce délai, une période de grâce de <strong>7 jours</strong> s&apos;applique avant la désactivation de vos QR codes permanents, qui basculent alors sur les conditions du plan gratuit (expiration à 30 jours). Aucun remboursement au prorata n&apos;est accordé, sauf obligation légale applicable.
+            </p>
+          </section>
+
+          <section style={sectionStyle}>
+            <h2 style={h2Style}>4. Accès au service</h2>
             <p style={pStyle}>
               L&apos;inscription est gratuite et ouverte à toute personne physique majeure. Vous êtes responsable de la confidentialité de vos identifiants. Tout accès frauduleux ou utilisation abusive peut entraîner la suspension du compte.
             </p>
           </section>
 
           <section style={sectionStyle}>
-            <h2 style={h2Style}>4. Utilisation acceptable</h2>
+            <h2 style={h2Style}>5. Utilisation acceptable</h2>
             <p style={pStyle}>Il est interdit d&apos;utiliser QRaft pour :</p>
             <ul style={{ ...pStyle, paddingLeft: "1.25rem", marginTop: "0.5rem" }}>
               <li>Créer des QR codes renvoyant vers du contenu illégal, malveillant ou trompeur</li>
@@ -102,35 +119,35 @@ export default function CGU() {
           </section>
 
           <section style={sectionStyle}>
-            <h2 style={h2Style}>5. Propriété des données</h2>
+            <h2 style={h2Style}>6. Propriété des données</h2>
             <p style={pStyle}>
               Vous conservez l&apos;intégralité des droits sur le contenu que vous encodez dans vos QR codes. DVS Web ne revendique aucun droit sur vos données. Vous pouvez supprimer votre compte et toutes vos données à tout moment depuis votre profil.
             </p>
           </section>
 
           <section style={sectionStyle}>
-            <h2 style={h2Style}>6. Disponibilité du service</h2>
+            <h2 style={h2Style}>7. Disponibilité du service</h2>
             <p style={pStyle}>
               QRaft est fourni &quot;tel quel&quot;, sans garantie de disponibilité continue. DVS Web se réserve le droit de modifier, suspendre ou interrompre le service à tout moment, notamment pour maintenance. Aucune indemnité ne saurait être réclamée à ce titre.
             </p>
           </section>
 
           <section style={sectionStyle}>
-            <h2 style={h2Style}>7. Responsabilité</h2>
+            <h2 style={h2Style}>8. Responsabilité</h2>
             <p style={pStyle}>
               DVS Web ne saurait être tenu responsable des dommages directs ou indirects résultant de l&apos;utilisation ou de l&apos;impossibilité d&apos;utiliser le service, ni du contenu des QR codes créés par les utilisateurs.
             </p>
           </section>
 
           <section style={sectionStyle}>
-            <h2 style={h2Style}>8. Modification des CGU</h2>
+            <h2 style={h2Style}>9. Modification des CGU</h2>
             <p style={pStyle}>
               Les présentes CGU peuvent être modifiées à tout moment. Les utilisateurs seront informés par email ou via une notification sur le service en cas de modification substantielle. La poursuite de l&apos;utilisation du service vaut acceptation des nouvelles conditions.
             </p>
           </section>
 
           <section style={{ padding: "1.5rem 0" }}>
-            <h2 style={h2Style}>9. Droit applicable</h2>
+            <h2 style={h2Style}>10. Droit applicable</h2>
             <p style={pStyle}>
               Les présentes CGU sont soumises au droit français. En cas de litige, les parties s&apos;efforceront de trouver une solution amiable. À défaut, les tribunaux français seront seuls compétents.
             </p>
