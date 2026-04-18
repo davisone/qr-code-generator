@@ -1,32 +1,30 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function Navbar() {
   const { data: session } = useSession();
   const t = useTranslations("nav");
 
-  const [isPro, setIsPro] = useState(false);
+  const sessionKey = session?.user?.email ?? null;
+  const [isProRaw, setIsProRaw] = useState(false);
+  const isPro = sessionKey ? isProRaw : false;
 
   useEffect(() => {
-    if (!session) {
-      setIsPro(false);
-      return;
-    }
+    if (!sessionKey) return;
     const controller = new AbortController();
     fetch("/api/user/subscription", { signal: controller.signal })
       .then((r) => r.json())
-      .then((d: { isPro?: boolean }) => setIsPro(d.isPro ?? false))
-      .catch((e: unknown) => {
-        if (e instanceof Error && e.name !== "AbortError") {
-          // ignore
-        }
+      .then((d: { isPro?: boolean }) => setIsProRaw(d.isPro ?? false))
+      .catch(() => {
+        // silently ignore (aborts, network errors)
       });
     return () => controller.abort();
-  }, [session]);
+  }, [sessionKey]);
 
   return (
     <nav className="navbar">
@@ -49,6 +47,38 @@ export default function Navbar() {
           </Link>
 
           <div className="flex items-stretch">
+            {session && (
+              <Link
+                href="/templates"
+                className="hidden sm:flex items-center px-4 text-xs uppercase tracking-widest font-bold border-l transition-colors"
+                style={{
+                  color: "rgba(240,235,225,0.45)",
+                  borderColor: "rgba(255,255,255,0.08)",
+                  fontFamily: "var(--font-sans)",
+                  textDecoration: "none",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#f0ebe1")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,235,225,0.45)")}
+              >
+                {t("templates")}
+              </Link>
+            )}
+            {session && (
+              <Link
+                href="/bulk"
+                className="hidden sm:flex items-center px-4 text-xs uppercase tracking-widest font-bold border-l transition-colors"
+                style={{
+                  color: "rgba(240,235,225,0.45)",
+                  borderColor: "rgba(255,255,255,0.08)",
+                  fontFamily: "var(--font-sans)",
+                  textDecoration: "none",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#f0ebe1")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,235,225,0.45)")}
+              >
+                {t("bulk")}
+              </Link>
+            )}
             <Link
               href="/pricing"
               className="flex items-center px-4 text-xs uppercase tracking-widest font-bold border-l transition-colors"
@@ -117,6 +147,7 @@ export default function Navbar() {
             >
               {t("logout")}
             </button>
+            <ThemeToggle />
           </div>
         </div>
       </div>

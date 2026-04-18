@@ -1,138 +1,86 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Analytics from "@/components/Analytics";
 import QRCode from "qrcode";
 import JSZip from "jszip";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { useSearchParams } from "next/navigation";
 import type { QRType } from "@/lib/qr-formats";
+import type { Tab, QRCodeItem } from "@/types/qrcode";
+import { useQRCodes } from "@/hooks/useQRCodes";
+import { useProStatus } from "@/hooks/useProStatus";
+import { useQRFilters } from "@/hooks/useQRFilters";
+import { QRCodeCard } from "@/components/dashboard/QRCodeCard";
+import { DashboardSidebar } from "@/components/dashboard/DashboardSidebar";
+import { EditContentModal } from "@/components/dashboard/EditContentModal";
+import { VersionHistoryModal } from "@/components/dashboard/VersionHistoryModal";
+import { PasswordProtectModal } from "@/components/dashboard/PasswordProtectModal";
+import { ABTestingModal } from "@/components/dashboard/ABTestingModal";
+import { LiveAnalytics } from "@/components/dashboard/LiveAnalytics";
 
 const MapView = dynamic(() => import("@/components/MapView"), { ssr: false });
-
-interface QRCodeItem {
-  id: string;
-  name: string;
-  type: string;
-  content: string;
-  foregroundColor: string;
-  backgroundColor: string;
-  size: number;
-  errorCorrection: string;
-  isFavorite: boolean;
-  isPublic: boolean;
-  shareToken: string | null;
-  logoDataUrl: string | null;
-  category: string | null;
-  expiresAt: string | null;
-}
-
-type Tab = "qrcodes" | "analytics" | "map";
 
 export default function DashboardPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const t = useTranslations("dashboard");
   const searchParams = useSearchParams();
+
   const [activeTab, setActiveTab] = useState<Tab>("qrcodes");
-  const [proStatus, setProStatus] = useState<{ isPro: boolean } | null>(null);
-  const [qrCodes, setQrCodes] = useState<QRCodeItem[]>([]);
-  const [previews, setPreviews] = useState<Record<string, string>>({});
-  const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState("");
-  const [filterType, setFilterType] = useState<"all" | QRType | "favorites">("all");
-  const [filterCategory, setFilterCategory] = useState<string | null>(null);
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [exporting, setExporting] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [selectedQRCodeForAnalytics, setSelectedQRCodeForAnalytics] = useState<string>("");
+  const [editingQR, setEditingQR] = useState<QRCodeItem | null>(null);
+  const [historyQR, setHistoryQR] = useState<QRCodeItem | null>(null);
+  const [passwordQR, setPasswordQR] = useState<QRCodeItem | null>(null);
+  const [abQR, setAbQR] = useState<QRCodeItem | null>(null);
+
+  const { isPro, refresh: refreshPro } = useProStatus();
+
+  const { qrCodes, previews, loading, loadQRCodes, setQrCodes } = useQRCodes((firstId) => {
+    setSelectedQRCodeForAnalytics(firstId);
+  });
+
+  const {
+    search,
+    setSearch,
+    filterType,
+    setFilterType,
+    filterCategory,
+    setFilterCategory,
+    filteredQRCodes,
+    uniqueCategories,
+  } = useQRFilters(qrCodes);
 
   useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/login");
-    }
+    if (status === "unauthenticated") router.push("/login");
   }, [status, router]);
-
-  const loadQRCodes = useCallback(async () => {
-    try {
-      const res = await fetch("/api/qrcodes");
-      if (res.ok) {
-        const data = await res.json();
-        setQrCodes(data);
-        if (data.length > 0 && !selectedQRCodeForAnalytics) {
-          setSelectedQRCodeForAnalytics(data[0].id);
-        }
-      }
-    } catch {
-      // silently fail
-    } finally {
-      setLoading(false);
-    }
-  }, [selectedQRCodeForAnalytics]);
 
   useEffect(() => {
     if (status === "authenticated") {
       loadQRCodes();
-      fetch("/api/user/subscription")
-        .then((r) => r.json())
-        .then(setProStatus)
-        .catch(() => {});
+      refreshPro();
     }
-  }, [status, loadQRCodes]);
+  }, [status, loadQRCodes, refreshPro]);
 
   useEffect(() => {
     if (searchParams?.get("upgrade") === "success") {
       toast.success(t("toast_upgrade_success"));
-      fetch("/api/user/subscription").then((r) => r.json()).then(setProStatus).catch(() => {});
+      refreshPro();
       const url = new URL(window.location.href);
       url.searchParams.delete("upgrade");
       window.history.replaceState({}, "", url.toString());
     }
-  }, [searchParams, t]);
+  }, [searchParams, t, refreshPro]);
 
-  useEffect(() => {
-    async function generatePreviews() {
-      const newPreviews: Record<string, string> = {};
-      for (const qr of qrCodes) {
-        try {
-          newPreviews[qr.id] = await QRCode.toDataURL(qr.content || "placeholder", {
-            width: 80,
-            margin: 1,
-            color: { dark: qr.foregroundColor, light: qr.backgroundColor },
-            errorCorrectionLevel: qr.errorCorrection as "L" | "M" | "Q" | "H",
-          });
-        } catch {
-          newPreviews[qr.id] = "";
-        }
-      }
-      setPreviews(newPreviews);
-    }
-    if (qrCodes.length > 0) generatePreviews();
-  }, [qrCodes]);
-
-  const filteredQRCodes = qrCodes.filter((qr) => {
-    const matchesSearch =
-      search === "" ||
-      qr.name.toLowerCase().includes(search.toLowerCase()) ||
-      qr.content.toLowerCase().includes(search.toLowerCase());
-    const matchesFilter =
-      filterType === "all" ||
-      (filterType === "favorites" && qr.isFavorite) ||
-      (filterType !== "favorites" && qr.type === filterType);
-    const matchesCategory =
-      filterCategory === null || qr.category === filterCategory;
-    return matchesSearch && matchesFilter && matchesCategory;
-  });
-
-  const uniqueCategories = Array.from(
-    new Set(qrCodes.map((qr) => qr.category).filter((c): c is string => c !== null && c.trim() !== ""))
-  ).sort();
+  // ── Handlers ──────────────────────────────────────────────────────────────
 
   async function handleDelete(id: string) {
     if (!confirm(t("delete_confirm"))) return;
@@ -233,16 +181,14 @@ export default function DashboardPage() {
     setExporting(true);
     try {
       const zip = new JSZip();
-      const selectedQRs = qrCodes.filter((qr) => selected.has(qr.id));
-      for (const qr of selectedQRs) {
+      for (const qr of qrCodes.filter((qr) => selected.has(qr.id))) {
         const dataUrl = await QRCode.toDataURL(qr.content, {
           width: qr.size,
           margin: 2,
           color: { dark: qr.foregroundColor, light: qr.backgroundColor },
           errorCorrectionLevel: qr.errorCorrection as "L" | "M" | "Q" | "H",
         });
-        const base64 = dataUrl.split(",")[1];
-        zip.file(`${qr.name}.png`, base64, { base64: true });
+        zip.file(`${qr.name}.png`, dataUrl.split(",")[1], { base64: true });
       }
       const blob = await zip.generateAsync({ type: "blob" });
       const link = document.createElement("a");
@@ -264,76 +210,61 @@ export default function DashboardPage() {
     const ids = Array.from(selected);
     let successCount = 0;
     let errorCount = 0;
-
     try {
       const deletedIds: string[] = [];
       for (const id of ids) {
         try {
           const res = await fetch(`/api/qrcodes/${id}`, { method: "DELETE" });
-          if (res.ok) {
-            deletedIds.push(id);
-            successCount++;
-          } else {
-            errorCount++;
-          }
-        } catch {
-          errorCount++;
-        }
+          if (res.ok) { deletedIds.push(id); successCount++; }
+          else errorCount++;
+        } catch { errorCount++; }
       }
       setQrCodes((prev) => prev.filter((qr) => !deletedIds.includes(qr.id)));
-
       setSelected(new Set());
-
-      if (errorCount === 0) {
-        toast.success(t("toast_delete_selected", { count: successCount }));
-      } else {
-        toast.error(t("toast_error"));
-      }
+      if (errorCount === 0) toast.success(t("toast_delete_selected", { count: successCount }));
+      else toast.error(t("toast_error"));
     } finally {
       setDeleting(false);
     }
   }
 
-  function getDaysUntilExpiry(expiresAt: string | null): number | null {
-    if (!expiresAt) return null;
-    const diff = new Date(expiresAt).getTime() - Date.now();
-    return Math.ceil(diff / (1000 * 60 * 60 * 24));
-  }
-
-  function isExpired(expiresAt: string | null): boolean {
-    if (!expiresAt) return false;
-    return new Date(expiresAt) < new Date();
-  }
+  // ── Guards ────────────────────────────────────────────────────────────────
 
   if (status === "loading" || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: "var(--bg)" }}>
         <div
           className="text-4xl tracking-widest"
-          style={{ fontFamily: "var(--font-display, cursive)", color: "var(--mid)", animation: "fadeIn 0.6s ease infinite alternate" }}
+          style={{
+            fontFamily: "var(--font-display, cursive)",
+            color: "var(--mid)",
+            animation: "fadeIn 0.6s ease infinite alternate",
+          }}
         >
           ...
         </div>
       </div>
     );
   }
-
   if (!session) return null;
 
   const selectedQRForAnalytics = qrCodes.find((qr) => qr.id === selectedQRCodeForAnalytics);
+  const tabTitle =
+    activeTab === "qrcodes"
+      ? t("tab_qrcodes")
+      : activeTab === "analytics"
+      ? t("tab_analytics")
+      : t("tab_map");
 
-  const tabTitle = activeTab === "qrcodes" ? t("tab_qrcodes") : activeTab === "analytics" ? t("tab_analytics") : t("tab_map");
+  // ── Render ────────────────────────────────────────────────────────────────
 
   return (
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
       <Navbar />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header band rouge */}
-        <div
-          className="-mx-4 sm:-mx-6 lg:-mx-8"
-          style={{ background: "var(--red)" }}
-        >
+        {/* Header rouge */}
+        <div className="-mx-4 sm:-mx-6 lg:-mx-8" style={{ background: "var(--red)" }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-3">
             <h1
               style={{
@@ -347,74 +278,73 @@ export default function DashboardPage() {
               {tabTitle}
             </h1>
             {activeTab === "qrcodes" && (
-              <button
-                onClick={() => router.push("/qrcode/new")}
-                className="btn"
-                style={{ background: "var(--ink)", color: "var(--bg)", fontSize: "0.68rem" }}
-              >
-                + {t("new_qr")}
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => router.push("/bulk")}
+                  className="btn"
+                  title={t("import_csv")}
+                  style={{
+                    background: "transparent",
+                    color: "white",
+                    fontSize: "0.68rem",
+                    border: "1.5px solid rgba(255,255,255,0.6)",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.4rem",
+                  }}
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
+                  </svg>
+                  {t("import_csv")}
+                </button>
+                <button
+                  onClick={() => router.push("/qrcode/new")}
+                  className="btn"
+                  style={{ background: "var(--ink)", color: "var(--bg)", fontSize: "0.68rem" }}
+                >
+                  + {t("new_qr")}
+                </button>
+              </div>
             )}
           </div>
         </div>
 
-        {/* Filter strip noire */}
+        {/* Barre noire navigation + filtres */}
         <div className="-mx-4 sm:-mx-6 lg:-mx-8 mb-6" style={{ background: "var(--ink)" }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center flex-wrap">
-            <button
-              onClick={() => setActiveTab("qrcodes")}
-              style={{
-                background: "none",
-                border: "none",
-                color: activeTab === "qrcodes" ? "var(--yellow)" : "rgba(240,235,225,0.5)",
-                padding: "0.65rem 1.2rem",
-                fontFamily: "var(--font-sans, sans-serif)",
-                fontSize: "0.68rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                cursor: "pointer",
-                borderRight: "1px solid rgba(255,255,255,0.08)",
-              }}
-            >
-              {t("tab_qrcodes")} ({qrCodes.length})
-            </button>
-            <button
-              onClick={() => setActiveTab("analytics")}
-              style={{
-                background: "none",
-                border: "none",
-                color: activeTab === "analytics" ? "var(--yellow)" : "rgba(240,235,225,0.5)",
-                padding: "0.65rem 1.2rem",
-                fontFamily: "var(--font-sans, sans-serif)",
-                fontSize: "0.68rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                cursor: "pointer",
-                borderRight: "1px solid rgba(255,255,255,0.08)",
-              }}
-            >
-              {t("tab_analytics")}
-            </button>
-            <button
-              onClick={() => setActiveTab("map")}
-              style={{
-                background: "none",
-                border: "none",
-                color: activeTab === "map" ? "var(--yellow)" : "rgba(240,235,225,0.5)",
-                padding: "0.65rem 1.2rem",
-                fontFamily: "var(--font-sans, sans-serif)",
-                fontSize: "0.68rem",
-                fontWeight: 700,
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                cursor: "pointer",
-                borderRight: "1px solid rgba(255,255,255,0.08)",
-              }}
-            >
-              {t("tab_map")}
-            </button>
+            {(["qrcodes", "analytics", "map"] as Tab[]).map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                style={{
+                  background: "none",
+                  border: "none",
+                  color: activeTab === tab ? "var(--yellow)" : "rgba(240,235,225,0.5)",
+                  padding: "0.65rem 1.2rem",
+                  fontFamily: "var(--font-sans, sans-serif)",
+                  fontSize: "0.68rem",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  cursor: "pointer",
+                  borderRight: "1px solid rgba(255,255,255,0.08)",
+                }}
+              >
+                {tab === "qrcodes"
+                  ? `${t("tab_qrcodes")} (${qrCodes.length})`
+                  : tab === "analytics"
+                  ? t("tab_analytics")
+                  : t("tab_map")}
+              </button>
+            ))}
 
             {activeTab === "qrcodes" && qrCodes.length > 0 && (
               <>
@@ -426,7 +356,10 @@ export default function DashboardPage() {
                     background: "rgba(255,255,255,0.07)",
                     border: "none",
                     borderRight: "1px solid rgba(255,255,255,0.06)",
-                    color: filterType !== "favorites" && filterType !== "all" ? "var(--yellow)" : "rgba(240,235,225,0.7)",
+                    color:
+                      filterType !== "favorites" && filterType !== "all"
+                        ? "var(--yellow)"
+                        : "rgba(240,235,225,0.7)",
                     padding: "0 1rem",
                     height: "100%",
                     fontFamily: "var(--font-sans, sans-serif)",
@@ -440,7 +373,9 @@ export default function DashboardPage() {
                     minWidth: 110,
                   }}
                 >
-                  {(["all", "url", "text", "wifi", "vcard", "email", "phone", "sms", "whatsapp", "geo", "social"] as const).map((f) => (
+                  {(
+                    ["all", "url", "text", "wifi", "vcard", "email", "phone", "sms", "whatsapp", "geo", "social"] as const
+                  ).map((f) => (
                     <option key={f} value={f} style={{ background: "#1a1410", textTransform: "uppercase" }}>
                       {f === "all" ? t("filter_all") : t(`filter_${f}` as Parameters<typeof t>[0])}
                     </option>
@@ -471,7 +406,6 @@ export default function DashboardPage() {
                   placeholder={t("search_placeholder")}
                   style={{
                     marginLeft: "auto",
-                    marginRight: "0",
                     padding: "0.4rem 0.8rem",
                     fontSize: "0.72rem",
                     background: "rgba(255,255,255,0.07)",
@@ -521,7 +455,7 @@ export default function DashboardPage() {
           </div>
         )}
 
-        {/* ── QR CODES TAB ── */}
+        {/* ── Onglet QR CODES ── */}
         {activeTab === "qrcodes" && (
           <>
             {qrCodes.length === 0 ? (
@@ -545,13 +479,9 @@ export default function DashboardPage() {
               </div>
             ) : (
               <div className="grid gap-0 lg:grid-cols-[1fr_280px] items-start">
-                {/* Liste */}
+                {/* Liste des QR codes */}
                 <div>
-                  {/* Select all bar */}
-                  <div
-                    className="flex items-center px-3 py-1.5"
-                    style={{ background: "var(--ink)" }}
-                  >
+                  <div className="flex items-center px-3 py-1.5" style={{ background: "var(--ink)" }}>
                     <button
                       onClick={toggleSelectAll}
                       style={{
@@ -565,8 +495,8 @@ export default function DashboardPage() {
                         textTransform: "uppercase",
                         letterSpacing: "0.1em",
                       }}
-                      onMouseEnter={e => (e.currentTarget.style.color = "#f0ebe1")}
-                      onMouseLeave={e => (e.currentTarget.style.color = "rgba(240,235,225,0.5)")}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "#f0ebe1")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,235,225,0.5)")}
                     >
                       {t("select_all")}
                     </button>
@@ -579,244 +509,46 @@ export default function DashboardPage() {
                   </div>
 
                   {filteredQRCodes.map((qr, i) => (
-                    <div
+                    <QRCodeCard
                       key={qr.id}
-                      className="qr-row"
-                      style={{
-                        animationDelay: `${i * 0.04}s`,
-                        animation: "rowIn 0.35s ease both",
-                        borderLeft: selected.has(qr.id) ? "4px solid var(--red)" : undefined,
-                        opacity: isExpired(qr.expiresAt) ? 0.45 : 1,
-                      }}
-                    >
-                      {/* Preview + checkbox */}
-                      <div className="flex flex-col items-center gap-1.5">
-                        <input
-                          type="checkbox"
-                          checked={selected.has(qr.id)}
-                          onChange={() => toggleSelect(qr.id)}
-                          onClick={(e) => e.stopPropagation()}
-                          style={{ accentColor: "var(--red)", width: 14, height: 14 }}
-                        />
-                        <div
-                          style={{
-                            width: 52,
-                            height: 52,
-                            border: "1px solid rgba(0,0,0,0.15)",
-                            background: "white",
-                            display: "grid",
-                            placeItems: "center",
-                            flexShrink: 0,
-                          }}
-                        >
-                          {previews[qr.id] ? (
-                            <Image src={previews[qr.id]} alt={qr.name} width={44} height={44} unoptimized />
-                          ) : (
-                            <div style={{ width: 44, height: 44, background: "var(--card)", animation: "fadeIn 0.6s ease infinite alternate" }} />
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Info */}
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-2 mb-0.5">
-                          <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", color: "var(--light)" }}>
-                            {String(i + 1).padStart(3, "0")}
-                          </span>
-                          <button
-                            onClick={(e) => { e.stopPropagation(); handleToggleFavorite(qr.id); }}
-                            style={{
-                              background: "none",
-                              border: "none",
-                              cursor: "pointer",
-                              color: qr.isFavorite ? "var(--yellow)" : "var(--light)",
-                              fontSize: "0.85rem",
-                              lineHeight: 1,
-                              padding: 0,
-                            }}
-                          >
-                            {qr.isFavorite ? "★" : "☆"}
-                          </button>
-                        </div>
-                        <h3 className="font-bold truncate text-sm leading-tight mb-1" style={{ letterSpacing: "-0.01em" }}>
-                          {qr.name}
-                        </h3>
-                        <p className="truncate text-xs" style={{ fontFamily: "var(--font-mono)", color: "var(--mid)" }}>
-                          {qr.content}
-                        </p>
-                        <div className="flex gap-1.5 mt-1.5 flex-wrap">
-                          <span className="badge badge-ink">{qr.type}</span>
-                          {qr.isPublic && <span className="badge badge-red">Public</span>}
-                          {qr.category && (
-                            <span
-                              className="badge"
-                              style={{ background: "rgba(16,185,129,0.15)", color: "#10b981", border: "1px solid rgba(16,185,129,0.3)", cursor: "pointer" }}
-                              onClick={(e) => { e.stopPropagation(); setFilterCategory(qr.category!); }}
-                            >
-                              {qr.category}
-                            </span>
-                          )}
-                          {(() => {
-                            if (isExpired(qr.expiresAt)) {
-                              return (
-                                <span style={{
-                                  fontSize: "0.58rem", fontWeight: 700, textTransform: "uppercase" as const,
-                                  letterSpacing: "0.08em", background: "var(--mid)", color: "var(--bg)",
-                                  padding: "0.15rem 0.4rem", fontFamily: "var(--font-sans)",
-                                }}>
-                                  {t("badge_expired")}
-                                </span>
-                              );
-                            }
-                            const days = getDaysUntilExpiry(qr.expiresAt);
-                            if (days !== null && days <= 7) {
-                              return (
-                                <span style={{
-                                  fontSize: "0.58rem", fontWeight: 700, textTransform: "uppercase" as const,
-                                  letterSpacing: "0.08em", background: "var(--red)", color: "white",
-                                  padding: "0.15rem 0.4rem", fontFamily: "var(--font-sans)",
-                                }}>
-                                  {t("badge_expires_soon", { days })}
-                                </span>
-                              );
-                            }
-                            return null;
-                          })()}
-                        </div>
-                      </div>
-
-                      {/* Actions */}
-                      <div className="flex flex-col gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity qr-actions">
-                        <button onClick={() => router.push(`/qrcode/${qr.id}`)} className="btn btn-sm btn-primary">
-                          {t("edit")}
-                        </button>
-                        <button onClick={() => handleDownload(qr)} className="btn btn-sm btn-ghost">
-                          {t("export")}
-                        </button>
-                        <button
-                          onClick={() => handleDuplicate(qr.id)}
-                          className="btn btn-sm btn-ghost"
-                        >
-                          {t("copy")}
-                        </button>
-                        <button
-                          onClick={() => handleDelete(qr.id)}
-                          className="btn btn-sm"
-                          style={{
-                            background: "none",
-                            border: "1px solid var(--red)",
-                            color: "var(--red)",
-                            fontFamily: "var(--font-sans)",
-                            fontWeight: 700,
-                            padding: "0.4rem 0.9rem",
-                            textTransform: "uppercase",
-                            letterSpacing: "0.08em",
-                            cursor: "pointer",
-                            fontSize: "0.65rem",
-                          }}
-                        >
-                          {t("delete")}
-                        </button>
-                      </div>
-                    </div>
+                      qr={qr}
+                      index={i}
+                      preview={previews[qr.id] ?? ""}
+                      selected={selected.has(qr.id)}
+                      onToggleSelect={toggleSelect}
+                      onDelete={handleDelete}
+                      onDownload={handleDownload}
+                      onDuplicate={handleDuplicate}
+                      onToggleFavorite={handleToggleFavorite}
+                      onEdit={(id) => router.push(`/qrcode/${id}`)}
+                      onCategoryFilter={setFilterCategory}
+                      onEditContent={setEditingQR}
+                      onHistory={setHistoryQR}
+                      onPassword={setPasswordQR}
+                      onABTest={setAbQR}
+                    />
                   ))}
                 </div>
 
                 {/* Sidebar */}
                 <div className="lg:sticky lg:top-16">
-                  <div className="side-block">
-                    <div className="side-head"><span>{t("sidebar_count")}</span></div>
-                    <div className="side-body">
-                      <p style={{ fontFamily: "var(--font-display, cursive)", fontSize: "4rem", lineHeight: 1, letterSpacing: "0.02em" }}>
-                        {qrCodes.length}
-                      </p>
-                      <p className="text-xs uppercase tracking-widest mt-1" style={{ color: "var(--mid)" }}>
-                        {t("tab_qrcodes")}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="side-block">
-                    <div className="side-head"><span>{t("sidebar_quick")}</span></div>
-                    <div className="side-body flex flex-col gap-2">
-                      <button onClick={() => router.push("/qrcode/new")} className="btn btn-red w-full">
-                        + {t("new_qr")}
-                      </button>
-                      {selected.size > 0 && (
-                        <button onClick={handleExportZip} disabled={exporting} className="btn btn-primary w-full">
-                          {exporting ? "..." : `${t("export_zip")} (${selected.size})`}
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                  <div className="side-block">
-                    <div className="side-head"><span>—</span></div>
-                    <div className="side-body">
-                      {(["url", "text", "wifi", "vcard", "email", "phone", "sms", "whatsapp", "geo", "social"] as const).map((type) => {
-                        const count = qrCodes.filter((qr) => qr.type === type).length;
-                        const pct = qrCodes.length > 0 ? Math.round((count / qrCodes.length) * 100) : 0;
-                        return (
-                          <div key={type} className="flex justify-between items-center py-2" style={{ borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
-                            <span className="text-xs font-bold uppercase tracking-wider">{t(`sidebar_${type}` as Parameters<typeof t>[0])}</span>
-                            <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", color: "var(--mid)" }}>
-                              {count} — {pct}%
-                            </span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                  {uniqueCategories.length > 0 && (
-                    <div className="side-block">
-                      <div className="side-head"><span>{t("filter_category_label")}</span></div>
-                      <div className="side-body flex flex-col gap-1">
-                        <button
-                          onClick={() => setFilterCategory(null)}
-                          style={{
-                            background: "none",
-                            border: "none",
-                            color: filterCategory === null ? "var(--ink)" : "var(--mid)",
-                            fontFamily: "var(--font-sans)",
-                            fontSize: "0.7rem",
-                            fontWeight: 700,
-                            textTransform: "uppercase",
-                            letterSpacing: "0.08em",
-                            cursor: "pointer",
-                            textAlign: "left",
-                            padding: "0.3rem 0",
-                          }}
-                        >
-                          {t("filter_category_all")}
-                        </button>
-                        {uniqueCategories.map((cat) => (
-                          <button
-                            key={cat}
-                            onClick={() => setFilterCategory(cat === filterCategory ? null : cat)}
-                            style={{
-                              background: "none",
-                              border: "none",
-                              color: filterCategory === cat ? "#10b981" : "var(--mid)",
-                              fontFamily: "var(--font-sans)",
-                              fontSize: "0.7rem",
-                              fontWeight: filterCategory === cat ? 700 : 400,
-                              cursor: "pointer",
-                              textAlign: "left",
-                              padding: "0.3rem 0",
-                              borderBottom: "1px solid rgba(0,0,0,0.06)",
-                            }}
-                          >
-                            {cat}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  <DashboardSidebar
+                    qrCodes={qrCodes}
+                    selected={selected}
+                    exporting={exporting}
+                    filterCategory={filterCategory}
+                    uniqueCategories={uniqueCategories}
+                    onNewQR={() => router.push("/qrcode/new")}
+                    onExportZip={handleExportZip}
+                    onFilterCategory={setFilterCategory}
+                  />
                 </div>
               </div>
             )}
           </>
         )}
 
-        {/* ── ANALYTICS TAB ── */}
+        {/* ── Onglet ANALYTICS ── */}
         {activeTab === "analytics" && (
           <div className="py-4">
             {qrCodes.length === 0 ? (
@@ -831,7 +563,10 @@ export default function DashboardPage() {
             ) : (
               <>
                 <div className="mb-4 p-4" style={{ border: "var(--rule)", background: "var(--card)" }}>
-                  <label className="block text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "var(--mid)" }}>
+                  <label
+                    className="block text-xs font-bold uppercase tracking-widest mb-2"
+                    style={{ color: "var(--mid)" }}
+                  >
                     {t("tab_qrcodes")}
                   </label>
                   <div className="flex items-center gap-3">
@@ -848,22 +583,42 @@ export default function DashboardPage() {
                       ))}
                     </select>
                     {selectedQRForAnalytics && (
-                      <button onClick={() => router.push(`/qrcode/${selectedQRForAnalytics.id}`)} className="btn btn-secondary">
+                      <button
+                        onClick={() => router.push(`/qrcode/${selectedQRForAnalytics.id}`)}
+                        className="btn btn-secondary"
+                      >
                         {t("edit")}
                       </button>
                     )}
                   </div>
                 </div>
-                {selectedQRCodeForAnalytics && <Analytics qrCodeId={selectedQRCodeForAnalytics} isPro={proStatus?.isPro ?? false} />}
+                {selectedQRCodeForAnalytics && (
+                  <Analytics qrCodeId={selectedQRCodeForAnalytics} isPro={isPro} />
+                )}
+                {/* Analytics temps réel + heatmap + comparaison (Phase 2.5) */}
+                <div className="mt-8">
+                  <LiveAnalytics
+                    qrCodeName={
+                      selectedQRForAnalytics?.name ?? session?.user?.name ?? ""
+                    }
+                  />
+                </div>
               </>
             )}
           </div>
         )}
 
-        {/* ── MAP TAB ── */}
+        {/* ── Onglet MAP ── */}
         {activeTab === "map" && (
           <div className="py-4">
-            <MapView qrCodes={qrCodes.map((qr) => ({ id: qr.id, name: qr.name, type: qr.type, foregroundColor: qr.foregroundColor }))} />
+            <MapView
+              qrCodes={qrCodes.map((qr) => ({
+                id: qr.id,
+                name: qr.name,
+                type: qr.type,
+                foregroundColor: qr.foregroundColor,
+              }))}
+            />
           </div>
         )}
       </div>
@@ -871,6 +626,44 @@ export default function DashboardPage() {
       <style>{`
         .qr-row:hover .qr-actions { opacity: 1 !important; }
       `}</style>
+
+      {/* Modals QR dynamiques */}
+      <EditContentModal
+        qrCode={editingQR}
+        isOpen={editingQR !== null}
+        onClose={() => setEditingQR(null)}
+        onSaved={() => {
+          loadQRCodes();
+          setEditingQR(null);
+        }}
+      />
+      <VersionHistoryModal
+        qrCode={historyQR}
+        isOpen={historyQR !== null}
+        onClose={() => setHistoryQR(null)}
+        onRestored={() => {
+          loadQRCodes();
+          setHistoryQR(null);
+        }}
+      />
+      <PasswordProtectModal
+        qrCode={passwordQR}
+        isOpen={passwordQR !== null}
+        onClose={() => setPasswordQR(null)}
+        onSaved={() => {
+          loadQRCodes();
+          setPasswordQR(null);
+        }}
+      />
+      <ABTestingModal
+        qrCode={abQR}
+        isOpen={abQR !== null}
+        onClose={() => setAbQR(null)}
+        onSaved={() => {
+          loadQRCodes();
+          setAbQR(null);
+        }}
+      />
     </div>
   );
 }

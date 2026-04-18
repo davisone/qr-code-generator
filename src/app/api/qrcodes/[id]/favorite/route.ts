@@ -21,5 +21,7 @@ export async function PATCH(_req: NextRequest, { params }: { params: Promise<{ i
     data: { isFavorite: !existing.isFavorite },
   });
 
-  return NextResponse.json(updated);
+  const { passwordHash, passwordSalt, ...rest } = updated;
+  void passwordSalt;
+  return NextResponse.json({ ...rest, hasPassword: Boolean(passwordHash) });
 }

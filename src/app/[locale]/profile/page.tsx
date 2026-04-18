@@ -3,6 +3,7 @@
 import { useSession, signOut } from "next-auth/react";
 import { useState, useRef, FormEvent } from "react";
 import { useRouter } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
 const labelStyle: React.CSSProperties = {
@@ -34,6 +35,7 @@ export default function ProfilePage() {
   const { data: session, update } = useSession();
   const router = useRouter();
   const t = useTranslations("profile");
+  const tApi = useTranslations("api");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [name, setName] = useState(session?.user?.name ?? "");
@@ -250,6 +252,19 @@ export default function ProfilePage() {
                 {passwordMsg && <span style={{ fontSize: "0.75rem", color: "#10b981" }}>{passwordMsg}</span>}
               </div>
             </form>
+          </div>
+        </div>
+
+        {/* CLÉS API */}
+        <div style={sectionStyle}>
+          <div style={sectionHeaderStyle}>{tApi("keys_title")}</div>
+          <div style={{ padding: "1.5rem" }}>
+            <p style={{ fontSize: "0.8rem", color: "var(--mid)", marginBottom: "1rem" }}>
+              {tApi("keys_subtitle")}
+            </p>
+            <Link href="/api-keys" className="btn btn-secondary">
+              {tApi("keys_title")} →
+            </Link>
           </div>
         </div>
 

@@ -17,6 +17,28 @@
   --yellow: #f0b500;
   --rule: 2px solid #1a1410;
   --rule-thin: 1px solid #1a1410;
+  /* Navbar / filter strips — always dark in both modes */
+  --navbar-bg: #1a1410;
+  --navbar-text: #f0ebe1;
+  --navbar-border: rgba(255,255,255,0.08);
+}
+
+/* ===== DARK MODE ===== */
+[data-theme="dark"] {
+  --bg: #0f0d0b;
+  --card: #1c1814;
+  --ink: #f0ebe1;
+  --mid: #9a8f82;
+  --light: #6b5f52;
+  --rule: 2px solid rgba(240,235,225,0.18);
+  --rule-thin: 1px solid rgba(240,235,225,0.18);
+  --navbar-bg: #090705;
+  --navbar-border: rgba(255,255,255,0.06);
+}
+
+[data-theme="dark"] body::before {
+  background-image: radial-gradient(circle, #f0ebe1 1px, transparent 1px);
+  opacity: 0.018;
 }
 
 /* ===== BASE ===== */
@@ -50,11 +72,12 @@ body::before {
 
 /* ===== NAVBAR ===== */
 .navbar {
-  background: var(--ink);
-  color: #f0ebe1;
+  background: var(--navbar-bg);
+  color: var(--navbar-text);
   position: sticky;
   top: 0;
   z-index: 50;
+  border-bottom: 1px solid var(--navbar-border);
 }
 
 /* ===== BUTTONS ===== */
@@ -179,7 +202,7 @@ body::before {
 
 /* ===== FILTER STRIP ===== */
 .filter-strip {
-  background: var(--ink);
+  background: var(--navbar-bg);
   display: flex;
   align-items: center;
 }
@@ -320,9 +343,27 @@ body::before {
 
 /* ===== FOOTER ===== */
 .footer {
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--navbar-bg);
+  color: var(--navbar-text);
   border-top: var(--rule);
+}
+
+/* ===== DARK MODE INPUT ===== */
+[data-theme="dark"] .input {
+  background: #1c1814;
+  border-color: rgba(240,235,225,0.2);
+  color: var(--ink);
+}
+
+[data-theme="dark"] .input:focus {
+  border-color: rgba(240,235,225,0.6);
+  background: #231e18;
+  box-shadow: 3px 3px 0 rgba(240,235,225,0.15);
+}
+
+/* Theme transition */
+*, *::before, *::after {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
 }
 
 /* ===== ICON BOX ===== */

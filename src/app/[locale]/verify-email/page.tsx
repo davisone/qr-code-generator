@@ -9,14 +9,12 @@ function VerifyEmailContent() {
   const t = useTranslations("auth");
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
-  const [status, setStatus] = useState<"loading" | "success" | "error" | "expired">("loading");
+  const [status, setStatus] = useState<"loading" | "success" | "error" | "expired">(
+    () => (token ? "loading" : "error")
+  );
 
   useEffect(() => {
-    if (!token) {
-      setStatus("error");
-      return;
-    }
-
+    if (!token) return;
     fetch("/api/auth/verify-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

@@ -32,5 +32,8 @@ export async function POST(req: NextRequest) {
     },
   });
 
-  return NextResponse.json(duplicate, { status: 201 });
+  const { passwordHash, passwordSalt, ...rest } = duplicate;
+  void passwordHash;
+  void passwordSalt;
+  return NextResponse.json({ ...rest, hasPassword: false }, { status: 201 });
 }

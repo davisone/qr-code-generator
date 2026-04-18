@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Link } from "@/i18n/navigation";
 
 export default function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
@@ -54,12 +55,12 @@ export default function CookieBanner() {
               <p className="text-sm text-[#525252]">
                 Ce site utilise des cookies pour l&apos;authentification et l&apos;analyse du trafic.
                 Les QR codes partagés collectent des statistiques de scan anonymes (appareil, navigateur, date).{" "}
-                <a
+                <Link
                   href="/mentions-legales"
                   className="text-[#10b981] hover:underline"
                 >
                   En savoir plus
-                </a>
+                </Link>
               </p>
             </div>
             <div className="flex gap-3 w-full sm:w-auto">

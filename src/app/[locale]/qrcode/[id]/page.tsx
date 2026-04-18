@@ -1,7 +1,7 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import NextImage from "next/image";
 import { useEffect, useState, useRef, useCallback } from "react";
 import Navbar from "@/components/Navbar";
@@ -10,8 +10,10 @@ import { jsPDF } from "jspdf";
 import { styleTemplates } from "@/lib/templates";
 import { generateQRCanvas } from "@/lib/qr-utils";
 import { QRType, QR_TYPE_LIST, buildContent } from "@/lib/qr-formats";
+import { getTemplateById } from "@/lib/qr-templates";
+import { emojiToDataUrl } from "@/lib/emoji-to-png";
 import { QRTypeIcon } from "@/components/ui/QRTypeIcon";
-import { useRouter } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
 const ERROR_LEVELS = [
@@ -37,6 +39,7 @@ export default function QRCodeEditorPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const params = useParams();
+  const searchParams = useSearchParams();
   const t = useTranslations("qrcode");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const logoInputRef = useRef<HTMLInputElement>(null);
@@ -110,6 +113,39 @@ export default function QRCodeEditorPage() {
         .catch(() => setIsPro(false));
     }
   }, [status]);
+
+  // Pré-remplissage depuis un template (nouveau QR uniquement)
+  // On attend que le statut Pro soit connu pour éviter un flash.
+  useEffect(() => {
+    if (!isNew || status !== "authenticated" || isPro === null) return;
+    const templateId = searchParams?.get("template");
+    if (!templateId) return;
+    const template = getTemplateById(templateId);
+    if (!template) return;
+    if (template.isPro && !isPro) {
+      router.push("/pricing?reason=pro_template");
+      return;
+    }
+    setType(template.type);
+    if (template.defaultMetadata && typeof template.defaultMetadata === "object") {
+      setFields(template.defaultMetadata as Record<string, string>);
+    } else if (template.defaultContent) {
+      if (template.type === "url" || template.type === "social") {
+        setFields({ url: template.defaultContent });
+      } else if (template.type === "text") {
+        setFields({ text: template.defaultContent });
+      }
+    }
+    setForegroundColor(template.defaultStyle.foregroundColor);
+    setBackgroundColor(template.defaultStyle.backgroundColor);
+    setErrorCorrection(template.defaultStyle.errorCorrection);
+    if (template.defaultStyle.logoEmoji) {
+      const dataUrl = emojiToDataUrl(template.defaultStyle.logoEmoji, 128);
+      if (dataUrl) setLogoDataUrl(dataUrl);
+    }
+    // On ne dépend que de l'id du template et du statut Pro — un seul hit.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isNew, status, isPro, searchParams?.get("template")]);
 
   function updateField(key: string, value: string) {
     setFields((prev) => ({ ...prev, [key]: value }));
@@ -370,7 +406,7 @@ export default function QRCodeEditorPage() {
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.8rem", color: "var(--red)", margin: 0 }}>
               {t("expiry_warning", { date: new Date(qrCode.expiresAt).toLocaleDateString("fr-FR", { day: "2-digit", month: "long", year: "numeric" }) })}
             </p>
-            <a
+            <Link
               href="/pricing"
               style={{
                 fontFamily: "var(--font-sans)",
@@ -386,7 +422,7 @@ export default function QRCodeEditorPage() {
               }}
             >
               {t("expiry_cta")}
-            </a>
+            </Link>
           </div>
         )}
 

@@ -19,7 +19,13 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
   });
 
   if (!qrCode) return NextResponse.json({ error: "QR code introuvable" }, { status: 404 });
-  return NextResponse.json(qrCode);
+
+  const { passwordHash, passwordSalt, ...rest } = qrCode;
+  void passwordSalt;
+  return NextResponse.json({
+    ...rest,
+    hasPassword: Boolean(passwordHash),
+  });
 }
 
 export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
@@ -68,7 +74,12 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
     },
   });
 
-  return NextResponse.json(updated);
+  const { passwordHash, passwordSalt, ...rest } = updated;
+  void passwordSalt;
+  return NextResponse.json({
+    ...rest,
+    hasPassword: Boolean(passwordHash),
+  });
 }
 
 export async function DELETE(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {

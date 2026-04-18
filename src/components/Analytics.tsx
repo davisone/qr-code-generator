@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Link } from "@/i18n/navigation";
 import {
   AreaChart,
   Area,
@@ -59,14 +60,14 @@ const ProGate = ({ isPro, children }: { isPro: boolean; children: React.ReactNod
         }}>
           Fonctionnalité Pro
         </p>
-        <a href="/pricing" style={{
+        <Link href="/pricing" style={{
           fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700,
           textTransform: "uppercase", letterSpacing: "0.08em",
           background: "var(--red)", color: "white", padding: "0.5rem 1.25rem",
           textDecoration: "none",
         }}>
           Passer Pro →
-        </a>
+        </Link>
       </div>
     </div>
   );

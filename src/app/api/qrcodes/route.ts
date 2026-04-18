@@ -22,7 +22,17 @@ export async function GET() {
     orderBy: [{ isFavorite: "desc" }, { updatedAt: "desc" }],
   });
 
-  return NextResponse.json(qrCodes);
+  // Masquer les champs sensibles + exposer des flags dérivés
+  const sanitized = qrCodes.map((qr) => {
+    const { passwordHash, passwordSalt, ...rest } = qr;
+    void passwordSalt;
+    return {
+      ...rest,
+      hasPassword: Boolean(passwordHash),
+    };
+  });
+
+  return NextResponse.json(sanitized);
 }
 
 export async function POST(req: NextRequest) {

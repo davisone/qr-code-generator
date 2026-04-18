@@ -9,6 +9,7 @@ import { BASE_URL } from "@/lib/config";
 import Providers from "@/components/Providers";
 import { Footer } from "@/components/Footer";
 import { ReviewBadge } from "@/components/ReviewBadge";
+import { BottomTabs } from "@/components/BottomTabs";
 import { Toaster } from "sonner";
 import "../globals.css";
 
@@ -132,6 +133,12 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale}>
       <head>
+        {/* Anti-FOUC theme script — static string, no user data, safe */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;document.documentElement.setAttribute('data-theme',(t==='dark'||(t===null&&d))?'dark':'light');}catch(e){}})();`,
+          }}
+        />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-BVWND63T0M"
           strategy="afterInteractive"
@@ -164,6 +171,7 @@ export default async function LocaleLayout({ children, params }: Props) {
                 },
               }}
             />
+            <BottomTabs />
           </Providers>
           <Footer />
           <ReviewBadge />
