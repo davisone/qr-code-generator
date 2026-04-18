@@ -22,6 +22,22 @@ model User {
   qrCodes       QRCode[]
   accounts      Account[]
   sessions      Session[]
+  apiKeys       ApiKey[]
+}
+
+model ApiKey {
+  id         String    @id @default(cuid())
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String
+  name       String
+  keyHash    String    @unique
+  keyPrefix  String
+  lastUsedAt DateTime?
+  createdAt  DateTime  @default(now())
+  revokedAt  DateTime?
+
+  @@index([userId, revokedAt])
+  @@index([keyHash])
 }
 
 model Account {
@@ -65,15 +81,46 @@ model QRCode {
   isFavorite      Boolean  @default(false)
   isPublic        Boolean  @default(false)
   shareToken      String?  @unique
+  passwordHash    String?
+  passwordSalt    String?
+  splitMode       String?  // "ab" quand l'A/B testing est actif
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   expiresAt       DateTime?
   userId          String
   user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   scans           Scan[]
+  versions        QRCodeVersion[]
+  variants        QRVariant[]
 
   @@index([userId])
   @@index([shareToken])
+}
+
+model QRVariant {
+  id        String   @id @default(cuid())
+  qrCode    QRCode   @relation(fields: [qrCodeId], references: [id], onDelete: Cascade)
+  qrCodeId  String
+  label     String
+  content   String
+  weight    Int      @default(50)
+  createdAt DateTime @default(now())
+
+  @@index([qrCodeId])
+}
+
+model QRCodeVersion {
+  id         String   @id @default(cuid())
+  qrCode     QRCode   @relation(fields: [qrCodeId], references: [id], onDelete: Cascade)
+  qrCodeId   String
+  content    String
+  type       String   // Copie de QRCode.type au moment de la version
+  metadata   Json?    // Copie de QRCode.metadata
+  note       String?  // Optionnel : commentaire du user sur le changement
+  createdAt  DateTime @default(now())
+  createdBy  String?  // userId (préparation pour workspaces plus tard)
+
+  @@index([qrCodeId, createdAt])
 }
 
 model Scan {
@@ -91,9 +138,11 @@ model Scan {
   device    String?  // "mobile", "tablet", "desktop"
   browser   String?
   os        String?
+  variantId String?
 
   @@index([qrCodeId])
   @@index([scannedAt])
+  @@index([variantId])
 }
 
 model VerificationToken {
