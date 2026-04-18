@@ -4,13 +4,37 @@
     "start": "始める",
     "logout": "ログアウト",
     "profile": "プロフィール",
-    "pricing": "料金"
+    "pricing": "料金",
+    "templates": "テンプレート",
+    "bulk": "一括",
+    "api_keys": "API"
+  },
+  "api": {
+    "keys_title": "APIキー",
+    "keys_subtitle": "QRaftをあなたのツールやワークフローに統合しましょう。",
+    "new_key": "新しいキー",
+    "key_name_placeholder": "Production, Dev, CI…",
+    "generate": "生成",
+    "created_key_warning": "このキーは今すぐコピーしてください — 二度と表示されません。",
+    "copy": "コピー",
+    "copied": "コピーしました！",
+    "revoke": "失効",
+    "confirm_revoke": "確認しますか？",
+    "no_keys": "まだキーがありません。最初のキーを作成しましょう。",
+    "last_used": "最終使用",
+    "never_used": "未使用",
+    "created_at": "作成日",
+    "docs_title": "APIドキュメント",
+    "docs_cta": "ドキュメントを見る",
+    "docs_subtitle": "全エンドポイント、curl例、エラーコード。",
+    "docs_meta_title": "QRaft API v1 — ドキュメント",
+    "docs_meta_description": "完全なRESTドキュメント：QRコード作成、アナリティクス・スキャン取得。"
   },
   "home": {
     "badge": "完全無料 — クレジットカード不要",
     "hero_title_1": "QRコードを",
-    "hero_title_2": "数秒で",
-    "hero_title_3": "作成",
+    "hero_title_2": "無制限に",
+    "hero_title_3": "管理しよう。",
     "hero_title_4": "しよう",
     "hero_desc": "QRコードを生成、カスタマイズ、共有。シンプル、高速、完全無料。",
     "cta_primary": "最初のQRを作成 →",
@@ -18,23 +42,23 @@
     "preview_label": "プレビュー",
     "stat_unlimited": "無制限のQRコード",
     "stat_formats": "エクスポート形式",
-    "stat_free": "無料",
+    "stat_free": "0円で開始",
     "features_label": "機能",
     "features_title": "必要なものがすべて揃っています",
     "feature_colors_title": "カラーカスタマイズ",
     "feature_colors_desc": "QRコードと背景の色をブランドに合わせて選択できます。",
     "feature_logo_title": "ロゴの追加",
     "feature_logo_desc": "QRコードの中央にロゴを埋め込みます。エラー訂正により読み取り可能です。",
-    "feature_export_title": "PNG / JPG / PDF エクスポート",
-    "feature_export_desc": "用途に合わせた高品質フォーマットでダウンロード：Web、印刷、またはベクター。",
+    "feature_export_title": "マルチフォーマット出力",
+    "feature_export_desc": "高解像度PNG、印刷用JPEG、ベクターPDF、一括ZIP。",
     "feature_share_title": "公開共有",
-    "feature_share_desc": "ユニークな共有リンクを生成。読み手側のアカウント不要。",
+    "feature_share_desc": "ユニークな短縮URL、即スキャン可能なQR、リアルタイムスキャン追跡。",
     "feature_stats_title": "スキャン統計",
     "feature_stats_desc": "リアルタイムでスキャンを追跡：デバイス、ブラウザ、OSとトレンド。",
     "feature_zip_title": "一括ZIPエクスポート",
     "feature_zip_desc": "選択したすべてのQRコードを1つのZIPアーカイブでダウンロード。",
     "how_label": "簡単",
-    "how_title": "QRコードの作り方",
+    "how_title": "使い方",
     "step1_num": "01",
     "step1_title": "アカウントを作成",
     "step1_desc": "数秒で無料登録。クレジットカード不要、コミットメント不要。",
@@ -54,13 +78,44 @@
     "faq_3_a": "QRaftはWeb用PNG、標準印刷用JPEG、どんなサイズでも完璧な品質のベクターPDFを提供します。",
     "faq_4_q": "スキャンを追跡できますか？",
     "faq_4_a": "はい。完全な統計：スキャン総数、トレンド、デバイス、ブラウザ、OSの内訳、地理的マップ。",
-    "cta_title_1": "最初のQRコードを",
-    "cta_title_2": "作成しませんか？",
-    "cta_button": "無料アカウントを作成 →",
+    "cta_title_1": "最初のQRを",
+    "cta_title_2": "作成しよう。",
+    "cta_button": "無料で始める →",
     "pro_label": "次のレベルへ",
     "pro_title": "QRaft Pro",
     "pro_subtitle": "永続的なQRコード、完全な分析、制限なし。",
-    "pro_cta": "料金を見る →"
+    "pro_cta": "料金を見る →",
+    "hero_subtitle": "QRコードを生成、カスタマイズ、共有。高度な分析、マルチフォーマットエクスポート、リアルタイムトラッキング付き公開共有。",
+    "cta_start": "今すぐ始める →",
+    "cta_pricing": "料金を見る →",
+    "stat_languages": "12言語",
+    "stat_languages_sub": "対応済み",
+    "stat_qr_count": "50K+ QR",
+    "stat_qr_count_sub": "生成済み",
+    "stat_free_sub": "完全無料プラン",
+    "feature_analytics_title": "プロ分析",
+    "feature_analytics_desc": "リアルタイムのスキャングラフ、国・デバイス・ブラウザ別の内訳。",
+    "feature_types_title": "10種類のQR",
+    "feature_types_desc": "URL、WiFi、vCard、SMS、位置情報、WhatsApp、Email、電話、SNSなど。",
+    "step_1_title": "作成",
+    "step_1_desc": "10種類のQRコードタイプから選択。数秒で無料登録、クレジットカード不要。",
+    "step_2_title": "カスタマイズ",
+    "step_2_desc": "色、ロゴ、サイズ、誤り訂正レベルを設定。プレビューがリアルタイムで更新されます。",
+    "step_3_title": "共有",
+    "step_3_desc": "短縮URL、即スキャン可能なQR、フルスキャントラッキングと分析。",
+    "faq_q1": "ダイナミックQRコードとは何ですか？",
+    "faq_a1": "ダイナミックQRコードは、コードを再印刷せずにコンテンツを変更できます。メニュー、マーケティングキャンペーン、変動するコンテンツに最適です。",
+    "faq_q2": "FreとProの違いは何ですか？",
+    "faq_a2": "Freeプランは基本的な分析付きのQRコード作成を提供します。Proプランは完全な分析、PDF/ZIPエクスポート、永続QRコード、優先サポートをアンロックします。",
+    "faq_q3": "Proサブスクリプションをキャンセルできますか？",
+    "faq_a3": "はい、Stripeカスタマーポータルからいつでもキャンセルできます。契約なし、キャンセル料なし。",
+    "faq_q4": "QRコードは期限切れになりますか？",
+    "faq_a4": "Freeプランでは30日間有効です。Proプランでは永続的で期限切れになりません。",
+    "faq_q5": "利用可能なエクスポート形式は何ですか？",
+    "faq_a5": "すべてのプランでPNGとJPEG、Proプランでベクターサイズと一括ZIP。",
+    "pro_cta_title": "プロにアップグレードしませんか？",
+    "pro_cta_subtitle": "高度な分析 · 永続QRコード · 無制限エクスポート · 優先サポート",
+    "cta_final_label": "今すぐ始めよう"
   },
   "auth": {
     "back": "← 戻る",
@@ -197,7 +252,81 @@
     "filter_category_all": "すべて",
     "badge_expired": "期限切れ",
     "badge_expires_soon": "{days}日後に期限切れ",
-    "toast_upgrade_success": "Proへようこそ！"
+    "toast_upgrade_success": "Proへようこそ！",
+    "dynamic": {
+      "edit_content": "内容を編集",
+      "history": "履歴",
+      "modal_edit_title": "内容を編集",
+      "modal_history_title": "バージョン履歴",
+      "note_placeholder": "任意のメモ（変更理由）",
+      "save": "保存",
+      "restore": "復元",
+      "confirm_restore": "このバージョンを復元しますか？",
+      "current_version": "現在",
+      "no_history": "まだ変更はありません",
+      "pro_required_title": "Pro機能",
+      "pro_required_body": "ダイナミックQRコードにはProサブスクリプションが必要です。再印刷なしで内容をいつでも更新できます。",
+      "upgrade": "Proにアップグレード",
+      "edit_success": "内容を更新しました",
+      "edit_error": "更新に失敗しました",
+      "restore_success": "バージョンを復元しました",
+      "advanced_edit": "高度なQR（vCard、WiFiなど）はフルエディタを開いてください。",
+      "open_editor": "エディタを開く"
+    },
+    "actions": {
+      "view": "表示",
+      "favorite": "お気に入り",
+      "unfavorite": "解除",
+      "category": "カテゴリ",
+      "share_public": "共有",
+      "copy_url": "URLコピー",
+      "export_png": "PNG出力",
+      "export_pdf": "PDF出力",
+      "delete": "削除",
+      "more": "その他"
+    },
+    "bottom_tabs": {
+      "dashboard": "ホーム",
+      "new": "新規",
+      "stats": "統計",
+      "profile": "プロフィール"
+    },
+    "import_csv": "CSVインポート",
+    "password": {
+      "action": "Protect",
+      "modal_title": "Password protection",
+      "modal_subtitle": "Only users with the password will access the content.",
+      "current_protected": "This QR code is currently protected.",
+      "enable": "Enable protection",
+      "disable": "Remove protection",
+      "placeholder": "At least 4 characters",
+      "pro_required_body": "Password protection requires a Pro subscription.",
+      "enabled": "Protection enabled",
+      "disabled": "Protection removed",
+      "unlock_title": "Protected access",
+      "unlock_subtitle": "This QR code is password-protected.",
+      "unlock_cta": "Unlock",
+      "wrong_password": "Incorrect password"
+    },
+    "ab": {
+      "action": "A/B Testing",
+      "modal_title": "A/B Testing",
+      "modal_subtitle": "Split your traffic across multiple URLs to compare their performance.",
+      "pro_required_body": "A/B testing requires a Pro subscription.",
+      "add_variant": "Add variant",
+      "remove_variant": "Remove",
+      "variant_label_placeholder": "Version A",
+      "variant_url_placeholder": "https://...",
+      "weight": "Weight",
+      "total_must_be_100": "Weights must sum to 100",
+      "save": "Save",
+      "disable": "Disable A/B testing",
+      "analytics_title": "Scan distribution",
+      "saved": "Variants saved",
+      "disabled": "A/B testing disabled",
+      "no_data_yet": "No scans yet",
+      "variant_count": "{count} active variants"
+    }
   },
   "qrcode": {
     "back": "← 戻る",
@@ -278,13 +407,13 @@
   },
   "pricing": {
     "label": "料金",
-    "title": "シンプル、透明",
-    "subtitle": "始めるための無料プランと、さらに進むためのProプラン。サプライズなし。",
+    "title": "透明な料金体系",
+    "subtitle": "サプライズなし。隠れた手数料なし。無料プランで始め、Proプランでさらに上を目指せます。",
     "month": "月",
     "free_label": "無料",
     "free_hint": "永久無料",
     "pro_label": "Pro",
-    "annual_hint": "年間プランは79.99€/年で近日公開予定",
+    "annual_hint": "年間プランでお得に",
     "feature_create": "無制限のQRコード",
     "feature_customize": "カラー＆ロゴカスタマイズ",
     "feature_export": "PNG / JPEG / PDF エクスポート",
@@ -308,11 +437,220 @@
     "faq_3_q": "支払いは安全ですか？",
     "faq_3_a": "はい。支払いはPCI DSS認定のStripeが処理します。銀行情報はサーバーに一切保存されません。",
     "faq_4_q": "年間プランはありますか？",
-    "faq_4_a": "79.99€（6.67€/月）の年間プランが近日公開予定です。"
+    "faq_4_a": "79.99€（6.67€/月）の年間プランが近日公開予定です。",
+    "year": "年",
+    "free_tier": "無料",
+    "pro_tier": "PRO",
+    "popular_badge": "最人気",
+    "billing_monthly": "月額",
+    "billing_annual": "年額",
+    "billing_save": "{amount}€ お得",
+    "feature_export_png": "PNG / JPEG エクスポート",
+    "feature_export_pdf_zip": "PDF + 一括ZIPエクスポート",
+    "feature_expire_free": "QRコード有効期間30日",
+    "feature_support": "優先サポート",
+    "cta_dashboard": "ダッシュボードへ",
+    "cta_register": "無料で始める",
+    "cta_upgrade": "Proにアップグレード →",
+    "cta_portal": "サブスクリプション管理",
+    "comparison_title": "詳細比較",
+    "comparison_feature": "機能",
+    "guarantee_title": "14日間返金保証",
+    "guarantee_desc": "理由を問わず、サブスクリプション開始後14日以内にご連絡いただければ全額返金いたします。",
+    "faq_title": "サブスクリプションについてのよくある質問",
+    "pricing_faq_q1": "いつでもキャンセルできますか？",
+    "pricing_faq_a1": "はい、Stripeカスタマーポータルからいつでもキャンセルできます。約束なし、キャンセル料なし。",
+    "pricing_faq_q2": "Freeプランに戻した場合はどうなりますか？",
+    "pricing_faq_a2": "QRコードは引き続きアクセス可能ですが、30日間の制限が再び適用されます。データは削除されません。",
+    "pricing_faq_q3": "Pro無料トライアルはありますか？",
+    "pricing_faq_a3": "Freeプランは永久に無料です。Proプランには14日間の返金保証があります。",
+    "pricing_faq_q4": "プリペイドカードは使えますか？",
+    "pricing_faq_a4": "はい、StripeはVisa、Mastercard、American Expressのほとんどのクレジットカードとプリペイドカードを受け付けています。",
+    "pricing_faq_q5": "価格に消費税は含まれていますか？",
+    "pricing_faq_a5": "表示価格は税抜きです。適用される税金はお住まいの国に基づいてチェックアウト時に計算されます。"
   },
   "expired": {
     "title": "QRコードの有効期限切れ",
     "desc": "このQRコードはもう有効ではありません。作成者はProプランにアップグレードして再アクティブ化する必要があります。",
     "cta": "QRaft Proを見る →"
+  },
+  "templates": {
+    "eyebrow": "マーケットプレイス",
+    "title": "テンプレート",
+    "subtitle": "業界に合わせたベースですぐにスタート。",
+    "filter_all": "すべて",
+    "category": {
+      "business": "ビジネス",
+      "restaurant": "飲食店",
+      "event": "イベント",
+      "retail": "小売",
+      "personal": "個人",
+      "real_estate": "不動産",
+      "hospitality": "ホテル",
+      "education": "教育"
+    },
+    "use_template": "使う",
+    "upgrade_to_use": "Proに変更",
+    "pro_badge": "Pro",
+    "meta_title": "業界別QRコードテンプレート | QRaft",
+    "meta_description": "飲食店、イベント、名刺、WiFi、不動産などに対応した24種類のQRコードテンプレート。",
+    "items": {
+      "business-card-pro": {
+        "name": "名刺",
+        "description": "連絡先完備のビジネスvCard。"
+      },
+      "linkedin-profile": {
+        "name": "LinkedIn",
+        "description": "LinkedInプロフィールへのQR。"
+      },
+      "corporate-website": {
+        "name": "企業サイト",
+        "description": "スキャン可能な企業ページ。"
+      },
+      "menu-qr": {
+        "name": "メニュー",
+        "description": "デジタル飲食メニュー。"
+      },
+      "google-reviews": {
+        "name": "Googleレビュー",
+        "description": "Googleにレビューを残す。"
+      },
+      "instagram-food": {
+        "name": "Instagram",
+        "description": "グルメ向けInstagram。"
+      },
+      "ticket-qr": {
+        "name": "チケット",
+        "description": "印刷可能なイベントチケット。"
+      },
+      "save-the-date": {
+        "name": "日付告知",
+        "description": "デジタル招待状。"
+      },
+      "agenda-calendar": {
+        "name": "アジェンダ",
+        "description": "インタラクティブな予定表。"
+      },
+      "promo-code": {
+        "name": "プロモコード",
+        "description": "スキャン可能な割引コード。"
+      },
+      "loyalty-card": {
+        "name": "会員カード",
+        "description": "デジタル会員カード。"
+      },
+      "product-info": {
+        "name": "商品情報",
+        "description": "詳しい商品情報ページ。"
+      },
+      "wifi-home": {
+        "name": "自宅WiFi",
+        "description": "WiFiに素早く接続。"
+      },
+      "personal-vcard": {
+        "name": "個人vCard",
+        "description": "共有用の個人連絡先。"
+      },
+      "social-bio-link": {
+        "name": "Bioリンク",
+        "description": "SNSプロフィールへのリンク。"
+      },
+      "property-listing": {
+        "name": "物件情報",
+        "description": "詳細な不動産情報。"
+      },
+      "virtual-tour": {
+        "name": "バーチャル内覧",
+        "description": "360°の物件ツアー。"
+      },
+      "agent-contact": {
+        "name": "担当者連絡先",
+        "description": "不動産担当者の名刺。"
+      },
+      "hotel-wifi": {
+        "name": "ホテルWiFi",
+        "description": "客室用WiFiアクセス。"
+      },
+      "room-checkin": {
+        "name": "チェックイン",
+        "description": "客室で非接触チェックイン。"
+      },
+      "room-service-menu": {
+        "name": "ルームサービス",
+        "description": "客室サービスメニュー。"
+      },
+      "course-resource": {
+        "name": "授業資料",
+        "description": "教材ドキュメントへのリンク。"
+      },
+      "class-materials": {
+        "name": "クラス教材",
+        "description": "授業教材のフォルダ。"
+      },
+      "event-signup": {
+        "name": "参加登録",
+        "description": "ワークショップ申込フォーム。"
+      }
+    }
+  },
+  "bulk": {
+    "meta_title": "CSVインポート — 一括作成 | QRaft",
+    "meta_description": "CSVファイルから最大500個のQRコードを一度に生成。ZIPエクスポート＋概要PDF付き。",
+    "eyebrow": "バッチ / CSV",
+    "title": "一括作成",
+    "subtitle": "CSVから数十個のQRコードを数秒で生成できます。",
+    "upload_label": "CSVファイルをここにドロップ",
+    "upload_or": "または",
+    "browse": "参照",
+    "paste_placeholder": "ここにCSVを貼り付け…",
+    "download_template": "CSVテンプレートをダウンロード",
+    "limit_free": "Freeプラン：バッチあたり最大5 QR",
+    "limit_pro": "Proプラン：バッチあたり最大500 QR",
+    "parse_result": "解析結果",
+    "valid_count": "有効な行：{count}",
+    "error_count": "エラー：{count}",
+    "line": "{n}行目",
+    "import_button": "{count}個のQRコードをインポート",
+    "import_disabled": "上限超過 — Proにアップグレード",
+    "reset": "やり直す",
+    "importing": "インポート中…",
+    "import_success": "{count}個のQRコードを作成しました",
+    "import_error": "インポートに失敗しました",
+    "download_zip": "ZIPをダウンロード",
+    "go_to_dashboard": "ダッシュボードへ",
+    "header_name": "名前",
+    "header_type": "タイプ",
+    "header_content": "内容",
+    "header_status": "状態",
+    "status_valid": "OK",
+    "status_error": "エラー"
+  },
+  "realtime": {
+    "title_live": "ライブスキャン",
+    "toggle_on": "ライブ開始",
+    "toggle_off": "ライブ停止",
+    "connected": "接続中",
+    "disconnected": "切断",
+    "no_scans_yet": "スキャン待機中…",
+    "ago_seconds": "{n}秒前",
+    "ago_minutes": "{n}分前",
+    "ago_hours": "{n}時間前",
+    "period_comparison": "過去30日の比較",
+    "vs_previous": "前期比",
+    "scans_total": "総スキャン数",
+    "unique_countries": "ユニーク国数",
+    "unique_cities": "ユニーク都市数",
+    "heatmap_title": "世界ヒートマップ",
+    "heatmap_subtitle": "過去90日のスキャン密度",
+    "export_pdf": "PDFエクスポート",
+    "exporting": "レポート生成中…",
+    "exported": "レポートをダウンロードしました",
+    "report_title": "QR分析レポート",
+    "report_period": "期間: {start} — {end}",
+    "report_generated_by": "QRaft — useqraft.com によって生成",
+    "top_countries": "トップ国",
+    "top_devices": "トップデバイス",
+    "top_browsers": "トップブラウザ",
+    "evolution": "推移"
   }
 }

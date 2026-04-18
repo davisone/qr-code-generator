@@ -4,13 +4,37 @@
     "start": "Loslegen",
     "logout": "Abmelden",
     "profile": "Profil",
-    "pricing": "Preise"
+    "pricing": "Preise",
+    "templates": "Vorlagen",
+    "bulk": "Bulk",
+    "api_keys": "API"
+  },
+  "api": {
+    "keys_title": "API-Schlüssel",
+    "keys_subtitle": "Integrieren Sie QRaft in Ihre Tools und Workflows.",
+    "new_key": "Neuer Schlüssel",
+    "key_name_placeholder": "Produktion, Dev, CI…",
+    "generate": "Generieren",
+    "created_key_warning": "Kopieren Sie diesen Schlüssel jetzt — er wird nie wieder angezeigt.",
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "revoke": "Widerrufen",
+    "confirm_revoke": "Bestätigen?",
+    "no_keys": "Noch keine Schlüssel. Erstellen Sie Ihren ersten.",
+    "last_used": "Zuletzt verwendet",
+    "never_used": "Nie verwendet",
+    "created_at": "Erstellt am",
+    "docs_title": "API-Dokumentation",
+    "docs_cta": "Dokumentation ansehen",
+    "docs_subtitle": "Alle Endpunkte, curl-Beispiele und Fehlercodes.",
+    "docs_meta_title": "QRaft API v1 — Dokumentation",
+    "docs_meta_description": "Vollständige REST-Dokumentation: QR-Codes erstellen, Analytics und Scans abrufen."
   },
   "home": {
     "badge": "100% Kostenlos — Keine Kreditkarte erforderlich",
-    "hero_title_1": "Erstellen Sie",
-    "hero_title_2": "QR-Codes",
-    "hero_title_3": "in wenigen",
+    "hero_title_1": "VERWALTEN SIE IHRE",
+    "hero_title_2": "QR-CODES",
+    "hero_title_3": "OHNE GRENZEN.",
     "hero_title_4": "Sekunden",
     "hero_desc": "Erstellen, personalisieren und teilen Sie Ihre QR-Codes. Einfach, schnell und völlig kostenlos.",
     "cta_primary": "Meinen ersten QR erstellen →",
@@ -18,23 +42,23 @@
     "preview_label": "Vorschau",
     "stat_unlimited": "Unbegrenzte QR-Codes",
     "stat_formats": "Exportformate",
-    "stat_free": "Kostenlos",
+    "stat_free": "0€ ZUM STARTEN",
     "features_label": "Funktionen",
-    "features_title": "Alles, was Sie brauchen",
+    "features_title": "ALLES WAS SIE BRAUCHEN",
     "feature_colors_title": "Farbanpassung",
     "feature_colors_desc": "Wählen Sie die Farben des QR-Codes und Hintergrunds passend zu Ihrer visuellen Identität.",
     "feature_logo_title": "Logo hinzufügen",
     "feature_logo_desc": "Integrieren Sie Ihr Logo in die Mitte des QR-Codes. Die Fehlerkorrektur gewährleistet die Lesbarkeit.",
-    "feature_export_title": "Export PNG / JPG / PDF",
-    "feature_export_desc": "Laden Sie in hoher Qualität im passenden Format herunter: Web, Druck oder Vektor.",
-    "feature_share_title": "Öffentliches Teilen",
-    "feature_share_desc": "Erstellen Sie einen einzigartigen Freigabelink. Kein Konto auf der Leserseite erforderlich.",
+    "feature_export_title": "MULTI-FORMAT-EXPORT",
+    "feature_export_desc": "Hochauflösendes PNG, JPEG für Druck, Vektor-PDF und Massen-ZIP-Download.",
+    "feature_share_title": "ÖFFENTLICHES TEILEN",
+    "feature_share_desc": "Einzigartiger Kurzlink, sofort scanbarer QR, Echtzeit-Scan-Tracking.",
     "feature_stats_title": "Scan-Statistiken",
     "feature_stats_desc": "Verfolgen Sie Scans in Echtzeit: Gerät, Browser, OS und Trends.",
     "feature_zip_title": "Massen-ZIP-Export",
     "feature_zip_desc": "Laden Sie alle ausgewählten QR-Codes in einem ZIP-Archiv herunter.",
     "how_label": "Einfach",
-    "how_title": "Wie erstellt man einen QR-Code?",
+    "how_title": "WIE ES FUNKTIONIERT",
     "step1_num": "01",
     "step1_title": "Konto erstellen",
     "step1_desc": "Kostenlose Registrierung in wenigen Sekunden. Keine Kreditkarte, keine Verpflichtung.",
@@ -45,7 +69,7 @@
     "step3_title": "Exportieren und verfolgen",
     "step3_desc": "Als PNG, JPEG oder PDF herunterladen. Per Link teilen und jeden Scan analysieren.",
     "faq_label": "FAQ",
-    "faq_title": "Häufig gestellte Fragen",
+    "faq_title": "HÄUFIG GESTELLTE FRAGEN",
     "faq_1_q": "Ist QRaft wirklich kostenlos?",
     "faq_1_a": "Ja, QRaft ist 100% kostenlos. Sie können unbegrenzte QR-Codes erstellen und als PNG, JPEG oder PDF exportieren — ohne Gebühren.",
     "faq_2_q": "Kann ich mein Logo hinzufügen?",
@@ -54,13 +78,44 @@
     "faq_3_a": "QRaft bietet PNG für das Web, JPEG für den Standarddruck und Vektor-PDF für perfekte Qualität.",
     "faq_4_q": "Kann ich Scans verfolgen?",
     "faq_4_a": "Ja. Vollständige Statistiken: Scans gesamt, Trends, Gerät, Browser, OS und geografische Karte.",
-    "cta_title_1": "Bereit, Ihren",
-    "cta_title_2": "ersten QR-Code zu erstellen?",
-    "cta_button": "Kostenloses Konto erstellen →",
+    "cta_title_1": "ERSTELLEN SIE IHREN",
+    "cta_title_2": "ERSTEN QR.",
+    "cta_button": "KOSTENLOS STARTEN →",
     "pro_label": "Auf das nächste Level",
     "pro_title": "QRaft Pro",
     "pro_subtitle": "Permanente QR-Codes, vollständige Analysen, keine Einschränkungen.",
-    "pro_cta": "Preise ansehen →"
+    "pro_cta": "PREISE ANSEHEN →",
+    "hero_subtitle": "Erstellen, personalisieren und teilen Sie Ihre QR-Codes. Erweiterte Analysen, Multi-Format-Export, öffentliches Teilen mit Echtzeit-Tracking.",
+    "cta_start": "LOSLEGEN →",
+    "cta_pricing": "PREISE ANSEHEN →",
+    "stat_languages": "12 SPRACHEN",
+    "stat_languages_sub": "Verfügbar",
+    "stat_qr_count": "50K+ QR",
+    "stat_qr_count_sub": "Erstellt",
+    "stat_free_sub": "Vollständiger Gratis-Plan",
+    "feature_analytics_title": "PRO ANALYTICS",
+    "feature_analytics_desc": "Echtzeit-Scan-Diagramme, Aufschlüsselung nach Land, Gerät und Browser.",
+    "feature_types_title": "10 QR-TYPEN",
+    "feature_types_desc": "URL, WLAN, vCard, SMS, Geoloc, WhatsApp, E-Mail, Telefon, Social und mehr.",
+    "step_1_title": "ERSTELLEN",
+    "step_1_desc": "Wählen Sie aus 10 QR-Code-Typen. Kostenlose Anmeldung in Sekunden, keine Kreditkarte erforderlich.",
+    "step_2_title": "ANPASSEN",
+    "step_2_desc": "Farben, Logo, Größe, Fehlerkorrektur. Die Vorschau wird in Echtzeit aktualisiert.",
+    "step_3_title": "TEILEN",
+    "step_3_desc": "Kurzlink, sofort scanbarer QR, vollständiges Scan-Tracking und Analytics.",
+    "faq_q1": "Was ist ein dynamischer QR-Code?",
+    "faq_a1": "Ein dynamischer QR-Code ermöglicht es, den Inhalt zu ändern, ohne den Code neu zu drucken. Ideal für Menüs, Marketingkampagnen oder sich ändernde Inhalte.",
+    "faq_q2": "Was ist der Unterschied zwischen Free und Pro?",
+    "faq_a2": "Der Free-Plan bietet QR-Code-Erstellung mit einfachen Analytics. Der Pro-Plan entsperrt vollständige Analytics, PDF/ZIP-Export, permanente QR-Codes und Prioritätssupport.",
+    "faq_q3": "Kann ich mein Pro-Abonnement kündigen?",
+    "faq_a3": "Ja, jederzeit über das Stripe-Kundenportal. Kein Engagement, keine Kündigungsgebühren.",
+    "faq_q4": "Laufen QR-Codes ab?",
+    "faq_a4": "Im Free-Plan sind QR-Codes 30 Tage lang gültig. Im Pro-Plan sind sie dauerhaft und laufen nie ab.",
+    "faq_q5": "Welche Exportformate sind verfügbar?",
+    "faq_a5": "PNG und JPEG für alle Pläne, Vektor-PDF und Massen-ZIP für den Pro-Plan.",
+    "pro_cta_title": "BEREIT FÜR PRO?",
+    "pro_cta_subtitle": "Erweiterte Analytics · Permanente QR-Codes · Unbegrenzter Export · Prioritätssupport",
+    "cta_final_label": "Jetzt starten"
   },
   "auth": {
     "back": "← Zurück",
@@ -197,7 +252,81 @@
     "filter_category_all": "Alle",
     "badge_expired": "Abgelaufen",
     "badge_expires_soon": "Läuft in {days}T ab",
-    "toast_upgrade_success": "Willkommen bei Pro!"
+    "toast_upgrade_success": "Willkommen bei Pro!",
+    "dynamic": {
+      "edit_content": "Inhalt bearbeiten",
+      "history": "Verlauf",
+      "modal_edit_title": "Inhalt bearbeiten",
+      "modal_history_title": "Versionsverlauf",
+      "note_placeholder": "Optionale Notiz (Grund der Änderung)",
+      "save": "Speichern",
+      "restore": "Wiederherstellen",
+      "confirm_restore": "Diese Version wiederherstellen?",
+      "current_version": "Aktuell",
+      "no_history": "Noch keine Änderungen",
+      "pro_required_title": "Pro-Funktion",
+      "pro_required_body": "Dynamische QR-Codes erfordern ein Pro-Abo. Ändern Sie den Inhalt jederzeit ohne neues Drucken.",
+      "upgrade": "Pro werden",
+      "edit_success": "Inhalt aktualisiert",
+      "edit_error": "Aktualisierung fehlgeschlagen",
+      "restore_success": "Version wiederhergestellt",
+      "advanced_edit": "Für erweiterte QRs (vCard, WiFi…) öffnen Sie den vollständigen Editor.",
+      "open_editor": "Editor öffnen"
+    },
+    "actions": {
+      "view": "Ansehen",
+      "favorite": "Favorit",
+      "unfavorite": "Entfernen",
+      "category": "Kategorie",
+      "share_public": "Teilen",
+      "copy_url": "URL kopieren",
+      "export_png": "Export PNG",
+      "export_pdf": "Export PDF",
+      "delete": "Löschen",
+      "more": "Mehr"
+    },
+    "bottom_tabs": {
+      "dashboard": "Start",
+      "new": "Neu",
+      "stats": "Stats",
+      "profile": "Profil"
+    },
+    "import_csv": "CSV-Import",
+    "password": {
+      "action": "Schützen",
+      "modal_title": "Passwortschutz",
+      "modal_subtitle": "Nur Nutzer mit dem Passwort haben Zugriff auf den Inhalt.",
+      "current_protected": "Dieser QR-Code ist derzeit geschützt.",
+      "enable": "Schutz aktivieren",
+      "disable": "Schutz entfernen",
+      "placeholder": "Mindestens 4 Zeichen",
+      "pro_required_body": "Passwortschutz erfordert ein Pro-Abonnement.",
+      "enabled": "Schutz aktiviert",
+      "disabled": "Schutz entfernt",
+      "unlock_title": "Geschützter Zugriff",
+      "unlock_subtitle": "Dieser QR-Code ist passwortgeschützt.",
+      "unlock_cta": "Entsperren",
+      "wrong_password": "Falsches Passwort"
+    },
+    "ab": {
+      "action": "A/B-Testing",
+      "modal_title": "A/B-Testing",
+      "modal_subtitle": "Teilen Sie Ihren Traffic auf mehrere URLs, um deren Leistung zu vergleichen.",
+      "pro_required_body": "A/B-Testing erfordert ein Pro-Abonnement.",
+      "add_variant": "Variante hinzufügen",
+      "remove_variant": "Entfernen",
+      "variant_label_placeholder": "Version A",
+      "variant_url_placeholder": "https://...",
+      "weight": "Gewicht",
+      "total_must_be_100": "Die Summe der Gewichte muss 100 betragen",
+      "save": "Speichern",
+      "disable": "A/B-Testing deaktivieren",
+      "analytics_title": "Scan-Verteilung",
+      "saved": "Varianten gespeichert",
+      "disabled": "A/B-Testing deaktiviert",
+      "no_data_yet": "Noch keine Scans",
+      "variant_count": "{count} aktive Varianten"
+    }
   },
   "qrcode": {
     "back": "← Zurück",
@@ -278,13 +407,13 @@
   },
   "pricing": {
     "label": "Preise",
-    "title": "Einfach, Transparent",
-    "subtitle": "Ein kostenloser Plan zum Starten, ein Pro-Plan für mehr. Keine Überraschungen.",
+    "title": "TRANSPARENTE PREISE",
+    "subtitle": "Keine Überraschungen. Keine versteckten Kosten. Ein kostenloser Plan zum Starten, ein Pro-Plan für mehr.",
     "month": "Monat",
     "free_label": "Kostenlos",
     "free_hint": "Für immer",
     "pro_label": "Pro",
-    "annual_hint": "Jahresabo kommt bald für 79,99 €/Jahr",
+    "annual_hint": "Jährlich wechseln und sparen",
     "feature_create": "Unbegrenzte QR-Codes",
     "feature_customize": "Farb- & Logo-Anpassung",
     "feature_export": "Export PNG / JPEG / PDF",
@@ -308,11 +437,220 @@
     "faq_3_q": "Sind die Zahlungen sicher?",
     "faq_3_a": "Ja. Zahlungen werden von Stripe abgewickelt, PCI DSS zertifiziert. Keine Bankdaten werden auf unseren Servern gespeichert.",
     "faq_4_q": "Gibt es einen Jahresplan?",
-    "faq_4_a": "Ein Jahresabo für 79,99 € (6,67 €/Monat) wird bald verfügbar sein."
+    "faq_4_a": "Ein Jahresabo für 79,99 € (6,67 €/Monat) wird bald verfügbar sein.",
+    "year": "Jahr",
+    "free_tier": "KOSTENLOS",
+    "pro_tier": "PRO",
+    "popular_badge": "AM BELIEBTESTEN",
+    "billing_monthly": "Monatlich",
+    "billing_annual": "Jährlich",
+    "billing_save": "{amount}€ sparen",
+    "feature_export_png": "Export PNG / JPEG",
+    "feature_export_pdf_zip": "PDF + Massen-ZIP-Export",
+    "feature_expire_free": "QR-Codes 30 Tage gültig",
+    "feature_support": "Prioritätssupport",
+    "cta_dashboard": "Zum Dashboard",
+    "cta_register": "Kostenlos starten",
+    "cta_upgrade": "Pro werden →",
+    "cta_portal": "Abonnement verwalten",
+    "comparison_title": "DETAILLIERTER VERGLEICH",
+    "comparison_feature": "Funktion",
+    "guarantee_title": "14-TAGE GELD-ZURÜCK-GARANTIE",
+    "guarantee_desc": "Keine Fragen gestellt. Kontaktieren Sie uns innerhalb von 14 Tagen nach dem Abonnement für eine vollständige Rückerstattung.",
+    "faq_title": "FRAGEN ZUM ABONNEMENT",
+    "pricing_faq_q1": "Kann ich jederzeit kündigen?",
+    "pricing_faq_a1": "Ja, jederzeit über das Stripe-Kundenportal. Kein Engagement, keine Kündigungsgebühren.",
+    "pricing_faq_q2": "Was passiert, wenn ich auf Free downgrade?",
+    "pricing_faq_a2": "Ihre QR-Codes bleiben zugänglich, unterliegen aber wieder dem 30-Tage-Limit. Keine Daten werden gelöscht.",
+    "pricing_faq_q3": "Gibt es eine kostenlose Pro-Testversion?",
+    "pricing_faq_a3": "Der Free-Plan ist für immer kostenlos. Wir bieten eine 14-Tage-Geld-zurück-Garantie auf den Pro-Plan.",
+    "pricing_faq_q4": "Akzeptieren Sie Prepaid-Karten?",
+    "pricing_faq_a4": "Ja, Stripe akzeptiert die meisten Visa-, Mastercard- und American Express-Kredit- und Prepaid-Karten.",
+    "pricing_faq_q5": "Sind die Preise MwSt.-inklusiv?",
+    "pricing_faq_a5": "Die angezeigten Preise verstehen sich ohne MwSt. Die anfallende MwSt. wird beim Checkout basierend auf Ihrem Land berechnet."
   },
   "expired": {
     "title": "QR-Code abgelaufen",
     "desc": "Dieser QR-Code ist nicht mehr aktiv. Der Ersteller muss auf den Pro-Plan upgraden, um ihn zu reaktivieren.",
     "cta": "QRaft Pro entdecken →"
+  },
+  "templates": {
+    "eyebrow": "Marketplace",
+    "title": "Vorlagen",
+    "subtitle": "Schneller Start mit branchenspezifischen Presets.",
+    "filter_all": "Alle",
+    "category": {
+      "business": "Business",
+      "restaurant": "Gastronomie",
+      "event": "Event",
+      "retail": "Handel",
+      "personal": "Privat",
+      "real_estate": "Immobilien",
+      "hospitality": "Hotellerie",
+      "education": "Bildung"
+    },
+    "use_template": "Nutzen",
+    "upgrade_to_use": "Pro werden",
+    "pro_badge": "Pro",
+    "meta_title": "QR-Code Vorlagen nach Branche | QRaft",
+    "meta_description": "24 einsatzbereite QR-Code-Vorlagen für Restaurants, Events, Visitenkarten, WLAN, Immobilien und mehr.",
+    "items": {
+      "business-card-pro": {
+        "name": "Visitenkarte",
+        "description": "Professionelle vCard mit vollem Kontakt."
+      },
+      "linkedin-profile": {
+        "name": "LinkedIn",
+        "description": "QR zu Ihrem LinkedIn-Profil."
+      },
+      "corporate-website": {
+        "name": "Firmenseite",
+        "description": "Scanbarer Unternehmens-Auftritt."
+      },
+      "menu-qr": {
+        "name": "Speisekarte",
+        "description": "Digitale Restaurant-Speisekarte."
+      },
+      "google-reviews": {
+        "name": "Google-Bewertungen",
+        "description": "Bewertung auf Google abgeben."
+      },
+      "instagram-food": {
+        "name": "Instagram",
+        "description": "Instagram für Foodies."
+      },
+      "ticket-qr": {
+        "name": "Ticket",
+        "description": "Druckbares Event-Ticket."
+      },
+      "save-the-date": {
+        "name": "Save the date",
+        "description": "Digitale Event-Einladung."
+      },
+      "agenda-calendar": {
+        "name": "Agenda",
+        "description": "Interaktiver Event-Kalender."
+      },
+      "promo-code": {
+        "name": "Promo-Code",
+        "description": "Scanbarer Rabattcode."
+      },
+      "loyalty-card": {
+        "name": "Treuekarte",
+        "description": "Digitale Treuekarte."
+      },
+      "product-info": {
+        "name": "Produktinfo",
+        "description": "Detaillierte Produktinformationen."
+      },
+      "wifi-home": {
+        "name": "Heim-WLAN",
+        "description": "Schnelle WLAN-Verbindung."
+      },
+      "personal-vcard": {
+        "name": "Private vCard",
+        "description": "Persönlicher Kontakt zum Teilen."
+      },
+      "social-bio-link": {
+        "name": "Bio-Link",
+        "description": "Link zu Ihren Social-Profilen."
+      },
+      "property-listing": {
+        "name": "Immobilien-Inserat",
+        "description": "Detailliertes Immobilien-Listing."
+      },
+      "virtual-tour": {
+        "name": "Virtueller Rundgang",
+        "description": "360°-Rundgang durchs Objekt."
+      },
+      "agent-contact": {
+        "name": "Makler-Kontakt",
+        "description": "Visitenkarte des Maklers."
+      },
+      "hotel-wifi": {
+        "name": "Hotel-WLAN",
+        "description": "WLAN-Zugang im Gästezimmer."
+      },
+      "room-checkin": {
+        "name": "Check-in",
+        "description": "Kontaktloser Check-in im Zimmer."
+      },
+      "room-service-menu": {
+        "name": "Room Service",
+        "description": "Zimmerservice-Menü."
+      },
+      "course-resource": {
+        "name": "Kursmaterial",
+        "description": "Link zum Kursdokument."
+      },
+      "class-materials": {
+        "name": "Unterrichtsmaterial",
+        "description": "Ordner mit Unterrichtsmaterialien."
+      },
+      "event-signup": {
+        "name": "Anmeldung",
+        "description": "Workshop-Anmeldeformular."
+      }
+    }
+  },
+  "bulk": {
+    "meta_title": "CSV-Import — Massenerstellung | QRaft",
+    "meta_description": "Erstellen Sie bis zu 500 QR-Codes auf einmal aus einer CSV-Datei. ZIP-Export + Zusammenfassungs-PDF.",
+    "eyebrow": "Batch / CSV",
+    "title": "Massenerstellung",
+    "subtitle": "Erstellen Sie Dutzende QR-Codes in Sekunden aus einer CSV-Datei.",
+    "upload_label": "CSV-Datei hier ablegen",
+    "upload_or": "oder",
+    "browse": "Durchsuchen",
+    "paste_placeholder": "CSV hier einfügen…",
+    "download_template": "CSV-Vorlage herunterladen",
+    "limit_free": "Free-Plan: max. 5 QR pro Batch",
+    "limit_pro": "Pro-Plan: max. 500 QR pro Batch",
+    "parse_result": "Analyseergebnis",
+    "valid_count": "{count} gültige Zeilen",
+    "error_count": "{count} Fehler",
+    "line": "Zeile {n}",
+    "import_button": "{count} QR-Codes importieren",
+    "import_disabled": "Limit überschritten — Upgrade auf Pro",
+    "reset": "Neu starten",
+    "importing": "Importieren…",
+    "import_success": "{count} QR-Codes erstellt",
+    "import_error": "Import fehlgeschlagen",
+    "download_zip": "ZIP herunterladen",
+    "go_to_dashboard": "Zum Dashboard",
+    "header_name": "Name",
+    "header_type": "Typ",
+    "header_content": "Inhalt",
+    "header_status": "Status",
+    "status_valid": "OK",
+    "status_error": "Fehler"
+  },
+  "realtime": {
+    "title_live": "Live-Scans",
+    "toggle_on": "Live starten",
+    "toggle_off": "Live stoppen",
+    "connected": "Verbunden",
+    "disconnected": "Getrennt",
+    "no_scans_yet": "Warte auf Scans…",
+    "ago_seconds": "vor {n}s",
+    "ago_minutes": "vor {n}Min",
+    "ago_hours": "vor {n}Std",
+    "period_comparison": "Vergleich letzte 30 Tage",
+    "vs_previous": "ggü. Vorperiode",
+    "scans_total": "Scans gesamt",
+    "unique_countries": "Einzigartige Länder",
+    "unique_cities": "Einzigartige Städte",
+    "heatmap_title": "Globale Heatmap",
+    "heatmap_subtitle": "Scan-Dichte der letzten 90 Tage",
+    "export_pdf": "PDF exportieren",
+    "exporting": "Bericht wird erstellt…",
+    "exported": "Bericht heruntergeladen",
+    "report_title": "QR-Analytics-Bericht",
+    "report_period": "Zeitraum: {start} — {end}",
+    "report_generated_by": "Erstellt von QRaft — useqraft.com",
+    "top_countries": "Top-Länder",
+    "top_devices": "Top-Geräte",
+    "top_browsers": "Top-Browser",
+    "evolution": "Entwicklung"
   }
 }

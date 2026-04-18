@@ -4,13 +4,37 @@
     "start": "Beginnen",
     "logout": "Uitloggen",
     "profile": "Profiel",
-    "pricing": "Prijzen"
+    "pricing": "Prijzen",
+    "templates": "Sjablonen",
+    "bulk": "Bulk",
+    "api_keys": "API"
+  },
+  "api": {
+    "keys_title": "API-sleutels",
+    "keys_subtitle": "Integreer QRaft in je tools en workflows.",
+    "new_key": "Nieuwe sleutel",
+    "key_name_placeholder": "Productie, Dev, CI…",
+    "generate": "Genereren",
+    "created_key_warning": "Kopieer deze sleutel nu — hij wordt nooit meer getoond.",
+    "copy": "Kopiëren",
+    "copied": "Gekopieerd!",
+    "revoke": "Intrekken",
+    "confirm_revoke": "Bevestigen?",
+    "no_keys": "Nog geen sleutels. Maak je eerste aan.",
+    "last_used": "Laatst gebruikt",
+    "never_used": "Nooit gebruikt",
+    "created_at": "Aangemaakt op",
+    "docs_title": "API-documentatie",
+    "docs_cta": "Documentatie bekijken",
+    "docs_subtitle": "Alle endpoints, curl-voorbeelden en foutcodes.",
+    "docs_meta_title": "QRaft API v1 — Documentatie",
+    "docs_meta_description": "Volledige REST-documentatie: QR-codes maken, analytics en scans ophalen."
   },
   "home": {
     "badge": "100% Gratis — Geen creditcard nodig",
-    "hero_title_1": "Maak",
-    "hero_title_2": "QR-codes",
-    "hero_title_3": "in enkele",
+    "hero_title_1": "BEHEER UW",
+    "hero_title_2": "QR-CODES",
+    "hero_title_3": "ZONDER LIMIETEN.",
     "hero_title_4": "seconden",
     "hero_desc": "Genereer, personaliseer en deel uw QR-codes. Eenvoudig, snel en volledig gratis.",
     "cta_primary": "Mijn eerste QR maken →",
@@ -18,23 +42,23 @@
     "preview_label": "Voorbeeld",
     "stat_unlimited": "Onbeperkte QR-codes",
     "stat_formats": "Exportformaten",
-    "stat_free": "Gratis",
+    "stat_free": "0€ OM TE STARTEN",
     "features_label": "Functies",
-    "features_title": "Alles wat u nodig heeft",
+    "features_title": "ALLES WAT U NODIG HEBT",
     "feature_colors_title": "Kleurpersonalisatie",
     "feature_colors_desc": "Kies de kleuren van de QR-code en achtergrond passend bij uw visuele identiteit.",
     "feature_logo_title": "Logo toevoegen",
     "feature_logo_desc": "Integreer uw logo in het midden van de QR-code. Foutcorrectie garandeert leesbaarheid.",
-    "feature_export_title": "Exporteer PNG / JPG / PDF",
-    "feature_export_desc": "Download in hoge kwaliteit in het juiste formaat: web, druk of vector.",
-    "feature_share_title": "Openbaar delen",
-    "feature_share_desc": "Genereer een unieke deellink. Geen account vereist aan de lezerskant.",
+    "feature_export_title": "MULTI-FORMAAT EXPORT",
+    "feature_export_desc": "Hoge resolutie PNG, JPEG voor afdrukken, vector PDF en bulk ZIP.",
+    "feature_share_title": "OPENBAAR DELEN",
+    "feature_share_desc": "Unieke korte link, direct scanbare QR, realtime scan tracking.",
     "feature_stats_title": "Scanstatistieken",
     "feature_stats_desc": "Volg scans in realtime: apparaat, browser, OS en trends.",
     "feature_zip_title": "Bulk ZIP-export",
     "feature_zip_desc": "Download alle geselecteerde QR-codes in één ZIP-archief.",
     "how_label": "Eenvoudig",
-    "how_title": "Hoe maak je een QR-code?",
+    "how_title": "HOE HET WERKT",
     "step1_num": "01",
     "step1_title": "Maak uw account",
     "step1_desc": "Gratis registratie in enkele seconden. Geen creditcard, geen verplichtingen.",
@@ -45,7 +69,7 @@
     "step3_title": "Exporteer en volg",
     "step3_desc": "Download als PNG, JPEG of PDF. Deel via publieke link en analyseer elke scan.",
     "faq_label": "FAQ",
-    "faq_title": "Veelgestelde vragen",
+    "faq_title": "VEELGESTELDE VRAGEN",
     "faq_1_q": "Is QRaft echt gratis?",
     "faq_1_a": "Ja, QRaft is 100% gratis. U kunt onbeperkte QR-codes maken en exporteren als PNG, JPEG of PDF zonder kosten.",
     "faq_2_q": "Kan ik mijn logo toevoegen?",
@@ -54,13 +78,44 @@
     "faq_3_a": "QRaft biedt PNG voor web, JPEG voor standaarddruk en vector-PDF voor perfecte kwaliteit.",
     "faq_4_q": "Kan ik scans volgen?",
     "faq_4_a": "Ja. Volledige statistieken: totaal scans, trends, apparaat, browser, OS en geografische kaart.",
-    "cta_title_1": "Klaar om uw",
-    "cta_title_2": "eerste QR-code te maken?",
-    "cta_button": "Mijn gratis account maken →",
+    "cta_title_1": "MAAK UW",
+    "cta_title_2": "EERSTE QR.",
+    "cta_button": "GRATIS STARTEN →",
     "pro_label": "Ga naar het volgende niveau",
     "pro_title": "QRaft Pro",
     "pro_subtitle": "Permanente QR-codes, volledige analyses, geen beperkingen.",
-    "pro_cta": "Prijzen bekijken →"
+    "pro_cta": "PRIJZEN BEKIJKEN →",
+    "hero_subtitle": "Maak, personaliseer en deel uw QR-codes. Geavanceerde analyses, multi-formaat export, openbaar delen met realtime tracking.",
+    "cta_start": "BEGINNEN →",
+    "cta_pricing": "PRIJZEN BEKIJKEN →",
+    "stat_languages": "12 TALEN",
+    "stat_languages_sub": "Beschikbaar",
+    "stat_qr_count": "50K+ QR",
+    "stat_qr_count_sub": "Gegenereerd",
+    "stat_free_sub": "Volledig gratis plan",
+    "feature_analytics_title": "PRO ANALYSES",
+    "feature_analytics_desc": "Realtime scangrafieken, uitsplitsing per land, apparaat en browser.",
+    "feature_types_title": "10 QR-TYPEN",
+    "feature_types_desc": "URL, WiFi, vCard, SMS, Geoloc, WhatsApp, E-mail, Telefoon, Social en meer.",
+    "step_1_title": "MAAK",
+    "step_1_desc": "Kies uit 10 QR-code typen. Gratis aanmelden in seconden, geen creditcard vereist.",
+    "step_2_title": "AANPASSEN",
+    "step_2_desc": "Kleuren, logo, grootte, foutcorrectie. De preview wordt in realtime bijgewerkt.",
+    "step_3_title": "DELEN",
+    "step_3_desc": "Korte link, direct scanbare QR, volledige scan tracking en analyses.",
+    "faq_q1": "Wat is een dynamische QR-code?",
+    "faq_a1": "Met een dynamische QR-code kunt u de inhoud wijzigen zonder de code opnieuw af te drukken. Ideaal voor menu's, marketingcampagnes of veranderende inhoud.",
+    "faq_q2": "Wat is het verschil tussen Free en Pro?",
+    "faq_a2": "Het Free-plan biedt QR-code aanmaak met basisanalyses. Het Pro-plan ontgrendelt volledige analyses, PDF/ZIP-export, permanente QR-codes en prioriteitsondersteuning.",
+    "faq_q3": "Kan ik mijn Pro-abonnement opzeggen?",
+    "faq_a3": "Ja, op elk moment via het Stripe-klantportaal. Geen verplichtingen, geen opzeggingskosten.",
+    "faq_q4": "Verlopen QR-codes?",
+    "faq_a4": "In het Free-plan zijn QR-codes 30 dagen geldig. In het Pro-plan zijn ze permanent en verlopen ze nooit.",
+    "faq_q5": "Welke exportformaten zijn beschikbaar?",
+    "faq_a5": "PNG en JPEG voor alle plannen, vector PDF en bulk ZIP voor het Pro-plan.",
+    "pro_cta_title": "KLAAR VOOR PRO?",
+    "pro_cta_subtitle": "Geavanceerde analyses · Permanente QR-codes · Onbeperkte export · Prioriteitsondersteuning",
+    "cta_final_label": "Begin nu"
   },
   "auth": {
     "back": "← Terug",
@@ -197,7 +252,81 @@
     "filter_category_all": "Alle",
     "badge_expired": "Verlopen",
     "badge_expires_soon": "Verloopt over {days}d",
-    "toast_upgrade_success": "Welkom bij Pro!"
+    "toast_upgrade_success": "Welkom bij Pro!",
+    "dynamic": {
+      "edit_content": "Inhoud bewerken",
+      "history": "Geschiedenis",
+      "modal_edit_title": "Inhoud bewerken",
+      "modal_history_title": "Versiegeschiedenis",
+      "note_placeholder": "Optionele notitie (reden van wijziging)",
+      "save": "Opslaan",
+      "restore": "Herstellen",
+      "confirm_restore": "Deze versie herstellen?",
+      "current_version": "Huidig",
+      "no_history": "Nog geen wijzigingen",
+      "pro_required_title": "Pro-functie",
+      "pro_required_body": "Dynamische QR-codes vereisen een Pro-abonnement. Werk de inhoud bij zonder opnieuw te printen.",
+      "upgrade": "Word Pro",
+      "edit_success": "Inhoud bijgewerkt",
+      "edit_error": "Bijwerken mislukt",
+      "restore_success": "Versie hersteld",
+      "advanced_edit": "Voor geavanceerde QR's (vCard, WiFi…), open de volledige editor.",
+      "open_editor": "Editor openen"
+    },
+    "actions": {
+      "view": "Bekijken",
+      "favorite": "Favoriet",
+      "unfavorite": "Verwijderen",
+      "category": "Categorie",
+      "share_public": "Delen",
+      "copy_url": "URL kopiëren",
+      "export_png": "Exporteer PNG",
+      "export_pdf": "Exporteer PDF",
+      "delete": "Verwijder",
+      "more": "Meer"
+    },
+    "bottom_tabs": {
+      "dashboard": "Home",
+      "new": "Nieuw",
+      "stats": "Stats",
+      "profile": "Profiel"
+    },
+    "import_csv": "CSV importeren",
+    "password": {
+      "action": "Protect",
+      "modal_title": "Password protection",
+      "modal_subtitle": "Only users with the password will access the content.",
+      "current_protected": "This QR code is currently protected.",
+      "enable": "Enable protection",
+      "disable": "Remove protection",
+      "placeholder": "At least 4 characters",
+      "pro_required_body": "Password protection requires a Pro subscription.",
+      "enabled": "Protection enabled",
+      "disabled": "Protection removed",
+      "unlock_title": "Protected access",
+      "unlock_subtitle": "This QR code is password-protected.",
+      "unlock_cta": "Unlock",
+      "wrong_password": "Incorrect password"
+    },
+    "ab": {
+      "action": "A/B Testing",
+      "modal_title": "A/B Testing",
+      "modal_subtitle": "Split your traffic across multiple URLs to compare their performance.",
+      "pro_required_body": "A/B testing requires a Pro subscription.",
+      "add_variant": "Add variant",
+      "remove_variant": "Remove",
+      "variant_label_placeholder": "Version A",
+      "variant_url_placeholder": "https://...",
+      "weight": "Weight",
+      "total_must_be_100": "Weights must sum to 100",
+      "save": "Save",
+      "disable": "Disable A/B testing",
+      "analytics_title": "Scan distribution",
+      "saved": "Variants saved",
+      "disabled": "A/B testing disabled",
+      "no_data_yet": "No scans yet",
+      "variant_count": "{count} active variants"
+    }
   },
   "qrcode": {
     "back": "← Terug",
@@ -278,13 +407,13 @@
   },
   "pricing": {
     "label": "Prijzen",
-    "title": "Eenvoudig, Transparant",
-    "subtitle": "Een gratis plan om te starten, een Pro-plan voor meer. Geen verrassingen.",
+    "title": "TRANSPARANTE PRIJZEN",
+    "subtitle": "Geen verrassingen. Geen verborgen kosten. Een gratis plan om te starten, een Pro-plan om verder te gaan.",
     "month": "maand",
     "free_label": "Gratis",
     "free_hint": "Voor altijd",
     "pro_label": "Pro",
-    "annual_hint": "Jaarabonnement binnenkort beschikbaar voor €79,99/jaar",
+    "annual_hint": "Schakel over naar jaarlijks om te besparen",
     "feature_create": "Onbeperkte QR-codes",
     "feature_customize": "Kleur- en logo-aanpassing",
     "feature_export": "Exporteren PNG / JPEG / PDF",
@@ -308,11 +437,220 @@
     "faq_3_q": "Zijn betalingen veilig?",
     "faq_3_a": "Ja. Betalingen worden verwerkt door Stripe, PCI DSS gecertificeerd. Er worden geen bankgegevens op onze servers opgeslagen.",
     "faq_4_q": "Is er een jaarplan?",
-    "faq_4_a": "Een jaarabonnement voor €79,99 (€6,67/maand) zal binnenkort beschikbaar zijn."
+    "faq_4_a": "Een jaarabonnement voor €79,99 (€6,67/maand) zal binnenkort beschikbaar zijn.",
+    "year": "jaar",
+    "free_tier": "GRATIS",
+    "pro_tier": "PRO",
+    "popular_badge": "MEEST POPULAIR",
+    "billing_monthly": "Maandelijks",
+    "billing_annual": "Jaarlijks",
+    "billing_save": "Bespaar {amount}€",
+    "feature_export_png": "Export PNG / JPEG",
+    "feature_export_pdf_zip": "PDF + Bulk ZIP-export",
+    "feature_expire_free": "QR-codes 30 dagen geldig",
+    "feature_support": "Prioriteitsondersteuning",
+    "cta_dashboard": "Naar dashboard",
+    "cta_register": "Gratis starten",
+    "cta_upgrade": "Pro worden →",
+    "cta_portal": "Abonnement beheren",
+    "comparison_title": "GEDETAILLEERDE VERGELIJKING",
+    "comparison_feature": "Functie",
+    "guarantee_title": "14-DAAGSE GELD-TERUG-GARANTIE",
+    "guarantee_desc": "Geen vragen gesteld. Neem binnen 14 dagen na het abonnement contact op voor volledige terugbetaling.",
+    "faq_title": "VRAGEN OVER HET ABONNEMENT",
+    "pricing_faq_q1": "Kan ik op elk moment annuleren?",
+    "pricing_faq_a1": "Ja, op elk moment via het Stripe-klantportaal. Geen verplichtingen, geen annuleringskosten.",
+    "pricing_faq_q2": "Wat gebeurt er als ik downgrade naar Free?",
+    "pricing_faq_a2": "Uw QR-codes blijven toegankelijk maar zijn weer onderhevig aan de limiet van 30 dagen. Geen gegevens worden verwijderd.",
+    "pricing_faq_q3": "Is er een gratis Pro-proefperiode?",
+    "pricing_faq_a3": "Het Free-plan is voor altijd gratis. We bieden een 14-daagse geld-terug-garantie op het Pro-plan.",
+    "pricing_faq_q4": "Accepteren jullie prepaidkaarten?",
+    "pricing_faq_a4": "Ja, Stripe accepteert de meeste Visa-, Mastercard- en American Express-credit- en prepaidkaarten.",
+    "pricing_faq_q5": "Zijn de prijzen inclusief btw?",
+    "pricing_faq_a5": "De weergegeven prijzen zijn exclusief btw. De toepasselijke btw wordt berekend en weergegeven bij het afrekenen op basis van uw land."
   },
   "expired": {
     "title": "QR-code verlopen",
     "desc": "Deze QR-code is niet meer actief. De eigenaar moet upgraden naar het Pro-plan om hem te reactiveren.",
     "cta": "QRaft Pro ontdekken →"
+  },
+  "templates": {
+    "eyebrow": "Marketplace",
+    "title": "Sjablonen",
+    "subtitle": "Snel aan de slag met basispresets voor jouw sector.",
+    "filter_all": "Alles",
+    "category": {
+      "business": "Zakelijk",
+      "restaurant": "Restaurant",
+      "event": "Evenement",
+      "retail": "Retail",
+      "personal": "Persoonlijk",
+      "real_estate": "Vastgoed",
+      "hospitality": "Hotelerie",
+      "education": "Onderwijs"
+    },
+    "use_template": "Gebruiken",
+    "upgrade_to_use": "Pro worden",
+    "pro_badge": "Pro",
+    "meta_title": "QR-code sjablonen per sector | QRaft",
+    "meta_description": "24 kant-en-klare QR-code sjablonen voor restaurants, evenementen, visitekaartjes, WiFi, vastgoed en meer.",
+    "items": {
+      "business-card-pro": {
+        "name": "Visitekaart",
+        "description": "Professionele vCard met volledige gegevens."
+      },
+      "linkedin-profile": {
+        "name": "LinkedIn",
+        "description": "QR naar je LinkedIn-profiel."
+      },
+      "corporate-website": {
+        "name": "Bedrijfssite",
+        "description": "Scanbare bedrijfspagina."
+      },
+      "menu-qr": {
+        "name": "Menu",
+        "description": "Digitaal restaurantmenu."
+      },
+      "google-reviews": {
+        "name": "Google-reviews",
+        "description": "Laat een Google-review achter."
+      },
+      "instagram-food": {
+        "name": "Instagram",
+        "description": "Instagram-account voor foodies."
+      },
+      "ticket-qr": {
+        "name": "Ticket",
+        "description": "Printbaar evenementticket."
+      },
+      "save-the-date": {
+        "name": "Save the date",
+        "description": "Digitale uitnodiging."
+      },
+      "agenda-calendar": {
+        "name": "Agenda",
+        "description": "Interactieve evenementagenda."
+      },
+      "promo-code": {
+        "name": "Promocode",
+        "description": "Scanbare kortingscode."
+      },
+      "loyalty-card": {
+        "name": "Klantkaart",
+        "description": "Digitale loyaliteitskaart."
+      },
+      "product-info": {
+        "name": "Productinfo",
+        "description": "Gedetailleerde productinformatie."
+      },
+      "wifi-home": {
+        "name": "Thuis-WiFi",
+        "description": "Snelle WiFi-verbinding."
+      },
+      "personal-vcard": {
+        "name": "Persoonlijke vCard",
+        "description": "Persoonlijk contact om te delen."
+      },
+      "social-bio-link": {
+        "name": "Bio link",
+        "description": "Link naar je sociale netwerken."
+      },
+      "property-listing": {
+        "name": "Woningaanbod",
+        "description": "Gedetailleerde vastgoedadvertentie."
+      },
+      "virtual-tour": {
+        "name": "Virtuele rondleiding",
+        "description": "360°-rondleiding van het pand."
+      },
+      "agent-contact": {
+        "name": "Makelaarscontact",
+        "description": "Visitekaartje van de makelaar."
+      },
+      "hotel-wifi": {
+        "name": "Hotel-WiFi",
+        "description": "WiFi-toegang voor gastenkamer."
+      },
+      "room-checkin": {
+        "name": "Check-in",
+        "description": "Contactloze check-in op de kamer."
+      },
+      "room-service-menu": {
+        "name": "Room service",
+        "description": "Menu roomservice."
+      },
+      "course-resource": {
+        "name": "Lesmateriaal",
+        "description": "Link naar cursusdocument."
+      },
+      "class-materials": {
+        "name": "Klasmateriaal",
+        "description": "Map met lesmateriaal."
+      },
+      "event-signup": {
+        "name": "Inschrijving",
+        "description": "Inschrijvingsformulier workshop."
+      }
+    }
+  },
+  "bulk": {
+    "meta_title": "CSV-import — Bulkaanmaak | QRaft",
+    "meta_description": "Genereer tot 500 QR-codes in één keer vanuit een CSV-bestand. ZIP-export + overzichts-PDF.",
+    "eyebrow": "Batch / CSV",
+    "title": "Bulkaanmaak",
+    "subtitle": "Genereer tientallen QR-codes in seconden vanuit een CSV-bestand.",
+    "upload_label": "Sleep een CSV-bestand hierheen",
+    "upload_or": "of",
+    "browse": "Bladeren",
+    "paste_placeholder": "Plak je CSV hier…",
+    "download_template": "CSV-sjabloon downloaden",
+    "limit_free": "Free-plan: max. 5 QR per batch",
+    "limit_pro": "Pro-plan: max. 500 QR per batch",
+    "parse_result": "Analyseresultaat",
+    "valid_count": "{count} geldige rijen",
+    "error_count": "{count} fouten",
+    "line": "Regel {n}",
+    "import_button": "{count} QR-codes importeren",
+    "import_disabled": "Limiet overschreden — Upgrade naar Pro",
+    "reset": "Opnieuw beginnen",
+    "importing": "Bezig met importeren…",
+    "import_success": "{count} QR-codes aangemaakt",
+    "import_error": "Import mislukt",
+    "download_zip": "ZIP downloaden",
+    "go_to_dashboard": "Naar mijn dashboard",
+    "header_name": "Naam",
+    "header_type": "Type",
+    "header_content": "Inhoud",
+    "header_status": "Status",
+    "status_valid": "OK",
+    "status_error": "Fout"
+  },
+  "realtime": {
+    "title_live": "Live scans",
+    "toggle_on": "Live starten",
+    "toggle_off": "Live stoppen",
+    "connected": "Verbonden",
+    "disconnected": "Verbroken",
+    "no_scans_yet": "Wachten op scans…",
+    "ago_seconds": "{n}s geleden",
+    "ago_minutes": "{n}min geleden",
+    "ago_hours": "{n}u geleden",
+    "period_comparison": "Vergelijking laatste 30 dagen",
+    "vs_previous": "vs vorige periode",
+    "scans_total": "Totaal scans",
+    "unique_countries": "Unieke landen",
+    "unique_cities": "Unieke steden",
+    "heatmap_title": "Wereldwijde heatmap",
+    "heatmap_subtitle": "Scandichtheid van de laatste 90 dagen",
+    "export_pdf": "PDF exporteren",
+    "exporting": "Rapport genereren…",
+    "exported": "Rapport gedownload",
+    "report_title": "QR Analytics-rapport",
+    "report_period": "Periode: {start} — {end}",
+    "report_generated_by": "Gegenereerd door QRaft — useqraft.com",
+    "top_countries": "Top landen",
+    "top_devices": "Top apparaten",
+    "top_browsers": "Top browsers",
+    "evolution": "Evolutie"
   }
 }

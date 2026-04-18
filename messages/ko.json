@@ -4,13 +4,37 @@
     "start": "시작하기",
     "logout": "로그아웃",
     "profile": "프로필",
-    "pricing": "요금제"
+    "pricing": "요금제",
+    "templates": "템플릿",
+    "bulk": "일괄",
+    "api_keys": "API"
+  },
+  "api": {
+    "keys_title": "API 키",
+    "keys_subtitle": "QRaft를 도구와 워크플로우에 통합하세요.",
+    "new_key": "새 키",
+    "key_name_placeholder": "프로덕션, Dev, CI…",
+    "generate": "생성",
+    "created_key_warning": "이 키를 지금 복사하세요 — 다시는 표시되지 않습니다.",
+    "copy": "복사",
+    "copied": "복사됨!",
+    "revoke": "취소",
+    "confirm_revoke": "확인하시겠습니까?",
+    "no_keys": "아직 키가 없습니다. 첫 번째 키를 만드세요.",
+    "last_used": "마지막 사용",
+    "never_used": "사용 안 됨",
+    "created_at": "생성일",
+    "docs_title": "API 문서",
+    "docs_cta": "문서 보기",
+    "docs_subtitle": "모든 엔드포인트, curl 예제 및 에러 코드.",
+    "docs_meta_title": "QRaft API v1 — 문서",
+    "docs_meta_description": "완전한 REST 문서: QR 코드 생성, 분석 및 스캔 조회."
   },
   "home": {
     "badge": "100% 무료 — 신용카드 불필요",
-    "hero_title_1": "QR 코드를",
-    "hero_title_2": "몇 초 만에",
-    "hero_title_3": "만들어",
+    "hero_title_1": "QR코드를",
+    "hero_title_2": "무제한으로",
+    "hero_title_3": "관리하세요.",
     "hero_title_4": "보세요",
     "hero_desc": "QR 코드를 생성, 커스터마이즈하고 공유하세요. 간단하고 빠르며 완전 무료입니다.",
     "cta_primary": "첫 번째 QR 만들기 →",
@@ -18,23 +42,23 @@
     "preview_label": "미리보기",
     "stat_unlimited": "무제한 QR 코드",
     "stat_formats": "내보내기 형식",
-    "stat_free": "무료",
+    "stat_free": "0원으로 시작",
     "features_label": "기능",
     "features_title": "필요한 모든 것",
     "feature_colors_title": "색상 커스터마이즈",
     "feature_colors_desc": "브랜드 아이덴티티에 맞게 QR 코드와 배경 색상을 선택하세요.",
     "feature_logo_title": "로고 추가",
     "feature_logo_desc": "QR 코드 중앙에 로고를 삽입합니다. 오류 수정 기능으로 가독성이 보장됩니다.",
-    "feature_export_title": "PNG / JPG / PDF 내보내기",
-    "feature_export_desc": "웹, 인쇄 또는 벡터 형식으로 고품질 다운로드.",
+    "feature_export_title": "다중 형식 내보내기",
+    "feature_export_desc": "고해상도 PNG, 인쇄용 JPEG, 벡터 PDF, 일괄 ZIP.",
     "feature_share_title": "공개 공유",
-    "feature_share_desc": "고유한 공유 링크를 생성합니다. 독자 측 계정 불필요.",
+    "feature_share_desc": "고유 단축 링크, 즉시 스캔 가능한 QR, 실시간 스캔 추적.",
     "feature_stats_title": "스캔 통계",
     "feature_stats_desc": "실시간으로 스캔 추적: 기기, 브라우저, OS 및 트렌드.",
     "feature_zip_title": "일괄 ZIP 내보내기",
     "feature_zip_desc": "선택한 모든 QR 코드를 하나의 ZIP 파일로 다운로드.",
     "how_label": "간단",
-    "how_title": "QR 코드를 어떻게 만드나요?",
+    "how_title": "사용 방법",
     "step1_num": "01",
     "step1_title": "계정 만들기",
     "step1_desc": "몇 초 만에 무료 가입. 신용카드 불필요, 약정 없음.",
@@ -54,13 +78,44 @@
     "faq_3_a": "QRaft는 웹용 PNG, 표준 인쇄용 JPEG, 어떤 크기에도 완벽한 품질의 벡터 PDF를 제공합니다.",
     "faq_4_q": "스캔을 추적할 수 있나요?",
     "faq_4_a": "네. 완전한 통계: 총 스캔 수, 트렌드, 기기·브라우저·OS별 분석, 지리적 지도.",
-    "cta_title_1": "첫 번째 QR 코드를",
-    "cta_title_2": "만들 준비가 되셨나요?",
-    "cta_button": "무료 계정 만들기 →",
+    "cta_title_1": "첫 번째 QR을",
+    "cta_title_2": "만들어보세요.",
+    "cta_button": "무료로 시작하기 →",
     "pro_label": "다음 단계로 나아가세요",
     "pro_title": "QRaft Pro",
     "pro_subtitle": "영구 QR 코드, 완전한 분석, 제한 없음.",
-    "pro_cta": "요금제 보기 →"
+    "pro_cta": "요금제 보기 →",
+    "hero_subtitle": "QR코드를 생성, 맞춤설정, 공유하세요. 고급 분석, 다중 형식 내보내기, 실시간 추적과 공개 공유.",
+    "cta_start": "시작하기 →",
+    "cta_pricing": "요금제 보기 →",
+    "stat_languages": "12개 언어",
+    "stat_languages_sub": "지원 중",
+    "stat_qr_count": "50K+ QR",
+    "stat_qr_count_sub": "생성됨",
+    "stat_free_sub": "완전 무료 플랜",
+    "feature_analytics_title": "프로 분석",
+    "feature_analytics_desc": "실시간 스캔 차트, 국가·기기·브라우저별 분석.",
+    "feature_types_title": "10가지 QR 유형",
+    "feature_types_desc": "URL, WiFi, vCard, SMS, 지오로케이션, WhatsApp, 이메일, 전화, 소셜 등.",
+    "step_1_title": "생성",
+    "step_1_desc": "10가지 QR코드 유형 중 선택. 몇 초 만에 무료 가입, 신용카드 불필요.",
+    "step_2_title": "맞춤설정",
+    "step_2_desc": "색상, 로고, 크기, 오류 수정. 미리보기가 실시간으로 업데이트됩니다.",
+    "step_3_title": "공유",
+    "step_3_desc": "단축 링크, 즉시 스캔 가능한 QR, 완전한 스캔 추적 및 분석.",
+    "faq_q1": "동적 QR코드란 무엇인가요?",
+    "faq_a1": "동적 QR코드는 코드를 다시 인쇄하지 않고도 내용을 변경할 수 있습니다. 메뉴, 마케팅 캠페인, 변동 콘텐츠에 이상적입니다.",
+    "faq_q2": "Free와 Pro의 차이점은 무엇인가요?",
+    "faq_a2": "Free 플랜은 기본 분석이 포함된 QR코드 생성을 제공합니다. Pro 플랜은 완전한 분석, PDF/ZIP 내보내기, 영구 QR코드, 우선 지원을 잠금 해제합니다.",
+    "faq_q3": "Pro 구독을 취소할 수 있나요?",
+    "faq_a3": "네, Stripe 고객 포털에서 언제든지 취소할 수 있습니다. 약정 없음, 취소 수수료 없음.",
+    "faq_q4": "QR코드는 만료되나요?",
+    "faq_a4": "Free 플랜에서는 30일 동안 유효합니다. Pro 플랜에서는 영구적으로 만료되지 않습니다.",
+    "faq_q5": "어떤 내보내기 형식을 사용할 수 있나요?",
+    "faq_a5": "모든 플랜에서 PNG와 JPEG, Pro 플랜에서 벡터 PDF와 일괄 ZIP.",
+    "pro_cta_title": "프로로 업그레이드할 준비가 됐나요?",
+    "pro_cta_subtitle": "고급 분석 · 영구 QR코드 · 무제한 내보내기 · 우선 지원",
+    "cta_final_label": "지금 시작하세요"
   },
   "auth": {
     "back": "← 뒤로",
@@ -197,7 +252,81 @@
     "filter_category_all": "전체",
     "badge_expired": "만료됨",
     "badge_expires_soon": "{days}일 후 만료",
-    "toast_upgrade_success": "Pro에 오신 것을 환영합니다!"
+    "toast_upgrade_success": "Pro에 오신 것을 환영합니다!",
+    "dynamic": {
+      "edit_content": "콘텐츠 수정",
+      "history": "기록",
+      "modal_edit_title": "콘텐츠 수정",
+      "modal_history_title": "버전 기록",
+      "note_placeholder": "선택 메모 (변경 사유)",
+      "save": "저장",
+      "restore": "복원",
+      "confirm_restore": "이 버전을 복원하시겠습니까?",
+      "current_version": "현재",
+      "no_history": "아직 변경 사항이 없습니다",
+      "pro_required_title": "Pro 기능",
+      "pro_required_body": "동적 QR 코드는 Pro 구독이 필요합니다. 다시 인쇄하지 않고 언제든지 콘텐츠를 업데이트하세요.",
+      "upgrade": "Pro로 업그레이드",
+      "edit_success": "콘텐츠가 업데이트되었습니다",
+      "edit_error": "업데이트 실패",
+      "restore_success": "버전이 복원되었습니다",
+      "advanced_edit": "고급 QR(vCard, WiFi…)은 전체 편집기를 열어주세요.",
+      "open_editor": "편집기 열기"
+    },
+    "actions": {
+      "view": "보기",
+      "favorite": "즐겨찾기",
+      "unfavorite": "해제",
+      "category": "카테고리",
+      "share_public": "공유",
+      "copy_url": "URL 복사",
+      "export_png": "PNG 내보내기",
+      "export_pdf": "PDF 내보내기",
+      "delete": "삭제",
+      "more": "더보기"
+    },
+    "bottom_tabs": {
+      "dashboard": "홈",
+      "new": "새로 만들기",
+      "stats": "통계",
+      "profile": "프로필"
+    },
+    "import_csv": "CSV 가져오기",
+    "password": {
+      "action": "Protect",
+      "modal_title": "Password protection",
+      "modal_subtitle": "Only users with the password will access the content.",
+      "current_protected": "This QR code is currently protected.",
+      "enable": "Enable protection",
+      "disable": "Remove protection",
+      "placeholder": "At least 4 characters",
+      "pro_required_body": "Password protection requires a Pro subscription.",
+      "enabled": "Protection enabled",
+      "disabled": "Protection removed",
+      "unlock_title": "Protected access",
+      "unlock_subtitle": "This QR code is password-protected.",
+      "unlock_cta": "Unlock",
+      "wrong_password": "Incorrect password"
+    },
+    "ab": {
+      "action": "A/B Testing",
+      "modal_title": "A/B Testing",
+      "modal_subtitle": "Split your traffic across multiple URLs to compare their performance.",
+      "pro_required_body": "A/B testing requires a Pro subscription.",
+      "add_variant": "Add variant",
+      "remove_variant": "Remove",
+      "variant_label_placeholder": "Version A",
+      "variant_url_placeholder": "https://...",
+      "weight": "Weight",
+      "total_must_be_100": "Weights must sum to 100",
+      "save": "Save",
+      "disable": "Disable A/B testing",
+      "analytics_title": "Scan distribution",
+      "saved": "Variants saved",
+      "disabled": "A/B testing disabled",
+      "no_data_yet": "No scans yet",
+      "variant_count": "{count} active variants"
+    }
   },
   "qrcode": {
     "back": "← 뒤로",
@@ -278,13 +407,13 @@
   },
   "pricing": {
     "label": "요금제",
-    "title": "간단하고 투명하게",
-    "subtitle": "시작을 위한 무료 플랜, 더 나아가기 위한 Pro 플랜. 숨겨진 비용 없음.",
+    "title": "투명한 요금제",
+    "subtitle": "놀라움 없음. 숨겨진 요금 없음. 무료 플랜으로 시작하고 Pro 플랜으로 더 나아가세요.",
     "month": "월",
     "free_label": "무료",
     "free_hint": "영원히 무료",
     "pro_label": "Pro",
-    "annual_hint": "연간 플랜 €79.99/년으로 곧 출시 예정",
+    "annual_hint": "연간 요금제로 절약하세요",
     "feature_create": "무제한 QR 코드",
     "feature_customize": "색상 및 로고 커스터마이즈",
     "feature_export": "PNG / JPEG / PDF 내보내기",
@@ -308,11 +437,220 @@
     "faq_3_q": "결제는 안전한가요?",
     "faq_3_a": "네. 결제는 PCI DSS 인증을 받은 Stripe가 처리합니다. 은행 정보는 서버에 저장되지 않습니다.",
     "faq_4_q": "연간 플랜이 있나요?",
-    "faq_4_a": "€79.99(월 €6.67)의 연간 플랜이 곧 출시될 예정입니다."
+    "faq_4_a": "€79.99(월 €6.67)의 연간 플랜이 곧 출시될 예정입니다.",
+    "year": "년",
+    "free_tier": "무료",
+    "pro_tier": "PRO",
+    "popular_badge": "가장 인기 있음",
+    "billing_monthly": "월간",
+    "billing_annual": "연간",
+    "billing_save": "{amount}€ 절약",
+    "feature_export_png": "PNG / JPEG 내보내기",
+    "feature_export_pdf_zip": "PDF + 일괄 ZIP 내보내기",
+    "feature_expire_free": "QR 코드 30일 유효",
+    "feature_support": "우선 지원",
+    "cta_dashboard": "대시보드로 이동",
+    "cta_register": "무료로 시작",
+    "cta_upgrade": "Pro로 업그레이드 →",
+    "cta_portal": "구독 관리",
+    "comparison_title": "상세 비교",
+    "comparison_feature": "기능",
+    "guarantee_title": "14일 환불 보장",
+    "guarantee_desc": "질문 없이. 구독 후 14일 이내에 문의하시면 전액 환불해 드립니다.",
+    "faq_title": "구독에 관한 질문",
+    "pricing_faq_q1": "언제든지 취소할 수 있나요?",
+    "pricing_faq_a1": "네, Stripe 고객 포털에서 언제든지 취소할 수 있습니다. 약정 없음, 취소 수수료 없음.",
+    "pricing_faq_q2": "무료 플랜으로 다운그레이드하면 어떻게 되나요?",
+    "pricing_faq_a2": "QR 코드는 계속 접근 가능하지만 다시 30일 제한이 적용됩니다. 데이터는 삭제되지 않습니다.",
+    "pricing_faq_q3": "Pro 무료 체험이 있나요?",
+    "pricing_faq_a3": "무료 플랜은 영원히 무료입니다. Pro 플랜에는 14일 환불 보장이 있습니다.",
+    "pricing_faq_q4": "선불 카드를 받으시나요?",
+    "pricing_faq_a4": "네, Stripe는 대부분의 Visa, Mastercard 및 American Express 신용카드와 선불카드를 수락합니다.",
+    "pricing_faq_q5": "가격에 부가세가 포함되어 있나요?",
+    "pricing_faq_a5": "표시된 가격은 부가세 제외입니다. 적용 가능한 부가세는 귀하의 국가에 따라 결제 시 계산됩니다."
   },
   "expired": {
     "title": "QR 코드 만료됨",
     "desc": "이 QR 코드는 더 이상 활성 상태가 아닙니다. 소유자가 Pro 플랜으로 업그레이드해야 재활성화할 수 있습니다.",
     "cta": "QRaft Pro 알아보기 →"
+  },
+  "templates": {
+    "eyebrow": "마켓플레이스",
+    "title": "템플릿",
+    "subtitle": "업종에 맞춘 템플릿으로 빠르게 시작하세요.",
+    "filter_all": "전체",
+    "category": {
+      "business": "비즈니스",
+      "restaurant": "음식점",
+      "event": "이벤트",
+      "retail": "소매",
+      "personal": "개인",
+      "real_estate": "부동산",
+      "hospitality": "호텔",
+      "education": "교육"
+    },
+    "use_template": "사용하기",
+    "upgrade_to_use": "Pro 업그레이드",
+    "pro_badge": "Pro",
+    "meta_title": "업종별 QR 코드 템플릿 | QRaft",
+    "meta_description": "음식점, 이벤트, 명함, WiFi, 부동산 등 바로 사용 가능한 24개의 QR 코드 템플릿.",
+    "items": {
+      "business-card-pro": {
+        "name": "비즈니스 명함",
+        "description": "연락처가 포함된 전문 vCard."
+      },
+      "linkedin-profile": {
+        "name": "LinkedIn",
+        "description": "LinkedIn 프로필로 연결."
+      },
+      "corporate-website": {
+        "name": "기업 웹사이트",
+        "description": "세련된 기업 홈페이지."
+      },
+      "menu-qr": {
+        "name": "메뉴",
+        "description": "테이블 서비스용 디지털 메뉴."
+      },
+      "google-reviews": {
+        "name": "구글 리뷰",
+        "description": "구글 리뷰 수집용 QR."
+      },
+      "instagram-food": {
+        "name": "인스타그램",
+        "description": "푸드 인스타그램 계정 연결."
+      },
+      "ticket-qr": {
+        "name": "이벤트 티켓",
+        "description": "인쇄 가능한 이벤트 티켓."
+      },
+      "save-the-date": {
+        "name": "날짜 저장",
+        "description": "디지털 이벤트 초대장."
+      },
+      "agenda-calendar": {
+        "name": "일정",
+        "description": "캘린더에 일정 추가."
+      },
+      "promo-code": {
+        "name": "프로모션 코드",
+        "description": "매장에서 스캔하는 할인 코드."
+      },
+      "loyalty-card": {
+        "name": "멤버십",
+        "description": "디지털 로열티 카드."
+      },
+      "product-info": {
+        "name": "제품 정보",
+        "description": "상세한 제품 정보."
+      },
+      "wifi-home": {
+        "name": "집 WiFi",
+        "description": "비밀번호 공개 없이 WiFi 공유."
+      },
+      "personal-vcard": {
+        "name": "개인 명함",
+        "description": "공유할 개인 연락처."
+      },
+      "social-bio-link": {
+        "name": "바이오 링크",
+        "description": "모든 소셜 링크를 한 곳에."
+      },
+      "property-listing": {
+        "name": "부동산 매물",
+        "description": "매매 또는 임대 부동산 정보."
+      },
+      "virtual-tour": {
+        "name": "가상 투어",
+        "description": "3D 가상 방문 바로 접속."
+      },
+      "agent-contact": {
+        "name": "중개인 연락처",
+        "description": "부동산 중개인 vCard."
+      },
+      "hotel-wifi": {
+        "name": "호텔 WiFi",
+        "description": "비밀번호 없이 고객 WiFi 접속."
+      },
+      "room-checkin": {
+        "name": "객실 체크인",
+        "description": "셀프 서비스 체크인."
+      },
+      "room-service-menu": {
+        "name": "룸 서비스",
+        "description": "객실 서비스 메뉴."
+      },
+      "course-resource": {
+        "name": "수업 자료",
+        "description": "교육 자료 링크."
+      },
+      "class-materials": {
+        "name": "강의 자료",
+        "description": "공유된 수업 자료."
+      },
+      "event-signup": {
+        "name": "등록",
+        "description": "이벤트 등록 양식."
+      }
+    }
+  },
+  "bulk": {
+    "meta_title": "CSV 가져오기 — 대량 생성 | QRaft",
+    "meta_description": "CSV 파일로 최대 500개의 QR 코드를 한 번에 생성하세요. ZIP 내보내기 + 요약 PDF 포함.",
+    "eyebrow": "배치 / CSV",
+    "title": "대량 생성",
+    "subtitle": "CSV에서 수십 개의 QR 코드를 몇 초 만에 생성하세요.",
+    "upload_label": "CSV 파일을 여기에 놓으세요",
+    "upload_or": "또는",
+    "browse": "찾아보기",
+    "paste_placeholder": "여기에 CSV를 붙여넣으세요…",
+    "download_template": "CSV 템플릿 다운로드",
+    "limit_free": "Free 플랜: 배치당 최대 5 QR",
+    "limit_pro": "Pro 플랜: 배치당 최대 500 QR",
+    "parse_result": "분석 결과",
+    "valid_count": "유효한 행 {count}개",
+    "error_count": "오류 {count}개",
+    "line": "{n}행",
+    "import_button": "QR 코드 {count}개 가져오기",
+    "import_disabled": "한도 초과 — Pro로 업그레이드",
+    "reset": "다시 시작",
+    "importing": "가져오는 중…",
+    "import_success": "QR 코드 {count}개 생성됨",
+    "import_error": "가져오기 실패",
+    "download_zip": "ZIP 다운로드",
+    "go_to_dashboard": "대시보드로 이동",
+    "header_name": "이름",
+    "header_type": "유형",
+    "header_content": "내용",
+    "header_status": "상태",
+    "status_valid": "OK",
+    "status_error": "오류"
+  },
+  "realtime": {
+    "title_live": "실시간 스캔",
+    "toggle_on": "라이브 시작",
+    "toggle_off": "라이브 중지",
+    "connected": "연결됨",
+    "disconnected": "연결 끊김",
+    "no_scans_yet": "스캔 대기 중…",
+    "ago_seconds": "{n}초 전",
+    "ago_minutes": "{n}분 전",
+    "ago_hours": "{n}시간 전",
+    "period_comparison": "최근 30일 비교",
+    "vs_previous": "이전 기간 대비",
+    "scans_total": "총 스캔",
+    "unique_countries": "고유 국가",
+    "unique_cities": "고유 도시",
+    "heatmap_title": "전 세계 히트맵",
+    "heatmap_subtitle": "최근 90일 스캔 밀도",
+    "export_pdf": "PDF 내보내기",
+    "exporting": "보고서 생성 중…",
+    "exported": "보고서 다운로드됨",
+    "report_title": "QR 애널리틱스 보고서",
+    "report_period": "기간: {start} — {end}",
+    "report_generated_by": "QRaft — useqraft.com 에서 생성됨",
+    "top_countries": "상위 국가",
+    "top_devices": "상위 기기",
+    "top_browsers": "상위 브라우저",
+    "evolution": "추이"
   }
 }
