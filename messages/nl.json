@@ -1468,5 +1468,23 @@
     "city_faq_a2": "Ja! Maak een gratis QRaft-account aan voor scananalyses: aantal scans, apparaattypen, locatie en meer.",
     "city_faq_q3": "Welk type QR-code is het beste voor {vertical} in {city}?",
     "city_faq_a3": "Dat hangt af van uw situatie. Restaurants gebruiken menu-QR-codes, hotels WiFi-QR-codes en winkels Google Reviews-QR-codes. Verken onze generators."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Handleidingen, tutorials en tips om het meeste uit je QR-codes te halen.",
+    "all": "Alle",
+    "tutorials": "Tutorials",
+    "use_cases": "Toepassingen",
+    "comparisons": "Vergelijkingen",
+    "read_more": "Lees het artikel",
+    "reading_time": "{minutes} min leestijd",
+    "published_on": "Gepubliceerd op {date}",
+    "related_articles": "Gerelateerde artikelen",
+    "toc_title": "Inhoudsopgave",
+    "back_to_blog": "Terug naar blog",
+    "cta_title": "KLAAR OM JE QR-CODE TE MAKEN?",
+    "cta_body": "Probeer onze gratis generator — geen registratie nodig.",
+    "cta_button": "QR-code maken",
+    "no_articles": "Nog geen artikelen in deze categorie."
   }
 }

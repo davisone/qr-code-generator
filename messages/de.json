@@ -1468,5 +1468,23 @@
     "city_faq_a2": "Ja! Erstellen Sie ein kostenloses QRaft-Konto für Scan-Analysen: Anzahl der Scans, Gerätetypen, Standort und mehr.",
     "city_faq_q3": "Welcher QR-Code-Typ eignet sich am besten für {vertical} in {city}?",
     "city_faq_a3": "Das hängt von Ihrem Anwendungsfall ab. Restaurants nutzen typischerweise Menü-QR-Codes, Hotels WiFi-QR-Codes und Geschäfte Google-Bewertungs-QR-Codes."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Anleitungen, Tutorials und Tipps, um das Beste aus Ihren QR-Codes herauszuholen.",
+    "all": "Alle",
+    "tutorials": "Tutorials",
+    "use_cases": "Anwendungsfälle",
+    "comparisons": "Vergleiche",
+    "read_more": "Artikel lesen",
+    "reading_time": "{minutes} Min. Lesezeit",
+    "published_on": "Veröffentlicht am {date}",
+    "related_articles": "Ähnliche Artikel",
+    "toc_title": "Inhaltsverzeichnis",
+    "back_to_blog": "Zurück zum Blog",
+    "cta_title": "BEREIT, IHREN QR-CODE ZU ERSTELLEN?",
+    "cta_body": "Testen Sie unseren kostenlosen Generator — keine Anmeldung erforderlich.",
+    "cta_button": "QR-Code erstellen",
+    "no_articles": "Noch keine Artikel in dieser Kategorie."
   }
 }

@@ -1468,5 +1468,23 @@
         "a5": "네. 가입 없이, 워터마크 없이, 제한 없이. 무료로 앱 다운로드 QR 코드를 생성하세요."
       }
     }
+  },
+  "blog": {
+    "title": "블로그",
+    "subtitle": "QR 코드를 최대한 활용하기 위한 가이드, 튜토리얼, 팁.",
+    "all": "전체",
+    "tutorials": "튜토리얼",
+    "use_cases": "활용 사례",
+    "comparisons": "비교",
+    "read_more": "기사 읽기",
+    "reading_time": "{minutes}분 소요",
+    "published_on": "{date}에 게시됨",
+    "related_articles": "관련 기사",
+    "toc_title": "목차",
+    "back_to_blog": "블로그로 돌아가기",
+    "cta_title": "QR 코드를 만들 준비가 되셨나요?",
+    "cta_body": "무료 생성기를 사용해 보세요 — 가입이 필요 없습니다.",
+    "cta_button": "QR 코드 만들기",
+    "no_articles": "이 카테고리에는 아직 기사가 없습니다."
   }
 }

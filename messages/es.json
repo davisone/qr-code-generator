@@ -1468,5 +1468,23 @@
     "city_faq_a2": "¡Sí! Crea una cuenta gratuita en QRaft para acceder a analíticas: número de escaneos, tipos de dispositivo, ubicación y más.",
     "city_faq_q3": "¿Qué tipo de código QR es mejor para {vertical} en {city}?",
     "city_faq_a3": "Depende de tu caso. Los restaurantes suelen usar códigos QR de menú, los hoteles códigos WiFi, y las tiendas códigos de reseñas Google. Explora nuestros generadores para encontrar el más adecuado."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Guías, tutoriales y consejos para sacar el máximo partido a tus códigos QR.",
+    "all": "Todos",
+    "tutorials": "Tutoriales",
+    "use_cases": "Casos de uso",
+    "comparisons": "Comparativas",
+    "read_more": "Leer el artículo",
+    "reading_time": "{minutes} min de lectura",
+    "published_on": "Publicado el {date}",
+    "related_articles": "Artículos relacionados",
+    "toc_title": "Índice",
+    "back_to_blog": "Volver al blog",
+    "cta_title": "¿LISTO PARA CREAR TU CÓDIGO QR?",
+    "cta_body": "Prueba nuestro generador gratuito — sin necesidad de registro.",
+    "cta_button": "Crear un código QR",
+    "no_articles": "No hay artículos en esta categoría por el momento."
   }
 }

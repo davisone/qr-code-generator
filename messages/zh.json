@@ -1468,5 +1468,23 @@
         "a5": "是的。无需注册，无水印，无限制。免费生成应用下载二维码。"
       }
     }
+  },
+  "blog": {
+    "title": "博客",
+    "subtitle": "指南、教程和技巧，助您充分利用二维码。",
+    "all": "全部",
+    "tutorials": "教程",
+    "use_cases": "应用场景",
+    "comparisons": "对比评测",
+    "read_more": "阅读文章",
+    "reading_time": "{minutes} 分钟阅读",
+    "published_on": "发布于 {date}",
+    "related_articles": "相关文章",
+    "toc_title": "目录",
+    "back_to_blog": "返回博客",
+    "cta_title": "准备好创建您的二维码了吗？",
+    "cta_body": "试试我们的免费生成器 — 无需注册。",
+    "cta_button": "创建二维码",
+    "no_articles": "该分类暂无文章。"
   }
 }

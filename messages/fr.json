@@ -693,10 +693,22 @@
       "guide": {
         "label": "Comment ça marche",
         "title": "CRÉEZ VOTRE QR CODE WIFI EN 4 ÉTAPES",
-        "step1": { "title": "ENTREZ LE NOM DE VOTRE RÉSEAU", "body": "Saisissez le SSID exact de votre réseau WiFi tel qu'il apparaît sur votre routeur." },
-        "step2": { "title": "SÉLECTIONNEZ LE TYPE DE SÉCURITÉ", "body": "Choisissez WPA/WPA2 pour les réseaux modernes, WEP pour les anciens, ou Ouvert pour les hotspots publics." },
-        "step3": { "title": "AJOUTEZ VOTRE MOT DE PASSE", "body": "Entrez le mot de passe WiFi. Il sera encodé directement dans le QR code." },
-        "step4": { "title": "TÉLÉCHARGEZ ET IMPRIMEZ", "body": "Téléchargez en PNG, SVG ou PDF et affichez-le à votre entrée, dans le hall ou à la réception." }
+        "step1": {
+          "title": "ENTREZ LE NOM DE VOTRE RÉSEAU",
+          "body": "Saisissez le SSID exact de votre réseau WiFi tel qu'il apparaît sur votre routeur."
+        },
+        "step2": {
+          "title": "SÉLECTIONNEZ LE TYPE DE SÉCURITÉ",
+          "body": "Choisissez WPA/WPA2 pour les réseaux modernes, WEP pour les anciens, ou Ouvert pour les hotspots publics."
+        },
+        "step3": {
+          "title": "AJOUTEZ VOTRE MOT DE PASSE",
+          "body": "Entrez le mot de passe WiFi. Il sera encodé directement dans le QR code."
+        },
+        "step4": {
+          "title": "TÉLÉCHARGEZ ET IMPRIMEZ",
+          "body": "Téléchargez en PNG, SVG ou PDF et affichez-le à votre entrée, dans le hall ou à la réception."
+        }
       },
       "faq": {
         "title": "QUESTIONS FRÉQUENTES",
@@ -739,10 +751,22 @@
       "guide": {
         "label": "Comment ça marche",
         "title": "CRÉEZ VOTRE CARTE DE VISITE NUMÉRIQUE",
-        "step1": { "title": "ENTREZ VOS COORDONNÉES", "body": "Ajoutez votre nom, téléphone, email, entreprise et site web. Seul le nom est obligatoire." },
-        "step2": { "title": "PRÉVISUALISEZ LE QR CODE", "body": "Voyez votre QR code se mettre à jour en temps réel à mesure que vous remplissez chaque champ." },
-        "step3": { "title": "TÉLÉCHARGEZ-LE", "body": "Exportez en PNG, SVG ou PDF — parfait pour l'impression sur cartes de visite." },
-        "step4": { "title": "PARTAGEZ PARTOUT", "body": "Imprimez-le sur votre carte, ajoutez-le à votre signature email, ou affichez-le lors d'événements." }
+        "step1": {
+          "title": "ENTREZ VOS COORDONNÉES",
+          "body": "Ajoutez votre nom, téléphone, email, entreprise et site web. Seul le nom est obligatoire."
+        },
+        "step2": {
+          "title": "PRÉVISUALISEZ LE QR CODE",
+          "body": "Voyez votre QR code se mettre à jour en temps réel à mesure que vous remplissez chaque champ."
+        },
+        "step3": {
+          "title": "TÉLÉCHARGEZ-LE",
+          "body": "Exportez en PNG, SVG ou PDF — parfait pour l'impression sur cartes de visite."
+        },
+        "step4": {
+          "title": "PARTAGEZ PARTOUT",
+          "body": "Imprimez-le sur votre carte, ajoutez-le à votre signature email, ou affichez-le lors d'événements."
+        }
       },
       "faq": {
         "title": "QUESTIONS FRÉQUENTES",
@@ -777,10 +801,22 @@
       "guide": {
         "label": "Comment ça marche",
         "title": "CONFIGUREZ VOTRE QR CODE MENU",
-        "step1": { "title": "HÉBERGEZ VOTRE MENU EN LIGNE", "body": "Uploadez votre menu en PDF ou créez une page sur votre site web avec le menu complet." },
-        "step2": { "title": "COLLEZ LE LIEN", "body": "Entrez l'URL de votre menu en ligne dans le formulaire ci-dessus." },
-        "step3": { "title": "GÉNÉREZ ET TÉLÉCHARGEZ", "body": "Téléchargez le QR code en PNG, SVG ou PDF en haute résolution." },
-        "step4": { "title": "IMPRIMEZ ET AFFICHEZ", "body": "Placez les QR codes sur les tables, à l'entrée, ou sur les emballages à emporter." }
+        "step1": {
+          "title": "HÉBERGEZ VOTRE MENU EN LIGNE",
+          "body": "Uploadez votre menu en PDF ou créez une page sur votre site web avec le menu complet."
+        },
+        "step2": {
+          "title": "COLLEZ LE LIEN",
+          "body": "Entrez l'URL de votre menu en ligne dans le formulaire ci-dessus."
+        },
+        "step3": {
+          "title": "GÉNÉREZ ET TÉLÉCHARGEZ",
+          "body": "Téléchargez le QR code en PNG, SVG ou PDF en haute résolution."
+        },
+        "step4": {
+          "title": "IMPRIMEZ ET AFFICHEZ",
+          "body": "Placez les QR codes sur les tables, à l'entrée, ou sur les emballages à emporter."
+        }
       },
       "faq": {
         "title": "QUESTIONS FRÉQUENTES",
@@ -814,10 +850,22 @@
       "guide": {
         "label": "Comment ça marche",
         "title": "OBTENEZ PLUS D'AVIS EN 4 ÉTAPES",
-        "step1": { "title": "TROUVEZ VOTRE LIEN D'AVIS", "body": "Ouvrez Google Business Profile, cliquez sur « Demander des avis » et copiez le lien." },
-        "step2": { "title": "COLLEZ-LE ICI", "body": "Entrez le lien dans le formulaire ci-dessus pour générer votre QR code instantanément." },
-        "step3": { "title": "TÉLÉCHARGEZ ET IMPRIMEZ", "body": "Exportez en PNG, SVG ou PDF. Imprimez sur les reçus, cartes, ou présentoirs de comptoir." },
-        "step4": { "title": "RÉCOLTEZ LES AVIS", "body": "Les clients scannent, vous notent sur Google, et votre note moyenne augmente." }
+        "step1": {
+          "title": "TROUVEZ VOTRE LIEN D'AVIS",
+          "body": "Ouvrez Google Business Profile, cliquez sur « Demander des avis » et copiez le lien."
+        },
+        "step2": {
+          "title": "COLLEZ-LE ICI",
+          "body": "Entrez le lien dans le formulaire ci-dessus pour générer votre QR code instantanément."
+        },
+        "step3": {
+          "title": "TÉLÉCHARGEZ ET IMPRIMEZ",
+          "body": "Exportez en PNG, SVG ou PDF. Imprimez sur les reçus, cartes, ou présentoirs de comptoir."
+        },
+        "step4": {
+          "title": "RÉCOLTEZ LES AVIS",
+          "body": "Les clients scannent, vous notent sur Google, et votre note moyenne augmente."
+        }
       },
       "faq": {
         "title": "QUESTIONS FRÉQUENTES",
@@ -852,10 +900,22 @@
       "guide": {
         "label": "Comment ça marche",
         "title": "CRÉEZ VOTRE QR CODE WHATSAPP",
-        "step1": { "title": "ENTREZ VOTRE NUMÉRO", "body": "Saisissez votre numéro complet avec l'indicatif pays (ex. +33 pour la France, +1 pour les US)." },
-        "step2": { "title": "AJOUTEZ UN MESSAGE", "body": "Définissez optionnellement un message pré-rempli qui apparaîtra à l'ouverture de la conversation." },
-        "step3": { "title": "GÉNÉREZ ET TÉLÉCHARGEZ", "body": "Téléchargez votre QR code en PNG, SVG ou PDF." },
-        "step4": { "title": "AFFICHEZ PARTOUT", "body": "Imprimez-le sur des flyers, emballages, cartes de visite ou vitrines." }
+        "step1": {
+          "title": "ENTREZ VOTRE NUMÉRO",
+          "body": "Saisissez votre numéro complet avec l'indicatif pays (ex. +33 pour la France, +1 pour les US)."
+        },
+        "step2": {
+          "title": "AJOUTEZ UN MESSAGE",
+          "body": "Définissez optionnellement un message pré-rempli qui apparaîtra à l'ouverture de la conversation."
+        },
+        "step3": {
+          "title": "GÉNÉREZ ET TÉLÉCHARGEZ",
+          "body": "Téléchargez votre QR code en PNG, SVG ou PDF."
+        },
+        "step4": {
+          "title": "AFFICHEZ PARTOUT",
+          "body": "Imprimez-le sur des flyers, emballages, cartes de visite ou vitrines."
+        }
       },
       "faq": {
         "title": "QUESTIONS FRÉQUENTES",
@@ -892,10 +952,22 @@
       "guide": {
         "label": "Comment ça marche",
         "title": "CRÉEZ VOTRE QR CODE EMAIL",
-        "step1": { "title": "ENTREZ L'EMAIL", "body": "Saisissez l'adresse email du destinataire qui doit recevoir le message." },
-        "step2": { "title": "AJOUTEZ L'OBJET ET LE CORPS", "body": "Pré-remplissez optionnellement la ligne d'objet et le corps du message." },
-        "step3": { "title": "GÉNÉREZ LE QR CODE", "body": "Votre QR code est créé instantanément. Prévisualisez-le en temps réel." },
-        "step4": { "title": "PARTAGEZ-LE", "body": "Téléchargez et imprimez sur cartes de visite, flyers, emballages ou affiches." }
+        "step1": {
+          "title": "ENTREZ L'EMAIL",
+          "body": "Saisissez l'adresse email du destinataire qui doit recevoir le message."
+        },
+        "step2": {
+          "title": "AJOUTEZ L'OBJET ET LE CORPS",
+          "body": "Pré-remplissez optionnellement la ligne d'objet et le corps du message."
+        },
+        "step3": {
+          "title": "GÉNÉREZ LE QR CODE",
+          "body": "Votre QR code est créé instantanément. Prévisualisez-le en temps réel."
+        },
+        "step4": {
+          "title": "PARTAGEZ-LE",
+          "body": "Téléchargez et imprimez sur cartes de visite, flyers, emballages ou affiches."
+        }
       },
       "faq": {
         "title": "QUESTIONS FRÉQUENTES",
@@ -930,10 +1002,22 @@
       "guide": {
         "label": "Comment ça marche",
         "title": "CRÉEZ VOTRE QR CODE SMS",
-        "step1": { "title": "ENTREZ LE NUMÉRO", "body": "Saisissez le numéro de téléphone qui doit recevoir le message texte." },
-        "step2": { "title": "AJOUTEZ UN MESSAGE", "body": "Pré-remplissez optionnellement un message comme « OUI » ou « INFO » pour les campagnes d'opt-in." },
-        "step3": { "title": "GÉNÉREZ ET TÉLÉCHARGEZ", "body": "Votre QR code est prêt. Téléchargez-le en PNG, SVG ou PDF." },
-        "step4": { "title": "IMPRIMEZ ET AFFICHEZ", "body": "Placez-le sur des affiches, flyers, emballages produits ou signalétique événementielle." }
+        "step1": {
+          "title": "ENTREZ LE NUMÉRO",
+          "body": "Saisissez le numéro de téléphone qui doit recevoir le message texte."
+        },
+        "step2": {
+          "title": "AJOUTEZ UN MESSAGE",
+          "body": "Pré-remplissez optionnellement un message comme « OUI » ou « INFO » pour les campagnes d'opt-in."
+        },
+        "step3": {
+          "title": "GÉNÉREZ ET TÉLÉCHARGEZ",
+          "body": "Votre QR code est prêt. Téléchargez-le en PNG, SVG ou PDF."
+        },
+        "step4": {
+          "title": "IMPRIMEZ ET AFFICHEZ",
+          "body": "Placez-le sur des affiches, flyers, emballages produits ou signalétique événementielle."
+        }
       },
       "faq": {
         "title": "QUESTIONS FRÉQUENTES",
@@ -970,10 +1054,22 @@
       "guide": {
         "label": "Comment ça marche",
         "title": "CRÉEZ VOTRE QR CODE LOCALISATION",
-        "step1": { "title": "ENTREZ LES COORDONNÉES", "body": "Saisissez la latitude et la longitude, ou trouvez-les sur Google Maps en faisant un clic droit sur un lieu." },
-        "step2": { "title": "AJOUTEZ UN LIBELLÉ", "body": "Ajoutez optionnellement un nom de lieu pour plus de clarté à l'ouverture de la carte." },
-        "step3": { "title": "GÉNÉREZ LE QR CODE", "body": "Votre QR code est créé instantanément avec un aperçu en direct." },
-        "step4": { "title": "PARTAGEZ L'ITINÉRAIRE", "body": "Imprimez sur des invitations, cartes de visite, billets d'événements ou signalétique." }
+        "step1": {
+          "title": "ENTREZ LES COORDONNÉES",
+          "body": "Saisissez la latitude et la longitude, ou trouvez-les sur Google Maps en faisant un clic droit sur un lieu."
+        },
+        "step2": {
+          "title": "AJOUTEZ UN LIBELLÉ",
+          "body": "Ajoutez optionnellement un nom de lieu pour plus de clarté à l'ouverture de la carte."
+        },
+        "step3": {
+          "title": "GÉNÉREZ LE QR CODE",
+          "body": "Votre QR code est créé instantanément avec un aperçu en direct."
+        },
+        "step4": {
+          "title": "PARTAGEZ L'ITINÉRAIRE",
+          "body": "Imprimez sur des invitations, cartes de visite, billets d'événements ou signalétique."
+        }
       },
       "faq": {
         "title": "QUESTIONS FRÉQUENTES",
@@ -1012,10 +1108,22 @@
       "guide": {
         "label": "Comment ça marche",
         "title": "CRÉEZ VOTRE QR CODE ÉVÉNEMENT",
-        "step1": { "title": "ENTREZ LES DÉTAILS", "body": "Ajoutez le titre, la date et l'heure de début/fin, le lieu et une description." },
-        "step2": { "title": "PRÉVISUALISEZ", "body": "Voyez le QR code se mettre à jour en temps réel à mesure que vous remplissez le formulaire." },
-        "step3": { "title": "TÉLÉCHARGEZ", "body": "Exportez en PNG, SVG ou PDF pour un usage numérique ou imprimé." },
-        "step4": { "title": "DISTRIBUEZ", "body": "Imprimez sur des affiches d'événements, billets, flyers ou partagez sur les réseaux sociaux." }
+        "step1": {
+          "title": "ENTREZ LES DÉTAILS",
+          "body": "Ajoutez le titre, la date et l'heure de début/fin, le lieu et une description."
+        },
+        "step2": {
+          "title": "PRÉVISUALISEZ",
+          "body": "Voyez le QR code se mettre à jour en temps réel à mesure que vous remplissez le formulaire."
+        },
+        "step3": {
+          "title": "TÉLÉCHARGEZ",
+          "body": "Exportez en PNG, SVG ou PDF pour un usage numérique ou imprimé."
+        },
+        "step4": {
+          "title": "DISTRIBUEZ",
+          "body": "Imprimez sur des affiches d'événements, billets, flyers ou partagez sur les réseaux sociaux."
+        }
       },
       "faq": {
         "title": "QUESTIONS FRÉQUENTES",
@@ -1049,10 +1157,22 @@
       "guide": {
         "label": "Comment ça marche",
         "title": "CRÉEZ VOTRE QR CODE RÉSEAUX SOCIAUX",
-        "step1": { "title": "COPIEZ L'URL DE VOTRE PROFIL", "body": "Allez sur votre profil Instagram, TikTok, LinkedIn, X, YouTube ou Facebook et copiez l'URL." },
-        "step2": { "title": "COLLEZ-LA ICI", "body": "Entrez l'URL dans le formulaire. Nous détectons automatiquement la plateforme." },
-        "step3": { "title": "PERSONNALISEZ ET TÉLÉCHARGEZ", "body": "Téléchargez votre QR code en PNG, SVG ou PDF." },
-        "step4": { "title": "PARTAGEZ PARTOUT", "body": "Imprimez sur cartes de visite, emballages, merchandising, menus, affiches." }
+        "step1": {
+          "title": "COPIEZ L'URL DE VOTRE PROFIL",
+          "body": "Allez sur votre profil Instagram, TikTok, LinkedIn, X, YouTube ou Facebook et copiez l'URL."
+        },
+        "step2": {
+          "title": "COLLEZ-LA ICI",
+          "body": "Entrez l'URL dans le formulaire. Nous détectons automatiquement la plateforme."
+        },
+        "step3": {
+          "title": "PERSONNALISEZ ET TÉLÉCHARGEZ",
+          "body": "Téléchargez votre QR code en PNG, SVG ou PDF."
+        },
+        "step4": {
+          "title": "PARTAGEZ PARTOUT",
+          "body": "Imprimez sur cartes de visite, emballages, merchandising, menus, affiches."
+        }
       },
       "faq": {
         "title": "QUESTIONS FRÉQUENTES",
@@ -1085,10 +1205,22 @@
       "guide": {
         "label": "Comment ça marche",
         "title": "CRÉEZ VOTRE QR CODE PDF",
-        "step1": { "title": "HÉBERGEZ VOTRE PDF", "body": "Hébergez votre PDF sur Google Drive, Dropbox, votre site web ou toute URL publique." },
-        "step2": { "title": "COLLEZ LE LIEN", "body": "Copiez le lien direct vers votre PDF et collez-le dans le formulaire." },
-        "step3": { "title": "GÉNÉREZ LE QR CODE", "body": "Votre QR code est créé instantanément avec un aperçu en direct." },
-        "step4": { "title": "IMPRIMEZ ET DISTRIBUEZ", "body": "Placez-le sur les emballages produits, brochures, affiches, cartes de visite." }
+        "step1": {
+          "title": "HÉBERGEZ VOTRE PDF",
+          "body": "Hébergez votre PDF sur Google Drive, Dropbox, votre site web ou toute URL publique."
+        },
+        "step2": {
+          "title": "COLLEZ LE LIEN",
+          "body": "Copiez le lien direct vers votre PDF et collez-le dans le formulaire."
+        },
+        "step3": {
+          "title": "GÉNÉREZ LE QR CODE",
+          "body": "Votre QR code est créé instantanément avec un aperçu en direct."
+        },
+        "step4": {
+          "title": "IMPRIMEZ ET DISTRIBUEZ",
+          "body": "Placez-le sur les emballages produits, brochures, affiches, cartes de visite."
+        }
       },
       "faq": {
         "title": "QUESTIONS FRÉQUENTES",
@@ -1124,10 +1256,22 @@
       "guide": {
         "label": "Comment ça marche",
         "title": "CRÉEZ VOTRE QR CODE CRYPTO",
-        "step1": { "title": "SÉLECTIONNEZ VOTRE DEVISE", "body": "Choisissez Bitcoin (BTC), Ethereum (ETH) ou Litecoin (LTC)." },
-        "step2": { "title": "ENTREZ VOTRE ADRESSE", "body": "Collez l'adresse de votre portefeuille. Vérifiez-la bien — les transactions sont irréversibles." },
-        "step3": { "title": "DÉFINISSEZ UN MONTANT", "body": "Définissez optionnellement un montant de paiement qui sera pré-rempli dans le portefeuille de l'expéditeur." },
-        "step4": { "title": "TÉLÉCHARGEZ ET AFFICHEZ", "body": "Imprimez sur des factures, pages de dons, affichages en point de vente ou votre site web." }
+        "step1": {
+          "title": "SÉLECTIONNEZ VOTRE DEVISE",
+          "body": "Choisissez Bitcoin (BTC), Ethereum (ETH) ou Litecoin (LTC)."
+        },
+        "step2": {
+          "title": "ENTREZ VOTRE ADRESSE",
+          "body": "Collez l'adresse de votre portefeuille. Vérifiez-la bien — les transactions sont irréversibles."
+        },
+        "step3": {
+          "title": "DÉFINISSEZ UN MONTANT",
+          "body": "Définissez optionnellement un montant de paiement qui sera pré-rempli dans le portefeuille de l'expéditeur."
+        },
+        "step4": {
+          "title": "TÉLÉCHARGEZ ET AFFICHEZ",
+          "body": "Imprimez sur des factures, pages de dons, affichages en point de vente ou votre site web."
+        }
       },
       "faq": {
         "title": "QUESTIONS FRÉQUENTES",
@@ -1160,10 +1304,22 @@
       "guide": {
         "label": "Comment ça marche",
         "title": "CRÉEZ VOTRE QR CODE TÉLÉPHONE",
-        "step1": { "title": "ENTREZ VOTRE NUMÉRO", "body": "Saisissez le numéro complet avec l'indicatif pays pour la compatibilité internationale." },
-        "step2": { "title": "PRÉVISUALISEZ", "body": "Voyez le QR code se générer en temps réel." },
-        "step3": { "title": "TÉLÉCHARGEZ", "body": "Exportez en PNG, SVG ou PDF — parfait pour tout format d'impression." },
-        "step4": { "title": "AFFICHEZ-LE", "body": "Imprimez sur cartes de visite, vitrines, covering véhicule, flyers ou affiches." }
+        "step1": {
+          "title": "ENTREZ VOTRE NUMÉRO",
+          "body": "Saisissez le numéro complet avec l'indicatif pays pour la compatibilité internationale."
+        },
+        "step2": {
+          "title": "PRÉVISUALISEZ",
+          "body": "Voyez le QR code se générer en temps réel."
+        },
+        "step3": {
+          "title": "TÉLÉCHARGEZ",
+          "body": "Exportez en PNG, SVG ou PDF — parfait pour tout format d'impression."
+        },
+        "step4": {
+          "title": "AFFICHEZ-LE",
+          "body": "Imprimez sur cartes de visite, vitrines, covering véhicule, flyers ou affiches."
+        }
       },
       "faq": {
         "title": "QUESTIONS FRÉQUENTES",
@@ -1196,10 +1352,22 @@
       "guide": {
         "label": "Comment ça marche",
         "title": "CRÉEZ VOTRE QR CODE TEXTE",
-        "step1": { "title": "SAISISSEZ VOTRE TEXTE", "body": "Entrez n'importe quel texte : messages, codes, numéros de série, codes promo, poèmes — tout ce que vous voulez." },
-        "step2": { "title": "PRÉVISUALISEZ", "body": "Voyez le QR code se mettre à jour au fur et à mesure de votre saisie, caractère par caractère." },
-        "step3": { "title": "TÉLÉCHARGEZ", "body": "Exportez en PNG, SVG ou PDF." },
-        "step4": { "title": "UTILISEZ PARTOUT", "body": "Imprimez sur les emballages, cartes de vœux, chasses au trésor, étiquettes de musée, étiquettes produits." }
+        "step1": {
+          "title": "SAISISSEZ VOTRE TEXTE",
+          "body": "Entrez n'importe quel texte : messages, codes, numéros de série, codes promo, poèmes — tout ce que vous voulez."
+        },
+        "step2": {
+          "title": "PRÉVISUALISEZ",
+          "body": "Voyez le QR code se mettre à jour au fur et à mesure de votre saisie, caractère par caractère."
+        },
+        "step3": {
+          "title": "TÉLÉCHARGEZ",
+          "body": "Exportez en PNG, SVG ou PDF."
+        },
+        "step4": {
+          "title": "UTILISEZ PARTOUT",
+          "body": "Imprimez sur les emballages, cartes de vœux, chasses au trésor, étiquettes de musée, étiquettes produits."
+        }
       },
       "faq": {
         "title": "QUESTIONS FRÉQUENTES",
@@ -1232,10 +1400,22 @@
       "guide": {
         "label": "Comment ça marche",
         "title": "CRÉEZ VOTRE QR CODE DE TÉLÉCHARGEMENT D'APP",
-        "step1": { "title": "TROUVEZ LE LIEN DE VOTRE APP", "body": "Copiez l'URL depuis la page de listing de l'App Store ou du Google Play Store." },
-        "step2": { "title": "COLLEZ-LE", "body": "Entrez l'URL dans le formulaire ci-dessus. Fonctionne avec les liens App Store et Google Play." },
-        "step3": { "title": "TÉLÉCHARGEZ LE QR CODE", "body": "Exportez en PNG, SVG ou PDF pour un usage numérique ou imprimé." },
-        "step4": { "title": "PROMOUVEZ VOTRE APP", "body": "Imprimez sur des flyers, cartes de visite, emballages produits, affiches, ou affichez en magasin." }
+        "step1": {
+          "title": "TROUVEZ LE LIEN DE VOTRE APP",
+          "body": "Copiez l'URL depuis la page de listing de l'App Store ou du Google Play Store."
+        },
+        "step2": {
+          "title": "COLLEZ-LE",
+          "body": "Entrez l'URL dans le formulaire ci-dessus. Fonctionne avec les liens App Store et Google Play."
+        },
+        "step3": {
+          "title": "TÉLÉCHARGEZ LE QR CODE",
+          "body": "Exportez en PNG, SVG ou PDF pour un usage numérique ou imprimé."
+        },
+        "step4": {
+          "title": "PROMOUVEZ VOTRE APP",
+          "body": "Imprimez sur des flyers, cartes de visite, emballages produits, affiches, ou affichez en magasin."
+        }
       },
       "faq": {
         "title": "QUESTIONS FRÉQUENTES",
@@ -1288,5 +1468,23 @@
     "city_faq_a2": "Oui ! Créez un compte QRaft gratuit pour accéder aux analytics de scan : nombre de scans, types d'appareils, localisation géographique, et plus encore.",
     "city_faq_q3": "Quel type de QR code est le meilleur pour {vertical} à {city} ?",
     "city_faq_a3": "Cela dépend de votre usage. Les restaurants utilisent généralement des QR codes menu, les hôtels des QR codes WiFi, et les commerces des QR codes Avis Google. Explorez nos générateurs pour trouver le meilleur choix."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Guides, tutoriels et conseils pour tirer le meilleur parti de vos QR codes.",
+    "all": "Tous",
+    "tutorials": "Tutoriels",
+    "use_cases": "Cas d'usage",
+    "comparisons": "Comparatifs",
+    "read_more": "Lire l'article",
+    "reading_time": "{minutes} min de lecture",
+    "published_on": "Publié le {date}",
+    "related_articles": "Articles similaires",
+    "toc_title": "Sommaire",
+    "back_to_blog": "Retour au blog",
+    "cta_title": "PRÊT À CRÉER VOTRE QR CODE ?",
+    "cta_body": "Essayez notre générateur gratuit — aucune inscription requise.",
+    "cta_button": "Créer un QR code",
+    "no_articles": "Aucun article dans cette catégorie pour le moment."
   }
 }
