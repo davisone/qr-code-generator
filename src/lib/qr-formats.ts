@@ -8,7 +8,9 @@ export type QRType =
   | "sms"
   | "whatsapp"
   | "geo"
-  | "social";
+  | "social"
+  | "event"
+  | "crypto";
 
 export const QR_TYPE_LIST: { type: QRType; labelKey: string }[] = [
   { type: "url",       labelKey: "type_url" },
@@ -21,6 +23,8 @@ export const QR_TYPE_LIST: { type: QRType; labelKey: string }[] = [
   { type: "whatsapp",  labelKey: "type_whatsapp" },
   { type: "geo",       labelKey: "type_geo" },
   { type: "social",    labelKey: "type_social" },
+  { type: "event",     labelKey: "type_event" },
+  { type: "crypto",    labelKey: "type_crypto" },
 ];
 
 export function buildContent(type: QRType, fields: Record<string, string>): string {
@@ -86,6 +90,32 @@ export function buildContent(type: QRType, fields: Record<string, string>): stri
 
     case "social":
       return fields.url || "";
+
+    case "event": {
+      const lines = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//QRaft//EN",
+        "BEGIN:VEVENT",
+        `SUMMARY:${fields.title || ""}`,
+        `DTSTART:${fields.start || ""}`,
+        `DTEND:${fields.end || ""}`,
+        `LOCATION:${fields.location || ""}`,
+        `DESCRIPTION:${fields.description || ""}`,
+        "END:VEVENT",
+        "END:VCALENDAR",
+      ];
+      return lines.join("\r\n");
+    }
+
+    case "crypto": {
+      const address = fields.address || "";
+      const amount = fields.amount ? `?amount=${fields.amount}` : "";
+      const prefix =
+        fields.currency === "ETH" ? "ethereum" :
+        fields.currency === "LTC" ? "litecoin" : "bitcoin";
+      return `${prefix}:${address}${amount}`;
+    }
 
     default: {
       const _exhaustive: never = type;

@@ -652,5 +652,821 @@
     "top_devices": "Top dispositivi",
     "top_browsers": "Top browser",
     "evolution": "Andamento"
+  },
+  "seo_generator": {
+    "breadcrumb_home": "Home",
+    "breadcrumb_generators": "Generatori di QR Code",
+    "errors": {
+      "required": "Questo campo e obbligatorio"
+    },
+    "common": {
+      "badge_free": "100% Gratuito",
+      "preview_label": "Anteprima",
+      "download_png": "Scarica PNG",
+      "download_svg": "Scarica SVG",
+      "download_pdf": "Scarica PDF",
+      "cta_title": "PRONTO PER ANDARE OLTRE?",
+      "cta_body": "Crea un account gratuito per salvare, monitorare e gestire tutti i tuoi codici QR da un'unica dashboard.",
+      "cta_button": "Inizia gratis",
+      "faq_label": "Domande frequenti"
+    },
+    "wifi": {
+      "meta_title": "Generatore QR WiFi Gratuito — Condividi la Tua Rete Istantaneamente | QRaft",
+      "meta_description": "Genera un codice QR per la tua rete WiFi in pochi secondi. I visitatori scansionano e si connettono — senza digitare password. Gratuito, senza registrazione.",
+      "breadcrumb": "QR Code WiFi",
+      "kicker": "Generatore QR Code WiFi",
+      "title": "CONDIVIDI IL TUO WIFI CON UNA SCANSIONE.",
+      "subtitle": "Genera un codice QR che permette a chiunque di connettersi istantaneamente alla tua rete WiFi. Senza bisogno di dettare la password — basta scansionare.",
+      "empty_hint": "Inserisci il nome della tua rete per generare un codice QR",
+      "form": {
+        "title": "Dettagli WiFi",
+        "subtitle": "Inserisci le informazioni della tua rete",
+        "ssid": "Nome rete (SSID)",
+        "ssid_placeholder": "La_Mia_Rete_WiFi",
+        "security": "Tipo di sicurezza",
+        "security_open": "Aperta (senza password)",
+        "password": "Password",
+        "password_placeholder": "La tua password WiFi",
+        "hidden": "Rete nascosta",
+        "hidden_desc": "Seleziona se la tua rete non e visibile nella lista WiFi"
+      },
+      "guide": {
+        "label": "Come funziona",
+        "title": "CREA IL TUO QR CODE WIFI IN 4 PASSAGGI",
+        "step1": {
+          "title": "INSERISCI IL NOME DELLA RETE",
+          "body": "Digita l'SSID esatto della tua rete WiFi come appare sul tuo router."
+        },
+        "step2": {
+          "title": "SELEZIONA IL TIPO DI SICUREZZA",
+          "body": "Scegli WPA/WPA2 per reti moderne, WEP per quelle vecchie, o Aperta per hotspot pubblici."
+        },
+        "step3": {
+          "title": "AGGIUNGI LA PASSWORD",
+          "body": "Inserisci la password WiFi. Verra codificata direttamente nel codice QR."
+        },
+        "step4": {
+          "title": "SCARICA E STAMPA",
+          "body": "Scarica in PNG, SVG o PDF e mostralo all'ingresso, nella hall o alla reception."
+        }
+      },
+      "faq": {
+        "title": "DOMANDE FREQUENTI",
+        "q1": "Il QR Code WiFi e davvero gratuito?",
+        "a1": "Si, 100% gratuito senza registrazione. Genera e scarica quanti QR Code WiFi vuoi.",
+        "q2": "Il codice QR memorizza la mia password?",
+        "a2": "La password e codificata direttamente nell'immagine del QR. Non viene memorizzata su nessun server — tutto resta sul tuo dispositivo.",
+        "q3": "Funziona su iPhone e Android?",
+        "a3": "Si. Sia iOS (11+) che Android supportano nativamente i QR Code WiFi tramite l'app della fotocamera.",
+        "q4": "Posso usarlo nel mio ristorante o hotel?",
+        "a4": "Assolutamente. Stampa il QR su segnaposto, biglietti reception o cartelli murali per far connettere gli ospiti istantaneamente.",
+        "q5": "Cosa succede se cambio la password WiFi?",
+        "a5": "Dovrai generare un nuovo codice QR con la password aggiornata e sostituire la vecchia stampa."
+      }
+    },
+    "vcard": {
+      "meta_title": "Generatore QR vCard Gratuito — Biglietto da Visita Digitale | QRaft",
+      "meta_description": "Crea un codice QR per il tuo biglietto da visita (vCard). Scansiona per salvare nome, telefono, email, azienda. Gratuito, senza registrazione.",
+      "breadcrumb": "QR Code vCard",
+      "kicker": "Generatore QR Code vCard",
+      "title": "IL TUO BIGLIETTO DA VISITA, A UNA SCANSIONE.",
+      "subtitle": "Genera un codice QR che salva i tuoi contatti direttamente su qualsiasi telefono. Perfetto per networking, eventi e biglietti da visita.",
+      "empty_hint": "Inserisci il tuo nome per generare un QR contatto",
+      "form": {
+        "title": "Dettagli Contatto",
+        "subtitle": "Compila i campi che vuoi includere",
+        "fullname": "Nome completo",
+        "fullname_placeholder": "Mario Rossi",
+        "phone": "Numero di telefono",
+        "phone_placeholder": "+39 333 1234567",
+        "email": "Indirizzo email",
+        "email_placeholder": "mario@esempio.it",
+        "org": "Azienda / Organizzazione",
+        "org_placeholder": "Esempio S.r.l.",
+        "url": "Sito web",
+        "url_placeholder": "https://esempio.it",
+        "note": "Nota",
+        "note_placeholder": "Conosciuto al Web Summit 2026"
+      },
+      "guide": {
+        "label": "Come funziona",
+        "title": "CREA IL TUO BIGLIETTO DA VISITA DIGITALE",
+        "step1": {
+          "title": "INSERISCI I TUOI DATI",
+          "body": "Aggiungi nome, telefono, email, azienda e sito web. Solo il nome e obbligatorio."
+        },
+        "step2": {
+          "title": "ANTEPRIMA QR CODE",
+          "body": "Guarda il tuo codice QR aggiornarsi in tempo reale mentre compili ogni campo."
+        },
+        "step3": {
+          "title": "SCARICA",
+          "body": "Esporta in PNG, SVG o PDF — perfetto per stampare su biglietti da visita."
+        },
+        "step4": {
+          "title": "CONDIVIDI OVUNQUE",
+          "body": "Stampalo sul tuo biglietto, aggiungilo alla firma email o mostralo agli eventi."
+        }
+      },
+      "faq": {
+        "title": "DOMANDE FREQUENTI",
+        "q1": "Cos'e un QR Code vCard?",
+        "a1": "Un QR vCard codifica le tue informazioni di contatto (nome, telefono, email, ecc.) cosi chiunque puo salvarle direttamente nei contatti del telefono scansionando.",
+        "q2": "Funziona su tutti i telefoni?",
+        "a2": "Si. Tutti gli smartphone moderni (iOS e Android) supportano i QR Code vCard tramite l'app della fotocamera integrata.",
+        "q3": "Posso includere la mia foto?",
+        "a3": "Il QR vCard standard non include foto perche renderebbe il QR troppo complesso per una scansione affidabile. Con un account Pro puoi aggiungere un logo.",
+        "q4": "C'e un limite di caratteri?",
+        "a4": "I codici QR funzionano meglio sotto i 300 caratteri. Includi solo i campi di contatto essenziali per un'affidabilita di scansione ottimale.",
+        "q5": "Posso aggiornare i miei dati dopo la stampa?",
+        "a5": "I codici QR statici non possono essere modificati. Con un account Pro ottieni codici QR dinamici aggiornabili in qualsiasi momento."
+      }
+    },
+    "menu_restaurant": {
+      "meta_title": "Generatore QR Menu Ristorante Gratuito | QRaft",
+      "meta_description": "Crea un codice QR per il menu del tuo ristorante. Collega al menu digitale, PDF o sito web. I clienti scansionano e consultano — senza contatto. Gratuito.",
+      "breadcrumb": "QR Code Menu",
+      "kicker": "QR Code Menu Ristorante",
+      "title": "IL TUO MENU, ACCESSIBILE CON UNA SCANSIONE.",
+      "subtitle": "Crea un codice QR che collega direttamente al tuo menu digitale. Perfetto per ristoranti, bar, caffetterie e food truck.",
+      "empty_hint": "Inserisci l'URL del tuo menu per generare un codice QR",
+      "form": {
+        "title": "Dettagli Menu",
+        "subtitle": "Collega al tuo menu online",
+        "url": "URL del menu",
+        "url_placeholder": "https://mioristorante.it/menu",
+        "name": "Nome ristorante (opzionale)",
+        "name_placeholder": "Trattoria da Mario"
+      },
+      "guide": {
+        "label": "Come funziona",
+        "title": "CONFIGURA IL TUO QR CODE MENU",
+        "step1": {
+          "title": "METTI IL MENU ONLINE",
+          "body": "Carica il tuo menu come PDF o crea una pagina sul tuo sito web con il menu completo."
+        },
+        "step2": {
+          "title": "INCOLLA IL LINK",
+          "body": "Inserisci l'URL del tuo menu online nel modulo."
+        },
+        "step3": {
+          "title": "GENERA E SCARICA",
+          "body": "Scarica il codice QR in alta risoluzione in PNG, SVG o PDF."
+        },
+        "step4": {
+          "title": "STAMPA E MOSTRA",
+          "body": "Posiziona i codici QR sui tavoli, all'ingresso o sul packaging da asporto."
+        }
+      },
+      "faq": {
+        "title": "DOMANDE FREQUENTI",
+        "q1": "Perche usare un QR Code per il menu del ristorante?",
+        "a1": "E igienico (senza contatto), risparmia costi di stampa e ti permette di aggiornare il menu in qualsiasi momento senza ristampare.",
+        "q2": "I clienti hanno bisogno di un'app per scansionare?",
+        "a2": "No. Tutti gli smartphone moderni possono scansionare codici QR direttamente dall'app della fotocamera. Nessuna app speciale necessaria.",
+        "q3": "Posso collegare a un menu PDF?",
+        "a3": "Si. Carica il tuo PDF ovunque (Google Drive, il tuo sito) e usa quel link. Il codice QR lo aprira direttamente.",
+        "q4": "Cosa succede se cambio il menu?",
+        "a4": "Se mantieni lo stesso URL, aggiorna semplicemente il contenuto a quel link. Con un account Pro puoi anche cambiare l'URL di destinazione senza ristampare.",
+        "q5": "Posso tracciare quante persone lo scansionano?",
+        "a5": "Si! Crea un account QRaft gratuito per ottenere analisi delle scansioni: numero di scansioni, tipi di dispositivo, posizione e altro."
+      }
+    },
+    "google_reviews": {
+      "meta_title": "Generatore QR Recensioni Google Gratuito — Ottieni Piu Recensioni | QRaft",
+      "meta_description": "Crea un codice QR che collega direttamente alla tua pagina recensioni Google. Migliora le tue valutazioni con una scansione. Gratuito, senza registrazione.",
+      "breadcrumb": "QR Recensioni Google",
+      "kicker": "QR Code Recensioni Google",
+      "title": "MIGLIORA LE TUE RECENSIONI GOOGLE CON UNA SCANSIONE.",
+      "subtitle": "Genera un codice QR che porta i clienti direttamente alla tua pagina recensioni Google. Stampa, mostra e guarda le valutazioni salire.",
+      "empty_hint": "Inserisci l'URL delle tue Recensioni Google per generare un QR",
+      "form": {
+        "title": "Link Recensioni Google",
+        "subtitle": "Incolla il link delle recensioni Google Business",
+        "url": "URL Recensioni Google",
+        "url_placeholder": "https://g.page/r/...",
+        "help": "Trova il tuo link in Google Business Profile > Condividi > Chiedi recensioni"
+      },
+      "guide": {
+        "label": "Come funziona",
+        "title": "OTTIENI PIU RECENSIONI IN 4 PASSAGGI",
+        "step1": {
+          "title": "TROVA IL LINK RECENSIONI",
+          "body": "Apri Google Business Profile, clicca 'Chiedi recensioni' e copia il link."
+        },
+        "step2": {
+          "title": "INCOLLALO QUI",
+          "body": "Inserisci il link nel modulo per generare il tuo QR istantaneamente."
+        },
+        "step3": {
+          "title": "SCARICA E STAMPA",
+          "body": "Esporta in PNG, SVG o PDF. Stampa su scontrini, biglietti o espositori da banco."
+        },
+        "step4": {
+          "title": "RACCOGLI RECENSIONI",
+          "body": "I clienti scansionano, ti valutano su Google e la tua media sale."
+        }
+      },
+      "faq": {
+        "title": "DOMANDE FREQUENTI",
+        "q1": "Dove trovo il mio link Recensioni Google?",
+        "a1": "Accedi a Google Business Profile, vai alla Home, clicca 'Chiedi recensioni'. Copia il link che appare.",
+        "q2": "Il cliente ha bisogno di un account Google?",
+        "a2": "Si, i clienti hanno bisogno di un account Google per lasciare una recensione. Ma la maggior parte ne ha gia uno sul telefono.",
+        "q3": "Posso personalizzare il design del QR?",
+        "a3": "Con un account QRaft gratuito puoi cambiare colori, aggiungere il tuo logo e regolare il livello di correzione errori.",
+        "q4": "Quante recensioni in piu posso aspettarmi?",
+        "a4": "Le attivita che mostrano un QR Recensioni Google vedono tipicamente un aumento di 2-5x nel volume di recensioni nel primo mese.",
+        "q5": "Google lo permette?",
+        "a5": "Si. Google incoraggia le attivita a chiedere recensioni. Basta non offrire incentivi per recensioni positive — viola le loro linee guida."
+      }
+    },
+    "whatsapp": {
+      "meta_title": "Generatore QR WhatsApp Gratuito — Inizia Chat Istantaneamente | QRaft",
+      "meta_description": "Crea un codice QR che apre una chat WhatsApp con il tuo numero. Aggiungi un messaggio precompilato. Gratuito, senza registrazione.",
+      "breadcrumb": "QR Code WhatsApp",
+      "kicker": "Generatore QR Code WhatsApp",
+      "title": "INIZIA UNA CHAT WHATSAPP CON UNA SCANSIONE.",
+      "subtitle": "Genera un codice QR che apre una conversazione WhatsApp con il tuo numero. Perfetto per assistenza clienti, ordini e prenotazioni.",
+      "empty_hint": "Inserisci il tuo numero di telefono per generare un QR WhatsApp",
+      "form": {
+        "title": "Dettagli WhatsApp",
+        "subtitle": "Inserisci il tuo numero WhatsApp e messaggio opzionale",
+        "phone": "Numero di telefono (con prefisso internazionale)",
+        "phone_placeholder": "+39 333 1234567",
+        "message": "Messaggio precompilato (opzionale)",
+        "message_placeholder": "Ciao! Vorrei saperne di piu su..."
+      },
+      "guide": {
+        "label": "Come funziona",
+        "title": "CREA IL TUO QR CODE WHATSAPP",
+        "step1": {
+          "title": "INSERISCI IL TUO NUMERO",
+          "body": "Digita il numero completo con prefisso internazionale (es. +39 per Italia, +1 per USA)."
+        },
+        "step2": {
+          "title": "AGGIUNGI UN MESSAGGIO",
+          "body": "Opzionalmente imposta un messaggio precompilato che appare quando la chat si apre."
+        },
+        "step3": {
+          "title": "GENERA E SCARICA",
+          "body": "Scarica il tuo codice QR in formato PNG, SVG o PDF."
+        },
+        "step4": {
+          "title": "MOSTRA OVUNQUE",
+          "body": "Stampalo su volantini, confezioni, biglietti da visita o vetrine."
+        }
+      },
+      "faq": {
+        "title": "DOMANDE FREQUENTI",
+        "q1": "La persona deve avere WhatsApp installato?",
+        "a1": "Si. Il QR genera un link wa.me che apre l'app WhatsApp. Se non installata, reindirizza alla pagina di download.",
+        "q2": "Posso includere un messaggio precompilato?",
+        "a2": "Si. Imposta un messaggio predefinito nel modulo e apparira nell'input della chat quando il cliente scansiona.",
+        "q3": "Il mio numero sara visibile?",
+        "a3": "Il numero e codificato nel link del QR. Chiunque scansioni vedra il tuo numero in WhatsApp.",
+        "q4": "Posso usare un numero WhatsApp Business?",
+        "a4": "Assolutamente. Sia numeri normali che WhatsApp Business funzionano. Il formato del link e identico.",
+        "q5": "E gratuito?",
+        "a5": "Si, 100% gratuito. Genera quanti QR WhatsApp vuoi senza creare un account."
+      }
+    },
+    "email": {
+      "meta_title": "Generatore QR Email Gratuito — Link Mailto Precompilato | QRaft",
+      "meta_description": "Crea un codice QR che apre un'email con destinatario, oggetto e corpo precompilati. Gratuito, senza registrazione.",
+      "breadcrumb": "QR Code Email",
+      "kicker": "Generatore QR Code Email",
+      "title": "INVIA UN'EMAIL CON UNA SCANSIONE.",
+      "subtitle": "Genera un codice QR che apre l'app email con indirizzo, oggetto e messaggio precompilati. Ideale per feedback, supporto e contatto.",
+      "empty_hint": "Inserisci un indirizzo email per generare un codice QR",
+      "form": {
+        "title": "Dettagli Email",
+        "subtitle": "Imposta il destinatario e il contenuto opzionale",
+        "to": "Email destinatario",
+        "to_placeholder": "ciao@esempio.it",
+        "subject": "Oggetto (opzionale)",
+        "subject_placeholder": "Domanda sul vostro servizio",
+        "body": "Corpo del messaggio (opzionale)",
+        "body_placeholder": "Salve, vorrei..."
+      },
+      "guide": {
+        "label": "Come funziona",
+        "title": "CREA IL TUO QR CODE EMAIL",
+        "step1": {
+          "title": "INSERISCI L'EMAIL",
+          "body": "Digita l'indirizzo email del destinatario che deve ricevere il messaggio."
+        },
+        "step2": {
+          "title": "AGGIUNGI OGGETTO E CORPO",
+          "body": "Opzionalmente precompila la riga dell'oggetto e il corpo del messaggio."
+        },
+        "step3": {
+          "title": "GENERA IL QR CODE",
+          "body": "Il tuo codice QR viene creato istantaneamente. Anteprima in tempo reale."
+        },
+        "step4": {
+          "title": "CONDIVIDI",
+          "body": "Scarica e stampa su biglietti da visita, volantini, confezioni o poster."
+        }
+      },
+      "faq": {
+        "title": "DOMANDE FREQUENTI",
+        "q1": "Cosa succede quando qualcuno lo scansiona?",
+        "a1": "L'app email predefinita si apre con destinatario, oggetto e corpo gia compilati. Basta premere Invia.",
+        "q2": "Funziona con Gmail, Outlook, ecc.?",
+        "a2": "Si. Il QR usa il protocollo standard mailto: che funziona con qualsiasi client email.",
+        "q3": "Posso tracciare quante email vengono inviate?",
+        "a3": "Il QR apre l'app email dell'utente, quindi non possiamo tracciare gli invii. Con un account Pro puoi tracciare le scansioni.",
+        "q4": "L'indirizzo email e visibile nel QR?",
+        "a4": "L'email e codificata nei dati del QR. Non e visibile guardando il codice, ma qualsiasi lettore QR la decodifica.",
+        "q5": "Posso aggiungere CC o CCN?",
+        "a5": "Il formato mailto: standard supporta CC e CCN, ma per semplicita ci concentriamo sul destinatario principale. Puoi modificare manualmente l'URL generato."
+      }
+    },
+    "sms": {
+      "meta_title": "Generatore QR SMS Gratuito — Invia Messaggi Istantaneamente | QRaft",
+      "meta_description": "Crea un codice QR che apre un SMS con numero e messaggio precompilati. Perfetto per iscrizioni, supporto e contatto rapido. Gratuito.",
+      "breadcrumb": "QR Code SMS",
+      "kicker": "Generatore QR Code SMS",
+      "title": "INVIA UN SMS CON UNA SCANSIONE.",
+      "subtitle": "Genera un codice QR che apre l'app messaggi con numero e testo precompilati. Ottimo per iscrizioni, feedback e contatto rapido.",
+      "empty_hint": "Inserisci un numero di telefono per generare un QR SMS",
+      "form": {
+        "title": "Dettagli SMS",
+        "subtitle": "Imposta il numero destinatario e il messaggio",
+        "phone": "Numero di telefono",
+        "phone_placeholder": "+39 333 1234567",
+        "message": "Messaggio precompilato (opzionale)",
+        "message_placeholder": "ISCRIVITI per abbonarti"
+      },
+      "guide": {
+        "label": "Come funziona",
+        "title": "CREA IL TUO QR CODE SMS",
+        "step1": {
+          "title": "INSERISCI IL NUMERO",
+          "body": "Digita il numero di telefono che deve ricevere il messaggio."
+        },
+        "step2": {
+          "title": "AGGIUNGI UN MESSAGGIO",
+          "body": "Opzionalmente precompila un messaggio come 'ISCRIVITI' o 'INFO' per campagne di iscrizione."
+        },
+        "step3": {
+          "title": "GENERA E SCARICA",
+          "body": "Il tuo QR e pronto. Scarica in PNG, SVG o PDF."
+        },
+        "step4": {
+          "title": "STAMPA E MOSTRA",
+          "body": "Posiziona su poster, volantini, confezioni o segnaletica eventi."
+        }
+      },
+      "faq": {
+        "title": "DOMANDE FREQUENTI",
+        "q1": "Funziona su iPhone e Android?",
+        "a1": "Si. Entrambe le piattaforme supportano il protocollo sms: e aprono l'app messaggi nativa.",
+        "q2": "Il messaggio viene inviato automaticamente?",
+        "a2": "No. L'app messaggi si apre con il testo precompilato, ma l'utente deve toccare Invia manualmente.",
+        "q3": "Posso usarlo per iscrizioni SMS marketing?",
+        "a3": "Si. Imposta il messaggio su una parola chiave come 'ISCRIVITI' cosi i clienti possono abbonarsi alla tua lista SMS scansionando.",
+        "q4": "I numeri internazionali sono supportati?",
+        "a4": "Si. Includi il prefisso internazionale completo (es. +44 per UK, +33 per Francia) per garantire il funzionamento globale.",
+        "q5": "E gratuito generarlo?",
+        "a5": "Si, generare il QR e 100% gratuito. Le tariffe SMS standard dell'operatore si applicano all'invio."
+      }
+    },
+    "location": {
+      "meta_title": "Generatore QR Posizione Gratuito — Condividi Coordinate Mappa | QRaft",
+      "meta_description": "Crea un codice QR che apre Google Maps o Apple Maps in una posizione specifica. Perfetto per indicazioni. Gratuito, senza registrazione.",
+      "breadcrumb": "QR Code Posizione",
+      "kicker": "Generatore QR Code Posizione",
+      "title": "CONDIVIDI UNA POSIZIONE CON UNA SCANSIONE.",
+      "subtitle": "Genera un codice QR che apre una mappa alle tue coordinate esatte. Ideale per attivita, eventi, punti di incontro e parcheggi.",
+      "empty_hint": "Inserisci coordinate o un indirizzo per generare un QR posizione",
+      "form": {
+        "title": "Dettagli Posizione",
+        "subtitle": "Inserisci coordinate o nome del luogo",
+        "lat": "Latitudine",
+        "lat_placeholder": "41.9028",
+        "lng": "Longitudine",
+        "lng_placeholder": "12.4964",
+        "label": "Nome del luogo (opzionale)",
+        "label_placeholder": "Colosseo, Roma"
+      },
+      "guide": {
+        "label": "Come funziona",
+        "title": "CREA IL TUO QR CODE POSIZIONE",
+        "step1": {
+          "title": "INSERISCI LE COORDINATE",
+          "body": "Digita latitudine e longitudine, o trovale su Google Maps cliccando con il tasto destro su una posizione."
+        },
+        "step2": {
+          "title": "AGGIUNGI UN'ETICHETTA",
+          "body": "Opzionalmente aggiungi un nome del luogo per maggiore chiarezza quando la mappa si apre."
+        },
+        "step3": {
+          "title": "GENERA IL QR CODE",
+          "body": "Il tuo codice QR viene creato istantaneamente con anteprima live."
+        },
+        "step4": {
+          "title": "CONDIVIDI INDICAZIONI",
+          "body": "Stampa su inviti, biglietti da visita, biglietti eventi o segnaletica."
+        }
+      },
+      "faq": {
+        "title": "DOMANDE FREQUENTI",
+        "q1": "Quale app mappe si apre?",
+        "a1": "Il QR usa lo schema URI geo:. Su Android apre Google Maps. Su iOS apre Apple Maps per impostazione predefinita.",
+        "q2": "Come trovo le mie coordinate?",
+        "a2": "Apri Google Maps, clicca con il tasto destro sulla tua posizione e clicca sulle coordinate per copiarle.",
+        "q3": "Posso aggiungere un'etichetta al pin?",
+        "a3": "Si. Il campo etichetta aggiunge un parametro di query che mostra un pin con nome sulla mappa.",
+        "q4": "Funziona offline?",
+        "a4": "Il QR codifica le coordinate localmente, ma l'utente ha bisogno di una connessione internet per caricare la mappa.",
+        "q5": "Posso usare un indirizzo invece delle coordinate?",
+        "a5": "Per la massima precisione, usa le coordinate. Tuttavia, puoi usare il campo etichetta con un indirizzo completo e verra cercato."
+      }
+    },
+    "event": {
+      "meta_title": "Generatore QR Evento Gratuito — Invito Calendario con una Scansione | QRaft",
+      "meta_description": "Crea un codice QR che aggiunge un evento al calendario. Imposta titolo, data, ora, luogo. Scansiona per salvare. Gratuito, senza registrazione.",
+      "breadcrumb": "QR Code Evento",
+      "kicker": "Generatore QR Code Evento / Calendario",
+      "title": "AGGIUNGI UN EVENTO A QUALSIASI CALENDARIO CON UNA SCANSIONE.",
+      "subtitle": "Genera un codice QR che crea un evento calendario con titolo, data, ora e luogo. Perfetto per conferenze, matrimoni e incontri.",
+      "empty_hint": "Inserisci i dettagli dell'evento per generare un QR calendario",
+      "form": {
+        "title": "Dettagli Evento",
+        "subtitle": "Compila le informazioni dell'evento",
+        "event_title": "Titolo evento",
+        "event_title_placeholder": "Incontro Aziendale Annuale",
+        "start": "Data e ora inizio",
+        "end": "Data e ora fine",
+        "location_field": "Luogo",
+        "location_placeholder": "Via Roma 123, Milano",
+        "description": "Descrizione (opzionale)",
+        "description_placeholder": "Unisciti al nostro incontro aziendale annuale..."
+      },
+      "guide": {
+        "label": "Come funziona",
+        "title": "CREA IL TUO QR CODE EVENTO",
+        "step1": {
+          "title": "INSERISCI I DETTAGLI",
+          "body": "Aggiungi titolo, data/ora inizio e fine, luogo e descrizione."
+        },
+        "step2": {
+          "title": "ANTEPRIMA",
+          "body": "Guarda il QR aggiornarsi in tempo reale mentre compili il modulo."
+        },
+        "step3": {
+          "title": "SCARICA",
+          "body": "Esporta in PNG, SVG o PDF per uso digitale o stampa."
+        },
+        "step4": {
+          "title": "DISTRIBUISCI",
+          "body": "Stampa su poster eventi, biglietti, volantini o condividi sui social media."
+        }
+      },
+      "faq": {
+        "title": "DOMANDE FREQUENTI",
+        "q1": "Quali app calendario sono supportate?",
+        "a1": "Il QR genera un formato iCalendar (VCALENDAR) supportato da Google Calendar, Apple Calendar, Outlook e altri.",
+        "q2": "Posso includere un fuso orario?",
+        "a2": "L'evento usa l'ora locale. Per eventi internazionali, menziona il fuso orario nella descrizione.",
+        "q3": "I promemoria vengono impostati automaticamente?",
+        "a3": "La maggior parte delle app calendario aggiunge un promemoria predefinito quando importa un evento. Il momento esatto dipende dalle impostazioni dell'utente.",
+        "q4": "Posso aggiungere piu eventi in un QR?",
+        "a4": "Ogni QR codifica un evento. Per conferenze di piu giorni, crea un QR per sessione o giorno.",
+        "q5": "E gratuito?",
+        "a5": "Si, 100% gratuito. Nessun account necessario. Genera QR Code eventi illimitati."
+      }
+    },
+    "social_media": {
+      "meta_title": "Generatore QR Social Media Gratuito — Collega i Tuoi Profili | QRaft",
+      "meta_description": "Crea un codice QR per il tuo profilo Instagram, TikTok, LinkedIn, X, YouTube o Facebook. Una scansione, follow istantaneo. Gratuito.",
+      "breadcrumb": "QR Code Social Media",
+      "kicker": "Generatore QR Code Social Media",
+      "title": "AUMENTA I TUOI FOLLOWER CON UNA SCANSIONE.",
+      "subtitle": "Genera un codice QR che collega direttamente al tuo profilo social. Perfetto per biglietti da visita, merchandising, eventi e vetrine.",
+      "empty_hint": "Inserisci l'URL del tuo profilo social",
+      "form": {
+        "title": "Profilo Social",
+        "subtitle": "Incolla l'URL del profilo che vuoi collegare",
+        "url": "URL del profilo",
+        "url_placeholder": "https://instagram.com/tuohandle",
+        "platform": "Piattaforma (rilevata automaticamente)"
+      },
+      "guide": {
+        "label": "Come funziona",
+        "title": "CREA IL TUO QR CODE SOCIAL MEDIA",
+        "step1": {
+          "title": "COPIA L'URL DEL PROFILO",
+          "body": "Vai al tuo profilo su Instagram, TikTok, LinkedIn, X, YouTube o Facebook e copia l'URL."
+        },
+        "step2": {
+          "title": "INCOLLALO QUI",
+          "body": "Inserisci l'URL nel modulo. Rileviamo automaticamente la piattaforma."
+        },
+        "step3": {
+          "title": "PERSONALIZZA E SCARICA",
+          "body": "Scarica il tuo codice QR in formato PNG, SVG o PDF."
+        },
+        "step4": {
+          "title": "CONDIVIDI OVUNQUE",
+          "body": "Stampa su biglietti da visita, confezioni, merchandising, menu, poster."
+        }
+      },
+      "faq": {
+        "title": "DOMANDE FREQUENTI",
+        "q1": "Quali piattaforme sono supportate?",
+        "a1": "Qualsiasi piattaforma con URL profilo pubblico: Instagram, TikTok, LinkedIn, X (Twitter), YouTube, Facebook, Snapchat, Pinterest, ecc.",
+        "q2": "Apre l'app o il sito web?",
+        "a2": "Se l'app social e installata, di solito apre direttamente l'app. Altrimenti apre il sito mobile.",
+        "q3": "Posso collegare a piu profili?",
+        "a3": "Ogni QR collega a un profilo. Per piu profili, crea un account QRaft gratuito e usa una pagina bio link (in arrivo).",
+        "q4": "Posso tracciare quante persone lo scansionano?",
+        "a4": "Si! Crea un account QRaft gratuito per ottenere analisi dettagliate: conteggio, dispositivo, posizione e altro.",
+        "q5": "E gratuito?",
+        "a5": "Si. Genera QR social media illimitati senza registrazione e senza filigrana."
+      }
+    },
+    "pdf": {
+      "meta_title": "Generatore QR PDF Gratuito — Collega a Qualsiasi Documento | QRaft",
+      "meta_description": "Crea un codice QR che apre un documento PDF. Collega a menu, brochure, manuali, listini prezzi. Scansiona per vedere. Gratuito.",
+      "breadcrumb": "QR Code PDF",
+      "kicker": "Generatore QR Code PDF",
+      "title": "APRI UN PDF CON UNA SCANSIONE.",
+      "subtitle": "Genera un codice QR che collega direttamente al tuo documento PDF. Perfetto per menu, brochure, manuali e listini prezzi.",
+      "empty_hint": "Inserisci l'URL del tuo PDF per generare un codice QR",
+      "form": {
+        "title": "Link PDF",
+        "subtitle": "Incolla l'URL dove e ospitato il tuo PDF",
+        "url": "URL PDF",
+        "url_placeholder": "https://esempio.it/brochure.pdf"
+      },
+      "guide": {
+        "label": "Come funziona",
+        "title": "CREA IL TUO QR CODE PDF",
+        "step1": {
+          "title": "CARICA IL TUO PDF",
+          "body": "Ospita il tuo PDF su Google Drive, Dropbox, il tuo sito web o qualsiasi URL pubblica."
+        },
+        "step2": {
+          "title": "INCOLLA IL LINK",
+          "body": "Copia il link diretto al tuo PDF e incollalo nel modulo."
+        },
+        "step3": {
+          "title": "GENERA IL QR CODE",
+          "body": "Il tuo codice QR viene creato istantaneamente con anteprima live."
+        },
+        "step4": {
+          "title": "STAMPA E DISTRIBUISCI",
+          "body": "Posiziona su confezioni, brochure, poster, biglietti da visita."
+        }
+      },
+      "faq": {
+        "title": "DOMANDE FREQUENTI",
+        "q1": "Dove devo ospitare il mio PDF?",
+        "a1": "Ovunque con URL pubblica: Google Drive (condivisione 'Chiunque abbia il link'), Dropbox, il tuo sito web, ecc.",
+        "q2": "Funziona su tutti i dispositivi?",
+        "a2": "Si. Tutti gli smartphone moderni possono aprire file PDF direttamente nel browser o in un'app visualizzatore PDF.",
+        "q3": "Posso aggiornare il PDF in seguito?",
+        "a3": "Se mantieni lo stesso URL e sostituisci il file, il QR colleghera sempre alla versione piu recente.",
+        "q4": "C'e un limite di dimensione del file?",
+        "a4": "Il QR contiene solo l'URL, non il file stesso. Non c'e limite di dimensione — dipende dal tuo hosting.",
+        "q5": "Posso proteggere il PDF con password?",
+        "a5": "Il QR collega all'URL. Se il tuo servizio di hosting supporta la protezione con password, puoi usare quella funzione indipendentemente."
+      }
+    },
+    "crypto": {
+      "meta_title": "Generatore QR Bitcoin e Crypto Gratuito | QRaft",
+      "meta_description": "Crea un codice QR per pagamenti Bitcoin, Ethereum o Litecoin. Codifica indirizzo wallet e importo. Gratuito, senza registrazione.",
+      "breadcrumb": "QR Code Crypto",
+      "kicker": "Generatore QR Code Pagamenti Crypto",
+      "title": "ACCETTA PAGAMENTI CRYPTO CON UNA SCANSIONE.",
+      "subtitle": "Genera un codice QR per Bitcoin, Ethereum o Litecoin. Codifica il tuo indirizzo wallet e un importo opzionale per pagamenti istantanei.",
+      "empty_hint": "Inserisci un indirizzo wallet per generare un QR crypto",
+      "form": {
+        "title": "Dettagli Crypto",
+        "subtitle": "Seleziona la valuta e inserisci l'indirizzo wallet",
+        "currency": "Criptovaluta",
+        "address": "Indirizzo wallet",
+        "address_placeholder": "bc1qxy2kgdygjrsqtzq2n0yrf...",
+        "amount": "Importo (opzionale)",
+        "amount_placeholder": "0.001"
+      },
+      "guide": {
+        "label": "Come funziona",
+        "title": "CREA IL TUO QR CODE CRYPTO",
+        "step1": {
+          "title": "SELEZIONA LA VALUTA",
+          "body": "Scegli Bitcoin (BTC), Ethereum (ETH) o Litecoin (LTC)."
+        },
+        "step2": {
+          "title": "INSERISCI L'INDIRIZZO",
+          "body": "Incolla il tuo indirizzo wallet. Verificalo bene — le transazioni sono irreversibili."
+        },
+        "step3": {
+          "title": "IMPOSTA L'IMPORTO",
+          "body": "Opzionalmente imposta un importo di pagamento che verra precompilato nel wallet del mittente."
+        },
+        "step4": {
+          "title": "SCARICA E MOSTRA",
+          "body": "Stampa su fatture, pagine donazione, display punto vendita o il tuo sito web."
+        }
+      },
+      "faq": {
+        "title": "DOMANDE FREQUENTI",
+        "q1": "Quali criptovalute sono supportate?",
+        "a1": "Bitcoin (BTC), Ethereum (ETH) e Litecoin (LTC). Usiamo lo schema URI standard per ciascuna (BIP21 per BTC).",
+        "q2": "L'importo e obbligatorio?",
+        "a2": "No. L'importo e opzionale. Se omesso, il mittente puo inserire qualsiasi importo nella sua app wallet.",
+        "q3": "Funziona con tutti i wallet?",
+        "a3": "Si. Qualsiasi wallet che supporta lo schema URI standard (bitcoin:, ethereum:, litecoin:) riconoscera il codice QR.",
+        "q4": "E sicuro?",
+        "a4": "Il QR contiene solo il tuo indirizzo wallet pubblico. Non contiene mai chiavi private o dati sensibili.",
+        "q5": "Posso usarlo per donazioni?",
+        "a5": "Si. Mostra il QR sul tuo sito web, in livestream o stampalo per donazioni di persona."
+      }
+    },
+    "phone": {
+      "meta_title": "Generatore QR Telefono Gratuito — Chiama con una Scansione | QRaft",
+      "meta_description": "Crea un codice QR che chiama un numero di telefono istantaneamente. Perfetto per biglietti da visita, poster e assistenza clienti. Gratuito.",
+      "breadcrumb": "QR Code Telefono",
+      "kicker": "Generatore QR Code Chiamata",
+      "title": "FAI UNA CHIAMATA CON UNA SCANSIONE.",
+      "subtitle": "Genera un codice QR che apre il dialer con il tuo numero precompilato. Ideale per biglietti da visita, linee di supporto e segnaletica.",
+      "empty_hint": "Inserisci un numero di telefono per generare un QR chiamata",
+      "form": {
+        "title": "Numero di Telefono",
+        "subtitle": "Inserisci il numero da chiamare",
+        "phone": "Numero di telefono",
+        "phone_placeholder": "+39 333 1234567"
+      },
+      "guide": {
+        "label": "Come funziona",
+        "title": "CREA IL TUO QR CODE TELEFONO",
+        "step1": {
+          "title": "INSERISCI IL NUMERO",
+          "body": "Digita il numero completo con prefisso internazionale per compatibilita internazionale."
+        },
+        "step2": {
+          "title": "ANTEPRIMA",
+          "body": "Guarda il QR generarsi in tempo reale."
+        },
+        "step3": {
+          "title": "SCARICA",
+          "body": "Esporta in PNG, SVG o PDF — perfetto per qualsiasi formato di stampa."
+        },
+        "step4": {
+          "title": "MOSTRA",
+          "body": "Stampa su biglietti da visita, vetrine, veicoli, volantini o poster."
+        }
+      },
+      "faq": {
+        "title": "DOMANDE FREQUENTI",
+        "q1": "Chiamera immediatamente quando scansionato?",
+        "a1": "No. Il dialer si apre con il numero precompilato. L'utente deve toccare il pulsante di chiamata per avviare la chiamata.",
+        "q2": "Funziona con i numeri fissi?",
+        "a2": "Si. Qualsiasi numero di telefono valido funziona — mobile, fisso, gratuito, internazionale.",
+        "q3": "Devo includere il prefisso internazionale?",
+        "a3": "Si. Includi sempre il prefisso internazionale (es. +39, +1, +44) per assicurare che il QR funzioni internazionalmente.",
+        "q4": "Posso usarlo per chiamate WhatsApp?",
+        "a4": "No. Questo apre il dialer standard. Per WhatsApp, usa il nostro generatore QR WhatsApp dedicato.",
+        "q5": "E gratuito?",
+        "a5": "Si, 100% gratuito senza limiti. Genera quanti QR telefono vuoi."
+      }
+    },
+    "text": {
+      "meta_title": "Generatore QR Testo Gratuito — Codifica Qualsiasi Messaggio | QRaft",
+      "meta_description": "Crea un codice QR contenente testo semplice. Codifica messaggi, note, numeri di serie o qualsiasi testo. Gratuito, senza registrazione.",
+      "breadcrumb": "QR Code Testo",
+      "kicker": "Generatore QR Code Testo Semplice",
+      "title": "CODIFICA QUALSIASI TESTO IN UN QR CODE.",
+      "subtitle": "Genera un codice QR che mostra testo semplice quando scansionato. Perfetto per messaggi, numeri di serie, coupon e note.",
+      "empty_hint": "Digita il tuo testo per generare un codice QR",
+      "form": {
+        "title": "Il Tuo Testo",
+        "subtitle": "Inserisci il testo da codificare nel QR",
+        "text": "Contenuto testo",
+        "text_placeholder": "Inserisci il tuo messaggio qui..."
+      },
+      "guide": {
+        "label": "Come funziona",
+        "title": "CREA IL TUO QR CODE TESTO",
+        "step1": {
+          "title": "DIGITA IL TESTO",
+          "body": "Inserisci qualsiasi testo: messaggi, codici, numeri di serie, coupon, poesie — qualsiasi cosa."
+        },
+        "step2": {
+          "title": "ANTEPRIMA",
+          "body": "Guarda il QR aggiornarsi carattere per carattere mentre digiti."
+        },
+        "step3": {
+          "title": "SCARICA",
+          "body": "Esporta in formato PNG, SVG o PDF."
+        },
+        "step4": {
+          "title": "USA OVUNQUE",
+          "body": "Stampa su confezioni, biglietti d'auguri, cacce al tesoro, etichette museo, etichette prodotto."
+        }
+      },
+      "faq": {
+        "title": "DOMANDE FREQUENTI",
+        "q1": "Quanto testo puo contenere un QR?",
+        "a1": "Fino a circa 4.296 caratteri, ma per una scansione affidabile, mantienilo sotto i 300. Piu corto e meglio.",
+        "q2": "Il testo puo includere caratteri speciali?",
+        "a2": "Si. I codici QR supportano l'intero set di caratteri UTF-8: accenti, simboli, emoji, caratteri CJK.",
+        "q3": "Cosa succede quando qualcuno lo scansiona?",
+        "a3": "Il testo viene mostrato sullo schermo. Se contiene un URL, la maggior parte degli scanner offre di aprirlo. Il testo semplice viene solo mostrato.",
+        "q4": "Posso usarlo per codici sconto?",
+        "a4": "Assolutamente. Codifica codici sconto, codici promozionali o numeri di serie che il tuo POS puo scansionare e validare.",
+        "q5": "Qual e la differenza tra QR testo e URL?",
+        "a5": "Un QR URL apre automaticamente il link. Un QR testo mostra solo il contenuto. Usa QR testo per dati non-URL."
+      }
+    },
+    "app_store": {
+      "meta_title": "Generatore QR App Store Gratuito — Scarica App Istantaneamente | QRaft",
+      "meta_description": "Crea un codice QR che collega alla tua app su App Store o Google Play. Una scansione per scaricare. Gratuito, senza registrazione.",
+      "breadcrumb": "QR Code App Store",
+      "kicker": "Generatore QR Code Download App",
+      "title": "AUMENTA I DOWNLOAD DELLA TUA APP CON UNA SCANSIONE.",
+      "subtitle": "Genera un codice QR che collega direttamente alla tua app su App Store o Google Play. Perfetto per marketing, packaging ed eventi.",
+      "empty_hint": "Inserisci l'URL dell'app store per generare un QR download",
+      "form": {
+        "title": "Link App",
+        "subtitle": "Incolla il link alla scheda della tua app",
+        "url": "URL App Store o Google Play",
+        "url_placeholder": "https://apps.apple.com/app/..."
+      },
+      "guide": {
+        "label": "Come funziona",
+        "title": "CREA IL TUO QR CODE DOWNLOAD APP",
+        "step1": {
+          "title": "TROVA IL LINK DELLA TUA APP",
+          "body": "Copia l'URL dalla pagina della tua app su App Store o Google Play."
+        },
+        "step2": {
+          "title": "INCOLLALO",
+          "body": "Inserisci l'URL nel modulo. Funziona con link App Store e Google Play."
+        },
+        "step3": {
+          "title": "SCARICA IL QR CODE",
+          "body": "Esporta in PNG, SVG o PDF per uso digitale o stampa."
+        },
+        "step4": {
+          "title": "PROMUOVI LA TUA APP",
+          "body": "Stampa su volantini, biglietti da visita, confezioni, poster o mostra in negozio."
+        }
+      },
+      "faq": {
+        "title": "DOMANDE FREQUENTI",
+        "q1": "Posso collegare sia ad App Store che Google Play?",
+        "a1": "Ogni QR collega a un URL. Per multipiattaforma, considera l'uso di un servizio smart link o crea due QR affiancati.",
+        "q2": "Apre l'app dello store?",
+        "a2": "Si. Su iOS, il link App Store apre l'app App Store. Su Android, il link Google Play apre il Play Store.",
+        "q3": "Posso tracciare i download?",
+        "a3": "Il QR traccia le scansioni (con account QRaft). Il tracciamento dei download effettivi avviene tramite le analisi dello store.",
+        "q4": "E per gli utenti desktop?",
+        "a4": "I link funzionano anche nei browser desktop, mostrando la pagina dello store dove gli utenti possono inviare l'app al telefono.",
+        "q5": "E davvero gratuito?",
+        "a5": "Si. Senza registrazione, senza filigrana, senza limiti. Genera QR download app gratuitamente."
+      }
+    }
+  },
+  "programmatic": {
+    "breadcrumb_home": "Home",
+    "breadcrumb_qr_code": "Codice QR",
+    "hub_label": "Codici QR per settore",
+    "hub_title": "IL CODICE QR GIUSTO PER OGNI ATTIVITÀ.",
+    "hub_subtitle": "Esplora soluzioni QR code per settore. Trova il generatore perfetto per il tuo ristorante, negozio, evento, hotel o attività.",
+    "cities_count": "città",
+    "vertical_restaurant": "Ristorante",
+    "vertical_retail": "Negozio",
+    "vertical_event": "Evento",
+    "vertical_real_estate": "Immobiliare",
+    "vertical_hotel": "Hotel",
+    "vertical_museum": "Museo",
+    "vertical_salon": "Salone di Bellezza",
+    "vertical_gym": "Palestra e Fitness",
+    "vertical_title": "CODICE QR PER {vertical}",
+    "vertical_subtitle": "Crea codici QR gratuiti per attività di {vertical}. Scegli la tua città qui sotto.",
+    "city_title": "CODICE QR PER {vertical} A {city}",
+    "city_subtitle": "Genera codici QR gratuiti e personalizzabili per la tua attività di {vertical} a {city}. Statistiche scansioni incluse — senza registrazione.",
+    "city_cta": "Crea il tuo codice QR",
+    "why_title": "Perché {vertical} a {city} hanno bisogno di codici QR",
+    "why_body_1": "I codici QR sono diventati essenziali per le attività di {vertical} a {city}. Consentono menu contactless, indicazioni immediate, recensioni facili e interazione fluida con i clienti.",
+    "why_body_2": "Con QRaft puoi creare codici QR professionali in pochi secondi, personalizzare colori e logo e tracciare ogni scansione con analisi dettagliate. Completamente gratuito, senza account.",
+    "how_title": "Come creare il tuo codice QR",
+    "how_step_1": "Scegli il tipo di codice QR (menu, WiFi, contatto, posizione, ecc.)",
+    "how_step_2": "Inserisci il contenuto — URL, password WiFi, numero di telefono o altri dati",
+    "how_step_3": "Personalizza il design: colori, logo, livello di correzione errori",
+    "how_step_4": "Scarica in PNG, SVG o PDF e inizia ad usarlo subito",
+    "other_cities_title": "Codice QR per {vertical} in altre città",
+    "other_verticals_title": "Codici QR per altri settori a {city}",
+    "city_faq_q1": "Il generatore di codici QR per {vertical} a {city} è davvero gratuito?",
+    "city_faq_a1": "Sì, 100% gratuito. Genera codici QR illimitati senza creare un account. Esporta in PNG, SVG o PDF.",
+    "city_faq_q2": "Posso tracciare quante persone scansionano il mio codice QR {vertical} a {city}?",
+    "city_faq_a2": "Sì! Crea un account QRaft gratuito per le statistiche: numero di scansioni, tipi di dispositivo, posizione e altro.",
+    "city_faq_q3": "Quale tipo di codice QR è migliore per {vertical} a {city}?",
+    "city_faq_a3": "Dipende dal tuo caso. I ristoranti usano tipicamente QR menu, gli hotel QR WiFi, e i negozi QR recensioni Google. Esplora i nostri generatori per trovare il più adatto."
   }
 }

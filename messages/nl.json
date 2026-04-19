@@ -652,5 +652,821 @@
     "top_devices": "Top apparaten",
     "top_browsers": "Top browsers",
     "evolution": "Evolutie"
+  },
+  "seo_generator": {
+    "breadcrumb_home": "Home",
+    "breadcrumb_generators": "QR Code Generators",
+    "errors": {
+      "required": "Dit veld is verplicht"
+    },
+    "common": {
+      "badge_free": "100% Gratis",
+      "preview_label": "Voorbeeld",
+      "download_png": "Download PNG",
+      "download_svg": "Download SVG",
+      "download_pdf": "Download PDF",
+      "cta_title": "KLAAR OM VERDER TE GAAN?",
+      "cta_body": "Maak een gratis account aan om al je QR-codes op te slaan, te volgen en te beheren vanuit één dashboard.",
+      "cta_button": "Gratis beginnen",
+      "faq_label": "Veelgestelde vragen"
+    },
+    "wifi": {
+      "meta_title": "Gratis WiFi QR Code Generator — Deel Je Netwerk Direct | QRaft",
+      "meta_description": "Genereer een QR-code voor je WiFi-netwerk in seconden. Bezoekers scannen en maken verbinding — geen wachtwoord intypen. Gratis, zonder registratie.",
+      "breadcrumb": "WiFi QR Code",
+      "kicker": "WiFi QR Code Generator",
+      "title": "DEEL JE WIFI MET ÉÉN SCAN.",
+      "subtitle": "Genereer een QR-code waarmee iedereen direct verbinding maakt met je WiFi-netwerk. Geen wachtwoord opnoemen — gewoon scannen en verbinden.",
+      "empty_hint": "Voer je netwerknaam in om een QR-code te genereren",
+      "form": {
+        "title": "WiFi-gegevens",
+        "subtitle": "Voer je netwerkinformatie in",
+        "ssid": "Netwerknaam (SSID)",
+        "ssid_placeholder": "Mijn_WiFi_Netwerk",
+        "security": "Beveiligingstype",
+        "security_open": "Open (geen wachtwoord)",
+        "password": "Wachtwoord",
+        "password_placeholder": "Je WiFi-wachtwoord",
+        "hidden": "Verborgen netwerk",
+        "hidden_desc": "Vink aan als je netwerk niet zichtbaar is in de WiFi-lijst"
+      },
+      "guide": {
+        "label": "Hoe het werkt",
+        "title": "MAAK JE WIFI QR CODE IN 4 STAPPEN",
+        "step1": {
+          "title": "VOER JE NETWERKNAAM IN",
+          "body": "Typ de exacte SSID van je WiFi-netwerk zoals deze op je router verschijnt."
+        },
+        "step2": {
+          "title": "SELECTEER HET BEVEILIGINGSTYPE",
+          "body": "Kies WPA/WPA2 voor moderne netwerken, WEP voor oudere, of Open voor openbare hotspots."
+        },
+        "step3": {
+          "title": "VOEG HET WACHTWOORD TOE",
+          "body": "Voer het WiFi-wachtwoord in. Het wordt direct in de QR-code gecodeerd."
+        },
+        "step4": {
+          "title": "DOWNLOAD EN PRINT",
+          "body": "Download als PNG, SVG of PDF en hang het op bij de ingang, lobby of receptie."
+        }
+      },
+      "faq": {
+        "title": "VEELGESTELDE VRAGEN",
+        "q1": "Is de WiFi QR-code echt gratis?",
+        "a1": "Ja, 100% gratis zonder registratie. Genereer en download zoveel WiFi QR-codes als je wilt.",
+        "q2": "Slaat de QR-code mijn wachtwoord op?",
+        "a2": "Het wachtwoord wordt direct in de QR-code afbeelding gecodeerd. Het wordt niet opgeslagen op een server — alles blijft op je apparaat.",
+        "q3": "Werkt het op iPhone en Android?",
+        "a3": "Ja. Zowel iOS (11+) als Android ondersteunen WiFi QR-codes native via de camera-app.",
+        "q4": "Kan ik het gebruiken voor mijn restaurant of hotel?",
+        "a4": "Absoluut. Print de QR-code op tafelkaarten, receptiekaarten of wandborden zodat gasten direct verbinding maken.",
+        "q5": "Wat als ik mijn WiFi-wachtwoord verander?",
+        "a5": "Je moet een nieuwe QR-code genereren met het bijgewerkte wachtwoord en de oude afdruk vervangen."
+      }
+    },
+    "vcard": {
+      "meta_title": "Gratis vCard QR Code Generator — Digitaal Visitekaartje | QRaft",
+      "meta_description": "Maak een QR-code voor je contactkaart (vCard). Scan om naam, telefoon, e-mail, bedrijf op te slaan. Gratis, zonder registratie.",
+      "breadcrumb": "vCard QR Code",
+      "kicker": "vCard QR Code Generator",
+      "title": "JE VISITEKAARTJE, ÉÉN SCAN VERWIJDERD.",
+      "subtitle": "Genereer een QR-code die je contactgegevens direct opslaat in elke telefoon. Perfect voor netwerken, evenementen en visitekaartjes.",
+      "empty_hint": "Voer je naam in om een contact-QR-code te genereren",
+      "form": {
+        "title": "Contactgegevens",
+        "subtitle": "Vul de velden in die je wilt opnemen",
+        "fullname": "Volledige naam",
+        "fullname_placeholder": "Jan de Vries",
+        "phone": "Telefoonnummer",
+        "phone_placeholder": "+31 6 12345678",
+        "email": "E-mailadres",
+        "email_placeholder": "jan@voorbeeld.nl",
+        "org": "Bedrijf / Organisatie",
+        "org_placeholder": "Bedrijf B.V.",
+        "url": "Website",
+        "url_placeholder": "https://voorbeeld.nl",
+        "note": "Notitie",
+        "note_placeholder": "Ontmoet op Web Summit 2026"
+      },
+      "guide": {
+        "label": "Hoe het werkt",
+        "title": "MAAK JE DIGITALE VISITEKAARTJE",
+        "step1": {
+          "title": "VOER JE GEGEVENS IN",
+          "body": "Voeg je naam, telefoon, e-mail, bedrijf en website toe. Alleen de naam is verplicht."
+        },
+        "step2": {
+          "title": "BEKIJK DE QR CODE",
+          "body": "Zie je QR-code in realtime bijwerken terwijl je elk veld invult."
+        },
+        "step3": {
+          "title": "DOWNLOAD HET",
+          "body": "Exporteer als PNG, SVG of PDF — perfect om te printen op visitekaartjes."
+        },
+        "step4": {
+          "title": "DEEL OVERAL",
+          "body": "Print het op je kaartje, voeg het toe aan je e-mailhandtekening of toon het op evenementen."
+        }
+      },
+      "faq": {
+        "title": "VEELGESTELDE VRAGEN",
+        "q1": "Wat is een vCard QR-code?",
+        "a1": "Een vCard QR-code codeert je contactgegevens (naam, telefoon, e-mail, etc.) zodat iedereen ze direct in de telefooncontacten kan opslaan door te scannen.",
+        "q2": "Werkt het op alle telefoons?",
+        "a2": "Ja. Alle moderne smartphones (iOS en Android) ondersteunen vCard QR-codes via de ingebouwde camera-app.",
+        "q3": "Kan ik mijn foto opnemen?",
+        "a3": "De standaard vCard QR-code bevat geen foto's omdat dit de QR te complex zou maken om betrouwbaar te scannen. Gebruik een Pro-account om een logo toe te voegen.",
+        "q4": "Is er een tekenlimiet?",
+        "a4": "QR-codes werken het best onder de 300 tekens. Neem alleen essentiële contactvelden op voor optimale scanbetrouwbaarheid.",
+        "q5": "Kan ik mijn gegevens bijwerken na het printen?",
+        "a5": "Statische QR-codes kunnen niet worden gewijzigd. Met een Pro-account krijg je dynamische QR-codes die op elk moment bijgewerkt kunnen worden."
+      }
+    },
+    "menu_restaurant": {
+      "meta_title": "Gratis Restaurant Menu QR Code Generator | QRaft",
+      "meta_description": "Maak een QR-code voor je restaurantmenu. Link naar je digitale menu, PDF of website. Klanten scannen en bladeren — contactloos. Gratis.",
+      "breadcrumb": "Menu QR Code",
+      "kicker": "Restaurant Menu QR Code",
+      "title": "JE MENU, TOEGANKELIJK MET ÉÉN SCAN.",
+      "subtitle": "Maak een QR-code die direct linkt naar je digitale menu. Perfect voor restaurants, cafés, bars en foodtrucks.",
+      "empty_hint": "Voer de URL van je menu in om een QR-code te genereren",
+      "form": {
+        "title": "Menugegevens",
+        "subtitle": "Link naar je online menu",
+        "url": "Menu-URL",
+        "url_placeholder": "https://mijnrestaurant.nl/menu",
+        "name": "Restaurantnaam (optioneel)",
+        "name_placeholder": "Bij Marcel"
+      },
+      "guide": {
+        "label": "Hoe het werkt",
+        "title": "STEL JE MENU QR CODE IN",
+        "step1": {
+          "title": "ZET JE MENU ONLINE",
+          "body": "Upload je menu als PDF of maak een pagina op je website met het volledige menu."
+        },
+        "step2": {
+          "title": "PLAK DE LINK",
+          "body": "Voer de URL van je online menu in het formulier hierboven in."
+        },
+        "step3": {
+          "title": "GENEREER EN DOWNLOAD",
+          "body": "Download de QR-code als PNG, SVG of PDF in hoge resolutie."
+        },
+        "step4": {
+          "title": "PRINT EN TOON",
+          "body": "Plaats QR-codes op tafels, bij de ingang of op afhaolverpakkingen."
+        }
+      },
+      "faq": {
+        "title": "VEELGESTELDE VRAGEN",
+        "q1": "Waarom een QR-code voor mijn restaurantmenu?",
+        "a1": "Het is hygiënisch (contactloos), bespaart drukkosten en laat je het menu op elk moment bijwerken zonder opnieuw te printen.",
+        "q2": "Hebben klanten een app nodig om te scannen?",
+        "a2": "Nee. Alle moderne smartphones kunnen QR-codes direct scannen via de camera-app. Geen speciale app nodig.",
+        "q3": "Kan ik linken naar een PDF-menu?",
+        "a3": "Ja. Upload je PDF ergens (Google Drive, je website) en gebruik die link. De QR-code opent het direct.",
+        "q4": "Wat als ik mijn menu wijzig?",
+        "a4": "Als je dezelfde URL behoudt, werk je gewoon de inhoud op die link bij. Met een Pro-account kun je ook de bestemmings-URL wijzigen zonder opnieuw te printen.",
+        "q5": "Kan ik bijhouden hoeveel mensen scannen?",
+        "a5": "Ja! Maak een gratis QRaft-account aan voor scananalyses: aantal scans, apparaattypen, locatie en meer."
+      }
+    },
+    "google_reviews": {
+      "meta_title": "Gratis Google Reviews QR Code Generator — Krijg Meer Beoordelingen | QRaft",
+      "meta_description": "Maak een QR-code die direct linkt naar je Google-beoordelingspagina. Verhoog je beoordelingen met één scan. Gratis, zonder registratie.",
+      "breadcrumb": "Google Reviews QR",
+      "kicker": "Google Reviews QR Code",
+      "title": "VERHOOG JE GOOGLE REVIEWS MET ÉÉN SCAN.",
+      "subtitle": "Genereer een QR-code die klanten direct naar je Google-beoordelingspagina brengt. Print het, toon het, en kijk hoe je beoordelingen groeien.",
+      "empty_hint": "Voer je Google Reviews URL in om een QR-code te genereren",
+      "form": {
+        "title": "Google Reviews Link",
+        "subtitle": "Plak je Google Business beoordelingslink",
+        "url": "Google Reviews URL",
+        "url_placeholder": "https://g.page/r/...",
+        "help": "Vind je link in Google Business Profile → Delen → Vraag om beoordelingen"
+      },
+      "guide": {
+        "label": "Hoe het werkt",
+        "title": "KRIJG MEER BEOORDELINGEN IN 4 STAPPEN",
+        "step1": {
+          "title": "VIND JE BEOORDELINGSLINK",
+          "body": "Open Google Business Profile, klik op 'Vraag om beoordelingen' en kopieer de link."
+        },
+        "step2": {
+          "title": "PLAK HET HIER",
+          "body": "Voer de link in het formulier hierboven in om je QR-code direct te genereren."
+        },
+        "step3": {
+          "title": "DOWNLOAD EN PRINT",
+          "body": "Exporteer als PNG, SVG of PDF. Print op bonnen, kaarten of toonbankdisplays."
+        },
+        "step4": {
+          "title": "VERZAMEL BEOORDELINGEN",
+          "body": "Klanten scannen, beoordelen je op Google, en je gemiddelde beoordeling stijgt."
+        }
+      },
+      "faq": {
+        "title": "VEELGESTELDE VRAGEN",
+        "q1": "Waar vind ik mijn Google Reviews link?",
+        "a1": "Log in op Google Business Profile, ga naar Home, klik op 'Vraag om beoordelingen'. Kopieer de link die verschijnt.",
+        "q2": "Heeft de klant een Google-account nodig?",
+        "a2": "Ja, klanten hebben een Google-account nodig om een beoordeling achter te laten. Maar de meeste mensen hebben er al een op hun telefoon.",
+        "q3": "Kan ik het QR-code ontwerp aanpassen?",
+        "a3": "Met een gratis QRaft-account kun je kleuren wijzigen, je logo toevoegen en het foutcorrectieniveau aanpassen.",
+        "q4": "Hoeveel meer beoordelingen kan ik verwachten?",
+        "a4": "Bedrijven die een Google Reviews QR-code tonen, zien doorgaans een 2-5x toename in beoordelingsvolume in de eerste maand.",
+        "q5": "Is dit toegestaan door Google?",
+        "a5": "Ja. Google moedigt bedrijven aan om beoordelingen te vragen. Bied alleen geen beloningen aan voor positieve beoordelingen — dat is in strijd met hun richtlijnen."
+      }
+    },
+    "whatsapp": {
+      "meta_title": "Gratis WhatsApp QR Code Generator — Start Direct Gesprekken | QRaft",
+      "meta_description": "Maak een QR-code die een WhatsApp-chat opent met je nummer. Voeg een vooraf ingevuld bericht toe. Gratis, zonder registratie.",
+      "breadcrumb": "WhatsApp QR Code",
+      "kicker": "WhatsApp QR Code Generator",
+      "title": "START EEN WHATSAPP-CHAT MET ÉÉN SCAN.",
+      "subtitle": "Genereer een QR-code die een WhatsApp-gesprek opent met je nummer. Perfect voor klantenservice, bestellingen en reserveringen.",
+      "empty_hint": "Voer je telefoonnummer in om een WhatsApp QR-code te genereren",
+      "form": {
+        "title": "WhatsApp-gegevens",
+        "subtitle": "Voer je WhatsApp-nummer en optioneel bericht in",
+        "phone": "Telefoonnummer (met landcode)",
+        "phone_placeholder": "+31 6 12345678",
+        "message": "Vooraf ingevuld bericht (optioneel)",
+        "message_placeholder": "Hallo! Ik wil graag meer weten over..."
+      },
+      "guide": {
+        "label": "Hoe het werkt",
+        "title": "MAAK JE WHATSAPP QR CODE",
+        "step1": {
+          "title": "VOER JE NUMMER IN",
+          "body": "Typ je volledige telefoonnummer met landcode (bijv. +31 voor Nederland, +32 voor België)."
+        },
+        "step2": {
+          "title": "VOEG EEN BERICHT TOE",
+          "body": "Stel optioneel een vooraf ingevuld bericht in dat verschijnt wanneer de chat wordt geopend."
+        },
+        "step3": {
+          "title": "GENEREER EN DOWNLOAD",
+          "body": "Download je QR-code in PNG, SVG of PDF."
+        },
+        "step4": {
+          "title": "TOON OVERAL",
+          "body": "Print op flyers, verpakkingen, visitekaartjes of etalages."
+        }
+      },
+      "faq": {
+        "title": "VEELGESTELDE VRAGEN",
+        "q1": "Moet de persoon WhatsApp geïnstalleerd hebben?",
+        "a1": "Ja. De QR-code genereert een wa.me-link die de WhatsApp-app opent. Als deze niet is geïnstalleerd, wordt doorverwezen naar de downloadpagina.",
+        "q2": "Kan ik een vooraf ingevuld bericht toevoegen?",
+        "a2": "Ja. Stel een standaardbericht in het formulier in en het verschijnt in het chatinvoerveld wanneer de klant de code scant.",
+        "q3": "Is mijn nummer zichtbaar?",
+        "a3": "Het telefoonnummer is gecodeerd in de QR-code link. Iedereen die het scant, ziet je nummer in WhatsApp.",
+        "q4": "Kan ik een WhatsApp Business-nummer gebruiken?",
+        "a4": "Absoluut. Zowel gewone als WhatsApp Business-nummers werken. Het linkformaat is identiek.",
+        "q5": "Is het gratis?",
+        "a5": "Ja, 100% gratis. Genereer zoveel WhatsApp QR-codes als je wilt zonder een account aan te maken."
+      }
+    },
+    "email": {
+      "meta_title": "Gratis E-mail QR Code Generator — Vooraf Ingevulde Mailto Link | QRaft",
+      "meta_description": "Maak een QR-code die een e-mail opent met vooraf ingevulde ontvanger, onderwerp en tekst. Gratis, zonder registratie.",
+      "breadcrumb": "E-mail QR Code",
+      "kicker": "E-mail QR Code Generator",
+      "title": "STUUR EEN E-MAIL MET ÉÉN SCAN.",
+      "subtitle": "Genereer een QR-code die de e-mailapp opent met een vooraf ingevuld adres, onderwerp en bericht. Ideaal voor feedback, support en contact.",
+      "empty_hint": "Voer een e-mailadres in om een QR-code te genereren",
+      "form": {
+        "title": "E-mailgegevens",
+        "subtitle": "Stel de ontvanger en optionele vooraf ingevulde inhoud in",
+        "to": "Ontvanger e-mail",
+        "to_placeholder": "hallo@voorbeeld.nl",
+        "subject": "Onderwerp (optioneel)",
+        "subject_placeholder": "Vraag over je dienst",
+        "body": "Berichttekst (optioneel)",
+        "body_placeholder": "Hallo, ik wil graag..."
+      },
+      "guide": {
+        "label": "Hoe het werkt",
+        "title": "MAAK JE E-MAIL QR CODE",
+        "step1": {
+          "title": "VOER HET E-MAILADRES IN",
+          "body": "Typ het e-mailadres van de ontvanger die het bericht moet ontvangen."
+        },
+        "step2": {
+          "title": "VOEG ONDERWERP EN TEKST TOE",
+          "body": "Vul optioneel de onderwerpregel en berichttekst vooraf in."
+        },
+        "step3": {
+          "title": "GENEREER DE QR CODE",
+          "body": "Je QR-code wordt direct aangemaakt. Bekijk het voorbeeld in realtime."
+        },
+        "step4": {
+          "title": "DEEL HET",
+          "body": "Download en print op visitekaartjes, flyers, verpakkingen of posters."
+        }
+      },
+      "faq": {
+        "title": "VEELGESTELDE VRAGEN",
+        "q1": "Wat gebeurt er wanneer iemand het scant?",
+        "a1": "De standaard e-mailapp opent met de ontvanger, het onderwerp en de tekst al ingevuld. Ze hoeven alleen op Verzenden te drukken.",
+        "q2": "Werkt het met Gmail, Outlook, etc.?",
+        "a2": "Ja. De QR-code gebruikt het standaard mailto:-protocol dat werkt met elke e-mailclient.",
+        "q3": "Kan ik bijhouden hoeveel e-mails worden verzonden?",
+        "a3": "De QR-code opent de e-mailapp van de gebruiker, dus we kunnen verzendingen niet bijhouden. Met een Pro-account kun je wel scans bijhouden.",
+        "q4": "Is het e-mailadres zichtbaar in de QR?",
+        "a4": "Het e-mailadres is gecodeerd in de QR-codegegevens. Het is niet zichtbaar door naar de code te kijken, maar elke QR-lezer zal het decoderen.",
+        "q5": "Kan ik CC- of BCC-ontvangers toevoegen?",
+        "a5": "Het standaard mailto:-formaat ondersteunt CC en BCC, maar voor de eenvoud richten we ons op de primaire ontvanger. Je kunt de gegenereerde URL handmatig bewerken."
+      }
+    },
+    "sms": {
+      "meta_title": "Gratis SMS QR Code Generator — Stuur Direct Berichten | QRaft",
+      "meta_description": "Maak een QR-code die een SMS opent met een vooraf ingevuld nummer en bericht. Perfect voor aanmeldingen, support en snel contact. Gratis.",
+      "breadcrumb": "SMS QR Code",
+      "kicker": "SMS QR Code Generator",
+      "title": "STUUR EEN SMS MET ÉÉN SCAN.",
+      "subtitle": "Genereer een QR-code die de berichten-app opent met een vooraf ingevuld nummer en tekst. Ideaal voor aanmeldingen, feedback en snel contact.",
+      "empty_hint": "Voer een telefoonnummer in om een SMS QR-code te genereren",
+      "form": {
+        "title": "SMS-gegevens",
+        "subtitle": "Stel het ontvangernummer en bericht in",
+        "phone": "Telefoonnummer",
+        "phone_placeholder": "+31 6 12345678",
+        "message": "Vooraf ingevuld bericht (optioneel)",
+        "message_placeholder": "AANMELDEN om te abonneren"
+      },
+      "guide": {
+        "label": "Hoe het werkt",
+        "title": "MAAK JE SMS QR CODE",
+        "step1": {
+          "title": "VOER HET NUMMER IN",
+          "body": "Typ het telefoonnummer dat het sms-bericht moet ontvangen."
+        },
+        "step2": {
+          "title": "VOEG EEN BERICHT TOE",
+          "body": "Vul optioneel een bericht in zoals 'AANMELDEN' of 'INFO' voor opt-in campagnes."
+        },
+        "step3": {
+          "title": "GENEREER EN DOWNLOAD",
+          "body": "Je QR-code is klaar. Download in PNG, SVG of PDF."
+        },
+        "step4": {
+          "title": "PRINT EN TOON",
+          "body": "Plaats op posters, flyers, productverpakkingen of evenementenborden."
+        }
+      },
+      "faq": {
+        "title": "VEELGESTELDE VRAGEN",
+        "q1": "Werkt het op iPhone en Android?",
+        "a1": "Ja. Beide platforms ondersteunen het sms:-protocol en openen de native berichten-app.",
+        "q2": "Wordt het bericht automatisch verzonden?",
+        "a2": "Nee. De berichten-app opent met de tekst vooraf ingevuld, maar de gebruiker moet handmatig op Verzenden tikken.",
+        "q3": "Kan ik het gebruiken voor SMS-marketing aanmeldingen?",
+        "a3": "Ja. Stel het bericht in op een trefwoord zoals 'AANMELDEN' zodat klanten zich kunnen abonneren op je SMS-lijst door te scannen.",
+        "q4": "Worden internationale nummers ondersteund?",
+        "a4": "Ja. Voeg de volledige landcode toe (bijv. +31 voor Nederland, +32 voor België) om te garanderen dat het wereldwijd werkt.",
+        "q5": "Is het gratis om te genereren?",
+        "a5": "Ja, het genereren van de QR-code is 100% gratis. Standaard SMS-tarieven van de provider van de gebruiker zijn van toepassing bij het verzenden."
+      }
+    },
+    "location": {
+      "meta_title": "Gratis Locatie QR Code Generator — Deel Kaartcoördinaten | QRaft",
+      "meta_description": "Maak een QR-code die Google Maps of Apple Maps opent op een specifieke locatie. Perfect voor routebeschrijvingen. Gratis, zonder registratie.",
+      "breadcrumb": "Locatie QR Code",
+      "kicker": "Locatie QR Code Generator",
+      "title": "DEEL EEN LOCATIE MET ÉÉN SCAN.",
+      "subtitle": "Genereer een QR-code die een kaart opent op je exacte coördinaten. Ideaal voor bedrijven, evenementen, ontmoetingspunten en parkeerplaatsen.",
+      "empty_hint": "Voer coördinaten of een adres in om een locatie-QR-code te genereren",
+      "form": {
+        "title": "Locatiegegevens",
+        "subtitle": "Voer coördinaten of een plaatsnaam in",
+        "lat": "Breedtegraad",
+        "lat_placeholder": "52.3676",
+        "lng": "Lengtegraad",
+        "lng_placeholder": "4.9041",
+        "label": "Plaatsnaam (optioneel)",
+        "label_placeholder": "Rijksmuseum, Amsterdam"
+      },
+      "guide": {
+        "label": "Hoe het werkt",
+        "title": "MAAK JE LOCATIE QR CODE",
+        "step1": {
+          "title": "VOER COÖRDINATEN IN",
+          "body": "Typ de breedte- en lengtegraad, of vind ze op Google Maps door met de rechtermuisknop op een locatie te klikken."
+        },
+        "step2": {
+          "title": "VOEG EEN LABEL TOE",
+          "body": "Voeg optioneel een plaatsnaam toe voor duidelijkheid wanneer de kaart opent."
+        },
+        "step3": {
+          "title": "GENEREER DE QR CODE",
+          "body": "Je QR-code wordt direct aangemaakt met een live voorbeeld."
+        },
+        "step4": {
+          "title": "DEEL ROUTEBESCHRIJVINGEN",
+          "body": "Print op uitnodigingen, visitekaartjes, evenementtickets of borden."
+        }
+      },
+      "faq": {
+        "title": "VEELGESTELDE VRAGEN",
+        "q1": "Welke kaart-app wordt geopend?",
+        "a1": "De QR-code gebruikt het geo: URI-schema. Op Android opent het Google Maps. Op iOS opent het standaard Apple Maps.",
+        "q2": "Hoe vind ik mijn coördinaten?",
+        "a2": "Open Google Maps, klik met de rechtermuisknop op je locatie en klik op de coördinaten om ze te kopiëren.",
+        "q3": "Kan ik een pinlabel toevoegen?",
+        "a3": "Ja. Het labelveld voegt een queryparameter toe die een benoemde pin op de kaart toont.",
+        "q4": "Werkt het offline?",
+        "a4": "De QR-code codeert de coördinaten lokaal, maar de gebruiker heeft een internetverbinding nodig om de kaart te laden.",
+        "q5": "Kan ik een adres gebruiken in plaats van coördinaten?",
+        "a5": "Voor de beste nauwkeurigheid, gebruik coördinaten. Je kunt echter het labelveld met een volledig adres gebruiken en het zal ernaar zoeken."
+      }
+    },
+    "event": {
+      "meta_title": "Gratis Evenement QR Code Generator — Agenda-uitnodiging met Eén Scan | QRaft",
+      "meta_description": "Maak een QR-code die een evenement aan de agenda toevoegt. Stel titel, datum, tijd, locatie in. Scan om op te slaan. Gratis, zonder registratie.",
+      "breadcrumb": "Evenement QR Code",
+      "kicker": "Evenement / Agenda QR Code Generator",
+      "title": "VOEG EEN EVENEMENT TOE AAN ELKE AGENDA MET ÉÉN SCAN.",
+      "subtitle": "Genereer een QR-code die een agenda-evenement aanmaakt met titel, datum, tijd en locatie. Perfect voor conferenties, bruiloften en meetups.",
+      "empty_hint": "Voer evenementdetails in om een agenda-QR-code te genereren",
+      "form": {
+        "title": "Evenementgegevens",
+        "subtitle": "Vul de evenementinformatie in",
+        "event_title": "Evenementtitel",
+        "event_title_placeholder": "Jaarlijkse Bedrijfsbijeenkomst",
+        "start": "Startdatum en -tijd",
+        "end": "Einddatum en -tijd",
+        "location_field": "Locatie",
+        "location_placeholder": "Hoofdstraat 123, Amsterdam",
+        "description": "Beschrijving (optioneel)",
+        "description_placeholder": "Doe mee aan onze jaarlijkse bedrijfsbijeenkomst..."
+      },
+      "guide": {
+        "label": "Hoe het werkt",
+        "title": "MAAK JE EVENEMENT QR CODE",
+        "step1": {
+          "title": "VOER EVENEMENTDETAILS IN",
+          "body": "Voeg de titel, start-/einddatum en -tijd, locatie en een beschrijving toe."
+        },
+        "step2": {
+          "title": "BEKIJK HET VOORBEELD",
+          "body": "Zie de QR-code in realtime bijwerken terwijl je het formulier invult."
+        },
+        "step3": {
+          "title": "DOWNLOAD",
+          "body": "Exporteer als PNG, SVG of PDF voor digitaal of print gebruik."
+        },
+        "step4": {
+          "title": "VERSPREID",
+          "body": "Print op evenementposters, tickets, flyers of deel digitaal via social media."
+        }
+      },
+      "faq": {
+        "title": "VEELGESTELDE VRAGEN",
+        "q1": "Welke agenda-apps worden ondersteund?",
+        "a1": "De QR-code genereert een iCalendar (VCALENDAR) formaat dat wordt ondersteund door Google Calendar, Apple Calendar, Outlook en meer.",
+        "q2": "Kan ik een tijdzone opnemen?",
+        "a2": "Het evenement gebruikt de lokale tijd. Voor internationale evenementen, vermeld de tijdzone in de beschrijving.",
+        "q3": "Worden herinneringen automatisch ingesteld?",
+        "a3": "De meeste agenda-apps voegen een standaardherinnering toe bij het importeren van een evenement. De exacte timing hangt af van de instellingen van de gebruiker.",
+        "q4": "Kan ik meerdere evenementen in één QR-code toevoegen?",
+        "a4": "Elke QR-code codeert één evenement. Voor meerdaagse conferenties, maak één QR-code per sessie of dag.",
+        "q5": "Is het gratis?",
+        "a5": "Ja, 100% gratis. Geen account nodig. Genereer onbeperkt evenement-QR-codes."
+      }
+    },
+    "social_media": {
+      "meta_title": "Gratis Social Media QR Code Generator — Link Je Profielen | QRaft",
+      "meta_description": "Maak een QR-code voor je Instagram, TikTok, LinkedIn, X, YouTube of Facebook profiel. Eén scan, direct volgen. Gratis.",
+      "breadcrumb": "Social Media QR Code",
+      "kicker": "Social Media QR Code Generator",
+      "title": "VERGROOT JE VOLGERSAANTAL MET ÉÉN SCAN.",
+      "subtitle": "Genereer een QR-code die direct linkt naar je social media profiel. Perfect voor visitekaartjes, merchandise, evenementen en etalages.",
+      "empty_hint": "Voer de URL van je social media profiel in",
+      "form": {
+        "title": "Sociaal Profiel",
+        "subtitle": "Plak de URL van het profiel dat je wilt linken",
+        "url": "Profiel-URL",
+        "url_placeholder": "https://instagram.com/jouwhandle",
+        "platform": "Platform (automatisch gedetecteerd)"
+      },
+      "guide": {
+        "label": "Hoe het werkt",
+        "title": "MAAK JE SOCIAL MEDIA QR CODE",
+        "step1": {
+          "title": "KOPIEER JE PROFIEL-URL",
+          "body": "Ga naar je profiel op Instagram, TikTok, LinkedIn, X, YouTube of Facebook en kopieer de URL."
+        },
+        "step2": {
+          "title": "PLAK HET HIER",
+          "body": "Voer de URL in het formulier in. We detecteren het platform automatisch."
+        },
+        "step3": {
+          "title": "PERSONALISEER EN DOWNLOAD",
+          "body": "Download je QR-code in PNG, SVG of PDF."
+        },
+        "step4": {
+          "title": "DEEL OVERAL",
+          "body": "Print op visitekaartjes, productverpakkingen, merchandise, menu's, posters."
+        }
+      },
+      "faq": {
+        "title": "VEELGESTELDE VRAGEN",
+        "q1": "Welke platforms worden ondersteund?",
+        "a1": "Elk platform met een openbare profiel-URL: Instagram, TikTok, LinkedIn, X (Twitter), YouTube, Facebook, Snapchat, Pinterest, etc.",
+        "q2": "Opent het de app of de website?",
+        "a2": "Als de social media app is geïnstalleerd, opent het meestal de app direct. Anders opent het de mobiele website.",
+        "q3": "Kan ik linken naar meerdere profielen?",
+        "a3": "Elke QR-code linkt naar één profiel. Voor meerdere profielen, maak een gratis QRaft-account aan en gebruik een bio-linkpagina (binnenkort beschikbaar).",
+        "q4": "Kan ik bijhouden hoeveel mensen scannen?",
+        "a4": "Ja! Maak een gratis QRaft-account aan voor gedetailleerde scananalyses: aantal, apparaat, locatie en meer.",
+        "q5": "Is het gratis?",
+        "a5": "Ja. Genereer onbeperkt social media QR-codes zonder registratie en zonder watermerk."
+      }
+    },
+    "pdf": {
+      "meta_title": "Gratis PDF QR Code Generator — Link naar Elk Document | QRaft",
+      "meta_description": "Maak een QR-code die een PDF-document opent. Link naar menu's, brochures, handleidingen, prijslijsten. Scan om te bekijken. Gratis.",
+      "breadcrumb": "PDF QR Code",
+      "kicker": "PDF QR Code Generator",
+      "title": "OPEN EEN PDF MET ÉÉN SCAN.",
+      "subtitle": "Genereer een QR-code die direct linkt naar je PDF-document. Perfect voor menu's, brochures, handleidingen en prijslijsten.",
+      "empty_hint": "Voer de URL van je PDF in om een QR-code te genereren",
+      "form": {
+        "title": "PDF Link",
+        "subtitle": "Plak de URL waar je PDF wordt gehost",
+        "url": "PDF-URL",
+        "url_placeholder": "https://voorbeeld.nl/brochure.pdf"
+      },
+      "guide": {
+        "label": "Hoe het werkt",
+        "title": "MAAK JE PDF QR CODE",
+        "step1": {
+          "title": "UPLOAD JE PDF",
+          "body": "Host je PDF op Google Drive, Dropbox, je website of een andere openbare URL."
+        },
+        "step2": {
+          "title": "PLAK DE LINK",
+          "body": "Kopieer de directe link naar je PDF en plak deze in het formulier."
+        },
+        "step3": {
+          "title": "GENEREER DE QR CODE",
+          "body": "Je QR-code wordt direct aangemaakt met een live voorbeeld."
+        },
+        "step4": {
+          "title": "PRINT EN VERSPREID",
+          "body": "Plaats op productverpakkingen, brochures, posters, visitekaartjes."
+        }
+      },
+      "faq": {
+        "title": "VEELGESTELDE VRAGEN",
+        "q1": "Waar moet ik mijn PDF hosten?",
+        "a1": "Overal met een openbare URL: Google Drive (stel delen in op 'Iedereen met de link'), Dropbox, je eigen website, etc.",
+        "q2": "Werkt het op alle apparaten?",
+        "a2": "Ja. Alle moderne smartphones kunnen PDF-bestanden direct openen in de browser of een PDF-viewer app.",
+        "q3": "Kan ik de PDF later bijwerken?",
+        "a3": "Als je dezelfde URL behoudt en het bestand vervangt, linkt de QR-code altijd naar de nieuwste versie.",
+        "q4": "Is er een bestandsgroottelimiet?",
+        "a4": "De QR-code bevat alleen de URL, niet het bestand zelf. Er is geen groottelimiet — het hangt af van je hosting.",
+        "q5": "Kan ik de PDF met een wachtwoord beveiligen?",
+        "a5": "De QR-code linkt naar de URL. Als je PDF-host wachtwoordbeveiliging ondersteunt, kun je die functie onafhankelijk gebruiken."
+      }
+    },
+    "crypto": {
+      "meta_title": "Gratis Bitcoin & Crypto QR Code Generator | QRaft",
+      "meta_description": "Maak een QR-code voor Bitcoin, Ethereum of Litecoin betalingen. Codeer portemonnee-adres en bedrag. Gratis, zonder registratie.",
+      "breadcrumb": "Crypto QR Code",
+      "kicker": "Crypto Betaling QR Code Generator",
+      "title": "ACCEPTEER CRYPTO-BETALINGEN MET ÉÉN SCAN.",
+      "subtitle": "Genereer een QR-code voor Bitcoin, Ethereum of Litecoin. Codeer je portemonnee-adres en een optioneel bedrag voor directe betalingen.",
+      "empty_hint": "Voer een portemonnee-adres in om een crypto QR-code te genereren",
+      "form": {
+        "title": "Crypto-gegevens",
+        "subtitle": "Selecteer valuta en voer portemonnee-adres in",
+        "currency": "Cryptocurrency",
+        "address": "Portemonnee-adres",
+        "address_placeholder": "bc1qxy2kgdygjrsqtzq2n0yrf...",
+        "amount": "Bedrag (optioneel)",
+        "amount_placeholder": "0.001"
+      },
+      "guide": {
+        "label": "Hoe het werkt",
+        "title": "MAAK JE CRYPTO QR CODE",
+        "step1": {
+          "title": "SELECTEER JE VALUTA",
+          "body": "Kies Bitcoin (BTC), Ethereum (ETH) of Litecoin (LTC)."
+        },
+        "step2": {
+          "title": "VOER JE ADRES IN",
+          "body": "Plak je portemonnee-adres. Controleer het dubbel — transacties zijn onomkeerbaar."
+        },
+        "step3": {
+          "title": "STEL EEN BEDRAG IN",
+          "body": "Stel optioneel een betalingsbedrag in dat vooraf wordt ingevuld in de portemonnee van de afzender."
+        },
+        "step4": {
+          "title": "DOWNLOAD EN TOON",
+          "body": "Print op facturen, donatiepagina's, kassadisplays of je website."
+        }
+      },
+      "faq": {
+        "title": "VEELGESTELDE VRAGEN",
+        "q1": "Welke cryptocurrencies worden ondersteund?",
+        "a1": "Bitcoin (BTC), Ethereum (ETH) en Litecoin (LTC). We gebruiken het standaard URI-schema voor elk (BIP21 voor BTC).",
+        "q2": "Is het bedrag verplicht?",
+        "a2": "Nee. Het bedrag is optioneel. Als het wordt weggelaten, kan de afzender elk bedrag invoeren in hun portemonnee-app.",
+        "q3": "Werkt het met alle portemonnees?",
+        "a3": "Ja. Elke portemonnee die het standaard URI-schema ondersteunt (bitcoin:, ethereum:, litecoin:) herkent de QR-code.",
+        "q4": "Is het veilig?",
+        "a4": "De QR-code bevat alleen je openbare portemonnee-adres. Het bevat nooit privésleutels of gevoelige gegevens.",
+        "q5": "Kan ik het gebruiken voor donaties?",
+        "a5": "Ja. Toon de QR-code op je website, livestream, of print het voor persoonlijke donaties."
+      }
+    },
+    "phone": {
+      "meta_title": "Gratis Telefoonnummer QR Code Generator — Bel met Eén Scan | QRaft",
+      "meta_description": "Maak een QR-code die direct een telefoonnummer belt. Perfect voor visitekaartjes, posters en klantenservice. Gratis.",
+      "breadcrumb": "Telefoon QR Code",
+      "kicker": "Telefoon Oproep QR Code Generator",
+      "title": "BEL MET ÉÉN SCAN.",
+      "subtitle": "Genereer een QR-code die de telefoonkiezer opent met je nummer vooraf ingevuld. Ideaal voor visitekaartjes, supportlijnen en borden.",
+      "empty_hint": "Voer een telefoonnummer in om een bel-QR-code te genereren",
+      "form": {
+        "title": "Telefoonnummer",
+        "subtitle": "Voer het te bellen nummer in",
+        "phone": "Telefoonnummer",
+        "phone_placeholder": "+31 6 12345678"
+      },
+      "guide": {
+        "label": "Hoe het werkt",
+        "title": "MAAK JE TELEFOON QR CODE",
+        "step1": {
+          "title": "VOER JE NUMMER IN",
+          "body": "Typ het volledige telefoonnummer met landcode voor internationale compatibiliteit."
+        },
+        "step2": {
+          "title": "BEKIJK HET VOORBEELD",
+          "body": "Zie de QR-code in realtime gegenereerd worden."
+        },
+        "step3": {
+          "title": "DOWNLOAD",
+          "body": "Exporteer in PNG, SVG of PDF — perfect voor elk printformaat."
+        },
+        "step4": {
+          "title": "TOON HET",
+          "body": "Print op visitekaartjes, etalages, autobelettering, flyers of posters."
+        }
+      },
+      "faq": {
+        "title": "VEELGESTELDE VRAGEN",
+        "q1": "Belt het direct wanneer gescand?",
+        "a1": "Nee. De telefoonkiezer opent met het nummer vooraf ingevuld. De gebruiker moet op de belknop tikken om het gesprek te starten.",
+        "q2": "Werkt het met vaste lijnen?",
+        "a2": "Ja. Elk geldig telefoonnummer werkt — mobiel, vast, gratis, internationaal.",
+        "q3": "Moet ik de landcode opnemen?",
+        "a3": "Ja. Neem altijd de landcode op (bijv. +31, +32, +44) om te garanderen dat de QR-code internationaal werkt.",
+        "q4": "Kan ik het gebruiken voor WhatsApp-oproepen?",
+        "a4": "Nee. Dit opent de standaard telefoonkiezer. Voor WhatsApp, gebruik onze speciale WhatsApp QR-code generator.",
+        "q5": "Is het gratis?",
+        "a5": "Ja, 100% gratis zonder limieten. Genereer zoveel telefoon-QR-codes als je nodig hebt."
+      }
+    },
+    "text": {
+      "meta_title": "Gratis Tekst QR Code Generator — Codeer Elk Bericht | QRaft",
+      "meta_description": "Maak een QR-code met platte tekst. Codeer berichten, notities, serienummers of elke tekst. Gratis, zonder registratie.",
+      "breadcrumb": "Tekst QR Code",
+      "kicker": "Platte Tekst QR Code Generator",
+      "title": "CODEER ELKE TEKST IN EEN QR-CODE.",
+      "subtitle": "Genereer een QR-code die platte tekst weergeeft wanneer gescand. Perfect voor berichten, serienummers, kortingscodes en notities.",
+      "empty_hint": "Typ je tekst om een QR-code te genereren",
+      "form": {
+        "title": "Je Tekst",
+        "subtitle": "Voer de tekst in om in de QR-code te coderen",
+        "text": "Tekstinhoud",
+        "text_placeholder": "Voer je bericht hier in..."
+      },
+      "guide": {
+        "label": "Hoe het werkt",
+        "title": "MAAK JE TEKST QR CODE",
+        "step1": {
+          "title": "TYP JE TEKST",
+          "body": "Voer elke tekst in: berichten, codes, serienummers, kortingscodes, gedichten — alles."
+        },
+        "step2": {
+          "title": "BEKIJK HET VOORBEELD",
+          "body": "Zie de QR-code bijwerken terwijl je typt, teken voor teken."
+        },
+        "step3": {
+          "title": "DOWNLOAD",
+          "body": "Exporteer in PNG, SVG of PDF."
+        },
+        "step4": {
+          "title": "GEBRUIK OVERAL",
+          "body": "Print op verpakkingen, wenskaarten, speurtochten, museumlabels, productlabels."
+        }
+      },
+      "faq": {
+        "title": "VEELGESTELDE VRAGEN",
+        "q1": "Hoeveel tekst past in een QR-code?",
+        "a1": "Tot ongeveer 4.296 tekens, maar voor betrouwbaar scannen, houd het onder de 300 tekens. Korter is beter.",
+        "q2": "Kan de tekst speciale tekens bevatten?",
+        "a2": "Ja. QR-codes ondersteunen de volledige UTF-8 tekenset: accenten, symbolen, emoji's, CJK-tekens.",
+        "q3": "Wat gebeurt er wanneer iemand het scant?",
+        "a3": "De tekst wordt op het scherm weergegeven. Als het een URL bevat, bieden de meeste scanners aan om het te openen. Platte tekst wordt gewoon getoond.",
+        "q4": "Kan ik het gebruiken voor kortingscodes?",
+        "a4": "Absoluut. Codeer kortingscodes, promocodes of serienummers die je kassasysteem kan scannen en valideren.",
+        "q5": "Is er verschil tussen tekst- en URL-QR-codes?",
+        "a5": "Een URL-QR-code opent automatisch de link. Een tekst-QR-code toont alleen de inhoud. Gebruik tekst voor niet-URL gegevens."
+      }
+    },
+    "app_store": {
+      "meta_title": "Gratis App Store QR Code Generator — Download Apps Direct | QRaft",
+      "meta_description": "Maak een QR-code die linkt naar je app in de App Store of Google Play. Eén scan om te downloaden. Gratis, zonder registratie.",
+      "breadcrumb": "App Store QR Code",
+      "kicker": "App Download QR Code Generator",
+      "title": "STIMULEER APP-DOWNLOADS MET ÉÉN SCAN.",
+      "subtitle": "Genereer een QR-code die direct linkt naar je app in de App Store of Google Play. Perfect voor marketing, verpakkingen en evenementen.",
+      "empty_hint": "Voer je app store URL in om een download-QR-code te genereren",
+      "form": {
+        "title": "App Link",
+        "subtitle": "Plak de link naar je app-vermelding",
+        "url": "App Store of Google Play URL",
+        "url_placeholder": "https://apps.apple.com/app/..."
+      },
+      "guide": {
+        "label": "Hoe het werkt",
+        "title": "MAAK JE APP DOWNLOAD QR CODE",
+        "step1": {
+          "title": "VIND JE APP-LINK",
+          "body": "Kopieer de URL van de App Store of Google Play vermeldingspagina."
+        },
+        "step2": {
+          "title": "PLAK HET",
+          "body": "Voer de URL in het formulier hierboven in. Werkt met zowel App Store als Google Play links."
+        },
+        "step3": {
+          "title": "DOWNLOAD DE QR CODE",
+          "body": "Exporteer in PNG, SVG of PDF voor digitaal of print gebruik."
+        },
+        "step4": {
+          "title": "PROMOOT JE APP",
+          "body": "Print op flyers, visitekaartjes, productverpakkingen, posters of toon in de winkel."
+        }
+      },
+      "faq": {
+        "title": "VEELGESTELDE VRAGEN",
+        "q1": "Kan ik linken naar zowel App Store als Google Play?",
+        "a1": "Elke QR-code linkt naar één URL. Voor cross-platform, overweeg een smart link-dienst te gebruiken of maak twee QR-codes naast elkaar.",
+        "q2": "Opent het de store-app?",
+        "a2": "Ja. Op iOS opent de App Store link de App Store app. Op Android opent de Google Play link de Play Store.",
+        "q3": "Kan ik downloads bijhouden?",
+        "a3": "De QR-code houdt scans bij (met een QRaft-account). Werkelijke downloadtracking wordt gedaan via de analytics van de store.",
+        "q4": "Hoe zit het met desktopgebruikers?",
+        "a4": "De links werken ook in desktopbrowsers en tonen de store-vermeldingspagina waar gebruikers de app naar hun telefoon kunnen sturen.",
+        "q5": "Is het echt gratis?",
+        "a5": "Ja. Geen registratie, geen watermerk, geen limieten. Genereer app download QR-codes gratis."
+      }
+    }
+  },
+  "programmatic": {
+    "breadcrumb_home": "Home",
+    "breadcrumb_qr_code": "QR-code",
+    "hub_label": "QR-codes per sector",
+    "hub_title": "DE JUISTE QR-CODE VOOR ELK BEDRIJF.",
+    "hub_subtitle": "Bekijk QR-code-oplossingen per sector. Vind de perfecte generator voor uw restaurant, winkel, evenement, hotel of bedrijf.",
+    "cities_count": "steden",
+    "vertical_restaurant": "Restaurant",
+    "vertical_retail": "Winkel",
+    "vertical_event": "Evenement",
+    "vertical_real_estate": "Vastgoed",
+    "vertical_hotel": "Hotel",
+    "vertical_museum": "Museum",
+    "vertical_salon": "Kapsalon & Schoonheid",
+    "vertical_gym": "Sportschool & Fitness",
+    "vertical_title": "QR-CODE VOOR {vertical}",
+    "vertical_subtitle": "Maak gratis QR-codes voor {vertical}-bedrijven. Kies hieronder uw stad.",
+    "city_title": "QR-CODE VOOR {vertical} IN {city}",
+    "city_subtitle": "Genereer gratis, aanpasbare QR-codes voor uw {vertical}-bedrijf in {city}. Scananalyses inbegrepen — geen registratie nodig.",
+    "city_cta": "Maak uw QR-code",
+    "why_title": "Waarom {vertical} in {city} QR-codes nodig hebben",
+    "why_body_1": "QR-codes zijn onmisbaar geworden voor {vertical}-bedrijven in {city}. Ze maken contactloze menu's, directe routebeschrijvingen, eenvoudige beoordelingen en naadloze klantinteractie mogelijk.",
+    "why_body_2": "Met QRaft maakt u in seconden professionele QR-codes, past u kleuren en logo aan en volgt u elke scan met gedetailleerde analyses. Volledig gratis, geen account nodig.",
+    "how_title": "Hoe maakt u uw QR-code",
+    "how_step_1": "Kies het type QR-code (menu, WiFi, contact, locatie, etc.)",
+    "how_step_2": "Voer uw inhoud in — URL, WiFi-wachtwoord, telefoonnummer of andere gegevens",
+    "how_step_3": "Pas het ontwerp aan: kleuren, logo, foutcorrectieniveau",
+    "how_step_4": "Download als PNG, SVG of PDF en gebruik het direct",
+    "other_cities_title": "QR-code voor {vertical} in andere steden",
+    "other_verticals_title": "QR-codes voor andere sectoren in {city}",
+    "city_faq_q1": "Is de QR-code generator voor {vertical} in {city} echt gratis?",
+    "city_faq_a1": "Ja, 100% gratis. Genereer onbeperkt QR-codes zonder account. Exporteer als PNG, SVG of PDF.",
+    "city_faq_q2": "Kan ik bijhouden hoeveel mensen mijn {vertical} QR-code in {city} scannen?",
+    "city_faq_a2": "Ja! Maak een gratis QRaft-account aan voor scananalyses: aantal scans, apparaattypen, locatie en meer.",
+    "city_faq_q3": "Welk type QR-code is het beste voor {vertical} in {city}?",
+    "city_faq_a3": "Dat hangt af van uw situatie. Restaurants gebruiken menu-QR-codes, hotels WiFi-QR-codes en winkels Google Reviews-QR-codes. Verken onze generators."
   }
 }

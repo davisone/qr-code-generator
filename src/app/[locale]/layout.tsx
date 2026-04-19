@@ -118,6 +118,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     publisher: "DVS Web",
     applicationName: "QRaft",
     category: "technology",
+    verification: {
+      google: "25Uq5WlF-uXpP54WzrYhkWNH1PuCrE6gphEpqzpvxOg",
+    },
   };
 }
 
@@ -133,6 +136,9 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale}>
       <head>
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Anti-FOUC theme script — static string, no user data, safe */}
         <script
           dangerouslySetInnerHTML={{

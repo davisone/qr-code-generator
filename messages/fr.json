@@ -652,5 +652,641 @@
     "top_devices": "Top appareils",
     "top_browsers": "Top navigateurs",
     "evolution": "Évolution"
+  },
+  "seo_generator": {
+    "breadcrumb_home": "Accueil",
+    "breadcrumb_generators": "Générateurs de QR Codes",
+    "errors": {
+      "required": "Ce champ est requis"
+    },
+    "common": {
+      "badge_free": "100% Gratuit",
+      "preview_label": "Aperçu",
+      "download_png": "Télécharger PNG",
+      "download_svg": "Télécharger SVG",
+      "download_pdf": "Télécharger PDF",
+      "cta_title": "PRÊT À ALLER PLUS LOIN ?",
+      "cta_body": "Créez un compte gratuit pour sauvegarder, suivre et gérer tous vos QR codes depuis un seul tableau de bord.",
+      "cta_button": "Commencer gratuitement",
+      "faq_label": "FAQ"
+    },
+    "wifi": {
+      "meta_title": "Générateur de QR Code WiFi Gratuit — Partagez Votre Réseau Instantanément | QRaft",
+      "meta_description": "Générez un QR code pour votre réseau WiFi en quelques secondes. Les visiteurs scannent et se connectent — plus besoin de taper le mot de passe. Gratuit, sans inscription.",
+      "breadcrumb": "QR Code WiFi",
+      "kicker": "Générateur de QR Code WiFi",
+      "title": "PARTAGEZ VOTRE WIFI EN UN SEUL SCAN.",
+      "subtitle": "Générez un QR code qui permet à n'importe qui de se connecter instantanément à votre réseau WiFi. Plus besoin d'épeler le mot de passe — il suffit de scanner.",
+      "empty_hint": "Entrez le nom de votre réseau pour générer un QR code",
+      "form": {
+        "title": "Détails WiFi",
+        "subtitle": "Entrez les informations de votre réseau ci-dessous",
+        "ssid": "Nom du réseau (SSID)",
+        "ssid_placeholder": "Mon_Réseau_WiFi",
+        "security": "Type de sécurité",
+        "security_open": "Ouvert (sans mot de passe)",
+        "password": "Mot de passe",
+        "password_placeholder": "Votre mot de passe WiFi",
+        "hidden": "Réseau masqué",
+        "hidden_desc": "Cochez si votre réseau n'apparaît pas dans la liste WiFi"
+      },
+      "guide": {
+        "label": "Comment ça marche",
+        "title": "CRÉEZ VOTRE QR CODE WIFI EN 4 ÉTAPES",
+        "step1": { "title": "ENTREZ LE NOM DE VOTRE RÉSEAU", "body": "Saisissez le SSID exact de votre réseau WiFi tel qu'il apparaît sur votre routeur." },
+        "step2": { "title": "SÉLECTIONNEZ LE TYPE DE SÉCURITÉ", "body": "Choisissez WPA/WPA2 pour les réseaux modernes, WEP pour les anciens, ou Ouvert pour les hotspots publics." },
+        "step3": { "title": "AJOUTEZ VOTRE MOT DE PASSE", "body": "Entrez le mot de passe WiFi. Il sera encodé directement dans le QR code." },
+        "step4": { "title": "TÉLÉCHARGEZ ET IMPRIMEZ", "body": "Téléchargez en PNG, SVG ou PDF et affichez-le à votre entrée, dans le hall ou à la réception." }
+      },
+      "faq": {
+        "title": "QUESTIONS FRÉQUENTES",
+        "q1": "Le QR code WiFi est-il vraiment gratuit ?",
+        "a1": "Oui, 100% gratuit sans inscription requise. Générez et téléchargez autant de QR codes WiFi que vous le souhaitez.",
+        "q2": "Le QR code stocke-t-il mon mot de passe ?",
+        "a2": "Le mot de passe est encodé directement dans l'image du QR code. Il n'est stocké sur aucun serveur — tout reste sur votre appareil.",
+        "q3": "Est-ce que ça fonctionne sur iPhone et Android ?",
+        "a3": "Oui. iOS (11+) et Android prennent en charge nativement les QR codes WiFi via l'appareil photo.",
+        "q4": "Puis-je l'utiliser pour mon restaurant ou mon hôtel ?",
+        "a4": "Absolument. Imprimez le QR code sur des chevalets de table, des cartes d'accueil ou des panneaux muraux pour que les clients se connectent instantanément.",
+        "q5": "Que se passe-t-il si je change mon mot de passe WiFi ?",
+        "a5": "Vous devrez générer un nouveau QR code avec le mot de passe mis à jour et remplacer l'ancien imprimé."
+      }
+    },
+    "vcard": {
+      "meta_title": "Générateur de QR Code vCard Gratuit — Carte de Visite Numérique | QRaft",
+      "meta_description": "Créez un QR code pour votre fiche contact (vCard). Scannez pour enregistrer nom, téléphone, email, entreprise — instantanément. Gratuit, sans inscription.",
+      "breadcrumb": "QR Code vCard",
+      "kicker": "Générateur de QR Code vCard",
+      "title": "VOTRE CARTE DE VISITE, À UN SCAN.",
+      "subtitle": "Générez un QR code qui enregistre vos coordonnées directement dans n'importe quel téléphone. Parfait pour le networking, les événements et les cartes de visite.",
+      "empty_hint": "Entrez votre nom pour générer un QR code contact",
+      "form": {
+        "title": "Coordonnées",
+        "subtitle": "Remplissez les champs que vous souhaitez inclure",
+        "fullname": "Nom complet",
+        "fullname_placeholder": "Jean Dupont",
+        "phone": "Numéro de téléphone",
+        "phone_placeholder": "+33 6 12 34 56 78",
+        "email": "Adresse email",
+        "email_placeholder": "jean@exemple.com",
+        "org": "Entreprise / Organisation",
+        "org_placeholder": "Acme SARL",
+        "url": "Site web",
+        "url_placeholder": "https://exemple.com",
+        "note": "Note",
+        "note_placeholder": "Rencontré au Web Summit 2026"
+      },
+      "guide": {
+        "label": "Comment ça marche",
+        "title": "CRÉEZ VOTRE CARTE DE VISITE NUMÉRIQUE",
+        "step1": { "title": "ENTREZ VOS COORDONNÉES", "body": "Ajoutez votre nom, téléphone, email, entreprise et site web. Seul le nom est obligatoire." },
+        "step2": { "title": "PRÉVISUALISEZ LE QR CODE", "body": "Voyez votre QR code se mettre à jour en temps réel à mesure que vous remplissez chaque champ." },
+        "step3": { "title": "TÉLÉCHARGEZ-LE", "body": "Exportez en PNG, SVG ou PDF — parfait pour l'impression sur cartes de visite." },
+        "step4": { "title": "PARTAGEZ PARTOUT", "body": "Imprimez-le sur votre carte, ajoutez-le à votre signature email, ou affichez-le lors d'événements." }
+      },
+      "faq": {
+        "title": "QUESTIONS FRÉQUENTES",
+        "q1": "Qu'est-ce qu'un QR code vCard ?",
+        "a1": "Un QR code vCard encode vos coordonnées (nom, téléphone, email, etc.) pour que quiconque puisse les enregistrer directement dans ses contacts en scannant.",
+        "q2": "Est-ce que ça fonctionne sur tous les téléphones ?",
+        "a2": "Oui. Tous les smartphones modernes (iOS et Android) prennent en charge les QR codes vCard via l'appareil photo intégré.",
+        "q3": "Puis-je inclure ma photo ?",
+        "a3": "Le QR code vCard standard n'inclut pas de photos car cela rendrait le QR trop complexe à scanner de manière fiable. Utilisez un compte Pro pour ajouter un logo.",
+        "q4": "Y a-t-il une limite de caractères ?",
+        "a4": "Les QR codes fonctionnent mieux en dessous de 300 caractères. N'incluez que les champs de contact essentiels pour une fiabilité de scan optimale.",
+        "q5": "Puis-je mettre à jour mes coordonnées après impression ?",
+        "a5": "Les QR codes statiques ne peuvent pas être modifiés. Avec un compte Pro, vous obtenez des QR codes dynamiques modifiables à tout moment."
+      }
+    },
+    "menu_restaurant": {
+      "meta_title": "Générateur de QR Code Menu Restaurant Gratuit | QRaft",
+      "meta_description": "Créez un QR code pour votre menu de restaurant. Liez à votre menu digital, PDF ou site web. Les clients scannent et consultent — sans contact. Gratuit.",
+      "breadcrumb": "QR Code Menu",
+      "kicker": "QR Code Menu Restaurant",
+      "title": "VOTRE MENU, ACCESSIBLE EN UN SCAN.",
+      "subtitle": "Créez un QR code qui renvoie directement à votre menu digital. Parfait pour les restaurants, cafés, bars et food trucks.",
+      "empty_hint": "Entrez l'URL de votre menu pour générer un QR code",
+      "form": {
+        "title": "Détails du menu",
+        "subtitle": "Liez à votre menu en ligne",
+        "url": "URL du menu",
+        "url_placeholder": "https://monrestaurant.com/menu",
+        "name": "Nom du restaurant (optionnel)",
+        "name_placeholder": "Chez Marcel"
+      },
+      "guide": {
+        "label": "Comment ça marche",
+        "title": "CONFIGUREZ VOTRE QR CODE MENU",
+        "step1": { "title": "HÉBERGEZ VOTRE MENU EN LIGNE", "body": "Uploadez votre menu en PDF ou créez une page sur votre site web avec le menu complet." },
+        "step2": { "title": "COLLEZ LE LIEN", "body": "Entrez l'URL de votre menu en ligne dans le formulaire ci-dessus." },
+        "step3": { "title": "GÉNÉREZ ET TÉLÉCHARGEZ", "body": "Téléchargez le QR code en PNG, SVG ou PDF en haute résolution." },
+        "step4": { "title": "IMPRIMEZ ET AFFICHEZ", "body": "Placez les QR codes sur les tables, à l'entrée, ou sur les emballages à emporter." }
+      },
+      "faq": {
+        "title": "QUESTIONS FRÉQUENTES",
+        "q1": "Pourquoi utiliser un QR code pour mon menu de restaurant ?",
+        "a1": "C'est hygiénique (sans contact), économise les coûts d'impression, et vous permet de mettre à jour votre menu à tout moment sans réimprimer.",
+        "q2": "Les clients ont-ils besoin d'une application pour scanner ?",
+        "a2": "Non. Tous les smartphones modernes peuvent scanner les QR codes directement depuis l'appareil photo. Aucune application spéciale n'est nécessaire.",
+        "q3": "Puis-je lier à un menu PDF ?",
+        "a3": "Oui. Uploadez votre PDF n'importe où (Google Drive, votre site web) et utilisez ce lien. Le QR code l'ouvrira directement.",
+        "q4": "Que se passe-t-il si je change mon menu ?",
+        "a4": "Si vous gardez la même URL, il suffit de mettre à jour le contenu à ce lien. Avec un compte Pro, vous pouvez aussi changer l'URL de destination sans réimprimer.",
+        "q5": "Puis-je suivre combien de personnes le scannent ?",
+        "a5": "Oui ! Créez un compte QRaft gratuit pour obtenir les analytics de scan : nombre de scans, types d'appareils, localisation, et plus encore."
+      }
+    },
+    "google_reviews": {
+      "meta_title": "Générateur de QR Code Avis Google Gratuit — Obtenez Plus d'Avis | QRaft",
+      "meta_description": "Créez un QR code qui renvoie directement à votre page d'avis Google. Boostez vos notes en un scan. Gratuit, sans inscription.",
+      "breadcrumb": "QR Code Avis Google",
+      "kicker": "QR Code Avis Google",
+      "title": "BOOSTEZ VOS AVIS GOOGLE EN UN SCAN.",
+      "subtitle": "Générez un QR code qui amène les clients directement sur votre page d'avis Google. Imprimez-le, affichez-le, regardez vos notes monter.",
+      "empty_hint": "Entrez votre URL d'avis Google pour générer un QR code",
+      "form": {
+        "title": "Lien Avis Google",
+        "subtitle": "Collez votre lien d'avis Google Business",
+        "url": "URL Avis Google",
+        "url_placeholder": "https://g.page/r/...",
+        "help": "Trouvez votre lien dans Google Business Profile → Partager → Demander des avis"
+      },
+      "guide": {
+        "label": "Comment ça marche",
+        "title": "OBTENEZ PLUS D'AVIS EN 4 ÉTAPES",
+        "step1": { "title": "TROUVEZ VOTRE LIEN D'AVIS", "body": "Ouvrez Google Business Profile, cliquez sur « Demander des avis » et copiez le lien." },
+        "step2": { "title": "COLLEZ-LE ICI", "body": "Entrez le lien dans le formulaire ci-dessus pour générer votre QR code instantanément." },
+        "step3": { "title": "TÉLÉCHARGEZ ET IMPRIMEZ", "body": "Exportez en PNG, SVG ou PDF. Imprimez sur les reçus, cartes, ou présentoirs de comptoir." },
+        "step4": { "title": "RÉCOLTEZ LES AVIS", "body": "Les clients scannent, vous notent sur Google, et votre note moyenne augmente." }
+      },
+      "faq": {
+        "title": "QUESTIONS FRÉQUENTES",
+        "q1": "Où trouver mon lien d'avis Google ?",
+        "a1": "Connectez-vous à Google Business Profile, allez dans Accueil, cliquez sur « Demander des avis ». Copiez le lien qui apparaît.",
+        "q2": "Le client a-t-il besoin d'un compte Google ?",
+        "a2": "Oui, les clients ont besoin d'un compte Google pour laisser un avis. Mais la plupart des gens en ont déjà un sur leur téléphone.",
+        "q3": "Puis-je personnaliser le design du QR code ?",
+        "a3": "Avec un compte QRaft gratuit, vous pouvez changer les couleurs, ajouter votre logo et ajuster le niveau de correction d'erreur.",
+        "q4": "Combien d'avis supplémentaires puis-je espérer ?",
+        "a4": "Les entreprises qui affichent un QR code d'avis Google voient généralement une augmentation de 2 à 5 fois du volume d'avis dans le premier mois.",
+        "q5": "Est-ce autorisé par Google ?",
+        "a5": "Oui. Google encourage les entreprises à demander des avis. N'offrez simplement pas d'incitations pour des avis positifs — cela viole leurs consignes."
+      }
+    },
+    "whatsapp": {
+      "meta_title": "Générateur de QR Code WhatsApp Gratuit — Démarrez des Conversations Instantanément | QRaft",
+      "meta_description": "Créez un QR code qui ouvre une conversation WhatsApp avec votre numéro. Ajoutez un message pré-rempli. Gratuit, sans inscription.",
+      "breadcrumb": "QR Code WhatsApp",
+      "kicker": "Générateur de QR Code WhatsApp",
+      "title": "DÉMARREZ UNE CONVERSATION WHATSAPP EN UN SCAN.",
+      "subtitle": "Générez un QR code qui ouvre une conversation WhatsApp avec votre numéro. Parfait pour le support client, les commandes et les réservations.",
+      "empty_hint": "Entrez votre numéro de téléphone pour générer un QR code WhatsApp",
+      "form": {
+        "title": "Détails WhatsApp",
+        "subtitle": "Entrez votre numéro WhatsApp et un message optionnel",
+        "phone": "Numéro de téléphone (avec indicatif pays)",
+        "phone_placeholder": "+33 6 12 34 56 78",
+        "message": "Message pré-rempli (optionnel)",
+        "message_placeholder": "Bonjour ! J'aimerais en savoir plus sur..."
+      },
+      "guide": {
+        "label": "Comment ça marche",
+        "title": "CRÉEZ VOTRE QR CODE WHATSAPP",
+        "step1": { "title": "ENTREZ VOTRE NUMÉRO", "body": "Saisissez votre numéro complet avec l'indicatif pays (ex. +33 pour la France, +1 pour les US)." },
+        "step2": { "title": "AJOUTEZ UN MESSAGE", "body": "Définissez optionnellement un message pré-rempli qui apparaîtra à l'ouverture de la conversation." },
+        "step3": { "title": "GÉNÉREZ ET TÉLÉCHARGEZ", "body": "Téléchargez votre QR code en PNG, SVG ou PDF." },
+        "step4": { "title": "AFFICHEZ PARTOUT", "body": "Imprimez-le sur des flyers, emballages, cartes de visite ou vitrines." }
+      },
+      "faq": {
+        "title": "QUESTIONS FRÉQUENTES",
+        "q1": "La personne a-t-elle besoin d'avoir WhatsApp installé ?",
+        "a1": "Oui. Le QR code génère un lien wa.me qui ouvre l'application WhatsApp. Si elle n'est pas installée, il redirige vers la page de téléchargement.",
+        "q2": "Puis-je inclure un message pré-rempli ?",
+        "a2": "Oui. Définissez un message par défaut dans le formulaire et il apparaîtra dans le champ de saisie quand le client scannera le code.",
+        "q3": "Mon numéro sera-t-il visible ?",
+        "a3": "Le numéro de téléphone est encodé dans le lien du QR code. Quiconque le scanne verra votre numéro dans WhatsApp.",
+        "q4": "Puis-je utiliser un numéro WhatsApp Business ?",
+        "a4": "Absolument. Les numéros classiques et WhatsApp Business fonctionnent. Le format du lien est identique.",
+        "q5": "Est-ce gratuit ?",
+        "a5": "Oui, 100% gratuit. Générez autant de QR codes WhatsApp que vous le souhaitez sans créer de compte."
+      }
+    },
+    "email": {
+      "meta_title": "Générateur de QR Code Email Gratuit — Lien Mailto Pré-rempli | QRaft",
+      "meta_description": "Créez un QR code qui ouvre un email avec destinataire, objet et corps pré-remplis. Gratuit, sans inscription.",
+      "breadcrumb": "QR Code Email",
+      "kicker": "Générateur de QR Code Email",
+      "title": "ENVOYEZ UN EMAIL EN UN SCAN.",
+      "subtitle": "Générez un QR code qui ouvre l'application email avec une adresse, un objet et un message pré-remplis. Idéal pour les retours, le support et le contact.",
+      "empty_hint": "Entrez une adresse email pour générer un QR code",
+      "form": {
+        "title": "Détails Email",
+        "subtitle": "Définissez le destinataire et le contenu pré-rempli optionnel",
+        "to": "Email du destinataire",
+        "to_placeholder": "bonjour@exemple.com",
+        "subject": "Objet (optionnel)",
+        "subject_placeholder": "Question à propos de votre service",
+        "body": "Corps du message (optionnel)",
+        "body_placeholder": "Bonjour, j'aimerais..."
+      },
+      "guide": {
+        "label": "Comment ça marche",
+        "title": "CRÉEZ VOTRE QR CODE EMAIL",
+        "step1": { "title": "ENTREZ L'EMAIL", "body": "Saisissez l'adresse email du destinataire qui doit recevoir le message." },
+        "step2": { "title": "AJOUTEZ L'OBJET ET LE CORPS", "body": "Pré-remplissez optionnellement la ligne d'objet et le corps du message." },
+        "step3": { "title": "GÉNÉREZ LE QR CODE", "body": "Votre QR code est créé instantanément. Prévisualisez-le en temps réel." },
+        "step4": { "title": "PARTAGEZ-LE", "body": "Téléchargez et imprimez sur cartes de visite, flyers, emballages ou affiches." }
+      },
+      "faq": {
+        "title": "QUESTIONS FRÉQUENTES",
+        "q1": "Que se passe-t-il quand quelqu'un le scanne ?",
+        "a1": "Son application email par défaut s'ouvre avec le destinataire, l'objet et le corps déjà remplis. Il suffit d'appuyer sur Envoyer.",
+        "q2": "Est-ce que ça fonctionne avec Gmail, Outlook, etc. ?",
+        "a2": "Oui. Le QR code utilise le protocole standard mailto: qui fonctionne avec n'importe quel client email.",
+        "q3": "Puis-je suivre combien d'emails sont envoyés ?",
+        "a3": "Le QR code ouvre l'application email de l'utilisateur, nous ne pouvons donc pas suivre les envois. Avec un compte Pro, vous pouvez cependant suivre les scans.",
+        "q4": "L'adresse email est-elle visible dans le QR ?",
+        "a4": "L'email est encodé dans les données du QR code. Il n'est pas visible en regardant le code, mais tout lecteur QR le décodera.",
+        "q5": "Puis-je ajouter des destinataires en CC ou CCI ?",
+        "a5": "Le format standard mailto: prend en charge CC et CCI, mais par souci de simplicité, nous nous concentrons sur le destinataire principal. Vous pouvez modifier manuellement l'URL générée."
+      }
+    },
+    "sms": {
+      "meta_title": "Générateur de QR Code SMS Gratuit — Envoyez des Textos Instantanément | QRaft",
+      "meta_description": "Créez un QR code qui ouvre un SMS avec un numéro et un message pré-remplis. Parfait pour les opt-ins, le support et le contact rapide. Gratuit.",
+      "breadcrumb": "QR Code SMS",
+      "kicker": "Générateur de QR Code SMS",
+      "title": "ENVOYEZ UN SMS EN UN SCAN.",
+      "subtitle": "Générez un QR code qui ouvre l'application de messagerie avec un numéro et un texte pré-remplis. Idéal pour les opt-ins, les retours et le contact rapide.",
+      "empty_hint": "Entrez un numéro de téléphone pour générer un QR code SMS",
+      "form": {
+        "title": "Détails SMS",
+        "subtitle": "Définissez le numéro du destinataire et le message",
+        "phone": "Numéro de téléphone",
+        "phone_placeholder": "+33 6 12 34 56 78",
+        "message": "Message pré-rempli (optionnel)",
+        "message_placeholder": "OUI pour s'inscrire"
+      },
+      "guide": {
+        "label": "Comment ça marche",
+        "title": "CRÉEZ VOTRE QR CODE SMS",
+        "step1": { "title": "ENTREZ LE NUMÉRO", "body": "Saisissez le numéro de téléphone qui doit recevoir le message texte." },
+        "step2": { "title": "AJOUTEZ UN MESSAGE", "body": "Pré-remplissez optionnellement un message comme « OUI » ou « INFO » pour les campagnes d'opt-in." },
+        "step3": { "title": "GÉNÉREZ ET TÉLÉCHARGEZ", "body": "Votre QR code est prêt. Téléchargez-le en PNG, SVG ou PDF." },
+        "step4": { "title": "IMPRIMEZ ET AFFICHEZ", "body": "Placez-le sur des affiches, flyers, emballages produits ou signalétique événementielle." }
+      },
+      "faq": {
+        "title": "QUESTIONS FRÉQUENTES",
+        "q1": "Est-ce que ça fonctionne sur iPhone et Android ?",
+        "a1": "Oui. Les deux plateformes prennent en charge le protocole sms: et ouvriront l'application de messagerie native.",
+        "q2": "Le message s'envoie-t-il automatiquement ?",
+        "a2": "Non. L'application de messagerie s'ouvre avec le texte pré-rempli, mais l'utilisateur doit appuyer sur Envoyer manuellement.",
+        "q3": "Puis-je l'utiliser pour des opt-ins marketing par SMS ?",
+        "a3": "Oui. Définissez le message sur un mot-clé comme « OUI » pour que les clients s'inscrivent à votre liste SMS en scannant.",
+        "q4": "Les numéros internationaux sont-ils pris en charge ?",
+        "a4": "Oui. Incluez l'indicatif pays complet (ex. +44 pour le Royaume-Uni, +33 pour la France) pour garantir le fonctionnement mondial.",
+        "q5": "La génération est-elle gratuite ?",
+        "a5": "Oui, la génération du QR code est 100% gratuite. Les tarifs SMS standards de l'opérateur de l'utilisateur s'appliquent lors de l'envoi."
+      }
+    },
+    "location": {
+      "meta_title": "Générateur de QR Code Localisation Gratuit — Partagez des Coordonnées Maps | QRaft",
+      "meta_description": "Créez un QR code qui ouvre Google Maps ou Apple Maps à un endroit précis. Parfait pour les itinéraires. Gratuit, sans inscription.",
+      "breadcrumb": "QR Code Localisation",
+      "kicker": "Générateur de QR Code Localisation",
+      "title": "PARTAGEZ UN LIEU EN UN SCAN.",
+      "subtitle": "Générez un QR code qui ouvre une carte à vos coordonnées exactes. Idéal pour les commerces, événements, points de rendez-vous et parkings.",
+      "empty_hint": "Entrez des coordonnées ou une adresse pour générer un QR code localisation",
+      "form": {
+        "title": "Détails de localisation",
+        "subtitle": "Entrez des coordonnées ou un nom de lieu",
+        "lat": "Latitude",
+        "lat_placeholder": "48.8566",
+        "lng": "Longitude",
+        "lng_placeholder": "2.3522",
+        "label": "Nom du lieu (optionnel)",
+        "label_placeholder": "Tour Eiffel, Paris"
+      },
+      "guide": {
+        "label": "Comment ça marche",
+        "title": "CRÉEZ VOTRE QR CODE LOCALISATION",
+        "step1": { "title": "ENTREZ LES COORDONNÉES", "body": "Saisissez la latitude et la longitude, ou trouvez-les sur Google Maps en faisant un clic droit sur un lieu." },
+        "step2": { "title": "AJOUTEZ UN LIBELLÉ", "body": "Ajoutez optionnellement un nom de lieu pour plus de clarté à l'ouverture de la carte." },
+        "step3": { "title": "GÉNÉREZ LE QR CODE", "body": "Votre QR code est créé instantanément avec un aperçu en direct." },
+        "step4": { "title": "PARTAGEZ L'ITINÉRAIRE", "body": "Imprimez sur des invitations, cartes de visite, billets d'événements ou signalétique." }
+      },
+      "faq": {
+        "title": "QUESTIONS FRÉQUENTES",
+        "q1": "Quelle application de cartes s'ouvrira ?",
+        "a1": "Le QR code utilise le schéma URI geo:. Sur Android, il ouvre Google Maps. Sur iOS, il ouvre Apple Maps par défaut.",
+        "q2": "Comment trouver mes coordonnées ?",
+        "a2": "Ouvrez Google Maps, faites un clic droit sur votre emplacement et cliquez sur les coordonnées pour les copier.",
+        "q3": "Puis-je ajouter un libellé au marqueur ?",
+        "a3": "Oui. Le champ libellé ajoute un paramètre de requête qui affiche un marqueur nommé sur la carte.",
+        "q4": "Est-ce que ça fonctionne hors ligne ?",
+        "a4": "Le QR code encode les coordonnées localement, mais l'utilisateur a besoin d'une connexion internet pour charger la carte.",
+        "q5": "Puis-je utiliser une adresse au lieu de coordonnées ?",
+        "a5": "Pour une meilleure précision, utilisez les coordonnées. Cependant, vous pouvez utiliser le champ libellé avec une adresse complète et il la recherchera."
+      }
+    },
+    "event": {
+      "meta_title": "Générateur de QR Code Événement Gratuit — Invitation Calendrier en Un Scan | QRaft",
+      "meta_description": "Créez un QR code qui ajoute un événement au calendrier. Définissez titre, date, heure, lieu. Scannez pour enregistrer. Gratuit, sans inscription.",
+      "breadcrumb": "QR Code Événement",
+      "kicker": "Générateur de QR Code Événement / Calendrier",
+      "title": "AJOUTEZ UN ÉVÉNEMENT À N'IMPORTE QUEL CALENDRIER EN UN SCAN.",
+      "subtitle": "Générez un QR code qui crée un événement calendrier avec titre, date, heure et lieu. Parfait pour les conférences, mariages et rencontres.",
+      "empty_hint": "Entrez les détails de l'événement pour générer un QR code calendrier",
+      "form": {
+        "title": "Détails de l'événement",
+        "subtitle": "Remplissez les informations de l'événement",
+        "event_title": "Titre de l'événement",
+        "event_title_placeholder": "Rencontre annuelle d'entreprise",
+        "start": "Date et heure de début",
+        "end": "Date et heure de fin",
+        "location_field": "Lieu",
+        "location_placeholder": "123 Rue Principale, Paris",
+        "description": "Description (optionnel)",
+        "description_placeholder": "Rejoignez-nous pour notre rencontre annuelle..."
+      },
+      "guide": {
+        "label": "Comment ça marche",
+        "title": "CRÉEZ VOTRE QR CODE ÉVÉNEMENT",
+        "step1": { "title": "ENTREZ LES DÉTAILS", "body": "Ajoutez le titre, la date et l'heure de début/fin, le lieu et une description." },
+        "step2": { "title": "PRÉVISUALISEZ", "body": "Voyez le QR code se mettre à jour en temps réel à mesure que vous remplissez le formulaire." },
+        "step3": { "title": "TÉLÉCHARGEZ", "body": "Exportez en PNG, SVG ou PDF pour un usage numérique ou imprimé." },
+        "step4": { "title": "DISTRIBUEZ", "body": "Imprimez sur des affiches d'événements, billets, flyers ou partagez sur les réseaux sociaux." }
+      },
+      "faq": {
+        "title": "QUESTIONS FRÉQUENTES",
+        "q1": "Quelles applications de calendrier sont prises en charge ?",
+        "a1": "Le QR code génère un format iCalendar (VCALENDAR) pris en charge par Google Agenda, Apple Calendrier, Outlook et bien d'autres.",
+        "q2": "Puis-je inclure un fuseau horaire ?",
+        "a2": "L'événement utilise l'heure locale. Pour les événements internationaux, mentionnez le fuseau horaire dans la description.",
+        "q3": "Les rappels seront-ils définis automatiquement ?",
+        "a3": "La plupart des applications de calendrier ajoutent un rappel par défaut lors de l'importation d'un événement. Le timing exact dépend des paramètres de l'utilisateur.",
+        "q4": "Puis-je ajouter plusieurs événements dans un seul QR code ?",
+        "a4": "Chaque QR code encode un seul événement. Pour les conférences sur plusieurs jours, créez un QR code par session ou par jour.",
+        "q5": "Est-ce gratuit ?",
+        "a5": "Oui, 100% gratuit. Aucun compte nécessaire. Générez des QR codes événement en illimité."
+      }
+    },
+    "social_media": {
+      "meta_title": "Générateur de QR Code Réseaux Sociaux Gratuit — Liez Vos Profils | QRaft",
+      "meta_description": "Créez un QR code pour votre profil Instagram, TikTok, LinkedIn, X, YouTube ou Facebook. Un scan, un abonnement instantané. Gratuit.",
+      "breadcrumb": "QR Code Réseaux Sociaux",
+      "kicker": "Générateur de QR Code Réseaux Sociaux",
+      "title": "DÉVELOPPEZ VOTRE AUDIENCE EN UN SCAN.",
+      "subtitle": "Générez un QR code qui renvoie directement à votre profil de réseau social. Parfait pour les cartes de visite, le merchandising, les événements et les vitrines.",
+      "empty_hint": "Entrez l'URL de votre profil de réseau social",
+      "form": {
+        "title": "Profil Social",
+        "subtitle": "Collez l'URL du profil que vous souhaitez lier",
+        "url": "URL du profil",
+        "url_placeholder": "https://instagram.com/votrenom",
+        "platform": "Plateforme (détectée automatiquement)"
+      },
+      "guide": {
+        "label": "Comment ça marche",
+        "title": "CRÉEZ VOTRE QR CODE RÉSEAUX SOCIAUX",
+        "step1": { "title": "COPIEZ L'URL DE VOTRE PROFIL", "body": "Allez sur votre profil Instagram, TikTok, LinkedIn, X, YouTube ou Facebook et copiez l'URL." },
+        "step2": { "title": "COLLEZ-LA ICI", "body": "Entrez l'URL dans le formulaire. Nous détectons automatiquement la plateforme." },
+        "step3": { "title": "PERSONNALISEZ ET TÉLÉCHARGEZ", "body": "Téléchargez votre QR code en PNG, SVG ou PDF." },
+        "step4": { "title": "PARTAGEZ PARTOUT", "body": "Imprimez sur cartes de visite, emballages, merchandising, menus, affiches." }
+      },
+      "faq": {
+        "title": "QUESTIONS FRÉQUENTES",
+        "q1": "Quelles plateformes sont prises en charge ?",
+        "a1": "Toute plateforme avec une URL de profil publique : Instagram, TikTok, LinkedIn, X (Twitter), YouTube, Facebook, Snapchat, Pinterest, etc.",
+        "q2": "Est-ce que ça ouvre l'application ou le site web ?",
+        "a2": "Si l'application du réseau social est installée, elle s'ouvre généralement directement. Sinon, le site mobile s'ouvre.",
+        "q3": "Puis-je lier à plusieurs profils ?",
+        "a3": "Chaque QR code renvoie à un seul profil. Pour plusieurs profils, créez un compte QRaft gratuit et utilisez une page bio link (bientôt disponible).",
+        "q4": "Puis-je suivre combien de personnes le scannent ?",
+        "a4": "Oui ! Créez un compte QRaft gratuit pour obtenir des analytics de scan détaillées : nombre, appareil, localisation et plus encore.",
+        "q5": "Est-ce gratuit ?",
+        "a5": "Oui. Générez des QR codes réseaux sociaux en illimité sans inscription et sans filigrane."
+      }
+    },
+    "pdf": {
+      "meta_title": "Générateur de QR Code PDF Gratuit — Liez à N'importe Quel Document | QRaft",
+      "meta_description": "Créez un QR code qui ouvre un document PDF. Liez à des menus, brochures, manuels, tarifs. Scannez pour consulter. Gratuit.",
+      "breadcrumb": "QR Code PDF",
+      "kicker": "Générateur de QR Code PDF",
+      "title": "OUVREZ UN PDF EN UN SCAN.",
+      "subtitle": "Générez un QR code qui renvoie directement à votre document PDF. Parfait pour les menus, brochures, manuels et tarifs.",
+      "empty_hint": "Entrez l'URL de votre PDF pour générer un QR code",
+      "form": {
+        "title": "Lien PDF",
+        "subtitle": "Collez l'URL où votre PDF est hébergé",
+        "url": "URL du PDF",
+        "url_placeholder": "https://exemple.com/brochure.pdf"
+      },
+      "guide": {
+        "label": "Comment ça marche",
+        "title": "CRÉEZ VOTRE QR CODE PDF",
+        "step1": { "title": "HÉBERGEZ VOTRE PDF", "body": "Hébergez votre PDF sur Google Drive, Dropbox, votre site web ou toute URL publique." },
+        "step2": { "title": "COLLEZ LE LIEN", "body": "Copiez le lien direct vers votre PDF et collez-le dans le formulaire." },
+        "step3": { "title": "GÉNÉREZ LE QR CODE", "body": "Votre QR code est créé instantanément avec un aperçu en direct." },
+        "step4": { "title": "IMPRIMEZ ET DISTRIBUEZ", "body": "Placez-le sur les emballages produits, brochures, affiches, cartes de visite." }
+      },
+      "faq": {
+        "title": "QUESTIONS FRÉQUENTES",
+        "q1": "Où héberger mon PDF ?",
+        "a1": "N'importe où avec une URL publique : Google Drive (réglez le partage sur « Tous ceux qui ont le lien »), Dropbox, votre propre site web, etc.",
+        "q2": "Est-ce que ça fonctionne sur tous les appareils ?",
+        "a2": "Oui. Tous les smartphones modernes peuvent ouvrir les fichiers PDF directement dans le navigateur ou une application de lecture PDF.",
+        "q3": "Puis-je mettre à jour le PDF plus tard ?",
+        "a3": "Si vous gardez la même URL et remplacez le fichier, le QR code renverra toujours vers la dernière version.",
+        "q4": "Y a-t-il une limite de taille de fichier ?",
+        "a4": "Le QR code ne contient que l'URL, pas le fichier lui-même. Il n'y a pas de limite de taille — cela dépend de votre hébergement.",
+        "q5": "Puis-je protéger le PDF par mot de passe ?",
+        "a5": "Le QR code renvoie vers l'URL. Si votre hébergeur de PDF prend en charge la protection par mot de passe, vous pouvez utiliser cette fonctionnalité indépendamment."
+      }
+    },
+    "crypto": {
+      "meta_title": "Générateur de QR Code Bitcoin et Crypto Gratuit | QRaft",
+      "meta_description": "Créez un QR code pour les paiements Bitcoin, Ethereum ou Litecoin. Encodez l'adresse du portefeuille et le montant. Gratuit, sans inscription.",
+      "breadcrumb": "QR Code Crypto",
+      "kicker": "Générateur de QR Code Paiement Crypto",
+      "title": "ACCEPTEZ LES PAIEMENTS CRYPTO EN UN SCAN.",
+      "subtitle": "Générez un QR code pour Bitcoin, Ethereum ou Litecoin. Encodez l'adresse de votre portefeuille et un montant optionnel pour des paiements instantanés.",
+      "empty_hint": "Entrez une adresse de portefeuille pour générer un QR code crypto",
+      "form": {
+        "title": "Détails Crypto",
+        "subtitle": "Sélectionnez la devise et entrez l'adresse du portefeuille",
+        "currency": "Cryptomonnaie",
+        "address": "Adresse du portefeuille",
+        "address_placeholder": "bc1qxy2kgdygjrsqtzq2n0yrf...",
+        "amount": "Montant (optionnel)",
+        "amount_placeholder": "0.001"
+      },
+      "guide": {
+        "label": "Comment ça marche",
+        "title": "CRÉEZ VOTRE QR CODE CRYPTO",
+        "step1": { "title": "SÉLECTIONNEZ VOTRE DEVISE", "body": "Choisissez Bitcoin (BTC), Ethereum (ETH) ou Litecoin (LTC)." },
+        "step2": { "title": "ENTREZ VOTRE ADRESSE", "body": "Collez l'adresse de votre portefeuille. Vérifiez-la bien — les transactions sont irréversibles." },
+        "step3": { "title": "DÉFINISSEZ UN MONTANT", "body": "Définissez optionnellement un montant de paiement qui sera pré-rempli dans le portefeuille de l'expéditeur." },
+        "step4": { "title": "TÉLÉCHARGEZ ET AFFICHEZ", "body": "Imprimez sur des factures, pages de dons, affichages en point de vente ou votre site web." }
+      },
+      "faq": {
+        "title": "QUESTIONS FRÉQUENTES",
+        "q1": "Quelles cryptomonnaies sont prises en charge ?",
+        "a1": "Bitcoin (BTC), Ethereum (ETH) et Litecoin (LTC). Nous utilisons le schéma URI standard pour chacune (BIP21 pour BTC).",
+        "q2": "Le montant est-il obligatoire ?",
+        "a2": "Non. Le montant est optionnel. S'il est omis, l'expéditeur peut saisir n'importe quel montant dans son application de portefeuille.",
+        "q3": "Est-ce que ça fonctionne avec tous les portefeuilles ?",
+        "a3": "Oui. Tout portefeuille prenant en charge le schéma URI standard (bitcoin:, ethereum:, litecoin:) reconnaîtra le QR code.",
+        "q4": "Est-ce sécurisé ?",
+        "a4": "Le QR code ne contient que l'adresse publique de votre portefeuille. Il ne contient jamais de clés privées ni de données sensibles.",
+        "q5": "Puis-je l'utiliser pour des dons ?",
+        "a5": "Oui. Affichez le QR code sur votre site web, en livestream, ou imprimez-le pour des dons en personne."
+      }
+    },
+    "phone": {
+      "meta_title": "Générateur de QR Code Téléphone Gratuit — Appelez en Un Scan | QRaft",
+      "meta_description": "Créez un QR code qui compose un numéro de téléphone instantanément. Parfait pour les cartes de visite, affiches et support client. Gratuit.",
+      "breadcrumb": "QR Code Téléphone",
+      "kicker": "Générateur de QR Code Appel Téléphonique",
+      "title": "PASSEZ UN APPEL EN UN SCAN.",
+      "subtitle": "Générez un QR code qui ouvre le composeur téléphonique avec votre numéro pré-rempli. Idéal pour les cartes de visite, lignes de support et signalétique.",
+      "empty_hint": "Entrez un numéro de téléphone pour générer un QR code d'appel",
+      "form": {
+        "title": "Numéro de téléphone",
+        "subtitle": "Entrez le numéro à composer",
+        "phone": "Numéro de téléphone",
+        "phone_placeholder": "+33 1 23 45 67 89"
+      },
+      "guide": {
+        "label": "Comment ça marche",
+        "title": "CRÉEZ VOTRE QR CODE TÉLÉPHONE",
+        "step1": { "title": "ENTREZ VOTRE NUMÉRO", "body": "Saisissez le numéro complet avec l'indicatif pays pour la compatibilité internationale." },
+        "step2": { "title": "PRÉVISUALISEZ", "body": "Voyez le QR code se générer en temps réel." },
+        "step3": { "title": "TÉLÉCHARGEZ", "body": "Exportez en PNG, SVG ou PDF — parfait pour tout format d'impression." },
+        "step4": { "title": "AFFICHEZ-LE", "body": "Imprimez sur cartes de visite, vitrines, covering véhicule, flyers ou affiches." }
+      },
+      "faq": {
+        "title": "QUESTIONS FRÉQUENTES",
+        "q1": "L'appel se lance-t-il immédiatement au scan ?",
+        "a1": "Non. Le composeur téléphonique s'ouvre avec le numéro pré-rempli. L'utilisateur doit appuyer sur le bouton d'appel pour lancer l'appel.",
+        "q2": "Est-ce que ça fonctionne avec les lignes fixes ?",
+        "a2": "Oui. Tout numéro de téléphone valide fonctionne — mobile, fixe, numéro vert, international.",
+        "q3": "Dois-je inclure l'indicatif pays ?",
+        "a3": "Oui. Incluez toujours l'indicatif pays (ex. +1, +44, +33) pour que le QR code fonctionne à l'international.",
+        "q4": "Puis-je l'utiliser pour des appels WhatsApp ?",
+        "a4": "Non. Celui-ci ouvre le composeur téléphonique standard. Pour WhatsApp, utilisez notre générateur de QR code WhatsApp dédié.",
+        "q5": "Est-ce gratuit ?",
+        "a5": "Oui, 100% gratuit sans limites. Générez autant de QR codes téléphone que nécessaire."
+      }
+    },
+    "text": {
+      "meta_title": "Générateur de QR Code Texte Gratuit — Encodez N'importe Quel Message | QRaft",
+      "meta_description": "Créez un QR code contenant du texte brut. Encodez des messages, notes, numéros de série ou tout autre texte. Gratuit, sans inscription.",
+      "breadcrumb": "QR Code Texte",
+      "kicker": "Générateur de QR Code Texte Brut",
+      "title": "ENCODEZ N'IMPORTE QUEL TEXTE DANS UN QR CODE.",
+      "subtitle": "Générez un QR code qui affiche du texte brut au scan. Parfait pour les messages, numéros de série, codes promo et notes.",
+      "empty_hint": "Saisissez votre texte pour générer un QR code",
+      "form": {
+        "title": "Votre texte",
+        "subtitle": "Entrez le texte à encoder dans le QR code",
+        "text": "Contenu texte",
+        "text_placeholder": "Saisissez votre message ici..."
+      },
+      "guide": {
+        "label": "Comment ça marche",
+        "title": "CRÉEZ VOTRE QR CODE TEXTE",
+        "step1": { "title": "SAISISSEZ VOTRE TEXTE", "body": "Entrez n'importe quel texte : messages, codes, numéros de série, codes promo, poèmes — tout ce que vous voulez." },
+        "step2": { "title": "PRÉVISUALISEZ", "body": "Voyez le QR code se mettre à jour au fur et à mesure de votre saisie, caractère par caractère." },
+        "step3": { "title": "TÉLÉCHARGEZ", "body": "Exportez en PNG, SVG ou PDF." },
+        "step4": { "title": "UTILISEZ PARTOUT", "body": "Imprimez sur les emballages, cartes de vœux, chasses au trésor, étiquettes de musée, étiquettes produits." }
+      },
+      "faq": {
+        "title": "QUESTIONS FRÉQUENTES",
+        "q1": "Combien de texte peut contenir un QR code ?",
+        "a1": "Jusqu'à environ 4 296 caractères, mais pour un scan fiable, restez sous 300 caractères. Plus c'est court, mieux c'est.",
+        "q2": "Le texte peut-il contenir des caractères spéciaux ?",
+        "a2": "Oui. Les QR codes prennent en charge le jeu de caractères UTF-8 complet : accents, symboles, emojis, caractères CJK.",
+        "q3": "Que se passe-t-il quand quelqu'un le scanne ?",
+        "a3": "Le texte s'affiche à l'écran. S'il contient une URL, la plupart des scanners proposent de l'ouvrir. Le texte brut est simplement affiché.",
+        "q4": "Puis-je l'utiliser pour des codes promo ?",
+        "a4": "Absolument. Encodez des codes de réduction, codes promo ou numéros de série que votre système de caisse peut scanner et valider.",
+        "q5": "Y a-t-il une différence entre un QR code texte et URL ?",
+        "a5": "Un QR code URL ouvre automatiquement le lien. Un QR code texte affiche simplement le contenu. Utilisez le texte pour les données non-URL."
+      }
+    },
+    "app_store": {
+      "meta_title": "Générateur de QR Code App Store Gratuit — Téléchargez des Apps Instantanément | QRaft",
+      "meta_description": "Créez un QR code qui renvoie à votre app sur l'App Store ou Google Play. Un scan pour télécharger. Gratuit, sans inscription.",
+      "breadcrumb": "QR Code App Store",
+      "kicker": "Générateur de QR Code Téléchargement d'App",
+      "title": "BOOSTEZ LES TÉLÉCHARGEMENTS DE VOTRE APP EN UN SCAN.",
+      "subtitle": "Générez un QR code qui renvoie directement à votre app sur l'App Store ou Google Play. Parfait pour le marketing, les emballages et les événements.",
+      "empty_hint": "Entrez l'URL de votre store d'application pour générer un QR code de téléchargement",
+      "form": {
+        "title": "Lien de l'App",
+        "subtitle": "Collez le lien vers votre fiche d'application",
+        "url": "URL App Store ou Google Play",
+        "url_placeholder": "https://apps.apple.com/app/..."
+      },
+      "guide": {
+        "label": "Comment ça marche",
+        "title": "CRÉEZ VOTRE QR CODE DE TÉLÉCHARGEMENT D'APP",
+        "step1": { "title": "TROUVEZ LE LIEN DE VOTRE APP", "body": "Copiez l'URL depuis la page de listing de l'App Store ou du Google Play Store." },
+        "step2": { "title": "COLLEZ-LE", "body": "Entrez l'URL dans le formulaire ci-dessus. Fonctionne avec les liens App Store et Google Play." },
+        "step3": { "title": "TÉLÉCHARGEZ LE QR CODE", "body": "Exportez en PNG, SVG ou PDF pour un usage numérique ou imprimé." },
+        "step4": { "title": "PROMOUVEZ VOTRE APP", "body": "Imprimez sur des flyers, cartes de visite, emballages produits, affiches, ou affichez en magasin." }
+      },
+      "faq": {
+        "title": "QUESTIONS FRÉQUENTES",
+        "q1": "Puis-je lier à la fois l'App Store et Google Play ?",
+        "a1": "Chaque QR code renvoie à une seule URL. Pour le multiplateforme, envisagez un service de lien intelligent ou créez deux QR codes côte à côte.",
+        "q2": "Est-ce que ça ouvre l'app du store ?",
+        "a2": "Oui. Sur iOS, le lien App Store ouvre l'app App Store. Sur Android, le lien Google Play ouvre le Play Store.",
+        "q3": "Puis-je suivre les téléchargements ?",
+        "a3": "Le QR code suit les scans (avec un compte QRaft). Le suivi des téléchargements réels se fait via les analytics du store.",
+        "q4": "Et les utilisateurs sur ordinateur ?",
+        "a4": "Les liens fonctionnent aussi dans les navigateurs de bureau, affichant la page du store où les utilisateurs peuvent envoyer l'app sur leur téléphone.",
+        "q5": "C'est vraiment gratuit ?",
+        "a5": "Oui. Sans inscription, sans filigrane, sans limites. Générez des QR codes de téléchargement d'app gratuitement."
+      }
+    }
+  },
+  "programmatic": {
+    "breadcrumb_home": "Accueil",
+    "breadcrumb_qr_code": "QR Code",
+    "hub_label": "QR Codes par secteur",
+    "hub_title": "LE BON QR CODE POUR CHAQUE ENTREPRISE.",
+    "hub_subtitle": "Explorez les solutions QR code par secteur d'activité. Trouvez le générateur parfait pour votre restaurant, magasin, événement, hôtel ou tout autre commerce.",
+    "cities_count": "villes",
+    "vertical_restaurant": "Restaurant",
+    "vertical_retail": "Commerce de détail",
+    "vertical_event": "Événement",
+    "vertical_real_estate": "Immobilier",
+    "vertical_hotel": "Hôtel",
+    "vertical_museum": "Musée",
+    "vertical_salon": "Salon de coiffure et beauté",
+    "vertical_gym": "Salle de sport et fitness",
+    "vertical_title": "QR CODE POUR {vertical}",
+    "vertical_subtitle": "Créez des QR codes gratuits adaptés aux entreprises de type {vertical}. Choisissez votre ville ci-dessous pour commencer.",
+    "city_title": "QR CODE POUR {vertical} À {city}",
+    "city_subtitle": "Générez des QR codes gratuits et personnalisables pour votre entreprise {vertical} à {city}. Analytics de scan incluses — sans inscription.",
+    "city_cta": "Créer votre QR code",
+    "why_title": "Pourquoi les {vertical} à {city} ont besoin de QR codes",
+    "why_body_1": "Les QR codes sont devenus indispensables pour les entreprises de type {vertical} à {city}. Ils permettent des menus sans contact, des itinéraires instantanés, des avis faciles et un engagement client fluide — le tout en un seul scan.",
+    "why_body_2": "Avec QRaft, vous pouvez créer des QR codes professionnels en quelques secondes, personnaliser les couleurs et le logo, et suivre chaque scan avec des analytics détaillées. Entièrement gratuit, aucun compte requis.",
+    "how_title": "Comment créer votre QR code",
+    "how_step_1": "Choisissez le type de QR code dont vous avez besoin (menu, WiFi, contact, localisation, etc.)",
+    "how_step_2": "Entrez votre contenu — une URL, un mot de passe WiFi, un numéro de téléphone ou toute autre donnée",
+    "how_step_3": "Personnalisez le design : couleurs, logo, niveau de correction d'erreur",
+    "how_step_4": "Téléchargez en PNG, SVG ou PDF et commencez à l'utiliser immédiatement",
+    "other_cities_title": "QR Code pour {vertical} dans d'autres villes",
+    "other_verticals_title": "QR Codes pour d'autres secteurs à {city}",
+    "city_faq_q1": "Le générateur de QR code pour {vertical} à {city} est-il vraiment gratuit ?",
+    "city_faq_a1": "Oui, 100% gratuit. Générez des QR codes en illimité sans créer de compte. Exportez en PNG, SVG ou PDF.",
+    "city_faq_q2": "Puis-je suivre combien de personnes scannent mon QR code {vertical} à {city} ?",
+    "city_faq_a2": "Oui ! Créez un compte QRaft gratuit pour accéder aux analytics de scan : nombre de scans, types d'appareils, localisation géographique, et plus encore.",
+    "city_faq_q3": "Quel type de QR code est le meilleur pour {vertical} à {city} ?",
+    "city_faq_a3": "Cela dépend de votre usage. Les restaurants utilisent généralement des QR codes menu, les hôtels des QR codes WiFi, et les commerces des QR codes Avis Google. Explorez nos générateurs pour trouver le meilleur choix."
   }
 }

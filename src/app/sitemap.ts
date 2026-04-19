@@ -4,11 +4,17 @@ import { BASE_URL } from "@/lib/config";
 
 const locales = ["en", "fr", "es", "de", "it", "pt", "nl", "pt-BR", "es-MX", "ja", "zh", "ko"];
 
+const generatorTypes = [
+  "wifi", "vcard", "menu-restaurant", "google-reviews",
+  "whatsapp", "email", "sms", "location", "event",
+  "social-media", "pdf", "crypto", "phone", "text", "app-store",
+];
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = BASE_URL;
   const currentDate = new Date().toISOString();
 
-  // One entry per locale for the home page
+  // Pages d'accueil par locale
   const homeRoutes: MetadataRoute.Sitemap = locales.map((locale) => ({
     url: `${baseUrl}/${locale}`,
     lastModified: currentDate,
@@ -16,46 +22,48 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: locale === "en" || locale === "fr" ? 1.0 : 0.8,
   }));
 
-  const staticRoutes: MetadataRoute.Sitemap = [
-    ...homeRoutes,
-    {
-      url: `${baseUrl}/en/mentions-legales`,
+  // Pages statiques par locale
+  const staticPages = ["pricing", "mentions-legales", "cgu", "politique-confidentialite"];
+  const staticRoutes: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    staticPages.map((page) => ({
+      url: `${baseUrl}/${locale}/${page}`,
       lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-  ];
+      changeFrequency: "monthly" as const,
+      priority: page === "pricing" ? 0.8 : 0.3,
+    }))
+  );
 
+  // Pages générateurs (15 types × 12 langues = 180 URLs)
+  const generatorRoutes: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    generatorTypes.map((type) => ({
+      url: `${baseUrl}/${locale}/qr-code-generator/${type}`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    }))
+  );
+
+  // QR codes publics partagés
+  let sharedRoutes: MetadataRoute.Sitemap = [];
   try {
     const publicQRCodes = await prisma.qRCode.findMany({
-      where: {
-        isPublic: true,
-        shareToken: {
-          not: null,
-        },
-      },
-      select: {
-        shareToken: true,
-        updatedAt: true,
-      },
-      orderBy: {
-        updatedAt: "desc",
-      },
+      where: { isPublic: true, shareToken: { not: null } },
+      select: { shareToken: true, updatedAt: true },
+      orderBy: { updatedAt: "desc" },
       take: 5000,
     });
 
-    const sharedRoutes: MetadataRoute.Sitemap = publicQRCodes
-      .filter((qrCode): qrCode is { shareToken: string; updatedAt: Date } => Boolean(qrCode.shareToken))
-      .map((qrCode) => ({
-        url: `${baseUrl}/share/${encodeURIComponent(qrCode.shareToken)}`,
-        lastModified: qrCode.updatedAt,
-        changeFrequency: "weekly",
+    sharedRoutes = publicQRCodes
+      .filter((qr): qr is { shareToken: string; updatedAt: Date } => Boolean(qr.shareToken))
+      .map((qr) => ({
+        url: `${baseUrl}/share/${encodeURIComponent(qr.shareToken)}`,
+        lastModified: qr.updatedAt,
+        changeFrequency: "weekly" as const,
         priority: 0.7,
       }));
-
-    return [...staticRoutes, ...sharedRoutes];
   } catch {
-    // Keep sitemap available even if DB is temporarily unreachable.
-    return staticRoutes;
+    // Fallback silencieux si la DB est inaccessible
   }
+
+  return [...homeRoutes, ...staticRoutes, ...generatorRoutes, ...sharedRoutes];
 }
