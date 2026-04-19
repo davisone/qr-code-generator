@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { BASE_URL } from "@/lib/config";
+import { getAllSlugs } from "@/lib/blog";
 
 const locales = ["en", "fr", "es", "de", "it", "pt", "nl", "pt-BR", "es-MX", "ja", "zh", "ko"];
 
@@ -65,5 +66,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Fallback silencieux si la DB est inaccessible
   }
 
-  return [...homeRoutes, ...staticRoutes, ...generatorRoutes, ...sharedRoutes];
+  // Blog index par locale
+  const blogIndexRoutes: MetadataRoute.Sitemap = locales.map((locale) => ({
+    url: `${baseUrl}/${locale}/blog`,
+    lastModified: currentDate,
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  // Blog articles
+  const blogSlugs = getAllSlugs();
+  const blogArticleRoutes: MetadataRoute.Sitemap = blogSlugs.map(({ locale, slug }) => ({
+    url: `${baseUrl}/${locale}/blog/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Blog catégories
+  const blogCategories = ["tutorial", "use-case", "comparison"];
+  const blogCategoryRoutes: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    blogCategories.map((cat) => ({
+      url: `${baseUrl}/${locale}/blog/category/${cat}`,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    }))
+  );
+
+  return [...homeRoutes, ...staticRoutes, ...generatorRoutes, ...blogIndexRoutes, ...blogArticleRoutes, ...blogCategoryRoutes, ...sharedRoutes];
 }
