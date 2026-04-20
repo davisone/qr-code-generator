@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { BASE_URL } from "@/lib/config";
+import { BASE_URL, buildHreflang } from "@/lib/config";
 import { getAllPosts, getAllCategories } from "@/lib/blog";
 import { Link } from "@/i18n/navigation";
 
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${label} — Blog | QRaft`,
     description: `${label} — QR code articles and guides by QRaft.`,
-    alternates: { canonical: url },
+    alternates: { canonical: url, languages: buildHreflang(`/blog/category/${category}`) },
   };
 }
 

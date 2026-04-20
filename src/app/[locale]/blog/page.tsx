@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { BASE_URL } from "@/lib/config";
+import { BASE_URL, buildHreflang } from "@/lib/config";
 import { getAllPosts } from "@/lib/blog";
 import { Link } from "@/i18n/navigation";
 
@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: "Blog — QR Code Guides, Tips & Comparisons | QRaft",
     description: "Learn how to create, customize and use QR codes for your business. Tutorials, industry use-cases, and tool comparisons.",
-    alternates: { canonical: url },
+    alternates: { canonical: url, languages: buildHreflang("/blog") },
     openGraph: { title: "Blog | QRaft", description: "QR code guides, tutorials and comparisons.", url, type: "website" },
   };
 }

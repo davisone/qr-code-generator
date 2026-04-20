@@ -5,7 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { BASE_URL } from "@/lib/config";
+import { BASE_URL, buildHreflang } from "@/lib/config";
 import Providers from "@/components/Providers";
 import { Footer } from "@/components/Footer";
 import { ReviewBadge } from "@/components/ReviewBadge";
@@ -60,11 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const desc = localeDescriptions[locale] ?? localeDescriptions.en;
 
-  const hreflangAlternates: Record<string, string> = {};
-  for (const l of routing.locales) {
-    hreflangAlternates[l] = `${BASE_URL}/${l}`;
-  }
-  hreflangAlternates["x-default"] = `${BASE_URL}/en`;
+  const hreflangAlternates = buildHreflang("");
 
   return {
     title: {

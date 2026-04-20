@@ -5,7 +5,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import { BASE_URL } from "@/lib/config";
+import { BASE_URL, buildHreflang } from "@/lib/config";
 import { getPost, getAllSlugs, getAllPosts } from "@/lib/blog";
 import { CallToAction, InfoBox, QRPreview, ComparisonTable } from "@/components/blog/MdxComponents";
 import { JsonLd } from "@/components/seo-generator/JsonLd";
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.description,
-    alternates: { canonical: url },
+    alternates: { canonical: url, languages: buildHreflang(`/blog/${slug}`) },
     openGraph: {
       title: post.title,
       description: post.description,
