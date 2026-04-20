@@ -326,43 +326,23 @@ export default async function Home({ params }: Props) {
             {/* Titre massif */}
             <div>
               <h1
-                className="hero-title-anim"
                 style={{
                   fontFamily: "var(--font-display)",
                   fontSize: "clamp(3.5rem, 9vw, 8rem)",
                   lineHeight: 0.92,
                   letterSpacing: "0.02em",
-                  color: "var(--ink)",
                   margin: 0,
                 }}
               >
-                {t("hero_title_1")}
-              </h1>
-              <h1
-                className="hero-title-anim"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(3.5rem, 9vw, 8rem)",
-                  lineHeight: 0.92,
-                  letterSpacing: "0.02em",
-                  color: "var(--red)",
-                  margin: 0,
-                }}
-              >
-                {t("hero_title_2")}
-              </h1>
-              <h1
-                className="hero-title-anim"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(3.5rem, 9vw, 8rem)",
-                  lineHeight: 0.92,
-                  letterSpacing: "0.02em",
-                  color: "var(--ink)",
-                  margin: 0,
-                }}
-              >
-                {t("hero_title_3")}
+                <span className="hero-title-anim" style={{ display: "block", color: "var(--ink)" }}>
+                  {t("hero_title_1")}
+                </span>
+                <span className="hero-title-anim" style={{ display: "block", color: "var(--red)" }}>
+                  {t("hero_title_2")}
+                </span>
+                <span className="hero-title-anim" style={{ display: "block", color: "var(--ink)" }}>
+                  {t("hero_title_3")}
+                </span>
               </h1>
             </div>
 

@@ -19,7 +19,7 @@ export async function POST() {
     return NextResponse.json({ error: "Aucun abonnement actif" }, { status: 400 });
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.useqraft.com";
 
   const portalSession = await stripe.billingPortal.sessions.create({
     customer: user.stripeCustomerId,

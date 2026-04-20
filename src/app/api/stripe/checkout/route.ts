@@ -16,7 +16,7 @@ export async function POST() {
   });
   if (!user) return NextResponse.json({ error: "Utilisateur introuvable" }, { status: 404 });
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.useqraft.com";
 
   const checkoutSession = await stripe.checkout.sessions.create({
     mode: "subscription",
