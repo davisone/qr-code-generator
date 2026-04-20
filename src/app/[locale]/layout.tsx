@@ -146,7 +146,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           }}
         />
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-BVWND63T0M"
+          src="https://www.googletagmanager.com/gtag/js?id=G-BKKJSJ30BS"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -154,7 +154,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-BVWND63T0M');
+            gtag('config', 'G-BKKJSJ30BS');
           `}
         </Script>
       </head>
