@@ -145,6 +145,21 @@ export default async function LocaleLayout({ children, params }: Props) {
             __html: `(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;document.documentElement.setAttribute('data-theme',(t==='dark'||(t===null&&d))?'dark':'light');}catch(e){}})();`,
           }}
         />
+        <Script id="gtag-consent-default" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            var consent = localStorage.getItem('cookie-consent');
+            gtag('consent', 'default', {
+              analytics_storage: consent === 'accepted' ? 'granted' : 'denied',
+              ad_storage: 'denied',
+            });
+            if (consent === 'accepted') {
+              gtag('js', new Date());
+              gtag('config', 'G-BVWND63T0M');
+            }
+          `}
+        </Script>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-BVWND63T0M"
           strategy="afterInteractive"
