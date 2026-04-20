@@ -1,9 +1,19 @@
 import Stripe from "stripe";
 import { prisma } from "@/lib/prisma";
 
-const secretKey = process.env.STRIPE_SECRET_KEY;
-if (!secretKey) throw new Error("STRIPE_SECRET_KEY manquante");
-export const stripe = new Stripe(secretKey, { apiVersion: "2026-03-25.dahlia" });
+function getStripe() {
+  const secretKey = process.env.STRIPE_SECRET_KEY;
+  if (!secretKey) throw new Error("STRIPE_SECRET_KEY manquante");
+  return new Stripe(secretKey, { apiVersion: "2026-03-25.dahlia" });
+}
+
+let _stripe: Stripe | null = null;
+export const stripe = new Proxy({} as Stripe, {
+  get(_, prop) {
+    if (!_stripe) _stripe = getStripe();
+    return (_stripe as any)[prop];
+  },
+});
 
 /**
  * Retourne true si l'utilisateur a un abonnement Pro actif (+ grace period 7j).
