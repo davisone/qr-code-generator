@@ -1,0 +1,66 @@
+---
+title: "Come creare un codice QR per un documento PDF"
+description: "Genera un codice QR che apre direttamente un PDF: menu, brochure, manuale, catalogo. Scansiona per visualizzare. Gratuito."
+date: "2026-04-16"
+category: "tutorial"
+image: "/blog/pdf-qr.webp"
+author: "QRaft"
+readingTime: 4
+relatedGenerator: "pdf"
+---
+
+## Perche collegare un PDF a un codice QR?
+
+Il PDF resta il formato documentale piu universale. Collegare un codice QR a un PDF offre accesso istantaneo a:
+
+- **Menu dei ristoranti**: versione completa con foto
+- **Brochure commerciali**: catalogo prodotti dettagliato
+- **Manuali d'uso**: istruzioni per i dispositivi
+- **Listini prezzi**: prezzi aggiornati
+- **Curriculum vitae**: versione completa del tuo percorso professionale
+- **Termini e condizioni**: documenti legali
+
+Il vantaggio: il codice QR e piccolo (basta un adesivo) ma da accesso a un documento di piu pagine.
+
+## Prerequisito: ospita il tuo PDF online
+
+Il codice QR punta a un URL. Il tuo PDF deve essere accessibile tramite un link pubblico.
+
+### Google Drive (consigliato)
+1. Carica il tuo PDF su Google Drive
+2. Clic destro → Condividi → "Chiunque abbia il link"
+3. Copia il link
+
+<InfoBox type="tip">
+Per un link diretto (che apre il PDF senza l'interfaccia di Google Drive), sostituisci `/file/d/ID/view` con `/uc?export=download&id=ID` nell'URL.
+</InfoBox>
+
+### Dropbox
+1. Carica il PDF
+2. Clicca "Copia link"
+3. Sostituisci `dl=0` con `dl=1` per un download diretto
+
+### Il tuo sito web
+Carica il PDF sul tuo hosting e usa l'URL diretto (es. `https://miosito.com/docs/brochure.pdf`).
+
+## Genera il codice QR
+
+1. Vai al [generatore PDF di QRaft](/qr-code-generator/pdf)
+2. Incolla l'URL del tuo PDF
+3. Verifica l'anteprima
+4. Scarica in formato PNG, SVG o PDF
+
+## Consiglio: aggiorna senza ristampare
+
+Se mantieni lo **stesso URL** e sostituisci il file PDF a quell'indirizzo, il codice QR puntera automaticamente alla nuova versione.
+
+Con un account QRaft Pro, puoi anche creare un codice QR **dinamico** la cui URL di destinazione puo essere modificata in qualsiasi momento.
+
+## Buone pratiche
+
+1. **Ottimizza le dimensioni del PDF**: comprimilo per un caricamento rapido su mobile
+2. **Rendilo responsive**: assicurati che il testo sia leggibile sullo schermo del telefono
+3. **Testa il link**: scansiona il codice QR da un altro dispositivo prima di distribuirlo
+4. **Aggiungi una call-to-action**: "Scansiona per consultare il nostro catalogo"
+
+<CallToAction generator="pdf" label="Crea il mio codice QR PDF" />

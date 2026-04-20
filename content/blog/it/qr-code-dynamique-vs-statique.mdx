@@ -1,0 +1,104 @@
+---
+title: "Codice QR dinamico vs statico: quale scegliere?"
+description: "Qual e la differenza tra un codice QR dinamico e uno statico? Quando usare ciascuno? Pro, contro e casi d'uso."
+date: "2026-04-11"
+category: "comparison"
+image: "/blog/dynamique-vs-statique.webp"
+author: "QRaft"
+readingTime: 5
+relatedGenerator: "url"
+---
+
+## Statico vs dinamico: la differenza fondamentale
+
+Un **codice QR statico** codifica i dati direttamente nel pattern. L'URL, il testo o i dati di contatto sono incorporati nel codice QR stesso. Non possono essere modificati dopo la creazione.
+
+Un **codice QR dinamico** codifica un breve URL di reindirizzamento. Questo URL reindirizza verso la destinazione finale, che puoi cambiare in qualsiasi momento senza rigenerare il codice QR.
+
+## Codice QR statico
+
+### Come funziona
+
+I dati sono codificati direttamente nel pattern bianco e nero. Piu dati ci sono, piu il codice QR diventa denso (e piu difficile da scansionare a distanza).
+
+### Vantaggi
+
+- **Funziona offline**: nessun server intermediario necessario
+- **Nessuna dipendenza**: il codice QR funziona finche e leggibile
+- **Gratuito per sempre**: una volta creato, funziona a tempo indeterminato
+- **Privacy**: nessun dato transita attraverso terze parti
+
+### Svantaggi
+
+- **Non modificabile**: se l'URL cambia, serve un nuovo codice QR
+- **Nessun tracciamento**: nessuna statistica sulle scansioni
+- **Dimensione limitata**: piu dati = codice QR piu complesso
+- **Nessuna protezione**: nessuna password o scadenza possibile
+
+### Casi d'uso ideali
+
+- Codice QR WiFi (le credenziali cambiano raramente)
+- Codice QR vCard su un biglietto da visita
+- Codice QR testo o email
+- Qualsiasi uso in cui i dati non cambieranno mai
+
+## Codice QR dinamico
+
+### Come funziona
+
+Il codice QR contiene un URL breve (es. `qr-aft.vercel.app/r/abc123`) che reindirizza verso la destinazione reale. Il reindirizzamento passa attraverso un server che registra ogni scansione.
+
+### Vantaggi
+
+- **Modificabile**: cambia la destinazione senza toccare il codice QR stampato
+- **Tracciamento completo**: numero di scansioni, posizione, dispositivo, browser
+- **Codice QR compatto**: l'URL breve genera un pattern semplice e leggibile
+- **Funzionalita avanzate**: scadenza, protezione con password, A/B testing
+
+### Svantaggi
+
+- **Dipendente dal server**: se il servizio si interrompe, il codice QR smette di funzionare
+- **Richiede internet**: la scansione deve raggiungere il server di reindirizzamento
+- **Costo potenziale**: spesso limitato o a pagamento a seconda del servizio
+- **Latenza**: il reindirizzamento aggiunge qualche millisecondo
+
+### Casi d'uso ideali
+
+- Campagne marketing (necessita di tracciamento e flessibilita)
+- Menu dei ristoranti (cambiamenti frequenti)
+- Materiali stampati a lunga durata (volantini, poster, packaging)
+- Qualsiasi uso in cui potresti dover cambiare la destinazione
+
+## Tabella comparativa
+
+<ComparisonTable
+  headers={["Criterio", "Statico", "Dinamico"]}
+  rows={[
+    ["Modificabile dopo la creazione", "❌", "✅"],
+    ["Tracciamento scansioni", "❌", "✅"],
+    ["Funziona offline", "✅", "❌"],
+    ["Dimensione del codice QR", "Variabile (puo essere denso)", "Sempre compatto"],
+    ["Dipendenza dal server", "Nessuna", "Si"],
+    ["Costo", "Gratuito", "Gratuito o a pagamento"],
+    ["Durata di vita", "Illimitata", "Dipende dal servizio"],
+    ["Protezione (password)", "❌", "✅"]
+  ]}
+/>
+
+## Come scegliere?
+
+**Scegli statico se:**
+- I dati non cambieranno mai
+- Non hai bisogno di statistiche
+- Il codice QR deve funzionare offline (WiFi, vCard)
+
+**Scegli dinamico se:**
+- Stampi il codice QR su un supporto durevole
+- Vuoi monitorare le performance
+- La destinazione potrebbe cambiare
+
+<InfoBox type="info">
+Su QRaft, i codici QR URL sono dinamici per impostazione predefinita con tracciamento integrato. I codici QR WiFi, vCard, testo ed email sono statici perche i dati sono codificati direttamente: e il comportamento piu appropriato per ciascun tipo.
+</InfoBox>
+
+<CallToAction generator="url" label="Crea il mio codice QR dinamico" />

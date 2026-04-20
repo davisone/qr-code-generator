@@ -1,0 +1,66 @@
+---
+title: "如何为 PDF 文档创建二维码"
+description: "生成一个可直接打开 PDF 的二维码：菜单、宣传册、手册、目录。扫码即查看。免费。"
+date: "2026-04-16"
+category: "tutorial"
+image: "/blog/pdf-qr.webp"
+author: "QRaft"
+readingTime: 4
+relatedGenerator: "pdf"
+---
+
+## 为什么要将 PDF 链接到二维码？
+
+PDF 仍然是最通用的文档格式。将二维码链接到 PDF 可以即时访问：
+
+- **餐厅菜单**：带照片的完整版本
+- **销售手册**：详细产品目录
+- **使用说明书**：设备操作指南
+- **价目表**：最新定价
+- **简历**：完整的职业经历
+- **条款和条件**：法律文件
+
+优势在于：二维码很小（一个贴纸就够了），却能访问多页文档。
+
+## 前提条件：将 PDF 托管到网上
+
+二维码指向一个 URL。您的 PDF 必须通过公开链接可访问。
+
+### Google Drive（推荐）
+1. 将 PDF 上传到 Google Drive
+2. 右键点击 → 共享 → "知道链接的任何人"
+3. 复制链接
+
+<InfoBox type="tip">
+要获取直接链接（直接打开 PDF，不显示 Google Drive 界面），请将 URL 中的 `/file/d/ID/view` 替换为 `/uc?export=download&id=ID`。
+</InfoBox>
+
+### Dropbox
+1. 上传 PDF
+2. 点击"复制链接"
+3. 将 `dl=0` 替换为 `dl=1` 以获取直接下载链接
+
+### 您的网站
+将 PDF 上传到您的主机空间，使用直接 URL（例如 `https://mysite.com/docs/brochure.pdf`）。
+
+## 生成二维码
+
+1. 前往 [QRaft PDF 生成器](/qr-code-generator/pdf)
+2. 粘贴您的 PDF URL
+3. 查看预览
+4. 下载 PNG、SVG 或 PDF 格式
+
+## 小贴士：无需重新打印即可更新
+
+如果您保持**相同的 URL** 并替换该地址上的 PDF 文件，二维码将自动指向新版本。
+
+使用 QRaft Pro 账户，您还可以创建**动态**二维码，随时更改目标 URL。
+
+## 最佳实践
+
+1. **优化 PDF 大小**：压缩以确保在手机上快速加载
+2. **确保响应式**：确保文字在手机屏幕上可读
+3. **测试链接**：分发前用另一台设备扫描二维码
+4. **添加行动号召**："扫码查看我们的目录"
+
+<CallToAction generator="pdf" label="创建我的 PDF 二维码" />

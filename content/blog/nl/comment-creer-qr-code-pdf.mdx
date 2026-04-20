@@ -1,0 +1,66 @@
+---
+title: "Hoe maak je een QR-code voor een PDF-document"
+description: "Genereer een QR-code die direct een PDF opent: menu, brochure, handleiding, catalogus. Scannen en bekijken. Gratis."
+date: "2026-04-16"
+category: "tutorial"
+image: "/blog/pdf-qr.webp"
+author: "QRaft"
+readingTime: 4
+relatedGenerator: "pdf"
+---
+
+## Waarom een PDF koppelen aan een QR-code?
+
+PDF blijft het meest universele documentformaat. Een QR-code koppelen aan een PDF geeft directe toegang tot:
+
+- **Restaurantmenu's**: volledige versie met foto's
+- **Verkoopbrochures**: gedetailleerde productcatalogus
+- **Gebruikershandleidingen**: instructies bij apparaten
+- **Prijslijsten**: bijgewerkte tarieven
+- **CV's**: volledige versie van je loopbaan
+- **Algemene voorwaarden**: juridische documenten
+
+Het voordeel: de QR-code is klein (een sticker volstaat) maar geeft toegang tot een document van meerdere pagina's.
+
+## Vereiste: host je PDF online
+
+De QR-code verwijst naar een URL. Je PDF moet bereikbaar zijn via een openbare link.
+
+### Google Drive (aanbevolen)
+1. Upload je PDF naar Google Drive
+2. Klik rechts → Delen → "Iedereen met de link"
+3. Kopieer de link
+
+<InfoBox type="tip">
+Voor een directe link (die de PDF opent zonder de Google Drive-interface), vervang `/file/d/ID/view` door `/uc?export=download&id=ID` in de URL.
+</InfoBox>
+
+### Dropbox
+1. Upload de PDF
+2. Klik op "Link kopiëren"
+3. Vervang `dl=0` door `dl=1` voor een directe download
+
+### Je website
+Upload de PDF naar je hosting en gebruik de directe URL (bijv. `https://mijnsite.com/docs/brochure.pdf`).
+
+## Genereer de QR-code
+
+1. Ga naar de [QRaft PDF-generator](/qr-code-generator/pdf)
+2. Plak je PDF-URL
+3. Controleer het voorbeeld
+4. Download als PNG, SVG of PDF
+
+## Tip: bijwerken zonder opnieuw te printen
+
+Als je dezelfde **URL** behoudt en het PDF-bestand op dat adres vervangt, verwijst de QR-code automatisch naar de nieuwe versie.
+
+Met een QRaft Pro-account kun je ook een **dynamische** QR-code maken waarvan de bestemmings-URL op elk moment gewijzigd kan worden.
+
+## Best practices
+
+1. **Optimaliseer de PDF-grootte**: comprimeer voor snelle weergave op mobiel
+2. **Maak het responsive**: zorg dat tekst leesbaar is op een telefoonscherm
+3. **Test de link**: scan de QR-code met een ander apparaat vóór verspreiding
+4. **Voeg een call-to-action toe**: "Scan om onze catalogus te bekijken"
+
+<CallToAction generator="pdf" label="Create my PDF QR code" />

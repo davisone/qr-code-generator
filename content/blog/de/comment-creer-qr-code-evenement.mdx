@@ -1,0 +1,69 @@
+---
+title: "So erstellen Sie einen QR-Code fuer ein Event (Kalender)"
+description: "Generieren Sie einen QR-Code, der ein Ereignis automatisch zum Kalender Ihrer Teilnehmer hinzufuegt. Titel, Datum, Uhrzeit, Ort — alles vorausgefuellt."
+date: "2026-04-17"
+category: "tutorial"
+image: "/blog/event-qr.webp"
+author: "QRaft"
+readingTime: 4
+relatedGenerator: "event"
+---
+
+## Das Problem: Ihre Teilnehmer vergessen das Datum
+
+Sie organisieren ein Event. Sie verschicken Einladungen, teilen in sozialen Medien, senden Erinnerungen... Und am Tag selbst hat die Haelfte der Angemeldeten es vergessen.
+
+Ein Event-QR-Code loest dieses Problem, indem er das Ereignis automatisch zum Kalender des Teilnehmers hinzufuegt. Einmal in Google Calendar oder Apple Calendar eingetragen, erhalten sie **automatische Erinnerungen**.
+
+## Welche Informationen kodieren?
+
+Der Event-QR-Code verwendet das **iCalendar (VCALENDAR)**-Format, das von allen Kalendern erkannt wird:
+
+- **Veranstaltungstitel** (erforderlich)
+- **Startdatum und -uhrzeit** (erforderlich)
+- **Enddatum und -uhrzeit**
+- **Ort** (vollstaendige Adresse)
+- **Beschreibung** (zusaetzliche Informationen)
+
+## Erstellen Sie Ihren Event-QR-Code
+
+1. Gehen Sie zum [QRaft Event-Generator](/qr-code-generator/event)
+2. Geben Sie den Veranstaltungstitel ein
+3. Waehlen Sie Startdatum und -uhrzeit
+4. Fuegen Sie Enddatum, Ort und Beschreibung hinzu
+5. Laden Sie den QR-Code herunter
+
+<InfoBox type="tip">
+Geben Sie die vollstaendige Adresse im Ortsfeld an. Einige Kalender-Apps schlagen am Veranstaltungstag automatisch die Wegbeschreibung zum Veranstaltungsort vor.
+</InfoBox>
+
+## Anwendungsfaelle
+
+### Konferenzen und Messen
+Drucken Sie den QR-Code auf Badges, Programme und Plakate. Jede Session kann ihren eigenen QR-Code haben.
+
+### Hochzeiten und Feiern
+Fuegen Sie den QR-Code in Ihre digitalen oder gedruckten Einladungen ein. Gaeste speichern das Datum mit einem einzigen Scan.
+
+### Kurse und Schulungen
+Teilnehmer verpassen nie wieder eine Sitzung. Ideal fuer wiederkehrende Schulungen.
+
+### Meetups und Community-Events
+Teilen Sie den QR-Code in sozialen Medien. Interessierte speichern den Termin sofort.
+
+## Kalender-Kompatibilitaet
+
+Das iCalendar-Format ist ein universeller Standard:
+
+- **Google Calendar**: direktes Hinzufuegen
+- **Apple Calendar**: direktes Hinzufuegen ueber iOS/macOS
+- **Outlook**: automatischer Import
+- **Samsung Calendar**: nativ unterstuetzt
+
+## Tipps
+
+1. **Testen Sie die Zeitzone**: ueberpruefen Sie, ob die Uhrzeit auf einem anderen Handy korrekt angezeigt wird
+2. **Details in die Beschreibung einfuegen**: Videokonferenz-Link, Zugangscode, Dresscode
+3. **Ein QR-Code pro Event**: fuer mehrtaegige Konferenzen einen Code pro Session erstellen
+
+<CallToAction generator="event" label="Create my event QR code" />

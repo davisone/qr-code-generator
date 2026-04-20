@@ -1,0 +1,104 @@
+---
+title: "Dynamic vs Static QR Code: Which One Should You Choose?"
+description: "What's the difference between a dynamic and static QR code? When to use each? Pros, cons, and use cases."
+date: "2026-04-11"
+category: "comparison"
+image: "/blog/dynamique-vs-statique.webp"
+author: "QRaft"
+readingTime: 5
+relatedGenerator: "url"
+---
+
+## Static vs Dynamic: The Fundamental Difference
+
+A **static QR code** encodes data directly into the pattern. The URL, text, or contact details are baked into the QR code itself. They can't be changed after creation.
+
+A **dynamic QR code** encodes a short redirect URL. This URL redirects to the final destination, which you can change at any time without regenerating the QR code.
+
+## Static QR Code
+
+### How It Works
+
+The data is encoded directly into the black-and-white pattern. The more data there is, the denser the QR code becomes (and the harder it is to scan from a distance).
+
+### Advantages
+
+- **Works offline**: no intermediary server needed
+- **No dependencies**: the QR code works as long as it's readable
+- **Free forever**: once created, it works indefinitely
+- **Privacy**: no data passes through a third party
+
+### Disadvantages
+
+- **Can't be modified**: if the URL changes, you need a new QR code
+- **No tracking**: no scan statistics
+- **Limited size**: more data = more complex QR code
+- **No protection**: no password or expiration possible
+
+### Ideal Use Cases
+
+- WiFi QR code (credentials rarely change)
+- vCard QR code on a business card
+- Text or email QR code
+- Any use where the data will never change
+
+## Dynamic QR Code
+
+### How It Works
+
+The QR code contains a short URL (e.g., `qr-aft.vercel.app/r/abc123`) that redirects to the actual destination. The redirect passes through a server that records each scan.
+
+### Advantages
+
+- **Editable**: change the destination without touching the printed QR code
+- **Full tracking**: number of scans, location, device, browser
+- **Compact QR code**: the short URL generates a simple, readable pattern
+- **Advanced features**: expiration, password protection, A/B testing
+
+### Disadvantages
+
+- **Server-dependent**: if the service goes down, the QR code stops working
+- **Requires internet**: the scan must reach the redirect server
+- **Potential cost**: often limited or paid depending on the service
+- **Latency**: redirect adds a few milliseconds
+
+### Ideal Use Cases
+
+- Marketing campaigns (need for tracking and flexibility)
+- Restaurant menus (frequent changes)
+- Long-lasting printed materials (flyers, posters, packaging)
+- Any use where you might need to change the destination
+
+## Comparison Table
+
+<ComparisonTable
+  headers={["Criteria", "Static", "Dynamic"]}
+  rows={[
+    ["Editable after creation", "❌", "✅"],
+    ["Scan tracking", "❌", "✅"],
+    ["Works offline", "✅", "❌"],
+    ["QR code size", "Variable (can be dense)", "Always compact"],
+    ["Server dependency", "None", "Yes"],
+    ["Cost", "Free", "Free or paid"],
+    ["Lifespan", "Unlimited", "Depends on the service"],
+    ["Protection (password)", "❌", "✅"]
+  ]}
+/>
+
+## How to Choose?
+
+**Choose static if:**
+- The data will never change
+- You don't need statistics
+- The QR code must work offline (WiFi, vCard)
+
+**Choose dynamic if:**
+- You're printing the QR code on a durable material
+- You want to track performance
+- The destination might change
+
+<InfoBox type="info">
+On QRaft, URL QR codes are dynamic by default with built-in tracking. WiFi, vCard, text, and email QR codes are static because the data is encoded directly — this is the most appropriate behavior for each type.
+</InfoBox>
+
+<CallToAction generator="url" label="Create my dynamic QR code" />

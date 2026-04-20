@@ -1,0 +1,104 @@
+---
+title: "Dynamischer vs. statischer QR-Code: Welchen sollten Sie waehlen?"
+description: "Was ist der Unterschied zwischen einem dynamischen und statischen QR-Code? Wann welchen verwenden? Vor- und Nachteile sowie Anwendungsfaelle."
+date: "2026-04-11"
+category: "comparison"
+image: "/blog/dynamique-vs-statique.webp"
+author: "QRaft"
+readingTime: 5
+relatedGenerator: "url"
+---
+
+## Statisch vs. dynamisch: Der grundlegende Unterschied
+
+Ein **statischer QR-Code** kodiert die Daten direkt im Muster. Die URL, der Text oder die Kontaktdaten sind fest im QR-Code selbst eingebettet. Sie koennen nach der Erstellung nicht geaendert werden.
+
+Ein **dynamischer QR-Code** kodiert eine kurze Weiterleitungs-URL. Diese URL leitet zum endgueltigen Ziel weiter, das Sie jederzeit aendern koennen, ohne den QR-Code neu zu generieren.
+
+## Statischer QR-Code
+
+### Funktionsweise
+
+Die Daten werden direkt im Schwarz-Weiss-Muster kodiert. Je mehr Daten vorhanden sind, desto dichter wird der QR-Code (und desto schwieriger ist er aus der Entfernung zu scannen).
+
+### Vorteile
+
+- **Funktioniert offline**: kein Zwischenserver noetig
+- **Keine Abhaengigkeiten**: der QR-Code funktioniert, solange er lesbar ist
+- **Fuer immer kostenlos**: einmal erstellt, funktioniert er unbegrenzt
+- **Datenschutz**: keine Daten gehen ueber einen Dritten
+
+### Nachteile
+
+- **Nicht aenderbar**: wenn sich die URL aendert, brauchen Sie einen neuen QR-Code
+- **Kein Tracking**: keine Scan-Statistiken
+- **Begrenzte Groesse**: mehr Daten = komplexerer QR-Code
+- **Kein Schutz**: kein Passwort oder Ablaufdatum moeglich
+
+### Ideale Anwendungsfaelle
+
+- WiFi-QR-Code (Zugangsdaten aendern sich selten)
+- vCard-QR-Code auf einer Visitenkarte
+- Text- oder E-Mail-QR-Code
+- Jede Verwendung, bei der sich die Daten nie aendern
+
+## Dynamischer QR-Code
+
+### Funktionsweise
+
+Der QR-Code enthaelt eine Kurz-URL (z.B. `qr-aft.vercel.app/r/abc123`), die zum tatsaechlichen Ziel weiterleitet. Die Weiterleitung laeuft ueber einen Server, der jeden Scan aufzeichnet.
+
+### Vorteile
+
+- **Bearbeitbar**: aendern Sie das Ziel, ohne den gedruckten QR-Code zu beruehren
+- **Vollstaendiges Tracking**: Anzahl der Scans, Standort, Geraet, Browser
+- **Kompakter QR-Code**: die Kurz-URL erzeugt ein einfaches, lesbares Muster
+- **Erweiterte Funktionen**: Ablaufdatum, Passwortschutz, A/B-Tests
+
+### Nachteile
+
+- **Serverabhaengig**: wenn der Dienst ausfaellt, funktioniert der QR-Code nicht mehr
+- **Internet erforderlich**: der Scan muss den Weiterleitungsserver erreichen
+- **Moegliche Kosten**: oft eingeschraenkt oder kostenpflichtig je nach Dienst
+- **Latenz**: Weiterleitung fuegt einige Millisekunden hinzu
+
+### Ideale Anwendungsfaelle
+
+- Marketingkampagnen (Bedarf an Tracking und Flexibilitaet)
+- Restaurantkarten (haeufige Aenderungen)
+- Langlebige Druckmaterialien (Flyer, Plakate, Verpackungen)
+- Jede Verwendung, bei der Sie das Ziel aendern muessen
+
+## Vergleichstabelle
+
+<ComparisonTable
+  headers={["Kriterium", "Statisch", "Dynamisch"]}
+  rows={[
+    ["Nach Erstellung bearbeitbar", "❌", "✅"],
+    ["Scan-Tracking", "❌", "✅"],
+    ["Funktioniert offline", "✅", "❌"],
+    ["QR-Code-Groesse", "Variabel (kann dicht sein)", "Immer kompakt"],
+    ["Serverabhaengigkeit", "Keine", "Ja"],
+    ["Kosten", "Kostenlos", "Kostenlos oder kostenpflichtig"],
+    ["Lebensdauer", "Unbegrenzt", "Abhaengig vom Dienst"],
+    ["Schutz (Passwort)", "❌", "✅"]
+  ]}
+/>
+
+## Wie waehlen?
+
+**Waehlen Sie statisch, wenn:**
+- Die Daten sich nie aendern werden
+- Sie keine Statistiken benoetigen
+- Der QR-Code offline funktionieren muss (WiFi, vCard)
+
+**Waehlen Sie dynamisch, wenn:**
+- Sie den QR-Code auf ein dauerhaftes Material drucken
+- Sie die Leistung verfolgen moechten
+- Das Ziel sich aendern koennte
+
+<InfoBox type="info">
+Bei QRaft sind URL-QR-Codes standardmaessig dynamisch mit integriertem Tracking. WiFi-, vCard-, Text- und E-Mail-QR-Codes sind statisch, da die Daten direkt kodiert werden — dies ist das geeignetste Verhalten fuer jeden Typ.
+</InfoBox>
+
+<CallToAction generator="url" label="Create my dynamic QR code" />

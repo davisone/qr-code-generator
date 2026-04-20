@@ -1,0 +1,104 @@
+---
+title: "Dynamische vs statische QR-code: welke moet je kiezen?"
+description: "Wat is het verschil tussen een dynamische en statische QR-code? Wanneer gebruik je welke? Voor- en nadelen en toepassingen."
+date: "2026-04-11"
+category: "comparison"
+image: "/blog/dynamique-vs-statique.webp"
+author: "QRaft"
+readingTime: 5
+relatedGenerator: "url"
+---
+
+## Statisch vs dynamisch: het fundamentele verschil
+
+Een **statische QR-code** codeert gegevens direct in het patroon. De URL, tekst of contactgegevens zitten vast in de QR-code zelf. Ze kunnen na aanmaak niet worden gewijzigd.
+
+Een **dynamische QR-code** codeert een korte doorverwijzings-URL. Deze URL stuurt door naar de uiteindelijke bestemming, die je op elk moment kunt wijzigen zonder de QR-code opnieuw te genereren.
+
+## Statische QR-code
+
+### Hoe het werkt
+
+De gegevens worden direct gecodeerd in het zwart-witpatroon. Hoe meer gegevens, hoe dichter de QR-code wordt (en hoe moeilijker te scannen op afstand).
+
+### Voordelen
+
+- **Werkt offline**: geen tussenliggende server nodig
+- **Geen afhankelijkheden**: de QR-code werkt zolang hij leesbaar is
+- **Altijd gratis**: eenmaal aangemaakt, werkt hij oneindig
+- **Privacy**: er gaan geen gegevens via een derde partij
+
+### Nadelen
+
+- **Niet aanpasbaar**: als de URL verandert, heb je een nieuwe QR-code nodig
+- **Geen tracking**: geen scanstatistieken
+- **Beperkte omvang**: meer gegevens = complexere QR-code
+- **Geen bescherming**: geen wachtwoord of vervaldatum mogelijk
+
+### Ideale toepassingen
+
+- WiFi-QR-code (inloggegevens veranderen zelden)
+- vCard-QR-code op een visitekaartje
+- Tekst- of e-mail-QR-code
+- Elk gebruik waarbij de gegevens nooit veranderen
+
+## Dynamische QR-code
+
+### Hoe het werkt
+
+De QR-code bevat een korte URL (bijv. `qr-aft.vercel.app/r/abc123`) die doorverwijst naar de werkelijke bestemming. De doorverwijzing gaat via een server die elke scan registreert.
+
+### Voordelen
+
+- **Bewerkbaar**: wijzig de bestemming zonder de gedrukte QR-code aan te raken
+- **Volledige tracking**: aantal scans, locatie, apparaat, browser
+- **Compacte QR-code**: de korte URL genereert een eenvoudig, leesbaar patroon
+- **Geavanceerde functies**: vervaldatum, wachtwoordbeveiliging, A/B-testen
+
+### Nadelen
+
+- **Serverafhankelijk**: als de dienst uitvalt, stopt de QR-code met werken
+- **Vereist internet**: de scan moet de doorverwijzingsserver bereiken
+- **Mogelijke kosten**: vaak beperkt of betaald afhankelijk van de dienst
+- **Latentie**: doorverwijzing voegt enkele milliseconden toe
+
+### Ideale toepassingen
+
+- Marketingcampagnes (behoefte aan tracking en flexibiliteit)
+- Restaurantmenu's (frequente wijzigingen)
+- Langdurig gedrukt materiaal (flyers, posters, verpakkingen)
+- Elk gebruik waarbij je de bestemming mogelijk moet wijzigen
+
+## Vergelijkingstabel
+
+<ComparisonTable
+  headers={["Criteria", "Static", "Dynamic"]}
+  rows={[
+    ["Editable after creation", "❌", "✅"],
+    ["Scan tracking", "❌", "✅"],
+    ["Works offline", "✅", "❌"],
+    ["QR code size", "Variable (can be dense)", "Always compact"],
+    ["Server dependency", "None", "Yes"],
+    ["Cost", "Free", "Free or paid"],
+    ["Lifespan", "Unlimited", "Depends on the service"],
+    ["Protection (password)", "❌", "✅"]
+  ]}
+/>
+
+## Hoe kies je?
+
+**Kies statisch als:**
+- De gegevens nooit veranderen
+- Je geen statistieken nodig hebt
+- De QR-code offline moet werken (WiFi, vCard)
+
+**Kies dynamisch als:**
+- Je de QR-code print op duurzaam materiaal
+- Je de prestaties wilt bijhouden
+- De bestemming kan veranderen
+
+<InfoBox type="info">
+Bij QRaft zijn URL-QR-codes standaard dynamisch met ingebouwde tracking. WiFi-, vCard-, tekst- en e-mail-QR-codes zijn statisch omdat de gegevens direct worden gecodeerd — dit is het meest passende gedrag voor elk type.
+</InfoBox>
+
+<CallToAction generator="url" label="Create my dynamic QR code" />

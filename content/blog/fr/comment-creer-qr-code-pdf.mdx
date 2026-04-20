@@ -1,0 +1,70 @@
+---
+title: "Comment créer un QR code pour un document PDF"
+description: "Générez un QR code qui ouvre directement un PDF : menu, brochure, manuel, catalogue. Scannez pour consulter. Gratuit."
+date: "2026-04-16"
+category: "tutorial"
+image: "/blog/pdf-qr.webp"
+author: "QRaft"
+readingTime: 4
+relatedGenerator: "pdf"
+---
+
+## Pourquoi lier un PDF à un QR code ?
+
+Le PDF reste le format de document le plus universel. Lier un QR code à un PDF permet de donner accès instantanément à :
+
+- **Menus de restaurant** : version complète avec photos
+- **Brochures commerciales** : catalogue produits détaillé
+- **Manuels d'utilisation** : instructions d'un appareil
+- **Listes de prix** : tarifs actualisés
+- **CV** : version complète de votre parcours
+- **Conditions générales** : documents légaux
+
+L'avantage : le QR code est petit (un autocollant suffit) mais donne accès à un document de plusieurs pages.
+
+## Prérequis : héberger votre PDF en ligne
+
+Le QR code pointe vers une URL. Votre PDF doit être accessible via un lien public.
+
+### Google Drive (recommandé)
+1. Uploadez votre PDF sur Google Drive
+2. Clic droit → Partager → "Toute personne disposant du lien"
+3. Copiez le lien
+
+<InfoBox type="tip">
+Pour un lien direct (qui ouvre le PDF sans l'interface Google Drive), remplacez `/file/d/ID/view` par `/uc?export=download&id=ID` dans l'URL.
+</InfoBox>
+
+### Dropbox
+1. Uploadez le PDF
+2. Cliquez sur "Copier le lien"
+3. Remplacez `dl=0` par `dl=1` pour un téléchargement direct
+
+### Votre site web
+Uploadez le PDF dans votre hébergement et utilisez l'URL directe (ex: `https://monsite.com/docs/brochure.pdf`).
+
+## Générer le QR code
+
+1. Rendez-vous sur le [générateur PDF QRaft](/qr-code-generator/pdf)
+2. Collez l'URL de votre PDF
+3. Vérifiez la prévisualisation
+4. Téléchargez en PNG, SVG ou PDF (ironie : un QR code en PDF qui pointe vers un PDF)
+
+## Astuce : mettre à jour sans réimprimer
+
+Si vous gardez la **même URL** et remplacez le fichier PDF à cette adresse, le QR code pointera automatiquement vers la nouvelle version.
+
+Exemples :
+- Sur Google Drive : supprimez l'ancien fichier et uploadez le nouveau avec le même lien de partage
+- Sur votre site : écrasez le fichier au même chemin
+
+Avec un compte Pro QRaft, vous pouvez aussi créer un QR code **dynamique** dont l'URL de destination est modifiable à tout moment.
+
+## Bonnes pratiques
+
+1. **Optimisez la taille du PDF** : compressez-le pour un chargement rapide sur mobile
+2. **Rendez-le responsive** : assurez-vous que le texte est lisible sur un écran de téléphone
+3. **Testez le lien** : scannez le QR code depuis un autre appareil avant de distribuer
+4. **Ajoutez un call-to-action** : "Scannez pour consulter notre catalogue"
+
+<CallToAction generator="pdf" label="Créer mon QR code PDF" />

@@ -1,0 +1,104 @@
+---
+title: "Código QR dinámico vs estático: ¿Cuál deberías elegir?"
+description: "¿Cuál es la diferencia entre un código QR dinámico y uno estático? ¿Cuándo usar cada uno? Ventajas, desventajas y casos de uso."
+date: "2026-04-11"
+category: "comparison"
+image: "/blog/dynamique-vs-statique.webp"
+author: "QRaft"
+readingTime: 5
+relatedGenerator: "url"
+---
+
+## Estático vs dinámico: la diferencia fundamental
+
+Un **código QR estático** codifica los datos directamente en el patrón. La URL, el texto o los datos de contacto están integrados en el propio código QR. No se pueden cambiar después de crearlo.
+
+Un **código QR dinámico** codifica una URL corta de redirección. Esta URL redirige al destino final, que puedes cambiar en cualquier momento sin regenerar el código QR.
+
+## Código QR estático
+
+### Cómo funciona
+
+Los datos se codifican directamente en el patrón blanco y negro. Entre más datos haya, más denso se vuelve el código QR (y más difícil de escanear a distancia).
+
+### Ventajas
+
+- **Funciona sin conexión**: no necesita un servidor intermediario
+- **Sin dependencias**: el código QR funciona mientras sea legible
+- **Gratis para siempre**: una vez creado, funciona indefinidamente
+- **Privacidad**: ningún dato pasa por un tercero
+
+### Desventajas
+
+- **No se puede modificar**: si la URL cambia, necesitas un nuevo código QR
+- **Sin rastreo**: no hay estadísticas de escaneos
+- **Tamaño limitado**: más datos = código QR más complejo
+- **Sin protección**: no es posible agregar contraseña o expiración
+
+### Casos de uso ideales
+
+- Código QR de WiFi (las credenciales rara vez cambian)
+- Código QR vCard en una tarjeta de presentación
+- Código QR de texto o correo electrónico
+- Cualquier uso donde los datos nunca van a cambiar
+
+## Código QR dinámico
+
+### Cómo funciona
+
+El código QR contiene una URL corta (por ejemplo, `qr-aft.vercel.app/r/abc123`) que redirige al destino real. La redirección pasa por un servidor que registra cada escaneo.
+
+### Ventajas
+
+- **Editable**: cambia el destino sin tocar el código QR impreso
+- **Rastreo completo**: número de escaneos, ubicación, dispositivo, navegador
+- **Código QR compacto**: la URL corta genera un patrón simple y legible
+- **Funciones avanzadas**: expiración, protección con contraseña, pruebas A/B
+
+### Desventajas
+
+- **Depende de un servidor**: si el servicio se cae, el código QR deja de funcionar
+- **Requiere internet**: el escaneo debe llegar al servidor de redirección
+- **Posible costo**: a menudo limitado o de pago según el servicio
+- **Latencia**: la redirección agrega algunos milisegundos
+
+### Casos de uso ideales
+
+- Campañas de marketing (necesidad de rastreo y flexibilidad)
+- Menús de restaurantes (cambios frecuentes)
+- Materiales impresos de larga duración (volantes, carteles, empaques)
+- Cualquier uso donde podrías necesitar cambiar el destino
+
+## Tabla comparativa
+
+<ComparisonTable
+  headers={["Criteria", "Static", "Dynamic"]}
+  rows={[
+    ["Editable after creation", "❌", "✅"],
+    ["Scan tracking", "❌", "✅"],
+    ["Works offline", "✅", "❌"],
+    ["QR code size", "Variable (can be dense)", "Always compact"],
+    ["Server dependency", "None", "Yes"],
+    ["Cost", "Free", "Free or paid"],
+    ["Lifespan", "Unlimited", "Depends on the service"],
+    ["Protection (password)", "❌", "✅"]
+  ]}
+/>
+
+## ¿Cómo elegir?
+
+**Elige estático si:**
+- Los datos nunca van a cambiar
+- No necesitas estadísticas
+- El código QR debe funcionar sin conexión (WiFi, vCard)
+
+**Elige dinámico si:**
+- Vas a imprimir el código QR en un material duradero
+- Quieres rastrear el rendimiento
+- El destino podría cambiar
+
+<InfoBox type="info">
+En QRaft, los códigos QR de URL son dinámicos por defecto con rastreo integrado. Los códigos QR de WiFi, vCard, texto y correo son estáticos porque los datos se codifican directamente — este es el comportamiento más apropiado para cada tipo.
+</InfoBox>
+
+<CallToAction generator="url" label="Create my dynamic QR code" />

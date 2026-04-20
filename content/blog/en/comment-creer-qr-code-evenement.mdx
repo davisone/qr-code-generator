@@ -1,0 +1,69 @@
+---
+title: "How to Create a QR Code for an Event (Calendar)"
+description: "Generate a QR code that adds an event to your attendees' calendar. Title, date, time, location — all pre-filled automatically."
+date: "2026-04-17"
+category: "tutorial"
+image: "/blog/event-qr.webp"
+author: "QRaft"
+readingTime: 4
+relatedGenerator: "event"
+---
+
+## The Problem: Your Attendees Forget the Date
+
+You're organizing an event. You send invitations, share on social media, send reminders... And on the day, half the registrants have forgotten.
+
+An event QR code solves this by automatically adding the event to the attendee's calendar. Once in Google Calendar or Apple Calendar, they'll receive **automatic reminders**.
+
+## What Information to Encode?
+
+The event QR code uses the **iCalendar (VCALENDAR)** format, recognized by all calendars:
+
+- **Event title** (required)
+- **Start date and time** (required)
+- **End date and time**
+- **Location** (full address)
+- **Description** (additional information)
+
+## Create Your Event QR Code
+
+1. Go to the [QRaft Event generator](/qr-code-generator/event)
+2. Fill in the event title
+3. Select the start date and time
+4. Add the end date, location, and description
+5. Download the QR code
+
+<InfoBox type="tip">
+Include the full address in the location field. Some calendar apps will automatically suggest directions to the venue on the day of the event.
+</InfoBox>
+
+## Use Cases
+
+### Conferences and Trade Shows
+Print the QR code on badges, programs, and posters. Each session can have its own QR code.
+
+### Weddings and Parties
+Include the QR code in your digital or printed invitations. Guests add the date with a single scan.
+
+### Classes and Training
+Participants will never miss a session again. Ideal for recurring training courses.
+
+### Meetups and Community Events
+Share the QR code on social media. Interested people save the date instantly.
+
+## Calendar Compatibility
+
+The iCalendar format is a universal standard:
+
+- **Google Calendar**: direct add
+- **Apple Calendar**: direct add via iOS/macOS
+- **Outlook**: automatic import
+- **Samsung Calendar**: natively supported
+
+## Tips
+
+1. **Test the timezone**: verify the time displays correctly on another phone
+2. **Add details in the description**: video conference link, access code, dress code
+3. **One QR code per event**: for multi-day conferences, create one code per session
+
+<CallToAction generator="event" label="Create my event QR code" />

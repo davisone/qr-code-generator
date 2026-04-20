@@ -1,0 +1,69 @@
+---
+title: "Hoe maak je een QR-code voor een evenement (agenda)"
+description: "Genereer een QR-code die een evenement toevoegt aan de agenda van je gasten. Titel, datum, tijd, locatie — alles automatisch ingevuld."
+date: "2026-04-17"
+category: "tutorial"
+image: "/blog/event-qr.webp"
+author: "QRaft"
+readingTime: 4
+relatedGenerator: "event"
+---
+
+## Het probleem: je gasten vergeten de datum
+
+Je organiseert een evenement. Je stuurt uitnodigingen, deelt op social media, stuurt herinneringen... En op de dag zelf is de helft van de aanmeldingen het vergeten.
+
+Een evenement-QR-code lost dit op door het evenement automatisch toe te voegen aan de agenda van de bezoeker. Eenmaal in Google Calendar of Apple Calendar ontvangen ze **automatische herinneringen**.
+
+## Welke informatie coderen?
+
+De evenement-QR-code gebruikt het **iCalendar (VCALENDAR)**-formaat, herkend door alle agenda's:
+
+- **Evenementtitel** (verplicht)
+- **Startdatum en -tijd** (verplicht)
+- **Einddatum en -tijd**
+- **Locatie** (volledig adres)
+- **Beschrijving** (aanvullende informatie)
+
+## Maak je evenement-QR-code
+
+1. Ga naar de [QRaft Evenement-generator](/qr-code-generator/event)
+2. Vul de evenementtitel in
+3. Selecteer de startdatum en -tijd
+4. Voeg de einddatum, locatie en beschrijving toe
+5. Download de QR-code
+
+<InfoBox type="tip">
+Vermeld het volledige adres in het locatieveld. Sommige agenda-apps stellen automatisch een routebeschrijving naar de locatie voor op de dag van het evenement.
+</InfoBox>
+
+## Toepassingen
+
+### Conferenties en beurzen
+Print de QR-code op badges, programma's en posters. Elke sessie kan een eigen QR-code hebben.
+
+### Bruiloften en feesten
+Voeg de QR-code toe aan je digitale of gedrukte uitnodigingen. Gasten voegen de datum toe met één scan.
+
+### Lessen en trainingen
+Deelnemers missen nooit meer een sessie. Ideaal voor terugkerende trainingen.
+
+### Meetups en community-evenementen
+Deel de QR-code op social media. Geïnteresseerden slaan de datum direct op.
+
+## Agendacompatibiliteit
+
+Het iCalendar-formaat is een universele standaard:
+
+- **Google Calendar**: direct toevoegen
+- **Apple Calendar**: direct toevoegen via iOS/macOS
+- **Outlook**: automatische import
+- **Samsung Calendar**: native ondersteuning
+
+## Tips
+
+1. **Test de tijdzone**: controleer of de tijd correct wordt weergegeven op een andere telefoon
+2. **Voeg details toe in de beschrijving**: videoconferentielink, toegangscode, dresscode
+3. **Eén QR-code per evenement**: maak bij meerdaagse conferenties één code per sessie
+
+<CallToAction generator="event" label="Create my event QR code" />

@@ -1,0 +1,104 @@
+---
+title: "QR code dynamique vs statique : lequel choisir ?"
+description: "Quelle est la différence entre un QR code dynamique et statique ? Quand utiliser l'un ou l'autre ? Avantages, inconvénients et cas d'usage."
+date: "2026-04-11"
+category: "comparison"
+image: "/blog/dynamique-vs-statique.webp"
+author: "QRaft"
+readingTime: 5
+relatedGenerator: "url"
+---
+
+## Statique vs dynamique : la différence fondamentale
+
+Un **QR code statique** encode les données directement dans le motif. L'URL, le texte ou les coordonnées sont gravés dans le QR code lui-même. Impossible de les modifier après création.
+
+Un **QR code dynamique** encode une URL de redirection courte. Cette URL redirige vers la destination finale, que vous pouvez modifier à tout moment sans régénérer le QR code.
+
+## QR code statique
+
+### Comment ça marche
+
+Les données sont encodées directement dans le motif noir et blanc. Plus il y a de données, plus le QR code est dense (et plus il est difficile à scanner de loin).
+
+### Avantages
+
+- **Fonctionne hors ligne** : pas besoin de serveur intermédiaire
+- **Aucune dépendance** : le QR code fonctionne tant qu'il est lisible
+- **Gratuit à vie** : une fois créé, il fonctionne indéfiniment
+- **Confidentialité** : aucune donnée ne transite par un tiers
+
+### Inconvénients
+
+- **Impossible à modifier** : si l'URL change, il faut un nouveau QR code
+- **Pas de tracking** : aucune statistique de scans
+- **Taille limitée** : plus de données = QR code plus complexe
+- **Pas de protection** : pas de mot de passe ni d'expiration possible
+
+### Cas d'usage idéaux
+
+- QR code WiFi (les identifiants changent rarement)
+- QR code vCard sur carte de visite
+- QR code texte ou email
+- Tout usage où les données ne changeront jamais
+
+## QR code dynamique
+
+### Comment ça marche
+
+Le QR code contient une URL courte (ex: `qr-aft.vercel.app/r/abc123`) qui redirige vers la destination réelle. La redirection passe par un serveur qui enregistre chaque scan.
+
+### Avantages
+
+- **Modifiable** : changez la destination sans toucher au QR code imprimé
+- **Tracking complet** : nombre de scans, localisation, appareil, navigateur
+- **QR code compact** : l'URL courte génère un motif simple et lisible
+- **Fonctionnalités avancées** : expiration, mot de passe, A/B testing
+
+### Inconvénients
+
+- **Dépendant du serveur** : si le service disparaît, le QR code aussi
+- **Nécessite internet** : le scan doit accéder au serveur de redirection
+- **Coût potentiel** : souvent limité ou payant selon le service
+- **Latence** : redirection ajoutant quelques millisecondes
+
+### Cas d'usage idéaux
+
+- Campagnes marketing (besoin de tracking et de flexibilité)
+- Menus de restaurant (changements fréquents)
+- Supports imprimés longue durée (flyers, affiches, packaging)
+- Tout usage où vous pourriez avoir besoin de modifier la destination
+
+## Tableau comparatif
+
+<ComparisonTable
+  headers={["Critère", "Statique", "Dynamique"]}
+  rows={[
+    ["Modifiable après création", "❌", "✅"],
+    ["Tracking des scans", "❌", "✅"],
+    ["Fonctionne hors ligne", "✅", "❌"],
+    ["Taille du QR code", "Variable (peut être dense)", "Toujours compact"],
+    ["Dépendance serveur", "Aucune", "Oui"],
+    ["Coût", "Gratuit", "Gratuit ou payant"],
+    ["Durée de vie", "Illimitée", "Dépend du service"],
+    ["Protection (mot de passe)", "❌", "✅"]
+  ]}
+/>
+
+## Comment choisir ?
+
+**Choisissez statique si :**
+- Les données ne changeront jamais
+- Vous n'avez pas besoin de statistiques
+- Le QR code doit fonctionner hors ligne (WiFi, vCard)
+
+**Choisissez dynamique si :**
+- Vous imprimez le QR code sur un support durable
+- Vous voulez suivre les performances
+- La destination pourrait changer
+
+<InfoBox type="info">
+Sur QRaft, les QR codes URL sont dynamiques par défaut avec tracking intégré. Les QR codes WiFi, vCard, texte et email sont statiques car les données sont encodées directement — c'est le fonctionnement le plus adapté à chaque type.
+</InfoBox>
+
+<CallToAction generator="url" label="Créer mon QR code dynamique" />
