@@ -12,6 +12,7 @@
 
 /* ===== VARIABLES ===== */
 :root {
+  color-scheme: light;
   --bg: #f0ebe1;
   --card: #e8e2d6;
   --ink: #1a1410;
@@ -27,23 +28,6 @@
   --navbar-border: rgba(255,255,255,0.08);
 }
 
-/* ===== DARK MODE ===== */
-[data-theme="dark"] {
-  --bg: #0f0d0b;
-  --card: #1c1814;
-  --ink: #f0ebe1;
-  --mid: #9a8f82;
-  --light: #6b5f52;
-  --rule: 2px solid rgba(240,235,225,0.18);
-  --rule-thin: 1px solid rgba(240,235,225,0.18);
-  --navbar-bg: #090705;
-  --navbar-border: rgba(255,255,255,0.06);
-}
-
-[data-theme="dark"] body::before {
-  background-image: radial-gradient(circle, #f0ebe1 1px, transparent 1px);
-  opacity: 0.018;
-}
 
 /* ===== SKIP TO CONTENT ===== */
 .skip-to-content {
@@ -378,18 +362,6 @@ body::before {
   border-top: var(--rule);
 }
 
-/* ===== DARK MODE INPUT ===== */
-[data-theme="dark"] .input {
-  background: #1c1814;
-  border-color: rgba(240,235,225,0.2);
-  color: var(--ink);
-}
-
-[data-theme="dark"] .input:focus {
-  border-color: rgba(240,235,225,0.6);
-  background: #231e18;
-  box-shadow: 3px 3px 0 rgba(240,235,225,0.15);
-}
 
 /* Theme transition */
 *, *::before, *::after {

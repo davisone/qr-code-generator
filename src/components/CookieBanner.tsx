@@ -46,18 +46,19 @@ export default function CookieBanner() {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 p-4 animate-fade-in">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white border border-[#e5e5e5] rounded-2xl shadow-lg p-6">
+        <div style={{ background: "var(--card)", border: "var(--rule)", color: "var(--ink)" }} className="rounded-2xl shadow-lg p-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <div className="flex-1">
-              <h3 className="font-semibold text-[#0a0a0a] mb-1">
+              <h3 className="font-semibold mb-1" style={{ color: "var(--ink)" }}>
                 Cookies et collecte de données
               </h3>
-              <p className="text-sm text-[#525252]">
+              <p className="text-sm" style={{ color: "var(--mid)" }}>
                 Ce site utilise des cookies pour l&apos;authentification et l&apos;analyse du trafic.
                 Les QR codes partagés collectent des statistiques de scan anonymes (appareil, navigateur, date).{" "}
                 <Link
                   href="/mentions-legales"
-                  className="text-[#10b981] hover:underline"
+                  style={{ color: "var(--red)" }}
+                  className="hover:underline"
                 >
                   En savoir plus
                 </Link>

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { ThemeToggle } from "@/components/ThemeToggle";
+
 
 export default function Navbar() {
   const { data: session } = useSession();
@@ -161,7 +161,7 @@ export default function Navbar() {
             >
               {t("logout")}
             </button>
-            <ThemeToggle />
+
           </div>
         </div>
       </div>

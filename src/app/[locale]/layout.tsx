@@ -8,7 +8,7 @@ import { routing } from "@/i18n/routing";
 import { BASE_URL, buildHreflang } from "@/lib/config";
 import Providers from "@/components/Providers";
 import { Footer } from "@/components/Footer";
-import { ReviewBadge } from "@/components/ReviewBadge";
+
 import { BottomTabs } from "@/components/BottomTabs";
 import { Toaster } from "sonner";
 import "../globals.css";
@@ -135,12 +135,6 @@ export default async function LocaleLayout({ children, params }: Props) {
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Anti-FOUC theme script — static string, no user data, safe */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme:dark)').matches;document.documentElement.setAttribute('data-theme',(t==='dark'||(t===null&&d))?'dark':'light');}catch(e){}})();`,
-          }}
-        />
         <Script id="gtag-consent-default" strategy="beforeInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -199,7 +193,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <BottomTabs />
           </Providers>
           <Footer />
-          <ReviewBadge />
+
         </NextIntlClientProvider>
       </body>
     </html>

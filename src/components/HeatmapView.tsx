@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import type { Map as LeafletMap, Layer } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -21,30 +21,17 @@ const HEAT_GRADIENT = {
   0.8: "#1a1410",
 };
 
-// Détection du thème courant (light/dark) via l'attribut data-theme sur <html>
-const readTheme = (): "light" | "dark" => {
-  if (typeof document === "undefined") return "light";
-  return document.documentElement.getAttribute("data-theme") === "dark"
-    ? "dark"
-    : "light";
-};
-
-const TILE_LIGHT =
+const TILE_URL =
   "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
-const TILE_DARK =
-  "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
 
 const HeatmapView = ({ points }: HeatmapViewProps) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<LeafletMap | null>(null);
   const heatLayerRef = useRef<Layer | null>(null);
-  const tileLayerRef = useRef<Layer | null>(null);
-  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   // Initialisation de la map (dynamic import pour SSR-safety)
   useEffect(() => {
     let cancelled = false;
-    let cleanupFns: Array<() => void> = [];
 
     const init = async () => {
       if (!containerRef.current || mapRef.current) return;
@@ -54,9 +41,6 @@ const HeatmapView = ({ points }: HeatmapViewProps) => {
 
       if (cancelled || !containerRef.current) return;
 
-      const initialTheme = readTheme();
-      setTheme(initialTheme);
-
       const map = L.map(containerRef.current, {
         center: [20, 0],
         zoom: 2,
@@ -65,63 +49,25 @@ const HeatmapView = ({ points }: HeatmapViewProps) => {
       });
       mapRef.current = map;
 
-      const tileUrl = initialTheme === "dark" ? TILE_DARK : TILE_LIGHT;
-      const tileLayer = L.tileLayer(tileUrl, {
+      L.tileLayer(TILE_URL, {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
         subdomains: "abcd",
         maxZoom: 19,
       }).addTo(map);
-      tileLayerRef.current = tileLayer;
-
-      // Observer pour synchroniser le tile layer au toggle de thème
-      const observer = new MutationObserver(() => {
-        const next = readTheme();
-        setTheme(next);
-      });
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["data-theme"],
-      });
-      cleanupFns.push(() => observer.disconnect());
     };
 
     void init();
 
     return () => {
       cancelled = true;
-      cleanupFns.forEach((fn) => fn());
-      cleanupFns = [];
       if (mapRef.current) {
         mapRef.current.remove();
         mapRef.current = null;
         heatLayerRef.current = null;
-        tileLayerRef.current = null;
       }
     };
   }, []);
-
-  // Mise à jour du tile layer quand le thème change
-  useEffect(() => {
-    const update = async () => {
-      const map = mapRef.current;
-      if (!map) return;
-      const L = (await import("leaflet")).default;
-      if (tileLayerRef.current) {
-        map.removeLayer(tileLayerRef.current);
-        tileLayerRef.current = null;
-      }
-      const tileUrl = theme === "dark" ? TILE_DARK : TILE_LIGHT;
-      const tileLayer = L.tileLayer(tileUrl, {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-        subdomains: "abcd",
-        maxZoom: 19,
-      }).addTo(map);
-      tileLayerRef.current = tileLayer;
-    };
-    void update();
-  }, [theme]);
 
   // Mise à jour de la heat layer quand les points changent
   useEffect(() => {
