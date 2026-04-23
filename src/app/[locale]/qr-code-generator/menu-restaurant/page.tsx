@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return buildGeneratorMetadata({
     locale,
     path: "/qr-code-generator/menu-restaurant",
-    title: t("menu.meta_title"),
-    description: t("menu.meta_description"),
+    title: t("menu_restaurant.meta_title"),
+    description: t("menu_restaurant.meta_description"),
   });
 }
 
@@ -29,18 +29,18 @@ export default async function MenuGeneratorPage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "seo_generator" });
 
   const steps = [
-    { title: t("menu.guide.step1.title"), body: t("menu.guide.step1.body") },
-    { title: t("menu.guide.step2.title"), body: t("menu.guide.step2.body") },
-    { title: t("menu.guide.step3.title"), body: t("menu.guide.step3.body") },
-    { title: t("menu.guide.step4.title"), body: t("menu.guide.step4.body") },
+    { title: t("menu_restaurant.guide.step1.title"), body: t("menu_restaurant.guide.step1.body") },
+    { title: t("menu_restaurant.guide.step2.title"), body: t("menu_restaurant.guide.step2.body") },
+    { title: t("menu_restaurant.guide.step3.title"), body: t("menu_restaurant.guide.step3.body") },
+    { title: t("menu_restaurant.guide.step4.title"), body: t("menu_restaurant.guide.step4.body") },
   ];
 
   const faqItems = [
-    { q: t("menu.faq.q1"), a: t("menu.faq.a1") },
-    { q: t("menu.faq.q2"), a: t("menu.faq.a2") },
-    { q: t("menu.faq.q3"), a: t("menu.faq.a3") },
-    { q: t("menu.faq.q4"), a: t("menu.faq.a4") },
-    { q: t("menu.faq.q5"), a: t("menu.faq.a5") },
+    { q: t("menu_restaurant.faq.q1"), a: t("menu_restaurant.faq.a1") },
+    { q: t("menu_restaurant.faq.q2"), a: t("menu_restaurant.faq.a2") },
+    { q: t("menu_restaurant.faq.q3"), a: t("menu_restaurant.faq.a3") },
+    { q: t("menu_restaurant.faq.q4"), a: t("menu_restaurant.faq.a4") },
+    { q: t("menu_restaurant.faq.q5"), a: t("menu_restaurant.faq.a5") },
   ];
 
   const pageUrl = `${BASE_URL}/${locale}/qr-code-generator/menu-restaurant`;
@@ -51,9 +51,9 @@ export default async function MenuGeneratorPage({ params }: Props) {
       {
         "@type": "WebApplication",
         "@id": `${pageUrl}#app`,
-        name: t("menu.meta_title"),
+        name: t("menu_restaurant.meta_title"),
         url: pageUrl,
-        description: t("menu.meta_description"),
+        description: t("menu_restaurant.meta_description"),
         applicationCategory: "UtilitiesApplication",
         operatingSystem: "All",
         browserRequirements: "Requires JavaScript",
@@ -82,7 +82,7 @@ export default async function MenuGeneratorPage({ params }: Props) {
           {
             "@type": "ListItem",
             position: 3,
-            name: t("menu.breadcrumb"),
+            name: t("menu_restaurant.breadcrumb"),
             item: pageUrl,
           },
         ],
@@ -104,16 +104,16 @@ export default async function MenuGeneratorPage({ params }: Props) {
 
       <GeneratorHero
         badge={t("common.badge_free")}
-        kicker={t("menu.kicker")}
-        title={t("menu.title")}
-        subtitle={t("menu.subtitle")}
+        kicker={t("menu_restaurant.kicker")}
+        title={t("menu_restaurant.title")}
+        subtitle={t("menu_restaurant.subtitle")}
       />
 
       <MenuGeneratorClient />
 
       <GeneratorGuide
-        label={t("menu.guide.label")}
-        title={t("menu.guide.title")}
+        label={t("menu_restaurant.guide.label")}
+        title={t("menu_restaurant.guide.title")}
         steps={steps}
       />
 
@@ -125,7 +125,7 @@ export default async function MenuGeneratorPage({ params }: Props) {
 
       <GeneratorFAQ
         label={t("common.faq_label")}
-        title={t("menu.faq.title")}
+        title={t("menu_restaurant.faq.title")}
         items={faqItems}
       />
     </>
