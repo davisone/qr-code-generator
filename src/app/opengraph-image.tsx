@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "QRaft — Générateur de QR codes gratuit et personnalisable";
+export const alt = "useqraft — Générateur de QR codes gratuit et personnalisable";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -102,7 +102,7 @@ export default function Image() {
             flexDirection: "column",
           }}
         >
-          <span>QRaft</span>
+          <span>useqraft</span>
           <span style={{ color: "#10b981" }}>Générateur de QR codes</span>
         </div>
 

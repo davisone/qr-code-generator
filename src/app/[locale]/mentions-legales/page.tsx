@@ -4,7 +4,7 @@ import { BASE_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Mentions légales",
-  description: "Mentions légales du site QRaft, édité par DVS Web (Evan Davison).",
+  description: "Mentions légales du site useqraft, édité par DVS Web (Evan Davison).",
   robots: { index: true, follow: true },
   alternates: { canonical: `${BASE_URL}/fr/mentions-legales` },
 };
@@ -41,7 +41,7 @@ export default function MentionsLegales() {
               className="flex items-center px-2"
               style={{ fontFamily: "var(--font-display, cursive)", fontSize: "1.8rem", letterSpacing: "0.06em", color: "#f0ebe1", textDecoration: "none" }}
             >
-              QRaft
+              useqraft
             </Link>
             <div className="flex items-stretch">
               <Link href="/login" className="flex items-center px-5 text-xs font-bold uppercase tracking-widest border-l" style={{ color: "rgba(240,235,225,0.5)", borderColor: "rgba(255,255,255,0.08)", fontFamily: "var(--font-sans)", textDecoration: "none" }}>
@@ -70,7 +70,7 @@ export default function MentionsLegales() {
           <section style={sectionStyle}>
             <h2 style={h2Style}>Éditeur du site</h2>
             <p style={pStyle}>
-              Le site <strong>QRaft</strong> est édité par <strong>DVS Web</strong>, projet créé par <strong>Evan Davison</strong>.
+              Le site <strong>useqraft</strong> est édité par <strong>DVS Web</strong>, projet créé par <strong>Evan Davison</strong>.
             </p>
             <ul style={{ ...pStyle, marginTop: "0.75rem", paddingLeft: "1rem", listStyle: "none" }}>
               <li><strong>Raison sociale :</strong> DVS Web</li>

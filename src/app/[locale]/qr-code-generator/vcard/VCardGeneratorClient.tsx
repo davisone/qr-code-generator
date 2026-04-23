@@ -75,7 +75,7 @@ export const VCardGeneratorClient = () => {
         label={t("vcard.form.org")}
         value={org}
         onChange={setOrg}
-        placeholder="QRaft"
+        placeholder="useqraft"
         autoComplete="organization"
       />
       <TextField

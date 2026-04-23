@@ -93,7 +93,7 @@ export default function RegisterPage() {
                 lineHeight: 1,
               }}
             >
-              QRaft
+              useqraft
             </h1>
             <p
               style={{

@@ -20,7 +20,7 @@ export default async function Home({ params }: Props) {
       {
         "@type": "WebApplication",
         "@id": `${BASE_URL}/#app`,
-        name: "QRaft",
+        name: "useqraft",
         url: BASE_URL,
         applicationCategory: "UtilitiesApplication",
         operatingSystem: "All",
@@ -44,7 +44,7 @@ export default async function Home({ params }: Props) {
         "@type": "WebSite",
         "@id": `${BASE_URL}/#website`,
         url: BASE_URL,
-        name: "QRaft",
+        name: "useqraft",
         publisher: { "@id": `${BASE_URL}/#organization` },
         inLanguage: locale,
       },
@@ -175,7 +175,7 @@ export default async function Home({ params }: Props) {
                 textDecoration: "none",
               }}
             >
-              QRaft
+              useqraft
             </Link>
             <div className="flex items-stretch">
               <Link
@@ -495,7 +495,7 @@ export default async function Home({ params }: Props) {
                 whiteSpace: "nowrap",
               }}
             >
-              QRaft
+              useqraft
             </div>
           </div>
         </div>

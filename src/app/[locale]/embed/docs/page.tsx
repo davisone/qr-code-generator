@@ -3,7 +3,7 @@ import { BASE_URL } from "@/lib/config";
 import { Link } from "@/i18n/navigation";
 
 export const metadata: Metadata = {
-  title: "Embed QR Code Generator Widget — Documentation | QRaft",
+  title: "Embed QR Code Generator Widget — Documentation | useqraft",
   description: "Add a free QR code generator to your website with one line of HTML. Copy the embed code and paste it anywhere.",
   robots: { index: true, follow: true },
 };
@@ -15,7 +15,7 @@ export default function EmbedDocsPage() {
     <div style={{ background: "var(--bg)", minHeight: "100vh" }}>
       <div className="max-w-3xl mx-auto" style={{ padding: "clamp(3rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem)" }}>
         <Link href="/" style={{ fontFamily: "var(--font-display)", fontSize: "1.8rem", letterSpacing: "0.06em", color: "var(--ink)", textDecoration: "none", display: "block", marginBottom: "3rem" }}>
-          QRaft
+          useqraft
         </Link>
 
         <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.4rem, 5vw, 4rem)", lineHeight: 0.95, letterSpacing: "0.02em", color: "var(--ink)", marginBottom: "1.5rem" }}>
@@ -52,7 +52,7 @@ export default function EmbedDocsPage() {
           LIVE PREVIEW
         </h2>
         <div style={{ border: "1px solid rgba(0,0,0,0.1)", borderRadius: "8px", overflow: "hidden", marginBottom: "3rem" }}>
-          <iframe src={`${BASE_URL}/en/embed`} width="420" height="500" style={{ border: "none", display: "block", margin: "0 auto" }} title="QRaft Embed Preview" />
+          <iframe src={`${BASE_URL}/en/embed`} width="420" height="500" style={{ border: "none", display: "block", margin: "0 auto" }} title="useqraft Embed Preview" />
         </div>
 
         <Link

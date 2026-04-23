@@ -39,7 +39,7 @@ export function buildGeneratorMetadata({
       description,
       url: canonical,
       type: "website",
-      siteName: "QRaft",
+      siteName: "useqraft",
       images: [
         {
           url: "/opengraph-image",

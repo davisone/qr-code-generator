@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { BASE_URL, buildHreflang } from "@/lib/config";
 import { getAllPosts, getAllCategories } from "@/lib/blog";
 import { Link } from "@/i18n/navigation";
+import { JsonLd } from "@/components/seo-generator/JsonLd";
 
 type Props = { params: Promise<{ locale: string; category: string }> };
 
@@ -18,10 +19,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "blog" });
   const label = t(categoryKey(category));
   const url = `${BASE_URL}/${locale}/blog/category/${category}`;
+  const description = `${label} — QR code articles and guides by useqraft.`;
   return {
-    title: `${label} — Blog | QRaft`,
-    description: `${label} — QR code articles and guides by QRaft.`,
+    title: `${label} — Blog | useqraft`,
+    description,
     alternates: { canonical: url, languages: buildHreflang(`/blog/category/${category}`) },
+    openGraph: {
+      title: `${label} — Blog | useqraft`,
+      description,
+      url,
+      type: "website",
+      siteName: "useqraft",
+      images: ["/opengraph-image"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${label} — Blog | useqraft`,
+      description,
+      creator: "@dvsweb",
+    },
   };
 }
 
@@ -31,8 +47,19 @@ export default async function BlogCategoryPage({ params }: Props) {
   const posts = getAllPosts(locale).filter((p) => p.category === category);
   const label = t(categoryKey(category));
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "useqraft", item: `${BASE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/${locale}/blog` },
+      { "@type": "ListItem", position: 3, name: label, item: `${BASE_URL}/${locale}/blog/category/${category}` },
+    ],
+  };
+
   return (
     <>
+      <JsonLd data={breadcrumbLd} />
       <section style={{ borderBottom: "var(--rule)", padding: "clamp(3rem,6vw,5rem) clamp(1.5rem,4vw,3rem)" }}>
         <div className="max-w-7xl mx-auto">
           <Link href="/blog" style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "var(--red)", textDecoration: "none" }}>

@@ -43,7 +43,7 @@ export default function Navbar() {
             onMouseEnter={e => (e.currentTarget.style.color = "var(--yellow)")}
             onMouseLeave={e => (e.currentTarget.style.color = "#f0ebe1")}
           >
-            QRaft
+            useqraft
           </Link>
 
           <div className="flex items-stretch">

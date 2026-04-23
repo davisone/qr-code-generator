@@ -19,7 +19,7 @@ export default async function Image({
 
   const title = qrCode?.name ?? "QR Code partagé";
 
-  let subtitle = "QR code partagé via QRaft";
+  let subtitle = "QR code partagé via useqraft";
   if (qrCode?.type === "url") {
     try {
       const host = new URL(qrCode.content).hostname.replace(/^www\./, "");
@@ -94,7 +94,7 @@ export default async function Image({
           </svg>
         </div>
 
-        {/* Tag QRaft */}
+        {/* Tag useqraft */}
         <div
           style={{
             background: "#10b98120",
@@ -106,7 +106,7 @@ export default async function Image({
           }}
         >
           <span style={{ color: "#10b981", fontSize: "18px", fontWeight: 600 }}>
-            QRaft
+            useqraft
           </span>
         </div>
 
@@ -146,7 +146,7 @@ export default async function Image({
             display: "flex",
           }}
         >
-          qr-aft.vercel.app
+          useqraft.com
         </div>
       </div>
     ),

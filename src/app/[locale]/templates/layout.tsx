@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { BASE_URL } from "@/lib/config";
+import { JsonLd } from "@/components/seo-generator/JsonLd";
 
 type Props = {
   children: React.ReactNode;
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       url: canonical,
       type: "website",
-      siteName: "QRaft",
+      siteName: "useqraft",
     },
     twitter: {
       card: "summary_large_image",
@@ -41,6 +42,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function TemplatesLayout({ children }: Props) {
-  return <>{children}</>;
+export default async function TemplatesLayout({ children, params }: Props) {
+  const { locale } = await params;
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "useqraft", item: `${BASE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: "Templates", item: `${BASE_URL}/${locale}/templates` },
+    ],
+  };
+
+  return (
+    <>
+      <JsonLd data={breadcrumbLd} />
+      {children}
+    </>
+  );
 }

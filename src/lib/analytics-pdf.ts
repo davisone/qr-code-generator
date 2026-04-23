@@ -251,7 +251,7 @@ export const generateAnalyticsPDF = (data: ReportData): Blob => {
   doc.setFontSize(8);
   doc.setTextColor(mid[0], mid[1], mid[2]);
   doc.text(
-    "Généré par QRaft — useqraft.com",
+    "Généré par useqraft — useqraft.com",
     PAGE_WIDTH / 2,
     PAGE_HEIGHT - 8,
     { align: "center" }

@@ -11,13 +11,13 @@ function getShareDescription(type: string, content: string): string {
       const host = url.hostname.replace(/^www\./, "");
       return `QR code public vers ${host}. Scannez pour accéder au contenu.`;
     } catch {
-      return "QR code public partagé avec QRaft.";
+      return "QR code public partagé avec useqraft.";
     }
   }
 
   const normalizedContent = content.replace(/\s+/g, " ").trim();
   if (!normalizedContent) {
-    return "QR code texte partagé avec QRaft.";
+    return "QR code texte partagé avec useqraft.";
   }
 
   const preview =
@@ -43,7 +43,7 @@ export async function generateMetadata({
 
   if (!qrCode) {
     return {
-      title: "QR Code partagé | QRaft",
+      title: "QR Code partagé | useqraft",
       description: "Ce QR code n'existe pas ou n'est plus partagé.",
       robots: {
         index: false,
@@ -53,7 +53,7 @@ export async function generateMetadata({
   }
 
   const description = getShareDescription(qrCode.type, qrCode.content);
-  const title = `${qrCode.name} | QRaft`;
+  const title = `${qrCode.name} | useqraft`;
   const canonicalUrl = `${BASE_URL}/share/${token}`;
 
   return {
@@ -71,13 +71,13 @@ export async function generateMetadata({
       description,
       url: canonicalUrl,
       type: "website",
-      siteName: "QRaft",
+      siteName: "useqraft",
       images: [
         {
           url: DEFAULT_OG_IMAGE,
           width: 512,
           height: 512,
-          alt: "QRaft - QR code partagé",
+          alt: "useqraft - QR code partagé",
         },
       ],
     },

@@ -3,7 +3,7 @@ import { BASE_URL } from "./config";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const FROM = "QRaft <noreply@useqraft.com>";
+const FROM = "useqraft <noreply@useqraft.com>";
 
 export async function sendVerificationEmail(email: string, token: string, locale: string = "fr") {
   const url = `${BASE_URL}/${locale}/verify-email?token=${token}`;
@@ -11,10 +11,10 @@ export async function sendVerificationEmail(email: string, token: string, locale
   const { error } = await resend.emails.send({
     from: FROM,
     to: email,
-    subject: "Vérifiez votre adresse email — QRaft",
+    subject: "Vérifiez votre adresse email — useqraft",
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 480px; margin: 0 auto; background: #f0ebe1; padding: 32px;">
-        <h1 style="font-size: 2rem; letter-spacing: 0.06em; color: #1a1410; margin: 0 0 8px;">QRaft</h1>
+        <h1 style="font-size: 2rem; letter-spacing: 0.06em; color: #1a1410; margin: 0 0 8px;">useqraft</h1>
         <p style="color: #6b5f52; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 24px;">Vérification email</p>
         <div style="background: #1a1410; padding: 24px; margin-bottom: 24px;">
           <p style="color: #f0ebe1; margin: 0 0 16px; font-size: 0.9rem;">Cliquez sur le bouton ci-dessous pour vérifier votre adresse email. Ce lien expire dans 24 heures.</p>
@@ -22,7 +22,7 @@ export async function sendVerificationEmail(email: string, token: string, locale
             Vérifier mon email →
           </a>
         </div>
-        <p style="color: #b5a898; font-size: 0.75rem;">Si vous n'avez pas créé de compte sur QRaft, ignorez cet email.</p>
+        <p style="color: #b5a898; font-size: 0.75rem;">Si vous n'avez pas créé de compte sur useqraft, ignorez cet email.</p>
       </div>
     `,
   });
@@ -35,10 +35,10 @@ export async function sendPasswordResetEmail(email: string, token: string, local
   const { error } = await resend.emails.send({
     from: FROM,
     to: email,
-    subject: "Réinitialisation de mot de passe — QRaft",
+    subject: "Réinitialisation de mot de passe — useqraft",
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 480px; margin: 0 auto; background: #f0ebe1; padding: 32px;">
-        <h1 style="font-size: 2rem; letter-spacing: 0.06em; color: #1a1410; margin: 0 0 8px;">QRaft</h1>
+        <h1 style="font-size: 2rem; letter-spacing: 0.06em; color: #1a1410; margin: 0 0 8px;">useqraft</h1>
         <p style="color: #6b5f52; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 24px;">Réinitialisation de mot de passe</p>
         <div style="background: #1a1410; padding: 24px; margin-bottom: 24px;">
           <p style="color: #f0ebe1; margin: 0 0 16px; font-size: 0.9rem;">Cliquez sur le bouton ci-dessous pour réinitialiser votre mot de passe. Ce lien expire dans 1 heure.</p>

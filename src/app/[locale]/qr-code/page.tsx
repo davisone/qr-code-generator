@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return buildGeneratorMetadata({
     locale,
     path: "/qr-code",
-    title: "QR Code by Industry — Free Generator for Every Business | QRaft",
+    title: "QR Code by Industry — Free Generator for Every Business | useqraft",
     description: "Browse QR code solutions by industry. Restaurant, retail, event, hotel, real estate, museum, salon, gym — find the right QR code for your business.",
   });
 }

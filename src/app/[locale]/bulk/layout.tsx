@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       url: canonical,
       type: "website",
-      siteName: "QRaft",
+      siteName: "useqraft",
     },
     twitter: {
       card: "summary_large_image",

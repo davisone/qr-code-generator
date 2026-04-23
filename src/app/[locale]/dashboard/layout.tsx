@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Dashboard | QRaft",
+  title: "Dashboard | useqraft",
   description:
     "Gérez vos QR codes, consultez les statistiques et la carte des scans.",
   robots: {

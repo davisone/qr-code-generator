@@ -130,7 +130,7 @@ export default function BulkPage() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "QRaft-template.csv";
+    a.download = "useqraft-template.csv";
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   };
@@ -168,7 +168,7 @@ export default function BulkPage() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "QRaft-batch.zip";
+      a.download = "useqraft-batch.zip";
       a.click();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
     } catch {

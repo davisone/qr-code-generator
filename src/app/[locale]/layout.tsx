@@ -64,8 +64,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: {
-      default: `QRaft — ${desc}`,
-      template: "%s | QRaft",
+      default: `useqraft — ${desc}`,
+      template: "%s | useqraft",
     },
     metadataBase: new URL(BASE_URL),
     alternates: {
@@ -75,13 +75,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       type: "website",
       url: `${BASE_URL}/${locale}`,
-      siteName: "QRaft",
+      siteName: "useqraft",
       images: [
         {
           url: "/opengraph-image",
           width: 1200,
           height: 630,
-          alt: "QRaft - QR Code Generator",
+          alt: "useqraft - QR Code Generator",
         },
       ],
     },
@@ -112,7 +112,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     authors: [{ name: "Evan Davison", url: BASE_URL }],
     creator: "DVS Web",
     publisher: "DVS Web",
-    applicationName: "QRaft",
+    applicationName: "useqraft",
     category: "technology",
     verification: {
       google: "25Uq5WlF-uXpP54WzrYhkWNH1PuCrE6gphEpqzpvxOg",

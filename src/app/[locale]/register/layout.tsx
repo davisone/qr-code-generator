@@ -1,28 +1,29 @@
 import type { Metadata } from "next";
+import { BASE_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Créer un compte gratuit",
   description:
-    "Inscrivez-vous gratuitement sur QRaft pour créer des QR codes personnalisés illimités. Ajoutez votre logo, choisissez vos couleurs, exportez en PNG, JPEG ou PDF.",
+    "Inscrivez-vous gratuitement sur useqraft pour créer des QR codes personnalisés illimités. Ajoutez votre logo, choisissez vos couleurs, exportez en PNG, JPEG ou PDF.",
   robots: {
     index: false,
     follow: false,
   },
   keywords: [
-    "inscription QRaft",
+    "inscription useqraft",
     "créer compte QR code",
     "générateur QR code gratuit",
     "QR code personnalisé gratuit",
   ],
   openGraph: {
-    title: "Créer un compte gratuit | QRaft",
+    title: "Créer un compte gratuit | useqraft",
     description:
       "Inscrivez-vous gratuitement pour créer des QR codes personnalisés illimités.",
-    url: "https://qr-aft.vercel.app/register",
+    url: `${BASE_URL}/register`,
     type: "website",
   },
   alternates: {
-    canonical: "https://qr-aft.vercel.app/register",
+    canonical: `${BASE_URL}/register`,
   },
 };
 

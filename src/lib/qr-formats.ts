@@ -95,7 +95,7 @@ export function buildContent(type: QRType, fields: Record<string, string>): stri
       const lines = [
         "BEGIN:VCALENDAR",
         "VERSION:2.0",
-        "PRODID:-//QRaft//EN",
+        "PRODID:-//useqraft//EN",
         "BEGIN:VEVENT",
         `SUMMARY:${fields.title || ""}`,
         `DTSTART:${fields.start || ""}`,

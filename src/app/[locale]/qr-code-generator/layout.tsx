@@ -29,7 +29,7 @@ export default async function QRCodeGeneratorLayout({ children, params }: Props)
                 textDecoration: "none",
               }}
             >
-              QRaft
+              useqraft
             </Link>
             <div className="flex items-stretch">
               <Link

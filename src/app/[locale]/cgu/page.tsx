@@ -4,7 +4,7 @@ import { BASE_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Conditions Générales d'Utilisation",
-  description: "Conditions générales d'utilisation du service QRaft, générateur de QR codes gratuit.",
+  description: "Conditions générales d'utilisation du service useqraft, générateur de QR codes gratuit.",
   robots: { index: true, follow: true },
   alternates: { canonical: `${BASE_URL}/fr/cgu` },
 };
@@ -40,7 +40,7 @@ export default function CGU() {
               href="/"
               style={{ fontFamily: "var(--font-display, cursive)", fontSize: "1.8rem", letterSpacing: "0.06em", color: "#f0ebe1", textDecoration: "none", display: "flex", alignItems: "center", padding: "0 0.5rem" }}
             >
-              QRaft
+              useqraft
             </Link>
             <div className="flex items-stretch">
               <Link href="/login" style={{ display: "flex", alignItems: "center", padding: "0 1.25rem", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", borderLeft: "1px solid rgba(255,255,255,0.08)", color: "rgba(240,235,225,0.5)", fontFamily: "var(--font-sans)", textDecoration: "none" }}>
@@ -72,28 +72,28 @@ export default function CGU() {
           <section style={sectionStyle}>
             <h2 style={h2Style}>1. Objet</h2>
             <p style={pStyle}>
-              Les présentes Conditions Générales d&apos;Utilisation (CGU) régissent l&apos;accès et l&apos;utilisation du service <strong>QRaft</strong>, accessible à l&apos;adresse <a href="https://qr-aft.vercel.app" style={{ color: "var(--ink)" }}>qr-aft.vercel.app</a>, édité par DVS Web (Evan Davison). En utilisant QRaft, vous acceptez sans réserve les présentes CGU.
+              Les présentes Conditions Générales d&apos;Utilisation (CGU) régissent l&apos;accès et l&apos;utilisation du service <strong>useqraft</strong>, accessible à l&apos;adresse <a href="https://www.useqraft.com" style={{ color: "var(--ink)" }}>useqraft.com</a>, édité par DVS Web (Evan Davison). En utilisant useqraft, vous acceptez sans réserve les présentes CGU.
             </p>
           </section>
 
           <section style={sectionStyle}>
             <h2 style={h2Style}>2. Description du service</h2>
             <p style={pStyle}>
-              QRaft est un service de génération, personnalisation et partage de QR codes. Il est accessible gratuitement après création d&apos;un compte. Les fonctionnalités incluent la création de QR codes de types variés (URL, texte, Wi-Fi, vCard, etc.), l&apos;export en PNG/JPEG/PDF, le partage public et les statistiques de scan.
+              useqraft est un service de génération, personnalisation et partage de QR codes. Il est accessible gratuitement après création d&apos;un compte. Les fonctionnalités incluent la création de QR codes de types variés (URL, texte, Wi-Fi, vCard, etc.), l&apos;export en PNG/JPEG/PDF, le partage public et les statistiques de scan.
             </p>
           </section>
 
           <section style={sectionStyle}>
             <h2 style={h2Style}>3. Abonnement et paiement</h2>
             <p style={pStyle}>
-              QRaft propose deux formules d&apos;abonnement :
+              useqraft propose deux formules d&apos;abonnement :
             </p>
             <ul style={{ ...pStyle, paddingLeft: "1.25rem", marginTop: "0.5rem", marginBottom: "0.75rem" }}>
               <li><strong>Plan Gratuit</strong> : QR codes actifs pendant 30 jours, analytics de base (nombre de scans).</li>
               <li><strong>Plan Pro — 9,99&nbsp;€/mois</strong> : QR codes permanents sans expiration, analytics complètes (géolocalisation, appareil, navigateur, OS, timeline).</li>
             </ul>
             <p style={pStyle}>
-              Les paiements sont traités exclusivement par <strong>Stripe</strong>, prestataire certifié PCI DSS. DVS Web ne stocke aucune donnée bancaire. L&apos;abonnement Pro est sans engagement : vous pouvez l&apos;annuler à tout moment depuis le portail de facturation Stripe accessible via votre compte QRaft.
+              Les paiements sont traités exclusivement par <strong>Stripe</strong>, prestataire certifié PCI DSS. DVS Web ne stocke aucune donnée bancaire. L&apos;abonnement Pro est sans engagement : vous pouvez l&apos;annuler à tout moment depuis le portail de facturation Stripe accessible via votre compte useqraft.
             </p>
             <p style={{ ...pStyle, marginTop: "0.5rem" }}>
               En cas d&apos;annulation, votre abonnement reste actif jusqu&apos;à la fin de la période facturée en cours. Passé ce délai, une période de grâce de <strong>7 jours</strong> s&apos;applique avant la désactivation de vos QR codes permanents, qui basculent alors sur les conditions du plan gratuit (expiration à 30 jours). Aucun remboursement au prorata n&apos;est accordé, sauf obligation légale applicable.
@@ -109,7 +109,7 @@ export default function CGU() {
 
           <section style={sectionStyle}>
             <h2 style={h2Style}>5. Utilisation acceptable</h2>
-            <p style={pStyle}>Il est interdit d&apos;utiliser QRaft pour :</p>
+            <p style={pStyle}>Il est interdit d&apos;utiliser useqraft pour :</p>
             <ul style={{ ...pStyle, paddingLeft: "1.25rem", marginTop: "0.5rem" }}>
               <li>Créer des QR codes renvoyant vers du contenu illégal, malveillant ou trompeur</li>
               <li>Porter atteinte aux droits de tiers (marques, droits d&apos;auteur, données personnelles)</li>
@@ -128,7 +128,7 @@ export default function CGU() {
           <section style={sectionStyle}>
             <h2 style={h2Style}>7. Disponibilité du service</h2>
             <p style={pStyle}>
-              QRaft est fourni &quot;tel quel&quot;, sans garantie de disponibilité continue. DVS Web se réserve le droit de modifier, suspendre ou interrompre le service à tout moment, notamment pour maintenance. Aucune indemnité ne saurait être réclamée à ce titre.
+              useqraft est fourni &quot;tel quel&quot;, sans garantie de disponibilité continue. DVS Web se réserve le droit de modifier, suspendre ou interrompre le service à tout moment, notamment pour maintenance. Aucune indemnité ne saurait être réclamée à ce titre.
             </p>
           </section>
 

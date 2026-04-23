@@ -436,7 +436,7 @@ export default function QRCodeEditorPage() {
               ←
             </button>
             <h1 style={{ fontFamily: "var(--font-display, cursive)", fontSize: "clamp(1.8rem, 4vw, 3rem)", color: "white", letterSpacing: "0.04em", lineHeight: 1 }}>
-              QRaft
+              useqraft
             </h1>
             <div className="ml-auto flex gap-2">
               <button onClick={handleSave} disabled={saving} className="btn" style={{ background: "var(--ink)", color: "var(--bg)" }}>

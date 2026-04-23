@@ -9,10 +9,10 @@ export async function GET() {
   const spec = {
     openapi: "3.1.0",
     info: {
-      title: "QRaft API",
+      title: "useqraft API",
       version: "1.0.0",
       description: "API publique pour créer des QR codes et consulter leurs analytics.",
-      contact: { name: "QRaft", url: BASE_URL },
+      contact: { name: "useqraft", url: BASE_URL },
     },
     servers: [{ url: `${BASE_URL}/api/v1`, description: "Production" }],
     security: [{ bearerAuth: [] }],

@@ -96,7 +96,7 @@ function LoginForm() {
                 lineHeight: 1,
               }}
             >
-              QRaft
+              useqraft
             </h1>
             <p
               style={{

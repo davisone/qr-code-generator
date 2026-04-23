@@ -66,7 +66,7 @@ export default function ForgotPasswordPage() {
                 lineHeight: 1,
               }}
             >
-              QRaft
+              useqraft
             </h1>
             <p
               style={{

@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { getPost } from "@/lib/blog";
 
 export const runtime = "nodejs";
-export const alt = "QRaft Blog";
+export const alt = "useqraft Blog";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -20,7 +20,7 @@ export default async function OGImage({
   const { locale, slug } = await params;
   const post = getPost(locale, slug);
 
-  const title = post?.title ?? "QRaft Blog";
+  const title = post?.title ?? "useqraft Blog";
   const cat = categoryLabels[post?.category ?? ""] ?? categoryLabels.tutorial;
 
   return new ImageResponse(
@@ -159,7 +159,7 @@ export default async function OGImage({
             <span
               style={{ color: "white", fontSize: "24px", fontWeight: 700 }}
             >
-              QRaft
+              useqraft
             </span>
             <span style={{ color: "#525252", fontSize: "20px" }}>Blog</span>
           </div>

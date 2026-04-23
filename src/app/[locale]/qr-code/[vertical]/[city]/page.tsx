@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const t = await getTranslations({ locale, namespace: "programmatic" });
   const vName = t(v.nameKey);
-  const title = `QR Code for ${vName} in ${city.name} — Free Generator | QRaft`;
+  const title = `QR Code for ${vName} in ${city.name} — Free Generator | useqraft`;
   const description = `Create free QR codes for your ${vName.toLowerCase()} in ${city.name}. Customizable, with scan analytics. No signup required.`;
   const pageUrl = `${BASE_URL}/${locale}/qr-code/${vertical}/${citySlug}`;
 
@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     alternates: { canonical: pageUrl, languages: hreflangAlternates },
-    openGraph: { title, description, url: pageUrl, type: "website", siteName: "QRaft", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: title }] },
+    openGraph: { title, description, url: pageUrl, type: "website", siteName: "useqraft", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: title }] },
     twitter: { card: "summary_large_image", title, description, images: ["/opengraph-image"] },
     robots: { index: true, follow: true },
   };

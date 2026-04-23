@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { BASE_URL, buildHreflang } from "@/lib/config";
 import { getAllPosts } from "@/lib/blog";
 import { Link } from "@/i18n/navigation";
+import { JsonLd } from "@/components/seo-generator/JsonLd";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -13,10 +14,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const url = `${BASE_URL}/${locale}/blog`;
   return {
-    title: "Blog — QR Code Guides, Tips & Comparisons | QRaft",
+    title: "Blog — QR Code Guides, Tips & Comparisons | useqraft",
     description: "Learn how to create, customize and use QR codes for your business. Tutorials, industry use-cases, and tool comparisons.",
     alternates: { canonical: url, languages: buildHreflang("/blog") },
-    openGraph: { title: "Blog | QRaft", description: "QR code guides, tutorials and comparisons.", url, type: "website" },
+    openGraph: { title: "Blog | useqraft", description: "QR code guides, tutorials and comparisons.", url, type: "website" },
   };
 }
 
@@ -31,6 +32,15 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
   const allPosts = getAllPosts(locale);
   const posts = category ? allPosts.filter((p) => p.category === category) : allPosts;
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "useqraft", item: `${BASE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE_URL}/${locale}/blog` },
+    ],
+  };
+
   const categories = [
     { key: undefined, label: t("all") },
     { key: "tutorial", label: t("tutorials") },
@@ -40,6 +50,7 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
 
   return (
     <>
+      <JsonLd data={breadcrumbLd} />
       {/* Hero */}
       <section style={{ borderBottom: "var(--rule)", padding: "clamp(3rem,6vw,5rem) clamp(1.5rem,4vw,3rem)" }}>
         <div className="max-w-7xl mx-auto">

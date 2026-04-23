@@ -35,7 +35,7 @@ function VerifyEmailContent() {
         <div style={{ border: "var(--rule)", background: "var(--card)" }}>
           <div style={{ background: "var(--ink)", padding: "1.5rem", textAlign: "center" }}>
             <h1 style={{ fontFamily: "var(--font-display, 'Bebas Neue'), cursive", fontSize: "2.8rem", color: "var(--bg)", letterSpacing: "0.06em", lineHeight: 1 }}>
-              QRaft
+              useqraft
             </h1>
             <p style={{ color: "rgba(240,235,225,0.5)", fontSize: "0.62rem", textTransform: "uppercase", letterSpacing: "0.14em", marginTop: "0.3rem", fontFamily: "var(--font-sans)" }}>
               {t("verify_email_title")}

@@ -2,6 +2,11 @@ import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { BASE_URL } from "@/lib/config";
 import { getAllSlugs } from "@/lib/blog";
+import { competitorSlugs } from "@/data/competitors";
+import { industrySlugs } from "@/data/industries";
+import { glossaryTermSlugs } from "@/data/glossary-terms";
+import { guideSlugs } from "@/data/guides";
+import { QR_TEMPLATES } from "@/lib/qr-templates";
 
 const locales = ["en", "fr", "es", "de", "it", "pt", "nl", "pt-BR", "es-MX", "ja", "zh", "ko"];
 
@@ -94,5 +99,103 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
-  return [...homeRoutes, ...staticRoutes, ...generatorRoutes, ...blogIndexRoutes, ...blogArticleRoutes, ...blogCategoryRoutes, ...sharedRoutes];
+  // Pages comparaison (hub + 8 concurrents × 12 locales)
+  const compareHubRoutes: MetadataRoute.Sitemap = locales.map((locale) => ({
+    url: `${baseUrl}/${locale}/compare`,
+    lastModified: currentDate,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+  const compareRoutes: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    competitorSlugs.map((slug) => ({
+      url: `${baseUrl}/${locale}/compare/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    }))
+  );
+
+  // Pages use-cases (hub + 18 industries × 12 locales)
+  const useCasesHubRoutes: MetadataRoute.Sitemap = locales.map((locale) => ({
+    url: `${baseUrl}/${locale}/use-cases`,
+    lastModified: currentDate,
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+  }));
+  const useCasesRoutes: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    industrySlugs.map((slug) => ({
+      url: `${baseUrl}/${locale}/use-cases/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    }))
+  );
+
+  // Pages glossaire (hub + 25 termes × 12 locales)
+  const glossaryHubRoutes: MetadataRoute.Sitemap = locales.map((locale) => ({
+    url: `${baseUrl}/${locale}/glossary`,
+    lastModified: currentDate,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+  const glossaryRoutes: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    glossaryTermSlugs.map((slug) => ({
+      url: `${baseUrl}/${locale}/glossary/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }))
+  );
+
+  // Pages guides (hub + 4 guides × 12 locales)
+  const guidesHubRoutes: MetadataRoute.Sitemap = locales.map((locale) => ({
+    url: `${baseUrl}/${locale}/guides`,
+    lastModified: currentDate,
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+  }));
+  const guidesRoutes: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    guideSlugs.map((slug) => ({
+      url: `${baseUrl}/${locale}/guides/${slug}`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    }))
+  );
+
+  // Pages templates publics (hub + 24 templates × 12 locales)
+  const qrTemplatesHubRoutes: MetadataRoute.Sitemap = locales.map((locale) => ({
+    url: `${baseUrl}/${locale}/qr-templates`,
+    lastModified: currentDate,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+  const qrTemplatesRoutes: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    QR_TEMPLATES.map((tpl) => ({
+      url: `${baseUrl}/${locale}/qr-templates/${tpl.id}`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    }))
+  );
+
+  return [
+    ...homeRoutes,
+    ...staticRoutes,
+    ...generatorRoutes,
+    ...blogIndexRoutes,
+    ...blogArticleRoutes,
+    ...blogCategoryRoutes,
+    ...sharedRoutes,
+    ...compareHubRoutes,
+    ...compareRoutes,
+    ...useCasesHubRoutes,
+    ...useCasesRoutes,
+    ...glossaryHubRoutes,
+    ...glossaryRoutes,
+    ...guidesHubRoutes,
+    ...guidesRoutes,
+    ...qrTemplatesHubRoutes,
+    ...qrTemplatesRoutes,
+  ];
 }

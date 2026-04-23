@@ -21,7 +21,7 @@ export default async function QRCodeProgrammaticLayout({ children, params }: Pro
               className="flex items-center px-2"
               style={{ fontFamily: "var(--font-display)", fontSize: "1.8rem", letterSpacing: "0.06em", color: "#f0ebe1", textDecoration: "none" }}
             >
-              QRaft
+              useqraft
             </Link>
             <div className="flex items-stretch">
               <Link

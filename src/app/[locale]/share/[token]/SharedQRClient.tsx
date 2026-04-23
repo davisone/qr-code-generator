@@ -111,7 +111,7 @@ export function SharedQRClient({ qrCode }: Props) {
         {/* Header */}
         <div style={{ background: "var(--ink)", padding: "1rem 1.5rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <span style={{ fontFamily: "var(--font-display, cursive)", fontSize: "1.6rem", color: "var(--bg)", letterSpacing: "0.06em" }}>
-            QRaft
+            useqraft
           </span>
           <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.6rem", color: "rgba(240,235,225,0.4)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
             {qrCode.type}

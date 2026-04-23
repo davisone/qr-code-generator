@@ -46,7 +46,7 @@ export const exportBulkZip = async (rows: BulkQRRow[]): Promise<Blob> => {
   }
 
   const pdfBlob = pdf.output("blob");
-  zip.file("QRaft-batch-recap.pdf", pdfBlob);
+  zip.file("useqraft-batch-recap.pdf", pdfBlob);
 
   return zip.generateAsync({ type: "blob" });
 };

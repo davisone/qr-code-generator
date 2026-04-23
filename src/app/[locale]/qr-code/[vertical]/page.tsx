@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return buildGeneratorMetadata({
     locale,
     path: `/qr-code/${vertical}`,
-    title: `QR Code for ${name} — Free Generator | QRaft`,
+    title: `QR Code for ${name} — Free Generator | useqraft`,
     description: `Generate QR codes for your ${name.toLowerCase()} business. Free, customizable, with analytics. Find your city below.`,
   });
 }
