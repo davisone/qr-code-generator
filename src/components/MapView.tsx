@@ -1,34 +1,22 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { MapContainer, TileLayer, Marker, Tooltip, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, CircleMarker, Tooltip, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-// Types pour les données de la carte
-interface LocationData {
+interface CountryData {
+  country: string;
+  count: number;
   lat: number;
   lng: number;
-  city: string | null;
-  country: string | null;
-  count: number;
-  lastScan: string;
-  qrCodeName: string;
-  color: string;
-}
-
-interface CountryOrCityCount {
-  name: string;
-  count: number;
 }
 
 interface MapDataResponse {
-  locations: LocationData[];
+  countries: CountryData[];
   summary: {
-    totalLocations: number;
     totalScans: number;
-    topCountries: CountryOrCityCount[];
-    topCities: CountryOrCityCount[];
+    totalCountries: number;
   };
 }
 
@@ -45,53 +33,26 @@ interface MapViewProps {
 
 type Period = 7 | 30 | 90 | 0;
 
-// Composant interne pour ajuster les limites de la carte selon les données
-const FitBounds = ({ locations }: { locations: LocationData[] }) => {
+const FitBounds = ({ countries }: { countries: CountryData[] }) => {
   const map = useMap();
 
   useEffect(() => {
-    if (locations.length === 0) return;
-
+    if (countries.length === 0) return;
     const bounds = L.latLngBounds(
-      locations.map((loc) => [loc.lat, loc.lng] as L.LatLngTuple)
+      countries.map((c) => [c.lat, c.lng] as L.LatLngTuple)
     );
-    map.fitBounds(bounds, { padding: [50, 50], maxZoom: 10 });
-  }, [locations, map]);
+    map.fitBounds(bounds, { padding: [50, 50], maxZoom: 5 });
+  }, [countries, map]);
 
   return null;
 };
 
-// Création d'une icône personnalisée pour un marqueur
-const createMarkerIcon = (color: string, count: number, index: number): L.DivIcon => {
-  if (count > 1) {
-    // Marqueur cluster avec taille proportionnelle au nombre de scans
-    const size = Math.min(20 + count * 4, 50);
-    return L.divIcon({
-      className: "",
-      html: `<div class="map-cluster" style="width: ${size}px; height: ${size}px; background: ${color}; box-shadow: 0 0 10px ${color}, 0 0 20px ${color}; animation-delay: ${index * 50}ms;">${count}</div>`,
-      iconSize: [size, size],
-      iconAnchor: [size / 2, size / 2],
-    });
-  }
-
-  // Marqueur simple avec point lumineux
-  return L.divIcon({
-    className: "",
-    html: `<div class="map-marker" style="background: ${color}; box-shadow: 0 0 10px ${color}, 0 0 20px ${color}; animation-delay: ${index * 50}ms;"></div>`,
-    iconSize: [12, 12],
-    iconAnchor: [6, 6],
-  });
-};
-
-// Formatage de la date en français
-const formatDate = (dateString: string): string => {
-  return new Date(dateString).toLocaleDateString("fr-FR", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+// Rayon du cercle proportionnel au nombre de scans
+const getRadius = (count: number, maxCount: number): number => {
+  const min = 8;
+  const max = 35;
+  if (maxCount <= 1) return min;
+  return min + ((count / maxCount) * (max - min));
 };
 
 const MapView = ({ qrCodes }: MapViewProps) => {
@@ -100,20 +61,12 @@ const MapView = ({ qrCodes }: MapViewProps) => {
   const [data, setData] = useState<MapDataResponse | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Récupération des données de la carte
   const fetchMapData = useCallback(async () => {
     setLoading(true);
     try {
       const params = new URLSearchParams();
-      if (selectedQRCode) {
-        params.set("qrCodeId", selectedQRCode);
-      }
-      if (period > 0) {
-        params.set("period", period.toString());
-      } else {
-        // "Tout" : on met une période très large
-        params.set("period", "3650");
-      }
+      if (selectedQRCode) params.set("qrCodeId", selectedQRCode);
+      params.set("period", period > 0 ? period.toString() : "3650");
 
       const res = await fetch(`/api/qrcodes/map-data?${params.toString()}`);
       if (res.ok) {
@@ -131,13 +84,11 @@ const MapView = ({ qrCodes }: MapViewProps) => {
     fetchMapData();
   }, [fetchMapData]);
 
-  // Centre par défaut : France
-  const defaultCenter: L.LatLngTuple = [46.6, 2.2];
-
-  const locations = data?.locations ?? [];
+  const defaultCenter: L.LatLngTuple = [30, 0];
+  const countries = data?.countries ?? [];
   const summary = data?.summary;
+  const maxCount = countries.reduce((max, c) => Math.max(max, c.count), 0);
 
-  // Libellés des périodes
   const periodOptions: { label: string; value: Period }[] = [
     { label: "7j", value: 7 },
     { label: "30j", value: 30 },
@@ -148,8 +99,8 @@ const MapView = ({ qrCodes }: MapViewProps) => {
   return (
     <div className="flex flex-col lg:flex-row gap-0 relative" style={{ minHeight: "600px" }}>
       {/* Panneau latéral */}
-      <div className="w-full lg:w-80 shrink-0 bg-white border-b lg:border-b-0 lg:border-r border-[#e5e5e5] p-5 overflow-y-auto rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none z-10">
-        <h2 className="text-lg font-bold text-[#0a0a0a] mb-4">Carte des scans</h2>
+      <div className="w-full lg:w-72 shrink-0 bg-white border-b lg:border-b-0 lg:border-r border-[#e5e5e5] p-5 overflow-y-auto rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none z-10">
+        <h2 className="text-lg font-bold text-[#0a0a0a] mb-4">Scans par pays</h2>
 
         {/* Sélecteur de QR code */}
         <div className="mb-4">
@@ -198,52 +149,43 @@ const MapView = ({ qrCodes }: MapViewProps) => {
           </div>
         ) : summary ? (
           <div className="space-y-4">
-            {/* Total des scans géolocalisées */}
             <div className="bento-card p-4">
-              <p className="text-sm text-[#525252]">Scans géolocalisés</p>
+              <p className="text-sm text-[#525252]">Total scans</p>
               <p className="text-2xl font-bold text-[#0a0a0a]">{summary.totalScans}</p>
               <p className="text-xs text-[#a3a3a3] mt-1">
-                {summary.totalLocations} emplacement{summary.totalLocations !== 1 ? "s" : ""}
+                {summary.totalCountries} pays
               </p>
             </div>
 
-            {/* Top 3 pays */}
-            {summary.topCountries.length > 0 && (
+            {/* Liste des pays */}
+            {countries.length > 0 && (
               <div className="bento-card p-4">
-                <p className="text-sm font-medium text-[#525252] mb-2">Top pays</p>
+                <p className="text-sm font-medium text-[#525252] mb-3">Pays</p>
                 <div className="space-y-2">
-                  {summary.topCountries.map((country, i) => (
-                    <div key={country.name} className="flex items-center justify-between">
-                      <span className="text-sm text-[#0a0a0a] flex items-center gap-2">
-                        <span className="text-xs text-[#a3a3a3] font-mono w-4">{i + 1}.</span>
-                        {country.name}
-                      </span>
-                      <span className="text-sm font-semibold text-[#0a0a0a]">{country.count}</span>
+                  {countries.map((c, i) => (
+                    <div key={c.country} className="flex items-center gap-2">
+                      <span className="text-xs text-[#a3a3a3] font-mono w-4 shrink-0">{i + 1}.</span>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between mb-0.5">
+                          <span className="text-sm text-[#0a0a0a] truncate">{c.country}</span>
+                          <span className="text-sm font-semibold text-[#0a0a0a] ml-2">{c.count}</span>
+                        </div>
+                        <div className="h-1 bg-[#f0f0f0] rounded-full overflow-hidden">
+                          <div
+                            className="h-full rounded-full"
+                            style={{
+                              width: `${maxCount > 0 ? (c.count / maxCount) * 100 : 0}%`,
+                              background: "var(--red, #d4290f)",
+                            }}
+                          />
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* Top 3 villes */}
-            {summary.topCities.length > 0 && (
-              <div className="bento-card p-4">
-                <p className="text-sm font-medium text-[#525252] mb-2">Top villes</p>
-                <div className="space-y-2">
-                  {summary.topCities.map((city, i) => (
-                    <div key={city.name} className="flex items-center justify-between">
-                      <span className="text-sm text-[#0a0a0a] flex items-center gap-2">
-                        <span className="text-xs text-[#a3a3a3] font-mono w-4">{i + 1}.</span>
-                        {city.name}
-                      </span>
-                      <span className="text-sm font-semibold text-[#0a0a0a]">{city.count}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* État vide */}
             {summary.totalScans === 0 && (
               <div className="text-center py-6">
                 <svg
@@ -273,43 +215,42 @@ const MapView = ({ qrCodes }: MapViewProps) => {
       <div className="flex-1 relative rounded-b-2xl lg:rounded-r-2xl lg:rounded-bl-none overflow-hidden" style={{ minHeight: "500px" }}>
         <MapContainer
           center={defaultCenter}
-          zoom={3}
+          zoom={2}
           style={{ height: "100%", width: "100%", minHeight: "500px" }}
           zoomControl={true}
         >
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'
-            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
+            url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
           />
 
-          {/* Ajustement automatique des limites */}
-          {locations.length > 0 && <FitBounds locations={locations} />}
+          {countries.length > 0 && <FitBounds countries={countries} />}
 
-          {/* Marqueurs */}
-          {locations.map((loc, index) => (
-            <Marker
-              key={`${loc.lat}-${loc.lng}-${index}`}
-              position={[loc.lat, loc.lng]}
-              icon={createMarkerIcon(loc.color, loc.count, index)}
+          {countries.map((c) => (
+            <CircleMarker
+              key={c.country}
+              center={[c.lat, c.lng]}
+              radius={getRadius(c.count, maxCount)}
+              pathOptions={{
+                fillColor: "#d4290f",
+                fillOpacity: 0.7,
+                color: "#fff",
+                weight: 2,
+                opacity: 0.9,
+              }}
             >
               <Tooltip direction="top" offset={[0, -10]}>
                 <div className="text-xs">
-                  <p className="font-semibold">
-                    {loc.city ?? "Ville inconnue"}, {loc.country ?? "Pays inconnu"}
-                  </p>
+                  <p className="font-semibold">{c.country}</p>
                   <p className="text-[#525252]">
-                    {loc.count} scan{loc.count > 1 ? "s" : ""}
-                  </p>
-                  <p className="text-[#a3a3a3]">
-                    Dernier : {formatDate(loc.lastScan)}
+                    {c.count} scan{c.count > 1 ? "s" : ""}
                   </p>
                 </div>
               </Tooltip>
-            </Marker>
+            </CircleMarker>
           ))}
         </MapContainer>
 
-        {/* Indicateur de chargement superposé */}
         {loading && (
           <div className="absolute inset-0 bg-black/20 flex items-center justify-center z-[1000]">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
