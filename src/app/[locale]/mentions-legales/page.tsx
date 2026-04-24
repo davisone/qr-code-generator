@@ -1,13 +1,21 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { BASE_URL } from "@/lib/config";
+import { BASE_URL, buildHreflang } from "@/lib/config";
 
-export const metadata: Metadata = {
-  title: "Mentions légales",
-  description: "Mentions légales du site useqraft, édité par DVS Web (Evan Davison).",
-  robots: { index: true, follow: true },
-  alternates: { canonical: `${BASE_URL}/fr/mentions-legales` },
-};
+type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "legal" });
+  const url = `${BASE_URL}/${locale}/mentions-legales`;
+  return {
+    title: t("mentions_meta_title"),
+    description: t("mentions_meta_description"),
+    robots: { index: true, follow: true },
+    alternates: { canonical: url, languages: buildHreflang("/mentions-legales") },
+  };
+}
 
 const sectionStyle: React.CSSProperties = {
   borderBottom: "var(--rule)",
@@ -29,10 +37,12 @@ const pStyle: React.CSSProperties = {
   lineHeight: 1.7,
 };
 
-export default function MentionsLegales() {
+export default async function MentionsLegales({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "legal" });
+
   return (
     <div style={{ background: "var(--bg)", minHeight: "100vh" }}>
-      {/* Navbar */}
       <nav className="navbar">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-stretch h-14">
@@ -45,101 +55,91 @@ export default function MentionsLegales() {
             </Link>
             <div className="flex items-stretch">
               <Link href="/login" className="flex items-center px-5 text-xs font-bold uppercase tracking-widest border-l" style={{ color: "rgba(240,235,225,0.5)", borderColor: "rgba(255,255,255,0.08)", fontFamily: "var(--font-sans)", textDecoration: "none" }}>
-                Connexion
+                {t("nav_login")}
               </Link>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Red band */}
       <div style={{ background: "var(--red)", padding: "0.45rem 0" }}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.62rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "rgba(255,255,255,0.85)" }}>
-            Informations légales
+            {t("banner_label")}
           </span>
         </div>
       </div>
 
       <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 style={{ fontFamily: "var(--font-display, cursive)", fontSize: "clamp(2.5rem, 6vw, 4rem)", letterSpacing: "0.04em", color: "var(--ink)", lineHeight: 1, marginBottom: "2rem" }}>
-          Mentions légales
+        <h1 style={{ fontFamily: "var(--font-display, cursive)", fontSize: "clamp(2.5rem, 6vw, 4rem)", letterSpacing: "0.04em", color: "var(--ink)", lineHeight: 1, marginBottom: "0.5rem" }}>
+          {t("mentions_title")}
         </h1>
+        <p style={{ ...pStyle, marginBottom: "2rem", opacity: 0.6 }}>
+          {t("last_updated")}
+        </p>
 
         <div style={{ border: "var(--rule)", background: "var(--card)", padding: "0 1.5rem" }}>
           <section style={sectionStyle}>
-            <h2 style={h2Style}>Éditeur du site</h2>
-            <p style={pStyle}>
-              Le site <strong>useqraft</strong> est édité par <strong>DVS Web</strong>, projet créé par <strong>Evan Davison</strong>.
-            </p>
+            <h2 style={h2Style}>{t("mentions_editor_title")}</h2>
+            <p style={pStyle}>{t("mentions_editor_body")}</p>
             <ul style={{ ...pStyle, marginTop: "0.75rem", paddingLeft: "1rem", listStyle: "none" }}>
-              <li><strong>Raison sociale :</strong> DVS Web</li>
-              <li><strong>Responsable de publication :</strong> Evan Davison</li>
+              <li><strong>{t("mentions_editor_company")}</strong></li>
+              <li><strong>{t("mentions_editor_responsible")}</strong></li>
             </ul>
           </section>
 
           <section style={sectionStyle}>
-            <h2 style={h2Style}>Hébergement</h2>
-            <p style={pStyle}>Le site est hébergé par <strong>Vercel Inc.</strong></p>
+            <h2 style={h2Style}>{t("mentions_hosting_title")}</h2>
+            <p style={pStyle}>{t("mentions_hosting_vercel")}</p>
             <ul style={{ ...pStyle, marginTop: "0.5rem", paddingLeft: "1rem", listStyle: "none" }}>
-              <li><strong>Adresse :</strong> 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis</li>
-              <li><strong>Site :</strong> <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={{ color: "var(--ink)", textDecoration: "underline" }}>vercel.com</a></li>
+              <li><strong>{t("mentions_hosting_vercel_address")}</strong></li>
+              <li><a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={{ color: "var(--ink)", textDecoration: "underline" }}>vercel.com</a></li>
             </ul>
-            <p style={{ ...pStyle, marginTop: "0.75rem" }}>La base de données est hébergée par <strong>Supabase Inc.</strong></p>
+            <p style={{ ...pStyle, marginTop: "0.75rem" }}>{t("mentions_hosting_db")}</p>
             <ul style={{ ...pStyle, marginTop: "0.5rem", paddingLeft: "1rem", listStyle: "none" }}>
-              <li><strong>Site :</strong> <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" style={{ color: "var(--ink)", textDecoration: "underline" }}>supabase.com</a></li>
+              <li><a href="https://supabase.com" target="_blank" rel="noopener noreferrer" style={{ color: "var(--ink)", textDecoration: "underline" }}>supabase.com</a></li>
             </ul>
           </section>
 
           <section style={sectionStyle}>
-            <h2 style={h2Style}>Propriété intellectuelle</h2>
-            <p style={pStyle}>
-              L&apos;ensemble du contenu de ce site (textes, images, code source, graphismes, logos) est la propriété exclusive de DVS Web (Evan Davison), sauf mention contraire. Toute reproduction, distribution ou utilisation sans autorisation préalable est interdite.
-            </p>
+            <h2 style={h2Style}>{t("mentions_ip_title")}</h2>
+            <p style={pStyle}>{t("mentions_ip_body")}</p>
           </section>
 
           <section style={sectionStyle}>
-            <h2 style={h2Style}>Protection des données personnelles</h2>
-            <p style={pStyle}>
-              Les données personnelles collectées (nom, adresse email) sont uniquement utilisées pour le fonctionnement du service. Elles ne sont ni cédées ni vendues à des tiers.
-            </p>
-            <p style={{ ...pStyle, marginTop: "0.5rem" }}>
-              Conformément au RGPD, vous disposez d&apos;un droit d&apos;accès, de rectification et de suppression. Pour exercer ces droits, supprimez votre compte ou contactez le responsable de publication.
-            </p>
+            <h2 style={h2Style}>{t("mentions_data_title")}</h2>
+            <p style={pStyle}>{t("mentions_data_body")}</p>
+            <p style={{ ...pStyle, marginTop: "0.5rem" }}>{t("mentions_data_rgpd")}</p>
           </section>
 
           <section style={sectionStyle}>
-            <h2 style={h2Style}>Statistiques de scan des QR codes</h2>
-            <p style={pStyle}>Lors du scan d&apos;un QR code public, nous collectons les données suivantes à des fins statistiques :</p>
+            <h2 style={h2Style}>{t("mentions_scan_title")}</h2>
+            <p style={pStyle}>{t("mentions_scan_body")}</p>
             <ul style={{ ...pStyle, marginTop: "0.5rem", paddingLeft: "1.25rem" }}>
-              <li>Date et heure du scan</li>
-              <li>Type d&apos;appareil, navigateur et système d&apos;exploitation</li>
-              <li>Adresse IP (utilisée pour la géolocalisation approximative, non stockée de manière identifiable)</li>
-              <li>Localisation approximative (pays, ville)</li>
+              <li>{t("mentions_scan_item1")}</li>
+              <li>{t("mentions_scan_item2")}</li>
+              <li>{t("mentions_scan_item3")}</li>
+              <li>{t("mentions_scan_item4")}</li>
             </ul>
             <p style={{ ...pStyle, marginTop: "0.75rem" }}>
-              <strong>Base légale :</strong> Intérêt légitime. <strong>Conservation :</strong> Jusqu&apos;à la suppression du QR code.
+              <strong>{t("mentions_scan_legal")}</strong>
             </p>
           </section>
 
           <section style={sectionStyle}>
-            <h2 style={h2Style}>Limitation de responsabilité</h2>
-            <p style={pStyle}>
-              DVS Web s&apos;efforce de fournir des informations précises mais ne saurait être tenu responsable des omissions ou inexactitudes. L&apos;utilisateur est seul responsable de l&apos;utilisation des QR codes générés.
-            </p>
+            <h2 style={h2Style}>{t("mentions_liability_title")}</h2>
+            <p style={pStyle}>{t("mentions_liability_body")}</p>
           </section>
 
           <section style={{ padding: "1.5rem 0" }}>
-            <h2 style={h2Style}>Cookies</h2>
-            <p style={pStyle}>
-              Ce site utilise uniquement des cookies strictement nécessaires au fonctionnement (authentification). Aucun cookie publicitaire ou de suivi tiers n&apos;est utilisé.
-            </p>
+            <h2 style={h2Style}>{t("mentions_cookies_title")}</h2>
+            <p style={pStyle}>{t("mentions_cookies_body")}</p>
           </section>
         </div>
 
         <div style={{ marginTop: "2rem" }}>
           <Link href="/" style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--mid)", textDecoration: "none" }}>
-            ← Retour à l&apos;accueil
+            ← {t("mentions_link_home")}
           </Link>
         </div>
       </main>

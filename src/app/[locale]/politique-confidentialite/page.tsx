@@ -1,13 +1,21 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { BASE_URL } from "@/lib/config";
+import { BASE_URL, buildHreflang } from "@/lib/config";
 
-export const metadata: Metadata = {
-  title: "Politique de confidentialité",
-  description: "Politique de confidentialité de useqraft — comment vos données personnelles sont collectées, utilisées et protégées.",
-  robots: { index: true, follow: true },
-  alternates: { canonical: `${BASE_URL}/fr/politique-confidentialite` },
-};
+type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "legal" });
+  const url = `${BASE_URL}/${locale}/politique-confidentialite`;
+  return {
+    title: t("privacy_meta_title"),
+    description: t("privacy_meta_description"),
+    robots: { index: true, follow: true },
+    alternates: { canonical: url, languages: buildHreflang("/politique-confidentialite") },
+  };
+}
 
 const sectionStyle: React.CSSProperties = {
   borderBottom: "var(--rule)",
@@ -55,10 +63,12 @@ const tdStyle: React.CSSProperties = {
   verticalAlign: "top",
 };
 
-export default function PolitiqueConfidentialite() {
+export default async function PolitiqueConfidentialite({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "legal" });
+
   return (
     <div style={{ background: "var(--bg)", minHeight: "100vh" }}>
-      {/* Navbar */}
       <nav className="navbar">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-stretch h-14">
@@ -70,153 +80,153 @@ export default function PolitiqueConfidentialite() {
             </Link>
             <div className="flex items-stretch">
               <Link href="/login" style={{ display: "flex", alignItems: "center", padding: "0 1.25rem", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", borderLeft: "1px solid rgba(255,255,255,0.08)", color: "rgba(240,235,225,0.5)", fontFamily: "var(--font-sans)", textDecoration: "none" }}>
-                Connexion
+                {t("nav_login")}
               </Link>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Red band */}
       <div style={{ background: "var(--red)", padding: "0.45rem 0" }}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.62rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "rgba(255,255,255,0.85)" }}>
-            Informations légales
+            {t("banner_label")}
           </span>
         </div>
       </div>
 
       <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h1 style={{ fontFamily: "var(--font-display, cursive)", fontSize: "clamp(2rem, 5vw, 3.5rem)", letterSpacing: "0.04em", color: "var(--ink)", lineHeight: 1, marginBottom: "0.5rem" }}>
-          Confidentialité
+          {t("privacy_title")}
         </h1>
         <p style={{ ...pStyle, marginBottom: "2rem", opacity: 0.6 }}>
-          Politique de confidentialité — Dernière mise à jour : avril 2025
+          {t("privacy_full_title")} — {t("last_updated")}
         </p>
 
         <div style={{ border: "var(--rule)", background: "var(--card)", padding: "0 1.5rem" }}>
           <section style={sectionStyle}>
-            <h2 style={h2Style}>1. Responsable du traitement</h2>
+            <h2 style={h2Style}>{t("privacy_1_title")}</h2>
             <p style={pStyle}>
-              <strong>DVS Web</strong> — Evan Davison<br />
-              Contact : via <a href="https://dvs-web.fr" target="_blank" rel="noopener noreferrer" style={{ color: "var(--ink)" }}>dvs-web.fr</a>
+              <strong>{t("privacy_1_body")}</strong><br />
+              {t("privacy_1_contact")}
             </p>
           </section>
 
           <section style={sectionStyle}>
-            <h2 style={h2Style}>2. Données collectées et finalités</h2>
+            <h2 style={h2Style}>{t("privacy_2_title")}</h2>
             <table style={tableStyle}>
               <thead>
                 <tr>
-                  <th style={thStyle}>Donnée</th>
-                  <th style={thStyle}>Finalité</th>
-                  <th style={thStyle}>Base légale</th>
-                  <th style={thStyle}>Durée</th>
+                  <th style={thStyle}>{t("privacy_2_col_data")}</th>
+                  <th style={thStyle}>{t("privacy_2_col_purpose")}</th>
+                  <th style={thStyle}>{t("privacy_2_col_basis")}</th>
+                  <th style={thStyle}>{t("privacy_2_col_duration")}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td style={tdStyle}>Email, nom</td>
-                  <td style={tdStyle}>Authentification, compte utilisateur</td>
-                  <td style={tdStyle}>Exécution du contrat</td>
-                  <td style={tdStyle}>Jusqu&apos;à suppression du compte</td>
+                  <td style={tdStyle}>{t("privacy_2_row1_data")}</td>
+                  <td style={tdStyle}>{t("privacy_2_row1_purpose")}</td>
+                  <td style={tdStyle}>{t("privacy_2_row1_basis")}</td>
+                  <td style={tdStyle}>{t("privacy_2_row1_duration")}</td>
                 </tr>
                 <tr>
-                  <td style={tdStyle}>Contenu des QR codes</td>
-                  <td style={tdStyle}>Fourniture du service</td>
-                  <td style={tdStyle}>Exécution du contrat</td>
-                  <td style={tdStyle}>Jusqu&apos;à suppression du QR code</td>
+                  <td style={tdStyle}>{t("privacy_2_row2_data")}</td>
+                  <td style={tdStyle}>{t("privacy_2_row2_purpose")}</td>
+                  <td style={tdStyle}>{t("privacy_2_row2_basis")}</td>
+                  <td style={tdStyle}>{t("privacy_2_row2_duration")}</td>
                 </tr>
                 <tr>
-                  <td style={tdStyle}>IP, UA, pays, ville (scans)</td>
-                  <td style={tdStyle}>Statistiques de scan pour l&apos;utilisateur</td>
-                  <td style={tdStyle}>Intérêt légitime</td>
-                  <td style={tdStyle}>Jusqu&apos;à suppression du QR code</td>
+                  <td style={tdStyle}>{t("privacy_2_row3_data")}</td>
+                  <td style={tdStyle}>{t("privacy_2_row3_purpose")}</td>
+                  <td style={tdStyle}>{t("privacy_2_row3_basis")}</td>
+                  <td style={tdStyle}>{t("privacy_2_row3_duration")}</td>
                 </tr>
                 <tr>
-                  <td style={tdStyle}>Données de navigation (Google Analytics)</td>
-                  <td style={tdStyle}>Analyse d&apos;audience anonymisée</td>
-                  <td style={tdStyle}>Consentement (cookie banner)</td>
-                  <td style={tdStyle}>26 mois (paramètre GA4)</td>
+                  <td style={tdStyle}>{t("privacy_2_row4_data")}</td>
+                  <td style={tdStyle}>{t("privacy_2_row4_purpose")}</td>
+                  <td style={tdStyle}>{t("privacy_2_row4_basis")}</td>
+                  <td style={tdStyle}>{t("privacy_2_row4_duration")}</td>
                 </tr>
               </tbody>
             </table>
           </section>
 
           <section style={sectionStyle}>
-            <h2 style={h2Style}>3. Google Analytics</h2>
-            <p style={pStyle}>
-              Ce site utilise <strong>Google Analytics 4</strong> (Google LLC, États-Unis) pour mesurer l&apos;audience. Google peut collecter des données de navigation via des cookies. La collecte n&apos;est activée qu&apos;après acceptation via le bandeau de consentement.
-            </p>
+            <h2 style={h2Style}>{t("privacy_3_title")}</h2>
+            <p style={pStyle}>{t("privacy_3_body")}</p>
             <p style={{ ...pStyle, marginTop: "0.75rem" }}>
-              Pour s&apos;opposer à ce suivi, vous pouvez refuser les cookies analytiques ou installer l&apos;extension <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style={{ color: "var(--ink)", textDecoration: "underline" }}>Google Analytics Opt-out</a>.
+              {t("privacy_3_optout")}
             </p>
           </section>
 
           <section style={sectionStyle}>
-            <h2 style={h2Style}>4. Hébergement et sous-traitants</h2>
+            <h2 style={h2Style}>{t("privacy_4_title")}</h2>
             <ul style={{ ...pStyle, paddingLeft: "1.25rem", marginTop: "0.25rem" }}>
-              <li><strong>Vercel Inc.</strong> (hébergement, CDN) — États-Unis, clauses contractuelles types UE</li>
-              <li><strong>Supabase Inc.</strong> (base de données PostgreSQL) — États-Unis, clauses contractuelles types UE</li>
-              <li><strong>Google LLC</strong> (Analytics, OAuth) — États-Unis, clauses contractuelles types UE</li>
-              <li><strong>GitHub Inc.</strong> (OAuth) — États-Unis, clauses contractuelles types UE</li>
+              <li><strong>{t("privacy_4_vercel")}</strong></li>
+              <li><strong>{t("privacy_4_supabase")}</strong></li>
+              <li><strong>{t("privacy_4_google")}</strong></li>
+              <li><strong>{t("privacy_4_github")}</strong></li>
+              <li><strong>{t("privacy_4_stripe")}</strong></li>
+              <li><strong>{t("privacy_4_sentry")}</strong></li>
             </ul>
           </section>
 
           <section style={sectionStyle}>
-            <h2 style={h2Style}>5. Vos droits (RGPD)</h2>
-            <p style={pStyle}>Vous disposez des droits suivants sur vos données personnelles :</p>
+            <h2 style={h2Style}>{t("privacy_5_title")}</h2>
+            <p style={pStyle}>{t("privacy_5_body")}</p>
             <ul style={{ ...pStyle, paddingLeft: "1.25rem", marginTop: "0.5rem" }}>
-              <li><strong>Accès</strong> : consulter vos données depuis votre profil</li>
-              <li><strong>Rectification</strong> : modifier votre nom depuis votre profil</li>
-              <li><strong>Suppression</strong> : supprimer votre compte et toutes vos données depuis votre profil</li>
-              <li><strong>Portabilité</strong> : vos QR codes peuvent être exportés en PNG/PDF</li>
-              <li><strong>Opposition</strong> : refuser les cookies analytiques via le bandeau de consentement</li>
+              <li><strong>{t("privacy_5_access")}</strong></li>
+              <li><strong>{t("privacy_5_rectify")}</strong></li>
+              <li><strong>{t("privacy_5_delete")}</strong></li>
+              <li><strong>{t("privacy_5_portability")}</strong></li>
+              <li><strong>{t("privacy_5_opposition")}</strong></li>
             </ul>
-            <p style={{ ...pStyle, marginTop: "0.75rem" }}>
-              Pour toute autre demande, contactez : <a href="https://dvs-web.fr" target="_blank" rel="noopener noreferrer" style={{ color: "var(--ink)" }}>dvs-web.fr</a>
-            </p>
+            <p style={{ ...pStyle, marginTop: "0.75rem" }}>{t("privacy_5_contact")}</p>
           </section>
 
           <section style={sectionStyle}>
-            <h2 style={h2Style}>6. Cookies</h2>
+            <h2 style={h2Style}>{t("privacy_6_title")}</h2>
             <table style={tableStyle}>
               <thead>
                 <tr>
-                  <th style={thStyle}>Cookie</th>
-                  <th style={thStyle}>Type</th>
-                  <th style={thStyle}>Finalité</th>
+                  <th style={thStyle}>{t("privacy_6_col_cookie")}</th>
+                  <th style={thStyle}>{t("privacy_6_col_type")}</th>
+                  <th style={thStyle}>{t("privacy_6_col_purpose")}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td style={tdStyle}><code>next-auth.session-token</code></td>
-                  <td style={tdStyle}>Nécessaire</td>
-                  <td style={tdStyle}>Authentification sécurisée</td>
+                  <td style={tdStyle}><code>{t("privacy_6_row1_cookie")}</code></td>
+                  <td style={tdStyle}>{t("privacy_6_row1_type")}</td>
+                  <td style={tdStyle}>{t("privacy_6_row1_purpose")}</td>
                 </tr>
                 <tr>
-                  <td style={tdStyle}><code>_ga</code>, <code>_ga_*</code></td>
-                  <td style={tdStyle}>Analytique (consentement requis)</td>
-                  <td style={tdStyle}>Mesure d&apos;audience Google Analytics</td>
+                  <td style={tdStyle}><code>{t("privacy_6_row2_cookie")}</code></td>
+                  <td style={tdStyle}>{t("privacy_6_row2_type")}</td>
+                  <td style={tdStyle}>{t("privacy_6_row2_purpose")}</td>
+                </tr>
+                <tr>
+                  <td style={tdStyle}><code>{t("privacy_6_row3_cookie")}</code></td>
+                  <td style={tdStyle}>{t("privacy_6_row3_type")}</td>
+                  <td style={tdStyle}>{t("privacy_6_row3_purpose")}</td>
                 </tr>
               </tbody>
             </table>
           </section>
 
           <section style={{ padding: "1.5rem 0" }}>
-            <h2 style={h2Style}>7. Réclamation</h2>
-            <p style={pStyle}>
-              Si vous estimez que le traitement de vos données ne respecte pas la réglementation, vous pouvez déposer une réclamation auprès de la <strong>CNIL</strong> : <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" style={{ color: "var(--ink)", textDecoration: "underline" }}>www.cnil.fr</a>.
-            </p>
+            <h2 style={h2Style}>{t("privacy_7_title")}</h2>
+            <p style={pStyle}>{t("privacy_7_body")}</p>
           </section>
         </div>
 
         <div style={{ marginTop: "2rem", display: "flex", gap: "2rem" }}>
           <Link href="/" style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--mid)", textDecoration: "none" }}>
-            ← Accueil
+            ← {t("back_home")}
           </Link>
           <Link href="/cgu" style={{ fontFamily: "var(--font-sans)", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--mid)", textDecoration: "none" }}>
-            CGU →
+            {t("privacy_link_cgu")} →
           </Link>
         </div>
       </main>

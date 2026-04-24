@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { BASE_URL } from "@/lib/config";
-import { getAllSlugs } from "@/lib/blog";
+import { getAllSlugs, getAllPosts } from "@/lib/blog";
 import { competitorSlugs } from "@/data/competitors";
 import { industrySlugs } from "@/data/industries";
 import { glossaryTermSlugs } from "@/data/glossary-terms";
@@ -49,14 +49,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
-  // QR codes publics partagés
+  // QR codes publics partagés (limité pour préserver le crawl budget)
   let sharedRoutes: MetadataRoute.Sitemap = [];
   try {
     const publicQRCodes = await prisma.qRCode.findMany({
       where: { isPublic: true, shareToken: { not: null } },
       select: { shareToken: true, updatedAt: true },
       orderBy: { updatedAt: "desc" },
-      take: 5000,
+      take: 100,
     });
 
     sharedRoutes = publicQRCodes
@@ -65,7 +65,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         url: `${baseUrl}/share/${encodeURIComponent(qr.shareToken)}`,
         lastModified: qr.updatedAt,
         changeFrequency: "weekly" as const,
-        priority: 0.7,
+        priority: 0.3,
       }));
   } catch {
     // Fallback silencieux si la DB est inaccessible
@@ -88,16 +88,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  // Blog catégories
+  // Blog catégories (uniquement si la catégorie a des articles pour la locale)
   const blogCategories = ["tutorial", "use-case", "comparison"];
-  const blogCategoryRoutes: MetadataRoute.Sitemap = locales.flatMap((locale) =>
-    blogCategories.map((cat) => ({
-      url: `${baseUrl}/${locale}/blog/category/${cat}`,
-      lastModified: currentDate,
-      changeFrequency: "weekly" as const,
-      priority: 0.6,
-    }))
-  );
+  const blogCategoryRoutes: MetadataRoute.Sitemap = locales.flatMap((locale) => {
+    const posts = getAllPosts(locale);
+    return blogCategories
+      .filter((cat) => posts.some((p) => p.category === cat))
+      .map((cat) => ({
+        url: `${baseUrl}/${locale}/blog/category/${cat}`,
+        lastModified: currentDate,
+        changeFrequency: "weekly" as const,
+        priority: 0.6,
+      }));
+  });
 
   // Pages comparaison (hub + 8 concurrents × 12 locales)
   const compareHubRoutes: MetadataRoute.Sitemap = locales.map((locale) => ({

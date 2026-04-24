@@ -396,7 +396,9 @@
     "category_label": "Category",
     "category_placeholder": "e.g.: Marketing, Event...",
     "expiry_warning": "This QR code expires on {date}. Go Pro to make it permanent.",
-    "expiry_cta": "Go Pro"
+    "expiry_cta": "Go Pro",
+    "type_event": "Event",
+    "type_crypto": "Crypto"
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -1813,11 +1815,26 @@
         "description": "Let guests connect to your WiFi by scanning a QR code. No more spelling out long passwords."
       },
       "cases": [
-        { "title": "Table-top menu QR", "description": "Print a QR code on each table tent linking to your digital menu. Update daily specials in real time." },
-        { "title": "Google Reviews QR on receipts", "description": "Add a QR code to every receipt so diners can leave a review before they leave." },
-        { "title": "WiFi access QR at the entrance", "description": "Display a WiFi QR code at the front desk — guests connect in one tap." },
-        { "title": "Takeaway ordering QR", "description": "Stick a QR code on your packaging that links to your online ordering page." },
-        { "title": "Social media follow QR", "description": "Place a QR code near the register linking to your Instagram or TikTok for instant follows." }
+        {
+          "title": "Table-top menu QR",
+          "description": "Print a QR code on each table tent linking to your digital menu. Update daily specials in real time."
+        },
+        {
+          "title": "Google Reviews QR on receipts",
+          "description": "Add a QR code to every receipt so diners can leave a review before they leave."
+        },
+        {
+          "title": "WiFi access QR at the entrance",
+          "description": "Display a WiFi QR code at the front desk — guests connect in one tap."
+        },
+        {
+          "title": "Takeaway ordering QR",
+          "description": "Stick a QR code on your packaging that links to your online ordering page."
+        },
+        {
+          "title": "Social media follow QR",
+          "description": "Place a QR code near the register linking to your Instagram or TikTok for instant follows."
+        }
       ],
       "faq_q1": "What type of QR code should a restaurant use for menus?",
       "faq_a1": "Use a URL QR code linking to your online menu page or PDF. With a dynamic QR code, you can update the link without reprinting.",
@@ -1845,10 +1862,22 @@
         "description": "Drive repeat purchases by linking QR codes to your loyalty program sign-up or exclusive discount page."
       },
       "cases": [
-        { "title": "Shelf-tag product QR", "description": "Each product shelf label has a QR code linking to reviews, videos or detailed specs." },
-        { "title": "Loyalty program sign-up", "description": "A countertop QR code sends customers to your loyalty program registration page." },
-        { "title": "Window display promotion", "description": "Passersby scan the storefront QR code to view current deals even when the shop is closed." },
-        { "title": "Receipt feedback QR", "description": "Add a QR code to receipts linking to a short satisfaction survey." }
+        {
+          "title": "Shelf-tag product QR",
+          "description": "Each product shelf label has a QR code linking to reviews, videos or detailed specs."
+        },
+        {
+          "title": "Loyalty program sign-up",
+          "description": "A countertop QR code sends customers to your loyalty program registration page."
+        },
+        {
+          "title": "Window display promotion",
+          "description": "Passersby scan the storefront QR code to view current deals even when the shop is closed."
+        },
+        {
+          "title": "Receipt feedback QR",
+          "description": "Add a QR code to receipts linking to a short satisfaction survey."
+        }
       ],
       "faq_q1": "How can retail stores use QR codes?",
       "faq_a1": "Retail stores use QR codes on shelf tags for product info, at checkout for reviews, in windows for promotions, and on receipts for feedback.",
@@ -1876,11 +1905,26 @@
         "description": "Place a QR code in the room or at checkout linking to a short satisfaction survey. Respond to issues in real time."
       },
       "cases": [
-        { "title": "Room WiFi QR card", "description": "Place a branded WiFi QR code on the nightstand so guests connect in one scan." },
-        { "title": "Digital room-service menu", "description": "A QR code on the desk links to your full room-service menu with real-time availability." },
-        { "title": "Checkout feedback QR", "description": "Display a QR code at the front desk linking to a quick review form." },
-        { "title": "Local area guide QR", "description": "Provide a QR code in the lobby linking to a curated list of nearby restaurants, attractions and transport." },
-        { "title": "Conference room booking QR", "description": "A QR code on the meeting room door links to the booking calendar for instant reservations." }
+        {
+          "title": "Room WiFi QR card",
+          "description": "Place a branded WiFi QR code on the nightstand so guests connect in one scan."
+        },
+        {
+          "title": "Digital room-service menu",
+          "description": "A QR code on the desk links to your full room-service menu with real-time availability."
+        },
+        {
+          "title": "Checkout feedback QR",
+          "description": "Display a QR code at the front desk linking to a quick review form."
+        },
+        {
+          "title": "Local area guide QR",
+          "description": "Provide a QR code in the lobby linking to a curated list of nearby restaurants, attractions and transport."
+        },
+        {
+          "title": "Conference room booking QR",
+          "description": "A QR code on the meeting room door links to the booking calendar for instant reservations."
+        }
       ],
       "faq_q1": "How do hotels use WiFi QR codes?",
       "faq_a1": "Hotels print WiFi QR codes on room cards or lobby signs. Guests scan and connect instantly — no manual password entry required.",
@@ -1908,10 +1952,22 @@
         "description": "Link flyers and brochures to a full listing page with photos, floor plans, pricing and neighborhood info."
       },
       "cases": [
-        { "title": "Yard sign virtual tour QR", "description": "Passersby scan the for-sale sign QR code to launch an immersive virtual tour of the property." },
-        { "title": "Brochure to listing page", "description": "Print a QR code on your property brochure linking to the full online listing with all photos." },
-        { "title": "Business card vCard QR", "description": "Your business card QR code saves your name, phone, email and agency details directly into contacts." },
-        { "title": "Open house sign-in QR", "description": "Visitors scan a QR code at the door to register for the open house digitally — no paper sign-in sheet." }
+        {
+          "title": "Yard sign virtual tour QR",
+          "description": "Passersby scan the for-sale sign QR code to launch an immersive virtual tour of the property."
+        },
+        {
+          "title": "Brochure to listing page",
+          "description": "Print a QR code on your property brochure linking to the full online listing with all photos."
+        },
+        {
+          "title": "Business card vCard QR",
+          "description": "Your business card QR code saves your name, phone, email and agency details directly into contacts."
+        },
+        {
+          "title": "Open house sign-in QR",
+          "description": "Visitors scan a QR code at the door to register for the open house digitally — no paper sign-in sheet."
+        }
       ],
       "faq_q1": "How do real estate agents use QR codes?",
       "faq_a1": "Agents place QR codes on yard signs for virtual tours, on brochures for full listings, and on business cards for instant contact saving.",
@@ -1939,11 +1995,26 @@
         "description": "Drive social media follows, collect feedback and share WiFi credentials — all through strategically placed QR codes."
       },
       "cases": [
-        { "title": "Digital ticket QR", "description": "Send a QR code ticket via email. Scan at the door for instant check-in — no printing needed." },
-        { "title": "Live schedule QR on badges", "description": "Print a QR code on attendee badges linking to the dynamic event schedule." },
-        { "title": "WiFi QR at the venue", "description": "Display WiFi QR codes throughout the venue so attendees connect without asking staff." },
-        { "title": "Post-event survey QR", "description": "Flash a QR code on the closing slide linking to a feedback form. Capture insights while the energy is high." },
-        { "title": "Sponsor booth QR", "description": "Each sponsor booth has a QR code linking to their offer, landing page or giveaway form." }
+        {
+          "title": "Digital ticket QR",
+          "description": "Send a QR code ticket via email. Scan at the door for instant check-in — no printing needed."
+        },
+        {
+          "title": "Live schedule QR on badges",
+          "description": "Print a QR code on attendee badges linking to the dynamic event schedule."
+        },
+        {
+          "title": "WiFi QR at the venue",
+          "description": "Display WiFi QR codes throughout the venue so attendees connect without asking staff."
+        },
+        {
+          "title": "Post-event survey QR",
+          "description": "Flash a QR code on the closing slide linking to a feedback form. Capture insights while the energy is high."
+        },
+        {
+          "title": "Sponsor booth QR",
+          "description": "Each sponsor booth has a QR code linking to their offer, landing page or giveaway form."
+        }
       ],
       "faq_q1": "How do QR codes improve event check-in?",
       "faq_a1": "Attendees show their QR code ticket on their phone. Staff scan it for instant validation — no paper, no lines.",
@@ -1971,10 +2042,22 @@
         "description": "Collect visitor impressions with a QR code survey at the exit to continuously improve your exhibitions."
       },
       "cases": [
-        { "title": "Exhibit label QR", "description": "A small QR code next to each artwork links to an audio guide, artist bio and high-res gallery." },
-        { "title": "Multilingual info QR", "description": "Visitors scan to choose their language and read exhibit descriptions in their native tongue." },
-        { "title": "Gift shop promo QR", "description": "A QR code at the exit offers a discount code for the museum gift shop." },
-        { "title": "Visitor survey QR", "description": "Capture feedback at the exit with a QR code linking to a quick satisfaction survey." }
+        {
+          "title": "Exhibit label QR",
+          "description": "A small QR code next to each artwork links to an audio guide, artist bio and high-res gallery."
+        },
+        {
+          "title": "Multilingual info QR",
+          "description": "Visitors scan to choose their language and read exhibit descriptions in their native tongue."
+        },
+        {
+          "title": "Gift shop promo QR",
+          "description": "A QR code at the exit offers a discount code for the museum gift shop."
+        },
+        {
+          "title": "Visitor survey QR",
+          "description": "Capture feedback at the exit with a QR code linking to a quick satisfaction survey."
+        }
       ],
       "faq_q1": "How do museums use QR codes for audio guides?",
       "faq_a1": "Each exhibit has a QR code linking to an audio file or page. Visitors use their own phone — no hardware rentals needed.",
@@ -2002,10 +2085,22 @@
         "description": "Display a QR code at each station linking to your Instagram. Clients follow you while waiting for their style to set."
       },
       "cases": [
-        { "title": "Mirror station social QR", "description": "A QR code on the mirror links to your Instagram so clients follow while waiting." },
-        { "title": "Post-service review QR", "description": "Hand clients a card with a QR code to your Google Reviews page after their appointment." },
-        { "title": "Booking QR on business card", "description": "Your business card QR code links straight to your online booking calendar." },
-        { "title": "Product recommendation QR", "description": "A QR code next to retail products links to video tutorials showing how to use them." }
+        {
+          "title": "Mirror station social QR",
+          "description": "A QR code on the mirror links to your Instagram so clients follow while waiting."
+        },
+        {
+          "title": "Post-service review QR",
+          "description": "Hand clients a card with a QR code to your Google Reviews page after their appointment."
+        },
+        {
+          "title": "Booking QR on business card",
+          "description": "Your business card QR code links straight to your online booking calendar."
+        },
+        {
+          "title": "Product recommendation QR",
+          "description": "A QR code next to retail products links to video tutorials showing how to use them."
+        }
       ],
       "faq_q1": "How can salons get more Google Reviews?",
       "faq_a1": "Print a Google Reviews QR code on appointment cards or display it at checkout. Clients scan and review in under a minute.",
@@ -2033,10 +2128,22 @@
         "description": "Place a QR code on each machine linking to a video tutorial showing proper form and technique."
       },
       "cases": [
-        { "title": "WiFi QR at the entrance", "description": "Members scan and connect to the gym WiFi without asking at the front desk." },
-        { "title": "Equipment how-to QR", "description": "A QR code on each machine links to a quick video demonstrating correct usage." },
-        { "title": "Class schedule QR", "description": "A poster QR code links to the live schedule so members always see the latest times." },
-        { "title": "Membership sign-up QR", "description": "Display a QR code in the window linking to your online sign-up page for walk-in prospects." }
+        {
+          "title": "WiFi QR at the entrance",
+          "description": "Members scan and connect to the gym WiFi without asking at the front desk."
+        },
+        {
+          "title": "Equipment how-to QR",
+          "description": "A QR code on each machine links to a quick video demonstrating correct usage."
+        },
+        {
+          "title": "Class schedule QR",
+          "description": "A poster QR code links to the live schedule so members always see the latest times."
+        },
+        {
+          "title": "Membership sign-up QR",
+          "description": "Display a QR code in the window linking to your online sign-up page for walk-in prospects."
+        }
       ],
       "faq_q1": "How do gyms use WiFi QR codes?",
       "faq_a1": "Print a WiFi QR code at the entrance or locker room. Members scan and connect automatically — no manual password entry.",
@@ -2064,10 +2171,22 @@
         "description": "A vCard QR code on your business card lets patients save your number and book appointments instantly."
       },
       "cases": [
-        { "title": "Waiting room check-in QR", "description": "Patients scan a QR code at reception to fill in their details digitally on their own phone." },
-        { "title": "Post-visit care instructions", "description": "Hand patients a card with a QR code linking to personalized care instructions and medication guides." },
-        { "title": "Doctor's vCard QR", "description": "A vCard QR code on the doctor's business card saves contact details for easy rebooking." },
-        { "title": "Pharmacy medication info", "description": "A QR code on the prescription bag links to dosage instructions and potential side effects." }
+        {
+          "title": "Waiting room check-in QR",
+          "description": "Patients scan a QR code at reception to fill in their details digitally on their own phone."
+        },
+        {
+          "title": "Post-visit care instructions",
+          "description": "Hand patients a card with a QR code linking to personalized care instructions and medication guides."
+        },
+        {
+          "title": "Doctor's vCard QR",
+          "description": "A vCard QR code on the doctor's business card saves contact details for easy rebooking."
+        },
+        {
+          "title": "Pharmacy medication info",
+          "description": "A QR code on the prescription bag links to dosage instructions and potential side effects."
+        }
       ],
       "faq_q1": "Are QR codes secure for healthcare use?",
       "faq_a1": "QR codes link to URLs — security depends on the destination. Use HTTPS, authentication, and do not encode patient-identifiable data in the QR itself.",
@@ -2095,10 +2214,22 @@
         "description": "Drivers scan a QR code at drop-off to log delivery time, GPS location and proof of delivery instantly."
       },
       "cases": [
-        { "title": "Package tracking QR", "description": "Each parcel label includes a QR code that links to live tracking status for the recipient." },
-        { "title": "Warehouse bin QR labels", "description": "QR codes on shelves and bins link to inventory counts, making stock-takes faster and error-free." },
-        { "title": "Delivery proof QR", "description": "Drivers scan a QR code on the delivery note to timestamp and geolocate the drop-off." },
-        { "title": "Shipping document QR", "description": "A QR code on the bill of lading links to digital copies of all shipping documents." }
+        {
+          "title": "Package tracking QR",
+          "description": "Each parcel label includes a QR code that links to live tracking status for the recipient."
+        },
+        {
+          "title": "Warehouse bin QR labels",
+          "description": "QR codes on shelves and bins link to inventory counts, making stock-takes faster and error-free."
+        },
+        {
+          "title": "Delivery proof QR",
+          "description": "Drivers scan a QR code on the delivery note to timestamp and geolocate the drop-off."
+        },
+        {
+          "title": "Shipping document QR",
+          "description": "A QR code on the bill of lading links to digital copies of all shipping documents."
+        }
       ],
       "faq_q1": "How do logistics companies use QR codes for tracking?",
       "faq_a1": "A unique QR code on each package links to a tracking page showing real-time status, location and estimated delivery.",
@@ -2126,10 +2257,22 @@
         "description": "Link QR codes on posters to event registration pages, class schedules and campus maps."
       },
       "cases": [
-        { "title": "Textbook resource QR", "description": "A QR code in the textbook links to a video explanation, quiz or additional reading for each chapter." },
-        { "title": "Campus WiFi QR", "description": "Display WiFi QR codes in the library, cafeteria and lecture halls for one-tap connectivity." },
-        { "title": "Event poster QR", "description": "QR codes on campus posters link to event registration or calendar invites." },
-        { "title": "Attendance QR", "description": "Students scan a QR code displayed in class to log their attendance digitally." }
+        {
+          "title": "Textbook resource QR",
+          "description": "A QR code in the textbook links to a video explanation, quiz or additional reading for each chapter."
+        },
+        {
+          "title": "Campus WiFi QR",
+          "description": "Display WiFi QR codes in the library, cafeteria and lecture halls for one-tap connectivity."
+        },
+        {
+          "title": "Event poster QR",
+          "description": "QR codes on campus posters link to event registration or calendar invites."
+        },
+        {
+          "title": "Attendance QR",
+          "description": "Students scan a QR code displayed in class to log their attendance digitally."
+        }
       ],
       "faq_q1": "How can teachers use QR codes in the classroom?",
       "faq_a1": "Teachers place QR codes on worksheets, textbooks and the board to link students to videos, quizzes and supplementary materials.",
@@ -2157,10 +2300,22 @@
         "description": "Issue digital tickets and city passes as QR codes for contactless entry at attractions."
       },
       "cases": [
-        { "title": "Trail marker QR", "description": "A QR code on hiking trail markers links to route info, difficulty level and nearby points of interest." },
-        { "title": "Monument info QR", "description": "Visitors scan a QR code at a monument to read its history in their chosen language." },
-        { "title": "Tourist office map QR", "description": "A QR code at the tourist office links to an interactive digital map of the area." },
-        { "title": "Attraction ticket QR", "description": "Issue QR code tickets that visitors show on their phone for contactless entry." }
+        {
+          "title": "Trail marker QR",
+          "description": "A QR code on hiking trail markers links to route info, difficulty level and nearby points of interest."
+        },
+        {
+          "title": "Monument info QR",
+          "description": "Visitors scan a QR code at a monument to read its history in their chosen language."
+        },
+        {
+          "title": "Tourist office map QR",
+          "description": "A QR code at the tourist office links to an interactive digital map of the area."
+        },
+        {
+          "title": "Attraction ticket QR",
+          "description": "Issue QR code tickets that visitors show on their phone for contactless entry."
+        }
       ],
       "faq_q1": "How do tourism boards use QR codes?",
       "faq_a1": "Tourism boards place QR codes on monuments, trail markers and info boards to provide multilingual content, maps and audio guides.",
@@ -2188,10 +2343,22 @@
         "description": "A QR code on-site links to the latest version of blueprints, plans and permits — always up to date."
       },
       "cases": [
-        { "title": "Safety board QR", "description": "A QR code on the safety board links to emergency procedures, first-aid instructions and contact numbers." },
-        { "title": "Equipment tag QR", "description": "Each tool and machine carries a QR code linking to its maintenance schedule and inspection status." },
-        { "title": "Blueprint access QR", "description": "Workers scan a QR code on-site to view the latest blueprints and architectural plans on their phone." },
-        { "title": "Visitor sign-in QR", "description": "Site visitors scan a QR code at the gate to log their arrival digitally for safety compliance." }
+        {
+          "title": "Safety board QR",
+          "description": "A QR code on the safety board links to emergency procedures, first-aid instructions and contact numbers."
+        },
+        {
+          "title": "Equipment tag QR",
+          "description": "Each tool and machine carries a QR code linking to its maintenance schedule and inspection status."
+        },
+        {
+          "title": "Blueprint access QR",
+          "description": "Workers scan a QR code on-site to view the latest blueprints and architectural plans on their phone."
+        },
+        {
+          "title": "Visitor sign-in QR",
+          "description": "Site visitors scan a QR code at the gate to log their arrival digitally for safety compliance."
+        }
       ],
       "faq_q1": "How do construction sites use QR codes?",
       "faq_a1": "QR codes on construction sites link to safety docs, equipment logs, blueprints and digital sign-in forms.",
@@ -2219,10 +2386,22 @@
         "description": "After a service or sale, hand customers a QR code linking to your Google Reviews page to capture their satisfaction."
       },
       "cases": [
-        { "title": "Windshield info QR", "description": "A QR code on the windshield links to a full vehicle listing with photos, specs and financing options." },
-        { "title": "Service record QR", "description": "A QR code in the glovebox links to the vehicle's digital maintenance history." },
-        { "title": "Post-service review QR", "description": "Hand customers a card with a QR code to your Google Reviews after each service visit." },
-        { "title": "Parts catalog QR", "description": "A QR code on the service counter links to the online parts catalog for the customer's vehicle." }
+        {
+          "title": "Windshield info QR",
+          "description": "A QR code on the windshield links to a full vehicle listing with photos, specs and financing options."
+        },
+        {
+          "title": "Service record QR",
+          "description": "A QR code in the glovebox links to the vehicle's digital maintenance history."
+        },
+        {
+          "title": "Post-service review QR",
+          "description": "Hand customers a card with a QR code to your Google Reviews after each service visit."
+        },
+        {
+          "title": "Parts catalog QR",
+          "description": "A QR code on the service counter links to the online parts catalog for the customer's vehicle."
+        }
       ],
       "faq_q1": "How do car dealerships use QR codes?",
       "faq_a1": "Dealerships place QR codes on windshields linking to full vehicle specs, photos and pricing for browsing after hours.",
@@ -2250,10 +2429,22 @@
         "description": "Place QR codes at community events linking to your volunteer sign-up form to grow your team."
       },
       "cases": [
-        { "title": "Donation flyer QR", "description": "A QR code on every flyer links to your secure donation page for instant contributions." },
-        { "title": "Gala event RSVP QR", "description": "Invitations include a QR code linking to the RSVP form and event details." },
-        { "title": "Volunteer sign-up QR", "description": "Display a QR code at community fairs linking to your volunteer registration form." },
-        { "title": "Impact report QR", "description": "Include a QR code in your annual report linking to a video showcasing your impact." }
+        {
+          "title": "Donation flyer QR",
+          "description": "A QR code on every flyer links to your secure donation page for instant contributions."
+        },
+        {
+          "title": "Gala event RSVP QR",
+          "description": "Invitations include a QR code linking to the RSVP form and event details."
+        },
+        {
+          "title": "Volunteer sign-up QR",
+          "description": "Display a QR code at community fairs linking to your volunteer registration form."
+        },
+        {
+          "title": "Impact report QR",
+          "description": "Include a QR code in your annual report linking to a video showcasing your impact."
+        }
       ],
       "faq_q1": "How can nonprofits increase donations with QR codes?",
       "faq_a1": "Place QR codes linking to your donation page on every touchpoint: mailers, flyers, event displays and social media posts.",
@@ -2281,10 +2472,22 @@
         "description": "Display a QR code at your studio or on your merch linking to your Instagram or YouTube channel."
       },
       "cases": [
-        { "title": "Studio booking QR", "description": "A QR code at the reception links to your online class booking calendar." },
-        { "title": "Workout plan QR", "description": "Hand clients a card with a QR code linking to their personalized workout plan with video demos." },
-        { "title": "Social follow QR on merch", "description": "Print a QR code on branded merchandise that links to your social media profiles." },
-        { "title": "Free trial QR", "description": "A QR code on flyers and ads links to a free trial class registration form." }
+        {
+          "title": "Studio booking QR",
+          "description": "A QR code at the reception links to your online class booking calendar."
+        },
+        {
+          "title": "Workout plan QR",
+          "description": "Hand clients a card with a QR code linking to their personalized workout plan with video demos."
+        },
+        {
+          "title": "Social follow QR on merch",
+          "description": "Print a QR code on branded merchandise that links to your social media profiles."
+        },
+        {
+          "title": "Free trial QR",
+          "description": "A QR code on flyers and ads links to a free trial class registration form."
+        }
       ],
       "faq_q1": "How can personal trainers use QR codes?",
       "faq_a1": "Trainers share workout plans, booking links and social profiles via QR codes on business cards, flyers and gym walls.",
@@ -2312,10 +2515,22 @@
         "description": "After each appointment, share a QR code linking to your Google or Yelp review page."
       },
       "cases": [
-        { "title": "Treatment menu QR", "description": "A QR code in the waiting area links to your full treatment menu with descriptions and prices." },
-        { "title": "Product shelf QR", "description": "QR codes on the retail shelf link to ingredient details, video tutorials and customer reviews." },
-        { "title": "Post-treatment review QR", "description": "Hand clients a card with a QR code to leave a review right after their service." },
-        { "title": "Gift card QR", "description": "A QR code on a physical gift card links to your online gift card purchase page." }
+        {
+          "title": "Treatment menu QR",
+          "description": "A QR code in the waiting area links to your full treatment menu with descriptions and prices."
+        },
+        {
+          "title": "Product shelf QR",
+          "description": "QR codes on the retail shelf link to ingredient details, video tutorials and customer reviews."
+        },
+        {
+          "title": "Post-treatment review QR",
+          "description": "Hand clients a card with a QR code to leave a review right after their service."
+        },
+        {
+          "title": "Gift card QR",
+          "description": "A QR code on a physical gift card links to your online gift card purchase page."
+        }
       ],
       "faq_q1": "How can beauty businesses use QR codes?",
       "faq_a1": "Beauty businesses use QR codes for bookings, treatment menus, product info, reviews and gift card promotions.",
@@ -2343,10 +2558,22 @@
         "description": "QR codes on labels link to official organic, fair-trade or quality certifications for full transparency."
       },
       "cases": [
-        { "title": "Product origin QR", "description": "A QR code on each product links to a page showing the farm, harvest date and production process." },
-        { "title": "Farmers market order QR", "description": "A QR code at your market stand links to your online shop for reorders and deliveries." },
-        { "title": "Certification QR on labels", "description": "Link a QR code on your packaging to official certification documents for full transparency." },
-        { "title": "Field equipment QR", "description": "Tag machinery and tools with QR codes linking to maintenance schedules and operating manuals." }
+        {
+          "title": "Product origin QR",
+          "description": "A QR code on each product links to a page showing the farm, harvest date and production process."
+        },
+        {
+          "title": "Farmers market order QR",
+          "description": "A QR code at your market stand links to your online shop for reorders and deliveries."
+        },
+        {
+          "title": "Certification QR on labels",
+          "description": "Link a QR code on your packaging to official certification documents for full transparency."
+        },
+        {
+          "title": "Field equipment QR",
+          "description": "Tag machinery and tools with QR codes linking to maintenance schedules and operating manuals."
+        }
       ],
       "faq_q1": "How do farms use QR codes for traceability?",
       "faq_a1": "Each product carries a QR code linking to a page with farm origin, harvest date, certifications and production methods.",
@@ -2379,9 +2606,18 @@
       "meta_description": "A dynamic QR code uses a short redirect URL, allowing you to change the destination without reprinting.",
       "definition": "A dynamic QR code encodes a short redirect URL instead of the final destination. This means you can update where the QR code points without reprinting it. Scans are routed through a tracking server that records analytics.",
       "how_it_works": "When scanned, the QR code opens a short URL hosted on a redirect server. The server logs the scan (time, location, device) then redirects the user to the actual destination. You can change this destination at any time from your dashboard without modifying the printed QR code.",
-      "example_1": { "title": "Restaurant menu updates", "description": "Change your menu URL seasonally without reprinting table QR codes." },
-      "example_2": { "title": "Marketing campaigns", "description": "A/B test landing pages by switching the destination URL mid-campaign." },
-      "example_3": { "title": "Event tickets", "description": "Update event details after tickets are printed." },
+      "example_1": {
+        "title": "Restaurant menu updates",
+        "description": "Change your menu URL seasonally without reprinting table QR codes."
+      },
+      "example_2": {
+        "title": "Marketing campaigns",
+        "description": "A/B test landing pages by switching the destination URL mid-campaign."
+      },
+      "example_3": {
+        "title": "Event tickets",
+        "description": "Update event details after tickets are printed."
+      },
       "faq_q1": "Can I convert a static QR code to dynamic?",
       "faq_a1": "No. The encoding is different. You need to create a new dynamic QR code from the start.",
       "faq_q2": "Do dynamic QR codes expire?",
@@ -2395,9 +2631,18 @@
       "meta_description": "A static QR code encodes data directly. It never expires but cannot be edited after creation.",
       "definition": "A static QR code embeds the data (URL, text, WiFi credentials) directly into its pattern. Once generated, the content cannot be changed. It works offline and never expires.",
       "how_it_works": "The data is encoded directly into the QR code's matrix of black and white modules. When scanned, the device reads the data without needing any server. This makes static codes completely self-contained and permanent.",
-      "example_1": { "title": "WiFi sharing", "description": "Print a QR code with your WiFi credentials — it works forever without any server." },
-      "example_2": { "title": "Business cards", "description": "Encode your vCard contact info directly into a QR code on your card." },
-      "example_3": { "title": "Product labels", "description": "Link to a fixed product page that won't change." },
+      "example_1": {
+        "title": "WiFi sharing",
+        "description": "Print a QR code with your WiFi credentials — it works forever without any server."
+      },
+      "example_2": {
+        "title": "Business cards",
+        "description": "Encode your vCard contact info directly into a QR code on your card."
+      },
+      "example_3": {
+        "title": "Product labels",
+        "description": "Link to a fixed product page that won't change."
+      },
       "faq_q1": "Can I track scans on a static QR code?",
       "faq_a1": "Not directly. Static codes don't route through a server, so there's no way to count scans.",
       "faq_q2": "What happens if I need to change the URL?",
@@ -2411,9 +2656,18 @@
       "meta_description": "QR codes use Reed-Solomon error correction (L, M, Q, H) to remain scannable even when partially damaged.",
       "definition": "Error correction allows a QR code to be scanned even if part of it is damaged or obscured. QR codes use Reed-Solomon error correction with four levels: L (7%), M (15%), Q (25%), and H (30%).",
       "how_it_works": "Reed-Solomon codes add redundant data modules to the QR pattern. If some modules are unreadable (due to dirt, scratches, or a logo overlay), the decoder can reconstruct the missing data. Higher levels mean more redundancy but also a denser (larger) QR code.",
-      "example_1": { "title": "Logo overlay", "description": "Use level H to safely place a logo in the center of your QR code." },
-      "example_2": { "title": "Outdoor signage", "description": "Use level Q or H for codes exposed to weather and wear." },
-      "example_3": { "title": "Digital screens", "description": "Level L is sufficient for clean digital displays." },
+      "example_1": {
+        "title": "Logo overlay",
+        "description": "Use level H to safely place a logo in the center of your QR code."
+      },
+      "example_2": {
+        "title": "Outdoor signage",
+        "description": "Use level Q or H for codes exposed to weather and wear."
+      },
+      "example_3": {
+        "title": "Digital screens",
+        "description": "Level L is sufficient for clean digital displays."
+      },
       "faq_q1": "Which error correction level should I use?",
       "faq_a1": "Use M for most cases. Use H if you're adding a logo. Use L only for very long URLs where size matters.",
       "faq_q2": "Does higher error correction make the QR code bigger?",
@@ -2427,9 +2681,18 @@
       "meta_description": "QR codes store data in 2D (thousands of characters) while barcodes are 1D (up to 20 characters). Compare features and use cases.",
       "definition": "A barcode is a one-dimensional (1D) pattern of vertical lines that encodes up to ~20 characters. A QR code is a two-dimensional (2D) matrix that can store up to 4,296 alphanumeric characters.",
       "how_it_works": "Barcodes encode data in the width and spacing of parallel lines, read by a laser scanner in one direction. QR codes use a grid of dark and light modules read in two dimensions by a camera, enabling vastly more data capacity and built-in error correction.",
-      "example_1": { "title": "Product inventory", "description": "Barcodes are standard for SKU scanning in retail and warehouses." },
-      "example_2": { "title": "Marketing materials", "description": "QR codes link to websites, videos, or forms — impossible with barcodes." },
-      "example_3": { "title": "Boarding passes", "description": "Airlines use QR codes to encode passenger data, gate, and seat info." },
+      "example_1": {
+        "title": "Product inventory",
+        "description": "Barcodes are standard for SKU scanning in retail and warehouses."
+      },
+      "example_2": {
+        "title": "Marketing materials",
+        "description": "QR codes link to websites, videos, or forms — impossible with barcodes."
+      },
+      "example_3": {
+        "title": "Boarding passes",
+        "description": "Airlines use QR codes to encode passenger data, gate, and seat info."
+      },
       "faq_q1": "Are QR codes replacing barcodes?",
       "faq_a1": "Not entirely. Barcodes remain dominant in retail POS. QR codes excel in marketing, payments, and consumer engagement.",
       "faq_q2": "Can phones scan barcodes?",
@@ -2443,9 +2706,18 @@
       "meta_description": "Learn the minimum QR code size for reliable scanning. Rule of thumb: 1/10 of the scanning distance.",
       "definition": "QR code size refers to the physical dimensions of the printed or displayed code. The minimum size depends on scanning distance, data density, and error correction level.",
       "how_it_works": "The general rule is that the QR code should be at least 1/10 of the scanning distance. For a phone held 30cm away, the QR code needs to be at least 3cm. More data or higher error correction increases the number of modules, requiring a larger print size.",
-      "example_1": { "title": "Business card", "description": "Minimum 2cm × 2cm for close-range scanning." },
-      "example_2": { "title": "Poster or flyer", "description": "At least 3-5cm for arm's length scanning." },
-      "example_3": { "title": "Billboard", "description": "15cm+ for scanning from several meters away." },
+      "example_1": {
+        "title": "Business card",
+        "description": "Minimum 2cm × 2cm for close-range scanning."
+      },
+      "example_2": {
+        "title": "Poster or flyer",
+        "description": "At least 3-5cm for arm's length scanning."
+      },
+      "example_3": {
+        "title": "Billboard",
+        "description": "15cm+ for scanning from several meters away."
+      },
       "faq_q1": "What is the minimum QR code size?",
       "faq_a1": "2cm × 2cm for close-range scanning (under 30cm). Scale up proportionally for greater distances.",
       "faq_q2": "Does the amount of data affect size?",
@@ -2459,9 +2731,18 @@
       "meta_description": "Export QR codes at 300 DPI minimum for print. Use SVG for infinite scalability.",
       "definition": "Resolution refers to the clarity and detail of a QR code image, measured in DPI (dots per inch) for raster formats or as vector for SVG.",
       "how_it_works": "Raster formats (PNG, JPEG) have a fixed pixel grid. At low resolution, individual modules become blurry and unscannable. Vector formats (SVG) use mathematical shapes and scale infinitely without quality loss. For print, always use 300 DPI minimum or SVG.",
-      "example_1": { "title": "Print materials", "description": "Export at 300+ DPI in PNG or use SVG for perfect print quality at any size." },
-      "example_2": { "title": "Web display", "description": "72-150 DPI is sufficient for screens." },
-      "example_3": { "title": "Large format printing", "description": "SVG is ideal — scales from business card to billboard." },
+      "example_1": {
+        "title": "Print materials",
+        "description": "Export at 300+ DPI in PNG or use SVG for perfect print quality at any size."
+      },
+      "example_2": {
+        "title": "Web display",
+        "description": "72-150 DPI is sufficient for screens."
+      },
+      "example_3": {
+        "title": "Large format printing",
+        "description": "SVG is ideal — scales from business card to billboard."
+      },
       "faq_q1": "What resolution should I use for printing?",
       "faq_a1": "300 DPI minimum. For large format printing, use SVG to avoid pixelation.",
       "faq_q2": "What is the difference between PNG and SVG?",
@@ -2475,9 +2756,18 @@
       "meta_description": "A vCard QR code encodes contact information (name, phone, email, address) that can be saved directly to a phone.",
       "definition": "A vCard QR code encodes contact details in the vCard format. When scanned, the phone prompts the user to save the contact directly to their address book.",
       "how_it_works": "The QR code contains structured text in vCard format (BEGIN:VCARD ... END:VCARD) with fields for name, phone, email, company, title, address, and website. The phone's OS recognizes this format and offers to create a new contact.",
-      "example_1": { "title": "Business networking", "description": "Share your contact info instantly at conferences without paper cards." },
-      "example_2": { "title": "Employee badges", "description": "Print on ID badges so visitors can save contact details." },
-      "example_3": { "title": "Real estate signs", "description": "Let potential buyers save the agent's contact from the for-sale sign." },
+      "example_1": {
+        "title": "Business networking",
+        "description": "Share your contact info instantly at conferences without paper cards."
+      },
+      "example_2": {
+        "title": "Employee badges",
+        "description": "Print on ID badges so visitors can save contact details."
+      },
+      "example_3": {
+        "title": "Real estate signs",
+        "description": "Let potential buyers save the agent's contact from the for-sale sign."
+      },
       "faq_q1": "How many fields can a vCard QR code hold?",
       "faq_a1": "Standard fields include name, phone, email, company, title, address, website, and notes. Adding too many fields makes the QR code denser.",
       "faq_q2": "Does it work on all phones?",
@@ -2491,9 +2781,18 @@
       "meta_description": "A WiFi QR code lets users connect to a network instantly by scanning — no typing passwords.",
       "definition": "A WiFi QR code encodes network credentials (SSID, password, encryption type) so that scanning it automatically connects the device to the WiFi network.",
       "how_it_works": "The QR code contains a special string format: WIFI:T:WPA;S:NetworkName;P:Password;;. When scanned, the phone reads this format and offers to connect to the network automatically, without the user typing anything.",
-      "example_1": { "title": "Guest WiFi at home", "description": "Print and frame near your router so guests connect instantly." },
-      "example_2": { "title": "Hotel rooms", "description": "Place on the nightstand or room card for instant WiFi access." },
-      "example_3": { "title": "Coworking spaces", "description": "Display at the entrance so members connect without asking staff." },
+      "example_1": {
+        "title": "Guest WiFi at home",
+        "description": "Print and frame near your router so guests connect instantly."
+      },
+      "example_2": {
+        "title": "Hotel rooms",
+        "description": "Place on the nightstand or room card for instant WiFi access."
+      },
+      "example_3": {
+        "title": "Coworking spaces",
+        "description": "Display at the entrance so members connect without asking staff."
+      },
       "faq_q1": "Does it work if the password changes?",
       "faq_a1": "No. You need to generate a new QR code with the updated password. Use a dynamic QR if you change passwords frequently.",
       "faq_q2": "Is it secure to share WiFi via QR code?",
@@ -2507,9 +2806,18 @@
       "meta_description": "Track QR code scans: total count, location, device, browser, OS, and timeline. Available with dynamic QR codes.",
       "definition": "Scan analytics is the data collected each time a dynamic QR code is scanned: timestamp, geographic location, device type, browser, and operating system.",
       "how_it_works": "When a dynamic QR code is scanned, the redirect server logs metadata from the HTTP request: IP-based geolocation, User-Agent string (parsed for device, browser, OS), and timestamp. This data is aggregated into dashboards showing scan trends over time, geographic distribution, and device breakdown.",
-      "example_1": { "title": "Marketing ROI", "description": "Track how many people scanned your flyer QR code and from which cities." },
-      "example_2": { "title": "Event engagement", "description": "See real-time scan counts during an event to gauge interest." },
-      "example_3": { "title": "A/B testing", "description": "Compare scan rates between two poster designs placed in different locations." },
+      "example_1": {
+        "title": "Marketing ROI",
+        "description": "Track how many people scanned your flyer QR code and from which cities."
+      },
+      "example_2": {
+        "title": "Event engagement",
+        "description": "See real-time scan counts during an event to gauge interest."
+      },
+      "example_3": {
+        "title": "A/B testing",
+        "description": "Compare scan rates between two poster designs placed in different locations."
+      },
       "faq_q1": "Can I see who scanned my QR code?",
       "faq_a1": "No. Analytics are anonymous — you see aggregated data (city, device type) but not personal identity.",
       "faq_q2": "Do static QR codes have analytics?",
@@ -2523,9 +2831,18 @@
       "meta_description": "QR code tracking records each scan with location, device, and time data via a redirect server.",
       "definition": "QR code tracking refers to monitoring scan activity on dynamic QR codes. Each scan is logged with metadata including location, device, browser, OS, and timestamp.",
       "how_it_works": "Dynamic QR codes point to a redirect URL. When scanned, the server processes the request, extracts metadata from the IP address and User-Agent header, logs it to a database, then redirects to the final destination. The tracking is invisible to the user.",
-      "example_1": { "title": "Campaign attribution", "description": "Track which physical materials drive the most digital engagement." },
-      "example_2": { "title": "Geographic insights", "description": "Discover which cities or countries your audience scans from." },
-      "example_3": { "title": "Time-based trends", "description": "Identify peak scanning hours to optimize your campaign schedule." },
+      "example_1": {
+        "title": "Campaign attribution",
+        "description": "Track which physical materials drive the most digital engagement."
+      },
+      "example_2": {
+        "title": "Geographic insights",
+        "description": "Discover which cities or countries your audience scans from."
+      },
+      "example_3": {
+        "title": "Time-based trends",
+        "description": "Identify peak scanning hours to optimize your campaign schedule."
+      },
       "faq_q1": "Is QR code tracking GDPR compliant?",
       "faq_a1": "useqraft tracks anonymized data only (city-level location, device type). No personal data or cookies are used for scan tracking.",
       "faq_q2": "Can I export tracking data?",
@@ -2539,9 +2856,18 @@
       "meta_description": "Static QR codes never expire. Dynamic QR codes may expire depending on your plan. Learn how expiration works.",
       "definition": "QR code expiration depends on the type. Static QR codes never expire because data is embedded directly. Dynamic QR codes can expire if the redirect service stops or the subscription lapses.",
       "how_it_works": "Static codes are permanent — the data is in the pattern itself. Dynamic codes depend on the redirect server being active. If the server URL stops responding (subscription ends, service shuts down), the QR code becomes non-functional. On useqraft, free QR codes expire after 30 days; Pro QR codes are permanent.",
-      "example_1": { "title": "Temporary promotions", "description": "Set expiration dates for limited-time offers to prevent misuse." },
-      "example_2": { "title": "Event tickets", "description": "QR codes that auto-expire after the event date." },
-      "example_3": { "title": "Permanent signage", "description": "Use Pro plan for codes on permanent fixtures like plaques or signs." },
+      "example_1": {
+        "title": "Temporary promotions",
+        "description": "Set expiration dates for limited-time offers to prevent misuse."
+      },
+      "example_2": {
+        "title": "Event tickets",
+        "description": "QR codes that auto-expire after the event date."
+      },
+      "example_3": {
+        "title": "Permanent signage",
+        "description": "Use Pro plan for codes on permanent fixtures like plaques or signs."
+      },
       "faq_q1": "Can I extend an expired QR code?",
       "faq_a1": "On useqraft, upgrading to Pro reactivates expired QR codes within the 7-day grace period.",
       "faq_q2": "Do printed QR codes expire?",
@@ -2555,9 +2881,18 @@
       "meta_description": "Add a logo to the center of your QR code using high error correction. Learn size limits and best practices.",
       "definition": "Adding a logo to a QR code means overlaying an image (typically your brand logo) in the center of the QR pattern. This is possible thanks to error correction which compensates for the obscured modules.",
       "how_it_works": "The logo covers some of the QR code's data modules. With error correction level H (30%), up to 30% of the code can be obscured and still scan correctly. The logo should cover no more than 20-25% of the total area to leave a safety margin. Use a simple, high-contrast logo for best results.",
-      "example_1": { "title": "Brand recognition", "description": "Add your company logo to make QR codes instantly recognizable." },
-      "example_2": { "title": "Marketing materials", "description": "Branded QR codes on flyers and posters look more professional and trustworthy." },
-      "example_3": { "title": "Product packaging", "description": "Integrate your brand identity into functional QR codes on packaging." },
+      "example_1": {
+        "title": "Brand recognition",
+        "description": "Add your company logo to make QR codes instantly recognizable."
+      },
+      "example_2": {
+        "title": "Marketing materials",
+        "description": "Branded QR codes on flyers and posters look more professional and trustworthy."
+      },
+      "example_3": {
+        "title": "Product packaging",
+        "description": "Integrate your brand identity into functional QR codes on packaging."
+      },
       "faq_q1": "How big should the logo be?",
       "faq_a1": "The logo should cover no more than 20-25% of the QR code area. useqraft handles this automatically.",
       "faq_q2": "What logo format works best?",
@@ -2571,9 +2906,18 @@
       "meta_description": "Customize QR code colors while maintaining scannability. The key rule: dark foreground on light background.",
       "definition": "QR code color customization lets you change the foreground (modules) and background colors. The critical rule is maintaining sufficient contrast between the two for scanners to read the code.",
       "how_it_works": "QR scanners detect the contrast between dark modules and light background. The foreground must always be darker than the background. Avoid low-contrast combinations (yellow on white, light gray on white). Test on multiple devices after customizing.",
-      "example_1": { "title": "Brand colors", "description": "Match your QR code to your brand palette while keeping contrast high." },
-      "example_2": { "title": "Event theming", "description": "Color-coordinate QR codes with event materials and invitations." },
-      "example_3": { "title": "Print integration", "description": "Blend QR codes into poster designs using complementary colors." },
+      "example_1": {
+        "title": "Brand colors",
+        "description": "Match your QR code to your brand palette while keeping contrast high."
+      },
+      "example_2": {
+        "title": "Event theming",
+        "description": "Color-coordinate QR codes with event materials and invitations."
+      },
+      "example_3": {
+        "title": "Print integration",
+        "description": "Blend QR codes into poster designs using complementary colors."
+      },
       "faq_q1": "Can I use any color?",
       "faq_a1": "Yes, as long as the foreground is darker than the background. Avoid very light foregrounds or very dark backgrounds.",
       "faq_q2": "Can I use gradients?",
@@ -2587,9 +2931,18 @@
       "meta_description": "SVG scales infinitely for print. PNG is universal for digital. Choose the right QR code export format.",
       "definition": "SVG (Scalable Vector Graphics) and PNG (Portable Network Graphics) are the two main export formats for QR codes. SVG is vector-based and scales infinitely; PNG is raster-based with fixed resolution.",
       "how_it_works": "SVG defines the QR code as mathematical shapes (rectangles). It can be scaled to any size without quality loss, making it ideal for print. PNG stores the QR code as a pixel grid. Quality degrades when enlarged, but it's universally supported by all devices and platforms.",
-      "example_1": { "title": "Print materials", "description": "Use SVG for business cards, posters, and packaging — perfect quality at any size." },
-      "example_2": { "title": "Website or email", "description": "Use PNG for embedding in web pages, emails, and social media posts." },
-      "example_3": { "title": "Large format", "description": "SVG is essential for billboards and banners where massive enlargement is needed." },
+      "example_1": {
+        "title": "Print materials",
+        "description": "Use SVG for business cards, posters, and packaging — perfect quality at any size."
+      },
+      "example_2": {
+        "title": "Website or email",
+        "description": "Use PNG for embedding in web pages, emails, and social media posts."
+      },
+      "example_3": {
+        "title": "Large format",
+        "description": "SVG is essential for billboards and banners where massive enlargement is needed."
+      },
       "faq_q1": "Which format is better for print?",
       "faq_a1": "SVG. It scales infinitely without pixelation, ensuring crisp output at any print size.",
       "faq_q2": "Can I convert PNG to SVG?",
@@ -2603,9 +2956,18 @@
       "meta_description": "Generate hundreds of QR codes at once with batch creation. Upload a CSV, customize, and export as ZIP.",
       "definition": "Batch QR code generation allows you to create multiple QR codes simultaneously from a list of data (URLs, contacts, WiFi credentials). Results are exported as a ZIP archive.",
       "how_it_works": "Upload a CSV or spreadsheet with one row per QR code. The generator processes each row, applies your chosen style (colors, logo, error correction), and produces individual QR code images. Download all of them in a single ZIP file.",
-      "example_1": { "title": "Product labels", "description": "Generate unique QR codes for each product SKU from an inventory spreadsheet." },
-      "example_2": { "title": "Event badges", "description": "Create personalized QR codes for each attendee from a registration list." },
-      "example_3": { "title": "Multi-location business", "description": "Generate Google Reviews QR codes for each branch location." },
+      "example_1": {
+        "title": "Product labels",
+        "description": "Generate unique QR codes for each product SKU from an inventory spreadsheet."
+      },
+      "example_2": {
+        "title": "Event badges",
+        "description": "Create personalized QR codes for each attendee from a registration list."
+      },
+      "example_3": {
+        "title": "Multi-location business",
+        "description": "Generate Google Reviews QR codes for each branch location."
+      },
       "faq_q1": "How many QR codes can I create at once?",
       "faq_a1": "On useqraft Pro, you can generate up to 500 QR codes in a single batch.",
       "faq_q2": "What file format do I upload?",
@@ -2619,9 +2981,18 @@
       "meta_description": "Use a QR code API to generate, customize, and track QR codes programmatically from your applications.",
       "definition": "A QR code API lets developers generate, customize, and manage QR codes programmatically through HTTP requests. This enables integration into apps, websites, and automated workflows.",
       "how_it_works": "Send a POST request with parameters (content, type, colors, size, error correction) to the API endpoint. The server generates the QR code and returns it as an image (PNG/SVG) or a JSON response with a download URL. API keys authenticate requests and enforce rate limits.",
-      "example_1": { "title": "E-commerce platform", "description": "Auto-generate product QR codes when new items are added to inventory." },
-      "example_2": { "title": "Ticketing system", "description": "Generate unique QR codes for each ticket purchase in real-time." },
-      "example_3": { "title": "CRM integration", "description": "Auto-create vCard QR codes for new contacts in your CRM." },
+      "example_1": {
+        "title": "E-commerce platform",
+        "description": "Auto-generate product QR codes when new items are added to inventory."
+      },
+      "example_2": {
+        "title": "Ticketing system",
+        "description": "Generate unique QR codes for each ticket purchase in real-time."
+      },
+      "example_3": {
+        "title": "CRM integration",
+        "description": "Auto-create vCard QR codes for new contacts in your CRM."
+      },
       "faq_q1": "Does useqraft have an API?",
       "faq_a1": "Yes. useqraft Pro includes API access with endpoints for creating, reading, and managing QR codes.",
       "faq_q2": "What are the rate limits?",
@@ -2635,9 +3006,18 @@
       "meta_description": "Dynamic QR codes use short URL redirects to enable tracking and editable destinations.",
       "definition": "A short URL redirect is the mechanism behind dynamic QR codes. Instead of encoding the full destination URL, the QR code contains a short URL that redirects to the final destination through a server.",
       "how_it_works": "The QR code encodes a compact URL (e.g., useqraft.com/r/abc123). When scanned, the browser hits this URL, the server looks up the destination in its database, logs the scan, and issues an HTTP 302 redirect to the actual page. This keeps the QR code simple while enabling tracking and URL changes.",
-      "example_1": { "title": "Editable destinations", "description": "Change where the QR code points without reprinting." },
-      "example_2": { "title": "Scan tracking", "description": "The redirect server logs each scan with location and device data." },
-      "example_3": { "title": "Shorter QR codes", "description": "Short URLs produce simpler, easier-to-scan QR patterns." },
+      "example_1": {
+        "title": "Editable destinations",
+        "description": "Change where the QR code points without reprinting."
+      },
+      "example_2": {
+        "title": "Scan tracking",
+        "description": "The redirect server logs each scan with location and device data."
+      },
+      "example_3": {
+        "title": "Shorter QR codes",
+        "description": "Short URLs produce simpler, easier-to-scan QR patterns."
+      },
       "faq_q1": "Does the redirect slow down loading?",
       "faq_a1": "The redirect adds ~50-100ms. Users don't notice the difference.",
       "faq_q2": "What happens if the redirect server goes down?",
@@ -2651,9 +3031,18 @@
       "meta_description": "Add UTM parameters to QR code URLs to track campaigns in Google Analytics.",
       "definition": "UTM tracking combines QR codes with UTM parameters (source, medium, campaign) appended to the destination URL, enabling precise campaign tracking in Google Analytics.",
       "how_it_works": "Append UTM parameters to your destination URL before creating the QR code: ?utm_source=qr&utm_medium=print&utm_campaign=spring2026. When users land on your page, Google Analytics captures these parameters and attributes the visit to your QR campaign.",
-      "example_1": { "title": "Print campaign tracking", "description": "Track scans from specific flyers, posters, or direct mail pieces." },
-      "example_2": { "title": "Multi-channel comparison", "description": "Compare QR code performance against email and social campaigns." },
-      "example_3": { "title": "Store-level tracking", "description": "Use unique campaign names per store location to compare performance." },
+      "example_1": {
+        "title": "Print campaign tracking",
+        "description": "Track scans from specific flyers, posters, or direct mail pieces."
+      },
+      "example_2": {
+        "title": "Multi-channel comparison",
+        "description": "Compare QR code performance against email and social campaigns."
+      },
+      "example_3": {
+        "title": "Store-level tracking",
+        "description": "Use unique campaign names per store location to compare performance."
+      },
       "faq_q1": "Which UTM parameters should I use?",
       "faq_a1": "At minimum: utm_source=qr, utm_medium=print, utm_campaign=your_campaign_name.",
       "faq_q2": "Do UTM parameters make the QR code more complex?",
@@ -2667,9 +3056,18 @@
       "meta_description": "QR codes can be exploited for phishing. Learn security best practices to protect your users.",
       "definition": "QR code security covers the risks and best practices around using QR codes safely. Since QR codes can encode any URL, they can potentially direct users to malicious websites.",
       "how_it_works": "The main risk is 'QR phishing' (quishing): attackers place malicious QR codes over legitimate ones, redirecting users to phishing sites. Best practices include: using a trusted generator, previewing URLs before visiting, using dynamic codes (the provider validates the destination), and placing QR codes in tamper-evident locations.",
-      "example_1": { "title": "Payment fraud prevention", "description": "Use tamper-evident stickers for payment QR codes in stores." },
-      "example_2": { "title": "Corporate security", "description": "Educate employees to preview QR code URLs before clicking." },
-      "example_3": { "title": "Event safety", "description": "Use branded, recognizable QR codes that attendees can trust." },
+      "example_1": {
+        "title": "Payment fraud prevention",
+        "description": "Use tamper-evident stickers for payment QR codes in stores."
+      },
+      "example_2": {
+        "title": "Corporate security",
+        "description": "Educate employees to preview QR code URLs before clicking."
+      },
+      "example_3": {
+        "title": "Event safety",
+        "description": "Use branded, recognizable QR codes that attendees can trust."
+      },
       "faq_q1": "Can QR codes contain viruses?",
       "faq_a1": "QR codes themselves are just data. The risk is in what they link to. Always preview the URL before visiting.",
       "faq_q2": "How do I protect my QR codes from tampering?",
@@ -2683,9 +3081,18 @@
       "meta_description": "NFC requires close contact and special tags. QR codes work at distance with any camera. Compare both technologies.",
       "definition": "NFC (Near Field Communication) and QR codes are both contactless technologies for sharing data. NFC requires physical proximity (~4cm) and a compatible device, while QR codes work at any distance with a camera.",
       "how_it_works": "NFC uses radio waves between a tag and a reader device. The user taps their phone on the NFC tag to receive data. QR codes use a visual pattern scanned by a camera. NFC tags cost $0.10-2 each and need physical installation; QR codes are free to generate and can be printed anywhere.",
-      "example_1": { "title": "Cost comparison", "description": "QR codes are free to create and print. NFC tags cost money per unit." },
-      "example_2": { "title": "Range", "description": "QR codes work from centimeters to meters. NFC requires contact." },
-      "example_3": { "title": "Durability", "description": "NFC tags can be embedded in materials. QR codes can be damaged by wear." },
+      "example_1": {
+        "title": "Cost comparison",
+        "description": "QR codes are free to create and print. NFC tags cost money per unit."
+      },
+      "example_2": {
+        "title": "Range",
+        "description": "QR codes work from centimeters to meters. NFC requires contact."
+      },
+      "example_3": {
+        "title": "Durability",
+        "description": "NFC tags can be embedded in materials. QR codes can be damaged by wear."
+      },
       "faq_q1": "Which is better for marketing?",
       "faq_a1": "QR codes. They work with all smartphones, cost nothing to create, and can be printed on any material.",
       "faq_q2": "Can I use both together?",
@@ -2699,9 +3106,18 @@
       "meta_description": "MeCard is a compact contact format used by some QR generators. Compare with vCard for compatibility.",
       "definition": "MeCard is a compact contact data format developed by NTT DoCoMo. It encodes name, phone, email, and address in a shorter syntax than vCard, resulting in simpler QR codes.",
       "how_it_works": "MeCard uses a compact syntax: MECARD:N:Doe,John;TEL:+123456;EMAIL:john@example.com;;. It's shorter than vCard format, producing a less dense QR code. However, vCard is more widely supported and allows more fields (company, title, website, notes).",
-      "example_1": { "title": "Simple contact sharing", "description": "Use MeCard when you only need name, phone, and email — the QR code is simpler." },
-      "example_2": { "title": "Japanese market", "description": "MeCard originated in Japan and is widely supported by Japanese phones." },
-      "example_3": { "title": "Small print", "description": "The compact format allows for smaller QR codes on space-limited materials." },
+      "example_1": {
+        "title": "Simple contact sharing",
+        "description": "Use MeCard when you only need name, phone, and email — the QR code is simpler."
+      },
+      "example_2": {
+        "title": "Japanese market",
+        "description": "MeCard originated in Japan and is widely supported by Japanese phones."
+      },
+      "example_3": {
+        "title": "Small print",
+        "description": "The compact format allows for smaller QR codes on space-limited materials."
+      },
       "faq_q1": "Should I use MeCard or vCard?",
       "faq_a1": "vCard is recommended for most cases — it's more widely supported and allows more fields.",
       "faq_q2": "Does useqraft support MeCard?",
@@ -2715,9 +3131,18 @@
       "meta_description": "EPC QR codes encode SEPA payment data for instant bank transfers in Europe. Learn how they work.",
       "definition": "An EPC (European Payments Council) QR code encodes SEPA bank transfer data: IBAN, amount, recipient name, and payment reference. Scanning it pre-fills a bank transfer in the user's banking app.",
       "how_it_works": "The QR code follows the EPC069-12 standard, encoding structured payment data. When scanned with a banking app, all transfer fields are pre-filled: recipient IBAN, amount, name, and reference. The user just confirms the payment. Widely used for invoices and donations in SEPA countries.",
-      "example_1": { "title": "Invoices", "description": "Add an EPC QR code to invoices for one-scan payment." },
-      "example_2": { "title": "Donations", "description": "Nonprofits display EPC QR codes for instant donation transfers." },
-      "example_3": { "title": "Rent payments", "description": "Landlords provide EPC QR codes for monthly rent transfers." },
+      "example_1": {
+        "title": "Invoices",
+        "description": "Add an EPC QR code to invoices for one-scan payment."
+      },
+      "example_2": {
+        "title": "Donations",
+        "description": "Nonprofits display EPC QR codes for instant donation transfers."
+      },
+      "example_3": {
+        "title": "Rent payments",
+        "description": "Landlords provide EPC QR codes for monthly rent transfers."
+      },
       "faq_q1": "Does it work outside Europe?",
       "faq_a1": "EPC QR codes are designed for SEPA transfers and work primarily in the Eurozone.",
       "faq_q2": "Is it secure?",
@@ -2731,9 +3156,18 @@
       "meta_description": "QR codes come in 40 versions, from 21x21 to 177x177 modules. Higher versions store more data.",
       "definition": "QR code version refers to the size of the QR code matrix, ranging from Version 1 (21x21 modules) to Version 40 (177x177 modules). Higher versions can store more data but produce denser patterns.",
       "how_it_works": "Each version increases the matrix by 4 modules per side. Version 1 (21x21) stores up to 17 characters. Version 40 (177x177) stores up to 4,296 characters. The generator automatically selects the smallest version that fits your data and error correction level.",
-      "example_1": { "title": "Short URL", "description": "A simple URL uses Version 2-4, producing a clean, easy-to-scan code." },
-      "example_2": { "title": "vCard contact", "description": "Full contact details may require Version 10+, creating a denser pattern." },
-      "example_3": { "title": "Long text", "description": "Paragraphs of text push to higher versions, requiring larger print sizes." },
+      "example_1": {
+        "title": "Short URL",
+        "description": "A simple URL uses Version 2-4, producing a clean, easy-to-scan code."
+      },
+      "example_2": {
+        "title": "vCard contact",
+        "description": "Full contact details may require Version 10+, creating a denser pattern."
+      },
+      "example_3": {
+        "title": "Long text",
+        "description": "Paragraphs of text push to higher versions, requiring larger print sizes."
+      },
       "faq_q1": "Can I choose the QR code version?",
       "faq_a1": "Most generators auto-select the smallest version for your data. Keep content short for simpler codes.",
       "faq_q2": "What version do most QR codes use?",
@@ -2747,9 +3181,18 @@
       "meta_description": "Micro QR codes are smaller variants that store less data. Used in manufacturing where space is extremely limited.",
       "definition": "Micro QR code is a compact variant of the standard QR code. It uses only one position detection pattern (instead of three) and can store up to 35 numeric characters.",
       "how_it_works": "By removing two of the three finder patterns and simplifying the format, Micro QR codes require significantly less space. They come in 4 versions (M1-M4) with matrices from 11x11 to 17x17 modules. The trade-off is limited data capacity and less error correction.",
-      "example_1": { "title": "PCB marking", "description": "Mark electronic components with tiny codes containing serial numbers." },
-      "example_2": { "title": "Medical devices", "description": "Label small medical instruments with identification codes." },
-      "example_3": { "title": "Jewelry tags", "description": "Encode product IDs on tiny labels attached to jewelry." },
+      "example_1": {
+        "title": "PCB marking",
+        "description": "Mark electronic components with tiny codes containing serial numbers."
+      },
+      "example_2": {
+        "title": "Medical devices",
+        "description": "Label small medical instruments with identification codes."
+      },
+      "example_3": {
+        "title": "Jewelry tags",
+        "description": "Encode product IDs on tiny labels attached to jewelry."
+      },
       "faq_q1": "Can phones scan Micro QR codes?",
       "faq_a1": "Support varies. Most standard QR readers don't support Micro QR. Specialized scanners or apps are needed.",
       "faq_q2": "When should I use Micro QR?",
@@ -2763,9 +3206,18 @@
       "meta_description": "QR codes support 4 encoding modes: numeric, alphanumeric, byte, and kanji. Each optimizes for different data types.",
       "definition": "QR code encoding refers to how data is converted into the QR code's binary pattern. Four encoding modes exist: Numeric (digits only), Alphanumeric (digits + uppercase + symbols), Byte (any character), and Kanji (Japanese characters).",
       "how_it_works": "The encoder selects the most efficient mode for your data. Numeric mode packs 3 digits per 10 bits. Alphanumeric packs 2 characters per 11 bits. Byte mode uses 8 bits per character. Using the optimal mode minimizes the QR code size. The generator handles this automatically.",
-      "example_1": { "title": "Phone numbers", "description": "Pure numeric data uses the most efficient encoding, producing the smallest QR code." },
-      "example_2": { "title": "URLs", "description": "URLs use byte mode due to lowercase letters and special characters." },
-      "example_3": { "title": "Mixed content", "description": "The encoder can switch modes within a single QR code to optimize space." },
+      "example_1": {
+        "title": "Phone numbers",
+        "description": "Pure numeric data uses the most efficient encoding, producing the smallest QR code."
+      },
+      "example_2": {
+        "title": "URLs",
+        "description": "URLs use byte mode due to lowercase letters and special characters."
+      },
+      "example_3": {
+        "title": "Mixed content",
+        "description": "The encoder can switch modes within a single QR code to optimize space."
+      },
       "faq_q1": "Do I need to choose the encoding mode?",
       "faq_a1": "No. QR generators automatically select the optimal mode for your data.",
       "faq_q2": "Does encoding affect scannability?",
@@ -2916,5 +3368,139 @@
       "faq_q5": "How do I test my QR code design?",
       "faq_a5": "Scan with at least 3 different phones (iOS and Android), at the intended distance, in the intended lighting conditions. Test both the digital version and a print sample."
     }
+  },
+  "legal": {
+    "banner_label": "Legal information",
+    "nav_login": "Log in",
+    "back_home": "Home",
+    "last_updated": "Last updated: April 2026",
+    "cookie_title": "Cookies and data collection",
+    "cookie_description": "This site uses cookies for authentication and traffic analysis. Shared QR codes collect anonymous scan statistics (device, browser, date).",
+    "cookie_learn_more": "Learn more",
+    "cookie_accept": "Accept",
+    "cookie_refuse": "Decline",
+    "cgu_title": "Terms of Use",
+    "cgu_full_title": "Terms of Use",
+    "cgu_meta_title": "Terms of Use | useqraft",
+    "cgu_meta_description": "Terms of use of the useqraft service, a free QR code generator.",
+    "cgu_1_title": "1. Purpose",
+    "cgu_1_body": "These Terms of Use govern access to and use of the useqraft service, available at useqraft.com, published by DVS Web (Evan Davison). By using useqraft, you accept these Terms without reservation.",
+    "cgu_2_title": "2. Service description",
+    "cgu_2_body": "useqraft is a service for generating, customizing, and sharing QR codes. It is freely accessible after creating an account. Features include creating various types of QR codes (URL, text, Wi-Fi, vCard, etc.), export to PNG/JPEG/PDF, public sharing, and scan statistics.",
+    "cgu_3_title": "3. Subscription and payment",
+    "cgu_3_body": "useqraft offers two subscription plans:",
+    "cgu_3_free": "Free Plan: QR codes active for 30 days, basic analytics (scan count).",
+    "cgu_3_pro": "Pro Plan — EUR 9.99/month: Permanent QR codes with no expiration, full analytics (geolocation, device, browser, OS, timeline).",
+    "cgu_3_stripe": "Payments are processed exclusively by Stripe, a PCI DSS certified provider. DVS Web does not store any banking data. The Pro subscription is commitment-free: you can cancel at any time from the Stripe billing portal accessible via your useqraft account.",
+    "cgu_3_cancel": "Upon cancellation, your subscription remains active until the end of the current billing period. After that, a 7-day grace period applies before your permanent QR codes are deactivated and revert to free plan conditions (30-day expiration). No prorated refunds are granted, except where required by applicable law.",
+    "cgu_4_title": "4. Access to the service",
+    "cgu_4_body": "Registration is free and open to any adult individual. You are responsible for the confidentiality of your credentials. Any fraudulent access or misuse may result in account suspension.",
+    "cgu_5_title": "5. Acceptable use",
+    "cgu_5_body": "It is prohibited to use useqraft to:",
+    "cgu_5_item1": "Create QR codes linking to illegal, malicious, or misleading content",
+    "cgu_5_item2": "Infringe third-party rights (trademarks, copyrights, personal data)",
+    "cgu_5_item3": "Attempt to compromise the security or operation of the service",
+    "cgu_5_item4": "Use automated scripts without written authorization",
+    "cgu_6_title": "6. Data ownership",
+    "cgu_6_body": "You retain all rights to the content you encode in your QR codes. DVS Web claims no rights to your data. You can delete your account and all your data at any time from your profile.",
+    "cgu_7_title": "7. Service availability",
+    "cgu_7_body": "useqraft is provided \"as is\", with no guarantee of continuous availability. DVS Web reserves the right to modify, suspend, or discontinue the service at any time, particularly for maintenance. No compensation may be claimed in this regard.",
+    "cgu_8_title": "8. Liability",
+    "cgu_8_body": "DVS Web shall not be held liable for any direct or indirect damages resulting from the use or inability to use the service, nor for the content of QR codes created by users.",
+    "cgu_9_title": "9. Changes to the Terms",
+    "cgu_9_body": "These Terms may be modified at any time. Users will be notified by email or via a notification on the service in the event of a substantial modification. Continued use of the service constitutes acceptance of the new terms.",
+    "cgu_10_title": "10. Applicable law",
+    "cgu_10_body": "These Terms are governed by French law. In the event of a dispute, the parties shall endeavor to find an amicable solution. Failing that, the French courts shall have exclusive jurisdiction.",
+    "cgu_link_privacy": "Privacy Policy",
+    "privacy_title": "Privacy",
+    "privacy_full_title": "Privacy Policy",
+    "privacy_meta_title": "Privacy Policy | useqraft",
+    "privacy_meta_description": "useqraft privacy policy — how your personal data is collected, used, and protected.",
+    "privacy_1_title": "1. Data controller",
+    "privacy_1_body": "DVS Web — Evan Davison",
+    "privacy_1_contact": "Contact: via dvs-web.fr",
+    "privacy_2_title": "2. Data collected and purposes",
+    "privacy_2_col_data": "Data",
+    "privacy_2_col_purpose": "Purpose",
+    "privacy_2_col_basis": "Legal basis",
+    "privacy_2_col_duration": "Duration",
+    "privacy_2_row1_data": "Email, name",
+    "privacy_2_row1_purpose": "Authentication, user account",
+    "privacy_2_row1_basis": "Contract execution",
+    "privacy_2_row1_duration": "Until account deletion",
+    "privacy_2_row2_data": "QR code content",
+    "privacy_2_row2_purpose": "Service provision",
+    "privacy_2_row2_basis": "Contract execution",
+    "privacy_2_row2_duration": "Until QR code deletion",
+    "privacy_2_row3_data": "IP, UA, country, city (scans)",
+    "privacy_2_row3_purpose": "Scan statistics for the user",
+    "privacy_2_row3_basis": "Legitimate interest",
+    "privacy_2_row3_duration": "Until QR code deletion",
+    "privacy_2_row4_data": "Browsing data (Google Analytics)",
+    "privacy_2_row4_purpose": "Anonymized audience analysis",
+    "privacy_2_row4_basis": "Consent (cookie banner)",
+    "privacy_2_row4_duration": "26 months (GA4 setting)",
+    "privacy_3_title": "3. Google Analytics",
+    "privacy_3_body": "This site uses Google Analytics 4 (Google LLC, United States) to measure audience. Google may collect browsing data via cookies. Collection is only activated after acceptance via the consent banner.",
+    "privacy_3_optout": "To opt out of this tracking, you can decline analytics cookies or install the Google Analytics Opt-out extension.",
+    "privacy_4_title": "4. Hosting and sub-processors",
+    "privacy_4_vercel": "Vercel Inc. (hosting, CDN) — United States, EU standard contractual clauses",
+    "privacy_4_supabase": "Supabase Inc. (PostgreSQL database) — United States, EU standard contractual clauses",
+    "privacy_4_google": "Google LLC (Analytics, OAuth) — United States, EU standard contractual clauses",
+    "privacy_4_github": "GitHub Inc. (OAuth) — United States, EU standard contractual clauses",
+    "privacy_4_stripe": "Stripe Inc. (online payments) — United States, PCI DSS certified",
+    "privacy_4_sentry": "Sentry (error monitoring) — United States, EU standard contractual clauses",
+    "privacy_5_title": "5. Your rights (GDPR)",
+    "privacy_5_body": "You have the following rights regarding your personal data:",
+    "privacy_5_access": "Access: view your data from your profile",
+    "privacy_5_rectify": "Rectification: edit your name from your profile",
+    "privacy_5_delete": "Deletion: delete your account and all your data from your profile",
+    "privacy_5_portability": "Portability: your QR codes can be exported as PNG/PDF",
+    "privacy_5_opposition": "Opposition: decline analytics cookies via the consent banner",
+    "privacy_5_contact": "For any other request, contact: dvs-web.fr",
+    "privacy_6_title": "6. Cookies",
+    "privacy_6_col_cookie": "Cookie",
+    "privacy_6_col_type": "Type",
+    "privacy_6_col_purpose": "Purpose",
+    "privacy_6_row1_cookie": "next-auth.session-token",
+    "privacy_6_row1_type": "Necessary",
+    "privacy_6_row1_purpose": "Secure authentication",
+    "privacy_6_row2_cookie": "_ga, _ga_*",
+    "privacy_6_row2_type": "Analytics (consent required)",
+    "privacy_6_row2_purpose": "Google Analytics audience measurement",
+    "privacy_6_row3_cookie": "cookie-consent",
+    "privacy_6_row3_type": "Necessary",
+    "privacy_6_row3_purpose": "Cookie preference storage",
+    "privacy_7_title": "7. Complaints",
+    "privacy_7_body": "If you believe that the processing of your data does not comply with regulations, you may file a complaint with the CNIL: www.cnil.fr.",
+    "privacy_link_cgu": "Terms of Use",
+    "mentions_title": "Legal notice",
+    "mentions_meta_title": "Legal Notice | useqraft",
+    "mentions_meta_description": "Legal notice for the useqraft website, published by DVS Web (Evan Davison).",
+    "mentions_editor_title": "Website publisher",
+    "mentions_editor_body": "The useqraft website is published by DVS Web, a project created by Evan Davison.",
+    "mentions_editor_company": "Company: DVS Web",
+    "mentions_editor_responsible": "Publication manager: Evan Davison",
+    "mentions_hosting_title": "Hosting",
+    "mentions_hosting_vercel": "The site is hosted by Vercel Inc.",
+    "mentions_hosting_vercel_address": "340 S Lemon Ave #4133, Walnut, CA 91789, United States",
+    "mentions_hosting_db": "The database is hosted by Supabase Inc.",
+    "mentions_ip_title": "Intellectual property",
+    "mentions_ip_body": "All content on this site (texts, images, source code, graphics, logos) is the exclusive property of DVS Web (Evan Davison), unless otherwise stated. Any reproduction, distribution, or use without prior authorization is prohibited.",
+    "mentions_data_title": "Personal data protection",
+    "mentions_data_body": "Personal data collected (name, email address) is used solely for the operation of the service. It is neither sold nor shared with third parties.",
+    "mentions_data_rgpd": "In accordance with GDPR, you have the right to access, rectify, and delete your data. To exercise these rights, delete your account or contact the publication manager.",
+    "mentions_scan_title": "QR code scan statistics",
+    "mentions_scan_body": "When a public QR code is scanned, we collect the following data for statistical purposes:",
+    "mentions_scan_item1": "Date and time of the scan",
+    "mentions_scan_item2": "Device type, browser, and operating system",
+    "mentions_scan_item3": "IP address (used for approximate geolocation, not stored in identifiable form)",
+    "mentions_scan_item4": "Approximate location (country, city)",
+    "mentions_scan_legal": "Legal basis: Legitimate interest. Retention: Until the QR code is deleted.",
+    "mentions_liability_title": "Limitation of liability",
+    "mentions_liability_body": "DVS Web strives to provide accurate information but cannot be held responsible for omissions or inaccuracies. The user is solely responsible for the use of generated QR codes.",
+    "mentions_cookies_title": "Cookies",
+    "mentions_cookies_body": "This site uses cookies necessary for operation (authentication) and analytics cookies (Google Analytics) subject to consent. No advertising cookies are used.",
+    "mentions_link_home": "Back to home"
   }
 }

@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
 export default function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
+  const t = useTranslations("legal");
 
   useEffect(() => {
     const consent = window.localStorage.getItem("cookie-consent");
@@ -22,7 +24,6 @@ export default function CookieBanner() {
   const acceptCookies = () => {
     localStorage.setItem("cookie-consent", "accepted");
     setShowBanner(false);
-    // Activer Google Analytics si besoin
     if (typeof window !== "undefined" && window.gtag) {
       window.gtag("consent", "update", {
         analytics_storage: "granted",
@@ -33,7 +34,6 @@ export default function CookieBanner() {
   const refuseCookies = () => {
     localStorage.setItem("cookie-consent", "refused");
     setShowBanner(false);
-    // Désactiver Google Analytics
     if (typeof window !== "undefined" && window.gtag) {
       window.gtag("consent", "update", {
         analytics_storage: "denied",
@@ -50,17 +50,16 @@ export default function CookieBanner() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <div className="flex-1">
               <h3 className="font-semibold mb-1" style={{ color: "var(--ink)" }}>
-                Cookies et collecte de données
+                {t("cookie_title")}
               </h3>
               <p className="text-sm" style={{ color: "var(--mid)" }}>
-                Ce site utilise des cookies pour l&apos;authentification et l&apos;analyse du trafic.
-                Les QR codes partagés collectent des statistiques de scan anonymes (appareil, navigateur, date).{" "}
+                {t("cookie_description")}{" "}
                 <Link
                   href="/mentions-legales"
                   style={{ color: "var(--red)" }}
                   className="hover:underline"
                 >
-                  En savoir plus
+                  {t("cookie_learn_more")}
                 </Link>
               </p>
             </div>
@@ -69,13 +68,13 @@ export default function CookieBanner() {
                 onClick={refuseCookies}
                 className="btn btn-outline btn-sm flex-1 sm:flex-none"
               >
-                Refuser
+                {t("cookie_refuse")}
               </button>
               <button
                 onClick={acceptCookies}
                 className="btn btn-primary btn-sm flex-1 sm:flex-none"
               >
-                Accepter
+                {t("cookie_accept")}
               </button>
             </div>
           </div>
