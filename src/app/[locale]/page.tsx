@@ -506,17 +506,16 @@ export default async function Home({ params }: Props) {
 
       {/* ── STATS ── */}
       <section style={{ borderBottom: "var(--rule)" }}>
-        <div className="max-w-7xl mx-auto" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}>
+        <div className="max-w-7xl mx-auto" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}>
           {[
             { value: "12", label: t("stat_languages"), sub: t("stat_languages_sub") },
-            { value: "50K+", label: t("stat_qr_count"), sub: t("stat_qr_count_sub") },
             { value: "0€", label: t("stat_free"), sub: t("stat_free_sub") },
           ].map((stat, i) => (
             <div
               key={i}
               style={{
                 padding: "clamp(2rem, 5vw, 4rem) clamp(1.5rem, 3vw, 3rem)",
-                borderRight: i < 2 ? "var(--rule)" : "none",
+                borderRight: i < 1 ? "var(--rule)" : "none",
                 textAlign: "center",
               }}
             >
@@ -524,7 +523,7 @@ export default async function Home({ params }: Props) {
                 style={{
                   fontFamily: "var(--font-display)",
                   fontSize: "clamp(3rem, 8vw, 6rem)",
-                  color: i === 1 ? "var(--red)" : "var(--ink)",
+                  color: "var(--ink)",
                   lineHeight: 1,
                   letterSpacing: "0.02em",
                 }}
