@@ -1,8 +1,10 @@
 import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
-import type { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const intlMiddleware = createMiddleware(routing);
+
+const locales = new Set<string>(routing.locales);
 
 const securityHeaders: Record<string, string> = {
   "X-Content-Type-Options": "nosniff",
@@ -14,6 +16,17 @@ const securityHeaders: Record<string, string> = {
 };
 
 export default function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // Redirection 301 permanente pour les URLs sans préfixe de locale
+  // (ex: /qr-code/hotel → /en/qr-code/hotel)
+  const firstSegment = pathname.split("/")[1];
+  if (firstSegment && !locales.has(firstSegment)) {
+    const url = request.nextUrl.clone();
+    url.pathname = `/${routing.defaultLocale}${pathname}`;
+    return NextResponse.redirect(url, 301);
+  }
+
   const response = intlMiddleware(request);
 
   for (const [key, value] of Object.entries(securityHeaders)) {
