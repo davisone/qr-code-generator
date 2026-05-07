@@ -6,7 +6,19 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: ["/", "/share/", "/qr-code-generator/", "/qr-code/", "/compare/", "/use-cases/", "/glossary/", "/guides/", "/qr-templates/"],
-      disallow: ["/api/", "/dashboard/", "/qrcode/", "/login", "/register", "/profile", "/api-keys/", "/bulk/", "/verify-email"],
+      disallow: [
+        "/api/",
+        "/qrcode/",
+        "/bulk/",
+        "*/dashboard",
+        "*/login",
+        "*/register",
+        "*/profile",
+        "*/api-keys",
+        "*/forgot-password",
+        "*/reset-password",
+        "*/verify-email",
+      ],
     },
     sitemap: `${BASE_URL}/sitemap.xml`,
   };
