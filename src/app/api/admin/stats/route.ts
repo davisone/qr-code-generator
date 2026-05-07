@@ -12,25 +12,19 @@ export async function GET() {
   const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
   const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
 
-  const [
-    totalUsers,
-    newUsersThisMonth,
-    proUsers,
-    totalQRCodes,
-    scansThisMonth,
-    totalScans,
-    recentUsers,
-    subscriptions,
-    dailySignups,
-    dailyScans,
-  ] = await Promise.all([
-    prisma.user.count(),
-    prisma.user.count({ where: { createdAt: { gte: startOfMonth } } }),
-    prisma.user.count({ where: { stripeStatus: "active" } }),
-    prisma.qRCode.count(),
-    prisma.scan.count({ where: { scannedAt: { gte: startOfMonth } } }),
-    prisma.scan.count(),
+  // Batch 1 : compteurs simples
+  const [totalUsers, newUsersThisMonth, proUsers, totalQRCodes, scansThisMonth, totalScans] =
+    await Promise.all([
+      prisma.user.count(),
+      prisma.user.count({ where: { createdAt: { gte: startOfMonth } } }),
+      prisma.user.count({ where: { stripeStatus: "active" } }),
+      prisma.qRCode.count(),
+      prisma.scan.count({ where: { scannedAt: { gte: startOfMonth } } }),
+      prisma.scan.count(),
+    ]);
 
+  // Batch 2 : tableaux + graphiques
+  const [recentUsers, subscriptions, dailySignups, dailyScans] = await Promise.all([
     prisma.user.findMany({
       take: 20,
       orderBy: { createdAt: "desc" },
