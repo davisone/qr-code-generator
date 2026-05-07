@@ -1,6 +1,9 @@
 import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 
-export default function NotFound() {
+export default async function NotFound() {
+  const t = await getTranslations("not_found");
+
   return (
     <div style={{ background: "var(--bg)", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       {/* Navbar */}
@@ -15,7 +18,7 @@ export default function NotFound() {
             </Link>
             <div className="flex items-stretch">
               <Link href="/login" style={{ display: "flex", alignItems: "center", padding: "0 1.25rem", fontSize: "0.72rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", borderLeft: "1px solid rgba(255,255,255,0.08)", color: "rgba(240,235,225,0.5)", fontFamily: "var(--font-sans)", textDecoration: "none" }}>
-                Connexion
+                {t("login")}
               </Link>
             </div>
           </div>
@@ -26,7 +29,7 @@ export default function NotFound() {
       <div style={{ background: "var(--red)", padding: "0.45rem 0" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <span style={{ fontFamily: "var(--font-sans)", fontSize: "0.62rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "rgba(255,255,255,0.85)" }}>
-            Erreur 404
+            {t("banner")}
           </span>
         </div>
       </div>
@@ -61,7 +64,7 @@ export default function NotFound() {
               marginBottom: "1rem",
             }}
           >
-            Page introuvable
+            {t("title")}
           </h1>
           <p
             style={{
@@ -72,13 +75,13 @@ export default function NotFound() {
               maxWidth: "400px",
             }}
           >
-            Cette page n&apos;existe pas ou a été déplacée.
+            {t("description")}
           </p>
           <Link
             href="/"
             className="btn btn-primary"
           >
-            ← Retour à l&apos;accueil
+            &larr; {t("back_home")}
           </Link>
         </div>
       </main>

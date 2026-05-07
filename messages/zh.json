@@ -3504,5 +3504,14 @@
     "mentions_cookies_title": "Cookie",
     "mentions_cookies_body": "本网站使用运营必需的Cookie（身份验证）和需要同意的分析Cookie（Google Analytics）。不使用广告Cookie。",
     "mentions_link_home": "返回首页"
+  },
+  "not_found": {
+    "banner": "错误 404",
+    "title": "页面未找到",
+    "description": "该页面不存在或已被移动。",
+    "back_home": "返回首页",
+    "login": "登录",
+    "share_title": "二维码未找到",
+    "share_description": "该二维码不存在或已停止共享。"
   }
 }

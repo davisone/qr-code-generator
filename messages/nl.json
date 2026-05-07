@@ -3504,5 +3504,14 @@
     "mentions_cookies_title": "Cookies",
     "mentions_cookies_body": "Deze website gebruikt noodzakelijke cookies (authenticatie) en analytische cookies (Google Analytics) waarvoor toestemming nodig is. Er worden geen advertentiecookies gebruikt.",
     "mentions_link_home": "Terug naar home"
+  },
+  "not_found": {
+    "banner": "Fout 404",
+    "title": "Pagina niet gevonden",
+    "description": "Deze pagina bestaat niet of is verplaatst.",
+    "back_home": "Terug naar home",
+    "login": "Inloggen",
+    "share_title": "QR-code niet gevonden",
+    "share_description": "Deze QR-code bestaat niet of wordt niet meer gedeeld."
   }
 }

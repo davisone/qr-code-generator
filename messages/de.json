@@ -3504,5 +3504,14 @@
     "mentions_cookies_title": "Cookies",
     "mentions_cookies_body": "Diese Website verwendet fuer den Betrieb notwendige Cookies (Authentifizierung) und Analyse-Cookies (Google Analytics) mit Einwilligung. Es werden keine Werbe-Cookies verwendet.",
     "mentions_link_home": "Zurueck zur Startseite"
+  },
+  "not_found": {
+    "banner": "Fehler 404",
+    "title": "Seite nicht gefunden",
+    "description": "Diese Seite existiert nicht oder wurde verschoben.",
+    "back_home": "Zurück zur Startseite",
+    "login": "Anmelden",
+    "share_title": "QR-Code nicht gefunden",
+    "share_description": "Dieser QR-Code existiert nicht oder wird nicht mehr geteilt."
   }
 }

@@ -3504,5 +3504,14 @@
     "mentions_cookies_title": "쿠키",
     "mentions_cookies_body": "이 사이트는 운영에 필요한 쿠키(인증)와 동의가 필요한 분석 쿠키(Google Analytics)를 사용합니다. 광고 쿠키는 사용하지 않습니다.",
     "mentions_link_home": "홈으로 돌아가기"
+  },
+  "not_found": {
+    "banner": "오류 404",
+    "title": "페이지를 찾을 수 없습니다",
+    "description": "이 페이지는 존재하지 않거나 이동되었습니다.",
+    "back_home": "홈으로 돌아가기",
+    "login": "로그인",
+    "share_title": "QR 코드를 찾을 수 없습니다",
+    "share_description": "이 QR 코드는 존재하지 않거나 더 이상 공유되지 않습니다."
   }
 }

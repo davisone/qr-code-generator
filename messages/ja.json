@@ -3504,5 +3504,14 @@
     "mentions_cookies_title": "Cookie",
     "mentions_cookies_body": "このサイトは運用に必要なcookie（認証）と同意が必要な分析cookie（Google Analytics）を使用しています。広告cookieは使用していません。",
     "mentions_link_home": "ホームに戻る"
+  },
+  "not_found": {
+    "banner": "エラー 404",
+    "title": "ページが見つかりません",
+    "description": "このページは存在しないか、移動されました。",
+    "back_home": "ホームに戻る",
+    "login": "ログイン",
+    "share_title": "QRコードが見つかりません",
+    "share_description": "このQRコードは存在しないか、共有が終了しています。"
   }
 }
