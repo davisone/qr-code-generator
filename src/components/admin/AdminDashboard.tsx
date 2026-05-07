@@ -63,8 +63,8 @@ function KpiCard({
   );
 }
 
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("fr-FR", {
+function formatDate(label: unknown) {
+  return new Date(String(label)).toLocaleDateString("fr-FR", {
     day: "2-digit",
     month: "short",
   });
