@@ -12,6 +12,7 @@ export default function Navbar() {
 
   const sessionKey = session?.user?.email ?? null;
   const [isProRaw, setIsProRaw] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const isPro = sessionKey ? isProRaw : false;
 
   useEffect(() => {
@@ -20,9 +21,11 @@ export default function Navbar() {
     fetch("/api/user/subscription", { signal: controller.signal })
       .then((r) => r.json())
       .then((d: { isPro?: boolean }) => setIsProRaw(d.isPro ?? false))
-      .catch(() => {
-        // silently ignore (aborts, network errors)
-      });
+      .catch(() => {});
+    fetch("/api/user/role", { signal: controller.signal })
+      .then((r) => r.json())
+      .then((d: { role?: string }) => setIsAdmin(d.role === "admin"))
+      .catch(() => {});
     return () => controller.abort();
   }, [sessionKey]);
 
@@ -129,6 +132,22 @@ export default function Navbar() {
               >
                 PRO
               </span>
+            )}
+            {isAdmin && (
+              <Link
+                href="/admin"
+                className="hidden sm:flex items-center px-4 text-xs uppercase tracking-widest font-bold border-l transition-colors"
+                style={{
+                  color: "#10b981",
+                  borderColor: "rgba(255,255,255,0.08)",
+                  fontFamily: "var(--font-sans)",
+                  textDecoration: "none",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#34d399")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#10b981")}
+              >
+                Admin
+              </Link>
             )}
             <Link
               href="/profile"
