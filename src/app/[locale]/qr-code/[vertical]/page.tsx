@@ -8,6 +8,8 @@ import { getCities } from "@/data/cities";
 import { routing } from "@/i18n/routing";
 import { buildGeneratorMetadata } from "../../qr-code-generator/metadata-helpers";
 
+export const dynamicParams = false;
+
 type Props = { params: Promise<{ locale: string; vertical: string }> };
 
 export function generateStaticParams() {

@@ -9,6 +9,8 @@ import { routing } from "@/i18n/routing";
 import { JsonLd } from "@/components/seo-generator/JsonLd";
 import { GeneratorCTA } from "@/components/seo-generator/GeneratorCTA";
 
+export const dynamicParams = false;
+
 type Props = { params: Promise<{ locale: string; vertical: string; city: string }> };
 
 export function generateStaticParams() {
