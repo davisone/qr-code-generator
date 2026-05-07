@@ -7,6 +7,8 @@ import { industrySlugs } from "@/data/industries";
 import { glossaryTermSlugs } from "@/data/glossary-terms";
 import { guideSlugs } from "@/data/guides";
 import { QR_TEMPLATES } from "@/lib/qr-templates";
+import { verticalSlugs } from "@/data/verticals";
+import { cities } from "@/data/cities";
 
 const locales = ["en", "fr", "es", "de", "it", "pt", "nl", "pt-BR", "es-MX", "ja", "zh", "ko"];
 
@@ -182,10 +184,44 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
+  // Pages programmatiques — hub /qr-code par locale
+  const programmaticHubRoutes: MetadataRoute.Sitemap = locales.map((locale) => ({
+    url: `${baseUrl}/${locale}/qr-code`,
+    lastModified: currentDate,
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+
+  // Pages programmatiques — /qr-code/{vertical} par locale
+  const programmaticVerticalRoutes: MetadataRoute.Sitemap = locales.flatMap((locale) =>
+    verticalSlugs.map((vertical) => ({
+      url: `${baseUrl}/${locale}/qr-code/${vertical}`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }))
+  );
+
+  // Pages programmatiques — /qr-code/{vertical}/{city} par locale
+  const programmaticCityRoutes: MetadataRoute.Sitemap = locales.flatMap((locale) => {
+    const localeCities = cities[locale] ?? cities.en;
+    return verticalSlugs.flatMap((vertical) =>
+      localeCities.map((city) => ({
+        url: `${baseUrl}/${locale}/qr-code/${vertical}/${city.slug}`,
+        lastModified: currentDate,
+        changeFrequency: "monthly" as const,
+        priority: 0.5,
+      }))
+    );
+  });
+
   return [
     ...homeRoutes,
     ...staticRoutes,
     ...generatorRoutes,
+    ...programmaticHubRoutes,
+    ...programmaticVerticalRoutes,
+    ...programmaticCityRoutes,
     ...blogIndexRoutes,
     ...blogArticleRoutes,
     ...blogCategoryRoutes,

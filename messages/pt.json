@@ -1467,7 +1467,11 @@
     "city_faq_q2": "Posso acompanhar quantas pessoas lêem o meu código QR de {vertical} em {city}?",
     "city_faq_a2": "Sim! Crie uma conta useqraft gratuita para aceder a análises: número de leituras, tipos de dispositivo, localização e mais.",
     "city_faq_q3": "Qual o melhor tipo de código QR para {vertical} em {city}?",
-    "city_faq_a3": "Depende do seu caso. Os restaurantes usam códigos QR de menu, os hotéis códigos WiFi, e as lojas códigos de avaliações Google. Explore os nossos geradores."
+    "city_faq_a3": "Depende do seu caso. Os restaurantes usam códigos QR de menu, os hotéis códigos WiFi, e as lojas códigos de avaliações Google. Explore os nossos geradores.",
+    "city_meta_title": "Código QR para {vertical} em {city} — Gerador gratuito | useqraft",
+    "city_meta_description": "Crie códigos QR gratuitos para o seu {vertical} em {city}. Design personalizável, análises de leitura incluídas. Sem registo.",
+    "vertical_meta_title": "Código QR para {vertical} — Gerador gratuito | useqraft",
+    "vertical_meta_description": "Gere códigos QR para o seu negócio {vertical}. Gratuito, personalizável, com análises. Encontre a sua cidade abaixo."
   },
   "blog": {
     "title": "Blog",

@@ -1467,7 +1467,11 @@
     "city_faq_q2": "Can I track how many people scan my {vertical} QR code in {city}?",
     "city_faq_a2": "Yes! Create a free useqraft account to access scan analytics: number of scans, device types, geographic location, and more.",
     "city_faq_q3": "What type of QR code is best for {vertical} in {city}?",
-    "city_faq_a3": "It depends on your use case. Restaurants typically use menu QR codes, hotels use WiFi QR codes, and retail stores use Google Reviews QR codes. Explore our generators to find the best fit."
+    "city_faq_a3": "It depends on your use case. Restaurants typically use menu QR codes, hotels use WiFi QR codes, and retail stores use Google Reviews QR codes. Explore our generators to find the best fit.",
+    "city_meta_title": "QR Code for {vertical} in {city} — Free Generator | useqraft",
+    "city_meta_description": "Create free QR codes for your {vertical} in {city}. Customizable design, scan analytics included. No signup required.",
+    "vertical_meta_title": "QR Code for {vertical} — Free Generator | useqraft",
+    "vertical_meta_description": "Generate QR codes for your {vertical} business. Free, customizable, with analytics. Find your city below."
   },
   "blog": {
     "title": "Blog",

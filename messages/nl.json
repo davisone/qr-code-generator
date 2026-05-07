@@ -1467,7 +1467,11 @@
     "city_faq_q2": "Kan ik bijhouden hoeveel mensen mijn {vertical} QR-code in {city} scannen?",
     "city_faq_a2": "Ja! Maak een gratis useqraft-account aan voor scananalyses: aantal scans, apparaattypen, locatie en meer.",
     "city_faq_q3": "Welk type QR-code is het beste voor {vertical} in {city}?",
-    "city_faq_a3": "Dat hangt af van uw situatie. Restaurants gebruiken menu-QR-codes, hotels WiFi-QR-codes en winkels Google Reviews-QR-codes. Verken onze generators."
+    "city_faq_a3": "Dat hangt af van uw situatie. Restaurants gebruiken menu-QR-codes, hotels WiFi-QR-codes en winkels Google Reviews-QR-codes. Verken onze generators.",
+    "city_meta_title": "QR-code voor {vertical} in {city} — Gratis generator | useqraft",
+    "city_meta_description": "Maak gratis QR-codes voor uw {vertical} in {city}. Aanpasbaar design, scananalyses inbegrepen. Zonder registratie.",
+    "vertical_meta_title": "QR-code voor {vertical} — Gratis generator | useqraft",
+    "vertical_meta_description": "Genereer QR-codes voor uw {vertical}-bedrijf. Gratis, aanpasbaar, met analyses. Vind uw stad hieronder."
   },
   "blog": {
     "title": "Blog",

@@ -1467,7 +1467,11 @@
     "city_faq_q2": "{city}で{vertical}のQRコードをスキャンした人数を追跡できますか？",
     "city_faq_a2": "はい！無料のuseqraftアカウントを作成すると、スキャン分析にアクセスできます：スキャン数、デバイスタイプ、地理的位置など。",
     "city_faq_q3": "{city}の{vertical}に最適なQRコードのタイプは何ですか？",
-    "city_faq_a3": "用途によります。レストランはメニューQRコード、ホテルはWiFi QRコード、小売店はGoogleレビューQRコードを一般的に使用します。最適なものを見つけるためにジェネレーターを探索してください。"
+    "city_faq_a3": "用途によります。レストランはメニューQRコード、ホテルはWiFi QRコード、小売店はGoogleレビューQRコードを一般的に使用します。最適なものを見つけるためにジェネレーターを探索してください。",
+    "city_meta_title": "{city}の{vertical}向けQRコード — 無料ジェネレーター | useqraft",
+    "city_meta_description": "{city}の{vertical}向け無料QRコードを作成。カスタマイズ可能なデザイン、スキャン分析付き。登録不要。",
+    "vertical_meta_title": "{vertical}向けQRコード — 無料ジェネレーター | useqraft",
+    "vertical_meta_description": "{vertical}ビジネス向けQRコードを生成。無料、カスタマイズ可能、分析付き。下から都市を選択。"
   },
   "blog": {
     "title": "ブログ",

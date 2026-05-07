@@ -1467,7 +1467,11 @@
     "city_faq_q2": "Posso rastrear quantas pessoas escaneiam meu QR code de {vertical} em {city}?",
     "city_faq_a2": "Sim! Crie uma conta gratuita no useqraft para acessar analytics de escaneamento: número de scans, tipos de dispositivo, localização geográfica e mais.",
     "city_faq_q3": "Qual tipo de QR code é melhor para {vertical} em {city}?",
-    "city_faq_a3": "Depende do seu caso de uso. Restaurantes geralmente usam QR codes de cardápio, hotéis usam QR codes WiFi e lojas usam QR codes de avaliações Google. Explore nossos geradores para encontrar o mais adequado."
+    "city_faq_a3": "Depende do seu caso de uso. Restaurantes geralmente usam QR codes de cardápio, hotéis usam QR codes WiFi e lojas usam QR codes de avaliações Google. Explore nossos geradores para encontrar o mais adequado.",
+    "city_meta_title": "QR Code para {vertical} em {city} — Gerador gratuito | useqraft",
+    "city_meta_description": "Crie QR codes gratuitos para seu {vertical} em {city}. Design personalizável, analytics de escaneamento incluídas. Sem cadastro.",
+    "vertical_meta_title": "QR Code para {vertical} — Gerador gratuito | useqraft",
+    "vertical_meta_description": "Gere QR codes para seu negócio {vertical}. Gratuito, personalizável, com analytics. Encontre sua cidade abaixo."
   },
   "blog": {
     "title": "Blog",

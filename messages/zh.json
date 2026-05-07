@@ -688,7 +688,11 @@
     "city_faq_q2": "我可以追踪有多少人扫描了我在{city}的{vertical}二维码吗？",
     "city_faq_a2": "可以！创建免费的useqraft账户即可访问扫描分析：扫描次数、设备类型、地理位置等。",
     "city_faq_q3": "什么类型的二维码最适合{city}的{vertical}？",
-    "city_faq_a3": "这取决于您的使用场景。餐厅通常使用菜单二维码，酒店使用WiFi二维码，零售店使用Google评价二维码。探索我们的生成器找到最合适的。"
+    "city_faq_a3": "这取决于您的使用场景。餐厅通常使用菜单二维码，酒店使用WiFi二维码，零售店使用Google评价二维码。探索我们的生成器找到最合适的。",
+    "city_meta_title": "{city}{vertical}二维码 — 免费生成器 | useqraft",
+    "city_meta_description": "为您在{city}的{vertical}创建免费二维码。可自定义设计，含扫描分析。无需注册。",
+    "vertical_meta_title": "{vertical}二维码 — 免费生成器 | useqraft",
+    "vertical_meta_description": "为您的{vertical}企业生成二维码。免费、可自定义、含分析。在下方选择您的城市。"
   },
   "seo_generator": {
     "breadcrumb_home": "首页",

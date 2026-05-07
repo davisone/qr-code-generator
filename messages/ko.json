@@ -688,7 +688,11 @@
     "city_faq_q2": "{city}에서 {vertical} QR 코드를 몇 명이 스캔했는지 추적할 수 있나요?",
     "city_faq_a2": "네! 무료 useqraft 계정을 만들면 스캔 분석에 접근할 수 있습니다: 스캔 수, 기기 유형, 지리적 위치 등.",
     "city_faq_q3": "{city}의 {vertical}에 가장 적합한 QR 코드 유형은 무엇인가요?",
-    "city_faq_a3": "사용 사례에 따라 다릅니다. 레스토랑은 보통 메뉴 QR 코드를, 호텔은 WiFi QR 코드를, 소매점은 Google 리뷰 QR 코드를 사용합니다. 우리의 생성기를 탐색하여 최적의 것을 찾아보세요."
+    "city_faq_a3": "사용 사례에 따라 다릅니다. 레스토랑은 보통 메뉴 QR 코드를, 호텔은 WiFi QR 코드를, 소매점은 Google 리뷰 QR 코드를 사용합니다. 우리의 생성기를 탐색하여 최적의 것을 찾아보세요.",
+    "city_meta_title": "{city} {vertical} QR 코드 — 무료 생성기 | useqraft",
+    "city_meta_description": "{city}의 {vertical}를 위한 무료 QR 코드를 만드세요. 맞춤형 디자인, 스캔 분석 포함. 가입 불필요.",
+    "vertical_meta_title": "{vertical} QR 코드 — 무료 생성기 | useqraft",
+    "vertical_meta_description": "{vertical} 비즈니스를 위한 QR 코드를 생성하세요. 무료, 맞춤형, 분석 포함. 아래에서 도시를 찾으세요."
   },
   "seo_generator": {
     "breadcrumb_home": "홈",
